@@ -1,0 +1,9 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+namespace Aguacongas.FreeTheIdServer.UI
+{
+    public class LogoutViewModel : LogoutInputModel
+    {
+        public bool ShowLogoutPrompt { get; set; } = true;
+    }
+}

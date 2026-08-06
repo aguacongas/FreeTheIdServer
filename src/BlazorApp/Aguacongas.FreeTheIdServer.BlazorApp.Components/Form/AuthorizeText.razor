@@ -1,0 +1,12 @@
+﻿@inherits InputText
+<AuthorizeView Policy="@SharedConstants.WRITERPOLICY">
+    <Authorized>
+        <InputText id="@Id" class="form-control" placeholder="@Placeholder" maxlength="@MaxLength"
+                   ValueExpression="@ValueExpression" Value="@Value" ValueChanged="ValueChanged" />
+    </Authorized>
+    <NotAuthorized>
+        <div id="@Id" class="col-form-label">
+            @Value
+        </div>
+    </NotAuthorized>
+</AuthorizeView>

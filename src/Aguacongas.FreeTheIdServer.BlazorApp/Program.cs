@@ -1,0 +1,29 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.FreeTheIdServer.BlazorApp;
+using Aguacongas.FreeTheIdServer.BlazorApp.Models;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.JSInterop;
+using System.Globalization;
+
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.AddFreeTheIdServerApp();
+var configuration = builder.Configuration;
+var settings = configuration.Get<Settings>();
+if (settings?.Prerendered == false)
+{
+    var rootComponents = builder.RootComponents;
+    rootComponents.Add<App>(settings.HostElementIdentifier);
+    rootComponents.Add<HeadOutlet>("head::after");
+}
+            
+var host = builder.Build();
+var runtime = host.Services.GetRequiredService<IJSRuntime>();
+var cultureName = await runtime.InvokeAsync<string>("localStorage.getItem", "culture").ConfigureAwait(false);
+if (!string.IsNullOrEmpty(cultureName))
+{
+    CultureInfo.CurrentCulture = CultureInfo.GetCultures(CultureTypes.AllCultures)
+        .FirstOrDefault(c => c.Name == cultureName) ?? CultureInfo.CurrentCulture;
+}
+await host.RunAsync().ConfigureAwait(false);

@@ -1,0 +1,43 @@
+﻿@using Microsoft.Extensions.Logging
+@typeparam TItem
+@inject ILogger<EntitiesGrid<TItem>> _logger
+@inject IStringLocalizerAsync<EntitiesGrid<TItem>> Localizer
+
+<table class="@TableClass">
+    @if (TableHeader != null)
+    {
+        <thead class="select">
+            <tr class="@HeaderRowClass">@TableHeader</tr>
+        </thead>
+    }
+    @if (Items != null && RowTemplate != null)
+    {
+        <tbody>
+            @if (Items.Any())
+            {
+                @if (SetKey)
+                {
+                    <Virtualize Items="@GetItems">
+                        <tr @key="@context" class="@RowClass" @onclick="() => RowClicked.InvokeAsync(context)">@RowTemplate(context)</tr>
+                    </Virtualize>
+                }
+                else
+                {
+                    <Virtualize Items="@GetItems">
+                        <tr class="@RowClass" @onclick="() => RowClicked.InvokeAsync(context)">@RowTemplate(context)</tr>
+                    </Virtualize>
+                }
+            }
+            else
+            {
+                <tr>@Localizer["Nothing here."]</tr>
+            }
+        </tbody>
+    }
+    @if (TableFooter != null)
+    {
+        <tfoot>
+            <tr>@TableFooter</tr>
+        </tfoot>
+    }
+</table>

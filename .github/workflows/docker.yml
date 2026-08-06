@@ -1,0 +1,80 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Docker
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events
+  push:
+    branches: [ master, preview/*, release/* ]
+    tags: [ '*' ]
+  pull_request: 
+    branches: [ master, preview/*, release/* ]
+  release:
+   
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  Open:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3 
+        with:
+          username: FreeTheIdServerowner
+          password: ${{ secrets.DOCKER_HUB_PAT }}
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0
+      - name: Build and push FreeTheIdServer Open
+        id: docker_build_FreeTheIdServer_Open
+        uses: docker/build-push-action@v3        
+        env: 
+          GITHIB_FEED_TOKEN: ${{ secrets.GITHIB_FEED_TOKEN }}
+        with:
+          build-args: GITHIB_FEED_TOKEN=${{ secrets.GITHIB_FEED_TOKEN }} FILE_VERSION=${{ steps.previoustag.outputs.tag }}.0 SOURCE_VERSION=${{ github.sha }}
+          push: true
+          file: src/Aguacongas.FreeTheIdServer.Open/Dockerfile
+          tags: aguacongas/FreeTheIdServer.Open:${{ steps.previoustag.outputs.tag }}
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: FreeTheIdServerowner
+          password: ${{ secrets.DOCKER_HUB_PAT }}
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0
+      - name: Build and push FreeTheIdServerApp
+        id: docker_build_FreeTheIdServerapp
+        uses: docker/build-push-action@v3
+        env: 
+          GITHIB_FEED_TOKEN: ${{ secrets.GITHIB_FEED_TOKEN }}
+        with:
+          build-args: GITHIB_FEED_TOKEN=${{ secrets.GITHIB_FEED_TOKEN }} FILE_VERSION=${{ steps.previoustag.outputs.tag }}.0 SOURCE_VERSION=${{ github.sha }}
+          push: true
+          file: src/Aguacongas.FreeTheIdServer.BlazorApp/Dockerfile
+          tags: aguacongas/FreeTheIdServerapp:${{ steps.previoustag.outputs.tag }}

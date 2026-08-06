@@ -1,0 +1,14 @@
+﻿using OpenTelemetry.Instrumentation.AspNetCore;
+using OpenTelemetry.Instrumentation.Http;
+using OpenTelemetry.Instrumentation.SqlClient;
+
+namespace Aguacongas.FreeTheIdServer.Options.OpenTelemetry
+{
+    public class InstrumentationOptions
+    {
+        public AspNetCoreTraceInstrumentationOptions AspNetCore { get; set; }
+        public HttpClientTraceInstrumentationOptions HttpClient { get; set; }
+        public SqlClientTraceInstrumentationOptions SqlClient { get; set; }
+        public RedisOptions Redis { get; set; }
+    }
+}

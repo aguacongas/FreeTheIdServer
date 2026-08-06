@@ -1,0 +1,45 @@
+﻿@using System.Globalization
+
+@page "/cultures"
+@inherits EntitiesModel<Entity.Culture>
+
+<div class="row bg-body sticky-top">
+    <div class="col-12 col-md">
+        <PageListHeader Name="@Localizer["Supported cultures"]" Url="culture" ExportRequest="@ExportRequest" ExportDisabled="@ExportDisabled" />
+    </div>
+    <div class="col-12 col-md">
+        <Filter TermChanged="OnFilterChanged" />
+    </div>
+    <EntitiesGrid Items="EntityList" TableClass="table mb-0">
+        <TableHeader>
+            <th><SelectAll GridState="GridState" /></th>
+            <th class="w-100" scope="col">
+                <SortableHeader Property="Id"
+                                Text="@Localizer["name"]"
+                                GridState="GridState" />
+            </th>
+        </TableHeader>
+    </EntitiesGrid>
+</div>
+@if (EntityList == null)
+{
+    <Loading />
+}
+else
+{
+    <div class="row">
+        <EntitiesGrid Items="EntityList" TableClass="table table-hover">
+            <RowTemplate>
+                <SelectableItem GridState="GridState" Item="@context" Selected="value => OnItemSelected(context.Id, value)" Context="item">
+                    <td class="w-100" @onclick="() => OnRowClicked(item)">
+                        @item.Id
+                        <div>
+                            <em>@CultureInfo.GetCultureInfo(item.Id).DisplayName</em>
+                        </div>
+                    </td>
+                </SelectableItem>
+            </RowTemplate>
+        </EntitiesGrid>
+    </div>
+}
+

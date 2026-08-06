@@ -1,0 +1,25 @@
+﻿@inherits ProviderOptionsBase<TwitterOptions>
+
+<div class="mb-3 row">
+    <label class="col col-form-label" for="consumerKey">
+        @Localizer["consumer key"]
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <AuthorizeText Id="consumerKey" Placeholder="@Localizer["consumer key"]" @bind-Value="@Model.Options.ConsumerKey" />
+    </div>
+</div>
+<div class="mb-3 row">
+    <label class="col col-form-label" for="consumerSecret">
+        @Localizer["consumer secret"]
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <AuthorizeText Id="consumerSecret" Placeholder="@Localizer["consumer secret"]" @bind-Value="@Model.Options.ConsumerSecret" />
+    </div>
+</div>
+<div class="mb-3 row">
+    <label class="col col-form-label" for="retrieveUserDetails">
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <AuthorizeCheckbox Name="retrieveUserDetails" Label="@Localizer["retrieve user details"]" @bind-Value="@Model.Options.RetrieveUserDetails" />
+    </div>
+</div>

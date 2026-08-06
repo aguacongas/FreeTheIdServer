@@ -1,0 +1,16 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using System.ComponentModel.DataAnnotations;
+
+namespace Aguacongas.FreeTheIdServer.UI
+{
+    public class LoginInputModel
+    {
+        [Required]
+        public string? Username { get; set; }
+        [Required]
+        public string? Password { get; set; }
+        public bool RememberLogin { get; set; }
+        public string? ReturnUrl { get; set; }
+    }
+}

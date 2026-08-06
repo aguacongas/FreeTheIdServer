@@ -1,0 +1,30 @@
+﻿@* 
+Project: Aguafrommars/FreeTheIdServer
+Copyright (c) 2026 @Olivier Lefebvre
+*@
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Localizer["Manage your account"]</h2>
+
+<div>
+    <h>
+        @Localizer["Change your account settings"]
+    </h>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

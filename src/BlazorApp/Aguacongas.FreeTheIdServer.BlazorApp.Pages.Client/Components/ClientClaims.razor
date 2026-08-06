@@ -1,0 +1,60 @@
+﻿@inherits EntitesGridModel<Entity.ClientClaim>
+
+<EntitiesGrid Items="@Claims" TableClass="table table-hover" Context="claim">
+    <TableHeader>
+        <th scope="col">
+            <SortableHeader Property="Type"
+                            Text="@Localizer["type"]"
+                            GridState="GridState" />
+        </th>
+        <th scope="col">
+            <SortableHeader Property="Value"
+                            Text="@Localizer["value"]"
+                            GridState="GridState" />
+        </th>
+        <th></th>
+    </TableHeader>
+    <RowTemplate>
+        @if (claim.Id != null)
+        {
+            <td>
+                @claim.Type
+            </td>
+        }
+        else
+        {
+            <td>
+                <AuthorizeText @bind-Value="@claim.Type" MaxLength="250" />
+            </td>
+        }
+        <td>
+            <AuthorizeText @bind-Value="@claim.Value" />
+        </td>
+        <td>
+            <AuthorizeButton Type="button" CssSubClass="btn-primary" Clicked="() => OnDeleteEntityClicked(claim)">
+                <span class="oi oi-trash"></span>
+            </AuthorizeButton>
+        </td>
+    </RowTemplate>
+</EntitiesGrid>
+@if (Model.ProtocolType == "oidc" && Collection.Any())
+{
+    <div class="col">
+        <div class="mb-3 row">
+            <label class="col-2 col-form-label" for="clientUri">
+                @Localizer["claims prefix"]
+            </label>
+            <div class="col-lg-10 col-sm-12">
+                <div class="row col-4">
+                    <AuthorizeText Id="clientUri" Placeholder="@Localizer["prefix"]" @bind-Value="@Model.ClientClaimsPrefix" MaxLength="250" />
+                </div>
+            </div>
+            <label class="col-2 col-form-label">
+            </label>
+            <div class="col-lg-10 col-sm-12">
+                <AuthorizeCheckbox Label="@Localizer["always send claims"]" @bind-Value="@Model.AlwaysSendClientClaims" />
+            </div>
+        </div>
+    </div>
+}
+

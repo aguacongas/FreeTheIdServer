@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Authors>Olivier Lefebvre</Authors>
+		<Description>FreeTheIdServer bases classes</Description>
+		<Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Aguafrommars/FreeTheIdServer</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>FreeTheIdServer</PackageTags>		
+		<Description>FreeTheIdServer IndentityServer4 abstraction and extensions.</Description>
+		<DebugType>portable</DebugType>
+		<PackageIcon>package-icon.png</PackageIcon>
+		<IsPackable>true</IsPackable>
+		<OutputType>Library</OutputType>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<CodeAnalysisRuleSet>Aguacongas.Open.IdentityServer.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<CodeAnalysisRuleSet>Aguacongas.Open.IdentityServer.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Store\CacheAdminStore.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="OData2Linq" Version="2.2.1" />
+		<PackageReference Include="IdentityModel" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="10.0.10" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Aguacongas.FreeTheIdServer.Authentication\Aguacongas.FreeTheIdServer.Authentication.csproj" />
+		<ProjectReference Include="..\..\Aguacongas.FreeTheIdServer.Identity\Aguacongas.FreeTheIdServer.Identity.csproj" />
+		<ProjectReference Include="..\Aguacongas.Open.IdentityServer.Store\Aguacongas.Open.IdentityServer.Store.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="package-icon.png" Pack="true" PackagePath="" />
+		<None Include="Store\CacheAdminStore.cs" />
+	</ItemGroup>
+
+</Project>
+

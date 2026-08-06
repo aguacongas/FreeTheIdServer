@@ -1,0 +1,20 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.FreeTheIdServer.BlazorApp.Models;
+using FluentValidation;
+using Microsoft.Extensions.Localization;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Validators
+{
+    public class WsFederationOptionsValidator : AbstractValidator<WsFederationOptions>
+    {
+        public WsFederationOptionsValidator(ExternalProvider _, IStringLocalizer localizer)
+        {
+            RuleFor(m => m.MetadataAddress).NotEmpty().WithMessage(localizer["Metadata address is required."]);
+            RuleFor(m => m.MetadataAddress).Uri().WithMessage(localizer["Metadata address must be a valid uri."]);
+            RuleFor(m => m.MetadataAddress).Must((options, value) => !options.RequireHttpsMetadata || value?.ToUpperInvariant().StartsWith("HTTPS") == true)
+                .WithMessage(localizer["Metadata address must be a valid HTTPS url when 'required https metadata is true'."]);
+            RuleFor(m => m.Wtrealm).NotEmpty().WithMessage(localizer["Wtrealm is required."]);
+        }
+    }
+}

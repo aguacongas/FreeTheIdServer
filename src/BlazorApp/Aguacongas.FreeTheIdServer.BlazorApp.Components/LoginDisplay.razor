@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.Extensions.Options
+
+@inject NavigationManager _navigationManager
+@inject IOptions<RemoteAuthenticationApplicationPathsOptions> _options
+@inject IOptions<OidcProviderOptions> _oidcOptions
+@inject IStringLocalizerAsync<Loading> Localizer
+@inject ISharedStringLocalizerAsync _shareLocalizer
+@inject IJSRuntime _jsRuntime
+
+<AuthorizeView>
+    <Authorized>
+        @if (!string.IsNullOrEmpty(_options.Value.RemoteProfilePath))
+        {
+            <a class="nav-link text-body" href="@_options.Value.RemoteProfilePath">@Localizer["Hello, {0}!", context.User.Identity.Name]</a>
+        }
+        else
+        {
+            <span class="nav-link text-body">@Localizer["Hello, {0}!", context.User.Identity.Name]</span>
+        }
+        <a href="javascript:void(0);" class="nav-link text-body" @onclick="BeginSignOut">@Localizer["Log out"]</a>
+    </Authorized>
+    <NotAuthorized>
+        @if (!string.IsNullOrEmpty(_options.Value.RemoteRegisterPath))
+        {
+            <a class="nav-link text-body" href="@_options.Value.RemoteRegisterPath">@Localizer["Register"]</a>
+        }
+        <a class="nav-link text-body" href="@_options.Value.LogInPath">@Localizer["Log in"]</a>
+    </NotAuthorized>
+</AuthorizeView>
+@if (_supportedCultures.Count() > 1)
+{
+    <button class="nav-link text-body btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @onclick:stopPropagation="true">
+        @_selectedCulture
+    </button>
+    <div class="dropdown-menu language-menu">
+        @foreach (var value in _supportedCultures)
+        {
+            <div class="dropdown-item @GetActiveClass(value) select" @onclick="() => SetSelectCulture(value)">@value</div>
+        }
+    </div>
+}

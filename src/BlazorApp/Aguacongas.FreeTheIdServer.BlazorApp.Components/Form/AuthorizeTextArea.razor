@@ -1,0 +1,11 @@
+﻿@inherits InputTextArea
+<AuthorizeView Policy="@SharedConstants.WRITERPOLICY">
+    <Authorized>
+        <InputTextArea id="@Id" class="form-control" maxlength="@MaxLength" ValueExpression="ValueExpression" Value="@Value" ValueChanged="ValueChanged" />
+    </Authorized>
+    <NotAuthorized>
+        <div id="@Id" class="col-form-label">
+            @Value
+        </div>
+    </NotAuthorized>
+</AuthorizeView>

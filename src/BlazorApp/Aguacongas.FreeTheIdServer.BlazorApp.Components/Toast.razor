@@ -1,0 +1,20 @@
+﻿@inject IJSRuntime _jsRuntime
+@inject IStringLocalizerAsync<DeleteEntityButton> Localizer
+
+<div id="@Notification.Id" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+     data-delay="2000" data-autohide="@AutoHide">
+    <div class="toast-header">
+        <svg class="bd-placeholder-img rounded mr-2"
+             width="20" height="20"
+             xmlns="http://www.w3.org/2000/svg"
+             preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+            <rect width="100%" height="100%" fill="@CarretColor"></rect>
+        </svg>
+        <strong class="ms-1 me-auto">@Notification.Header</strong>
+        <button type="button" class="ml-2 mb-3 btn-close" data-bs-dismiss="toast" aria-label="@Localizer["Close"]" @onclick="() => Closed.InvokeAsync(Notification)">
+        </button>
+    </div>
+    <div class="toast-body @BodyClass">
+        @Notification.Message
+    </div>
+</div>

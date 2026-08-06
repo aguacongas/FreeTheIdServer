@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: FreeTheIdServer-public
+  namespace: FreeTheIdServer
+spec:
+  selector:
+    matchLabels:
+      app: FreeTheIdServer-public
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: FreeTheIdServer-public
+        role: backend
+    spec:
+      containers:
+      - image: aguacongas/FreeTheIdServer:next # update with the version you want to use
+        name: FreeTheIdServer-public
+        ports:
+        - containerPort: 443
+        - containerPort: 80
+        envFrom: 
+        - configMapRef:
+            name: public-config
+        env:
+        - name: ASPNETCORE_Kestrel__Certificates__Default__Password
+          valueFrom:
+            secretKeyRef:
+              name: FreeTheIdServer-public-secrets
+              key: tls.pwd
+        - name: IdentityServer__Key__Password
+          valueFrom:
+            secretKeyRef:
+              name: FreeTheIdServer-public-secrets
+              key: protect-key
+        - name: IdentityServer__Key__KeyProtectionOptions__X509CertificatePassword
+          valueFrom:
+            secretKeyRef:
+              name: FreeTheIdServer-private-secrets
+              key: protect-key
+        - name: DataProtectionOptions__KeyProtectionOptions__X509CertificatePassword
+          valueFrom:
+            secretKeyRef:
+              name: FreeTheIdServer-private-secrets
+              key: protect-key
+        volumeMounts:
+        - name: certificates-volume
+          mountPath: /usr/local/share/ca-certificates
+        - name: config
+          mountPath: /usr/local/share/config
+        - name: keys-volume
+          mountPath: /usr/local/share/keys
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cp /usr/local/share/config/admin-appsettings.Public.json /app/wwwroot/appsettings.json"]
+      volumes:
+      - name: certificates-volume
+        persistentVolumeClaim:
+          claimName: certificates
+      - name: config
+        persistentVolumeClaim:
+          claimName: config
+      - name: keys-volume
+        persistentVolumeClaim:
+          claimName: keys

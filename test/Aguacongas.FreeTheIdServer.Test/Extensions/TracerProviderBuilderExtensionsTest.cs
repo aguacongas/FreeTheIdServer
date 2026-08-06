@@ -1,0 +1,101 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.FreeTheIdServer.Options.OpenTelemetry;
+using Honeycomb.OpenTelemetry;
+using OpenTelemetry;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Instrumentation.AspNetCore;
+using OpenTelemetry.Instrumentation.Http;
+using OpenTelemetry.Instrumentation.SqlClient;
+using OpenTelemetry.Trace;
+using System;
+using Xunit;
+
+namespace Aguacongas.FreeTheIdServer.Test.Extensions
+{
+    public class TracerProviderBuilderExtensionsTest
+    {
+        [Fact]
+        public void AddFreeTheIdServerTelemetry_should_add_console_exporter()
+        {
+            using var provider = Sdk.CreateTracerProviderBuilder()
+                .AddFreeTheIdServerTraces(new OpenTelemetryOptions
+                {
+                    Trace = new TraceOptions
+                    {
+                        Service = new ServiceOptions
+                        {
+                            Name = "test"
+                        },
+                        ConsoleEnabled = true
+                    }
+                })
+                .Build();
+
+            Assert.NotNull(provider);
+        }
+
+        [Fact]
+        public void AddFreeTheIdServerTelemetry_should_add_exporters()
+        {
+            using var provider = Sdk.CreateTracerProviderBuilder()
+                .AddFreeTheIdServerTraces(new OpenTelemetryOptions
+                {
+                    Trace = new TraceOptions
+                    {
+                        OpenTelemetryProtocol = new OtlpExporterOptions
+                        {
+                            Endpoint = new Uri("https://google.com")
+                        },
+                        Honeycomb = new HoneycombOptions
+                        {
+                            ApiKey = "test"
+                        }
+                    }
+                })
+                .Build();
+
+            Assert.NotNull(provider);
+        }
+
+        [Fact]
+        public void AddFreeTheIdServerTelemetry_should_set_up_instrumentation()
+        {
+            using var provider = Sdk.CreateTracerProviderBuilder()
+                .AddFreeTheIdServerTraces(new OpenTelemetryOptions
+                {
+                    Trace = new TraceOptions
+                    {
+                        Service = new ServiceOptions
+                        {
+                            Name = "test"
+                        },
+                        Instrumentation = new InstrumentationOptions
+                        {
+                            AspNetCore = new AspNetCoreTraceInstrumentationOptions
+                            {
+                                RecordException = true
+                            },
+                            HttpClient = new HttpClientTraceInstrumentationOptions
+                            {
+                                RecordException = true
+                            },
+                            Redis = new RedisOptions
+                            {
+                                ConnectionString = "localhost",
+                                FlushInterval = TimeSpan.FromSeconds(1),
+                                SetVerboseDatabaseStatements = true
+                            },
+                            SqlClient = new SqlClientTraceInstrumentationOptions
+                            {
+                                RecordException = true
+                            }
+                        }
+                    }
+                })
+                .Build();
+
+            Assert.NotNull(provider);
+        }
+    }
+}

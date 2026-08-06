@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<RootNamespace>Aguacongas.FreeTheIdServer.Sqlite</RootNamespace>
+		<Authors>Olivier Lefebvre</Authors>
+		<Copyright>Copyright (c) 2020 @Olivier Lefebvre</Copyright>
+		<PackageLicense>https://raw.githubusercontent.com/Aguafrommars/FreeTheIdServer/master/LICENSE</PackageLicense>
+		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Aguafrommars/FreeTheIdServer</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>FreeTheIdServer;sqlite</PackageTags>
+		<Description>Contains db contexts migrations code for Sqlite.</Description>		
+		<PackageIcon>package-icon.png</PackageIcon>
+    <EnablePreviewFeatures>True</EnablePreviewFeatures>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Aguacongas.Open.IdentityServer.EntityFramework.Store\Aguacongas.Open.IdentityServer.EntityFramework.Store.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+    <None Include="package-icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+</Project>
+

@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.Extensions.Options
+
+@page "/"
+
+@inject IOptions<RemoteAuthenticationApplicationPathsOptions> _options
+@inject AuthenticationStateProvider _authStateProvider
+@inject HttpClient _httpClient
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<AuthorizeView>
+    <NotAuthorized>
+        <a class="btn btn-primary" href="@_options.Value.LogInPath">Log in</a>
+    </NotAuthorized>
+    <Authorized>
+        <div>
+            <a class="btn btn-primary" href="@_options.Value.LogOutPath">Log out</a>
+
+        </div>
+        <em>@_user.Identity.Name claims</em>
+        @foreach (var claim in _user.Claims)
+        {
+            <div>@claim.Type @claim.Value</div>
+        }
+    </Authorized>
+</AuthorizeView>
+
+@code {
+
+    private ClaimsPrincipal _user;
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    private async Task LogUsername()
+    {
+        var state = await _authStateProvider.GetAuthenticationStateAsync();
+        _user = state.User;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var state = await authenticationStateTask;
+
+        _user = state.User;
+    }
+}

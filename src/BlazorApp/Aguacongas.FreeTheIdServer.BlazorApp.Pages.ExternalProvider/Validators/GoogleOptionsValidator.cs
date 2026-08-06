@@ -1,0 +1,17 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.FreeTheIdServer.BlazorApp.Models;
+using FluentValidation;
+using Microsoft.Extensions.Localization;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Validators
+{
+    public class GoogleOptionsValidator : AbstractValidator<GoogleOptions>
+    {
+        public GoogleOptionsValidator(ExternalProvider _, IStringLocalizer localizer)
+        {
+            RuleFor(m => m.ClientId).NotEmpty().WithMessage(localizer["Client Id is required."]);
+            RuleFor(m => m.ClientSecret).NotEmpty().WithMessage(localizer["Client Secret is required."]);
+        }
+    }
+}

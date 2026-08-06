@@ -1,0 +1,59 @@
+﻿using Open.IdentityServer.Models;
+using Open.IdentityServer.Stores;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Aguacongas.IdentityServer.KeysRotation
+{
+    internal class ValidattionKeysStore : IValidationKeysStore
+    {
+        public ICacheableKeyRingProvider _keyringProvider;
+
+        public ValidattionKeysStore(ICacheableKeyRingProvider keyringProvider)
+        {
+            _keyringProvider = keyringProvider ?? throw new ArgumentNullException(nameof(keyringProvider));
+        }
+
+        public Task<IReadOnlyCollection<SecurityKeyInfo>> GetValidationKeysAsync(CancellationToken ct)
+        {
+            var keyInfos = _keyringProvider.GetAllKeys().Where(k => !k.IsRevoked);
+
+            return Task.FromResult(keyInfos.Select(i =>
+            {
+                if (i.Descriptor is RsaEncryptorDescriptor rsa)
+                {
+                    return CreateRsaSinginKey(rsa);
+                }
+
+                return CreateEcdSingingKey(i);
+            }).ToArray() as IReadOnlyCollection<SecurityKeyInfo>);
+        }
+
+        private SecurityKeyInfo CreateEcdSingingKey(IKey i)
+        {
+            var ecd = i.Descriptor as ECDsaEncryptorDescriptor;
+            var algorythm = ecd.Configuration.SigningAlgorithm?.ToString() ?? _keyringProvider.Algorithm;
+            var key = ecd.ECDsaSecurityKey;
+            return new SecurityKeyInfo
+            {
+                Key = key,
+                SigningAlgorithm = algorythm
+            };
+        }
+
+        private SecurityKeyInfo CreateRsaSinginKey(RsaEncryptorDescriptor rsa)
+        {
+            var algorythm = rsa.Configuration.SigningAlgorithm?.ToString() ?? _keyringProvider.Algorithm;
+            var key = rsa.RsaSecurityKey;
+            return new SecurityKeyInfo
+            {
+                SigningAlgorithm = algorythm,
+                Key = key
+            };
+        }
+    }
+}

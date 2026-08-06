@@ -1,0 +1,26 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.FreeTheIdServer.BlazorApp.Models;
+using System.Collections.Generic;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.ExternalProvider.Components
+{
+    public class ExternalProviderWrapper<T> : IExternalProvider<T> where T : class
+    {
+        private readonly Models.ExternalProvider _parent;
+
+        public ExternalProviderWrapper(Models.ExternalProvider parent)
+        {
+            _parent = parent;
+        }
+
+        public string Id => _parent.Id;
+
+        public T DefaultOptions => (T)_parent.DefaultOptions;
+
+        public IEnumerable<ExternalProviderKind> Kinds { get => _parent.Kinds; set => _parent.Kinds = value; }
+        public T Options { get => (T)_parent.Options; set => _parent.Options = value; }
+        
+    }
+}

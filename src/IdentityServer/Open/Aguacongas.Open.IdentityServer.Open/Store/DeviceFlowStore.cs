@@ -1,0 +1,131 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.IdentityServer.Store.Entity;
+using Open.IdentityServer.Stores;
+using Open.IdentityServer.Stores.Serialization;
+using IdentityModel;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using IsModels = Open.IdentityServer.Models;
+
+namespace Aguacongas.IdentityServer.Store
+{
+    public class DeviceFlowStore : IDeviceFlowStore
+    {
+        private readonly IAdminStore<DeviceCode> _store;
+        private readonly IPersistentGrantSerializer _serializer;
+
+        public DeviceFlowStore(IAdminStore<DeviceCode> store,
+            IPersistentGrantSerializer serializer)
+        {
+            _store = store ?? throw new ArgumentNullException(nameof(store));
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+        }
+
+        public async Task<IsModels.DeviceCode> FindByDeviceCodeAsync(string deviceCode, CancellationToken ct)
+        {
+            deviceCode = deviceCode ?? throw new ArgumentNullException(nameof(deviceCode));
+
+            var response = await _store.GetAsync(new PageRequest
+            {
+                Filter = $"{nameof(DeviceCode.Code)} eq '{deviceCode}'",
+                Select = nameof(DeviceCode.Data)
+            }, ct).ConfigureAwait(false);
+
+            if (response.Items.Any())
+            {
+                return ToModel(response.Items.First());
+            }
+
+            return null;
+        }
+
+        public async Task<IsModels.DeviceCode> FindByUserCodeAsync(string userCode, CancellationToken ct)
+        {
+            userCode = userCode ?? throw new ArgumentNullException(nameof(userCode));
+
+            var response = await _store.GetAsync(new PageRequest
+            {
+                Filter = $"{nameof(DeviceCode.UserCode)} eq '{userCode}'",
+                Select = nameof(DeviceCode.Data)
+            }, ct).ConfigureAwait(false);
+
+            if (response.Items.Any())
+            {
+                return ToModel(response.Items.First());
+            }
+
+            return null;
+        }
+
+        public async Task RemoveByDeviceCodeAsync(string deviceCode, CancellationToken ct)
+        {
+            deviceCode = deviceCode ?? throw new ArgumentNullException(nameof(deviceCode));
+
+            var response = await _store.GetAsync(new PageRequest
+            {
+                Filter = $"{nameof(DeviceCode.Code)} eq '{deviceCode}'",
+                Select = nameof(DeviceCode.Id)
+            }, ct).ConfigureAwait(false);
+
+
+            foreach (var entity in response.Items)
+            {
+                await _store.DeleteAsync(entity.Id, ct).ConfigureAwait(false);
+            }
+        }
+
+        public Task StoreDeviceAuthorizationAsync(string deviceCode, string userCode, IsModels.DeviceCode data, CancellationToken ct)
+        {
+            deviceCode = deviceCode ?? throw new ArgumentNullException(nameof(deviceCode));
+            userCode = userCode ?? throw new ArgumentNullException(nameof(userCode));
+            data = data ?? throw new ArgumentNullException(nameof(data));
+
+            var entity = new DeviceCode
+            {
+                Code = deviceCode,
+                UserCode = userCode,
+                Data = _serializer.Serialize(data),
+                ClientId = data.ClientId,
+                SubjectId = data.Subject?.FindFirst(JwtClaimTypes.Subject).Value,
+                Expiration = data.CreationTime.AddSeconds(data.Lifetime),
+            };
+
+            return _store.CreateAsync(entity, ct);
+        }
+
+        public async Task UpdateByUserCodeAsync(string userCode, IsModels.DeviceCode data, CancellationToken ct)
+        {
+            userCode = userCode ?? throw new ArgumentNullException(nameof(userCode));
+            data = data ?? throw new ArgumentNullException(nameof(data));
+
+            var response = await _store.GetAsync(new PageRequest
+            {
+                Filter = $"{nameof(DeviceCode.UserCode)} eq '{userCode}'"
+            }, ct).ConfigureAwait(false);
+
+            if (response.Items.Any())
+            {
+                var entity = response.Items.First();
+                entity.Data = _serializer.Serialize(data);
+                entity.Expiration = data.CreationTime.AddSeconds(data.Lifetime);
+                entity.SubjectId = data.Subject?.FindFirst(JwtClaimTypes.Subject).Value;
+                await _store.UpdateAsync(entity, ct).ConfigureAwait(false);
+                return;
+            }
+
+            throw new InvalidOperationException($"Device code for {userCode} not found");
+        }
+        private IsModels.DeviceCode ToModel(DeviceCode entity)
+        {
+            if (entity != null)
+            {
+                return _serializer.Deserialize<IsModels.DeviceCode>(entity.Data);
+            }
+
+            return null;
+        }
+    }
+}

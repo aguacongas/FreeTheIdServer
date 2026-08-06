@@ -1,0 +1,21 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages
+{
+    public partial class Authentication
+    {
+        private RemoteAuthenticatorView _remoteAuthenticatorView;
+
+        [Parameter]
+        public string Action { get; set; }
+        protected override void OnInitialized()
+        {
+            Localizer.OnResourceReady = () => InvokeAsync(StateHasChanged);
+            base.OnInitialized();
+        }
+    }
+}

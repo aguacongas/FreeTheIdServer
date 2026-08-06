@@ -1,0 +1,61 @@
+﻿@using Aguacongas.FreeTheIdServer.BlazorApp.Pages.Culture.Components
+@page "/culture"
+@page "/culture/{id}"
+@inherits EntityModel<Entity.Culture>
+
+@if (Model == null)
+{
+    <PageLoading />
+}
+else
+{
+    <EditForm EditContext="EditContext" OnValidSubmit="HandleValidSubmit">
+        <CascadingValue Value="HandleModificationState">
+            <div class="row bg-body sticky-top mb-3">
+                <div class="col-12 col-md">
+                    @if (IsNew)
+                    {
+                        <AuthorizeView Policy="@SharedConstants.WRITERPOLICY">
+                            <Authorized Context="culture">
+                                <CultureInfos Id="id" @bind-Value="@Model.Id" Entity="_cultureInfo" EntityChanged="CultureSelected" />
+                            </Authorized>
+                        </AuthorizeView>                        
+                    }
+                    else
+                    {
+                        <h3>@Model.Id <small><em>@Info.DisplayName</em></small></h3>
+                    }
+                </div>
+                <div class="col-12 col-md-5 mb-1">
+                    <SaveButton />
+                    @if (!IsNew)
+                    {
+                        <DeleteEntityButton EntityId="@Model.Id" DeleteConfirmed="DeleteEntity" />
+                    }
+                    @if (!IsNew)
+                    {
+                        <ExportButton EntityPath="@EntityPath" Request="@ExportRequest" />
+                        <CloneButton />
+                    }
+                </div>
+
+                <div class="col-12 col-md mb-1">
+                    <Filter CssClass="mt-1" />
+                </div>
+                <div class="w-100"></div>
+                <FluentValidationValidator />
+                <ValidationSummary class="col" />
+            </div>
+            <div class="entity-details">
+                <div id="resources" class="card mb-3">
+                    <div class="card-header">
+                        <EntitySubGridTitle Text="@Localizer["Resources"]" Collection="@Model.Resources" CreateModel="CreateResource" />
+                    </div>
+                    <div class="card-body">
+                        <LocalizedResources Collection="@Model.Resources" />
+                    </div>
+                </div>
+            </div>
+        </CascadingValue>
+    </EditForm>
+}

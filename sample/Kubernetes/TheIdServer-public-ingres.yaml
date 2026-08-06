@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: FreeTheIdServer-ingress
+  namespace: FreeTheIdServer
+spec:
+  rules:
+  - host: FreeTheIdServer.aguafrommars.com
+    http:
+      paths:
+      - backend:
+          serviceName: FreeTheIdServer-public
+          servicePort: 80
+      - backend:
+         serviceName: FreeTheIdServer-public
+         servicePort: 443

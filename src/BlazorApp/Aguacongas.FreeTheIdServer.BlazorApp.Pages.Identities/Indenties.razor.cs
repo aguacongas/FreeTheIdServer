@@ -1,0 +1,14 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.IdentityServer.Store.Entity;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Identities
+{
+    public partial class Indenties
+    {
+        protected override string SelectProperties => $"{nameof(IdentityResource.Id)},{nameof(IdentityResource.DisplayName)},{nameof(IdentityResource.Description)}";
+        protected override string Expand => nameof(IdentityResource.Resources);
+        protected override string ExportExpand => $"{nameof(IdentityResource.IdentityClaims)},{nameof(IdentityResource.Properties)},{nameof(IdentityResource.Resources)}";
+
+    }
+}

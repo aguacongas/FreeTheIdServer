@@ -1,0 +1,48 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.FreeTheIdServer.BlazorApp.Infrastructure.Services;
+using Aguacongas.FreeTheIdServer.BlazorApp.Models;
+using Microsoft.AspNetCore.Components;
+using System.Text.Json;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.ExternalProvider.Components
+{
+    public abstract class ProviderOptionsBase : ComponentBase
+    {
+        public abstract string SerializeOptions();
+    }
+
+    public abstract class ProviderOptionsBase<T> : ProviderOptionsBase where T : class
+    {
+        private ExternalProviderWrapper _wrapper;
+        protected IExternalProvider<T> Model => _wrapper;
+
+        [CascadingParameter]
+        public Models.ExternalProvider ModelBase { get; set; }
+
+        [Inject]
+        protected IStringLocalizerAsync<ProviderOptionsBase<T>> Localizer { get; set; }
+
+        protected override void OnInitialized()
+        {
+            _wrapper = new ExternalProviderWrapper(ModelBase);
+            _wrapper.Options ??= _wrapper.DefaultOptions;
+            base.OnInitialized();
+        }
+
+
+        public override string SerializeOptions()
+        {
+            return JsonSerializer.Serialize(Model.Options);
+        }
+
+        private sealed class ExternalProviderWrapper : ExternalProviderWrapper<T>
+        {
+            public ExternalProviderWrapper(Models.ExternalProvider parent)
+                : base(parent)
+            {
+
+            }
+        }
+    }
+}

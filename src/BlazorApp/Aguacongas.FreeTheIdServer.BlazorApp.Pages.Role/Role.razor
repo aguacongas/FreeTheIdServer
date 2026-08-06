@@ -1,0 +1,81 @@
+﻿@page "/role"
+@page "/role/{id}"
+@inherits EntityModel<Models.Role>
+@inject IAdminStore<Entity.RoleClaim> _roleClaimStore
+
+@if (Model == null)
+{
+    <PageLoading />
+}
+else
+{
+<EditForm EditContext="EditContext" OnValidSubmit="HandleValidSubmit">
+    <CascadingValue Value="HandleModificationState">
+            <div class="row bg-body sticky-top mb-3">
+                <div class="col-12 col-md">
+                @if (IsNew)
+                {
+                    <AuthorizeText Id="name" Placeholder="role name" @bind-Value="@Model.Name" />
+                }
+                else
+                {
+                    <h3>@Model.Name</h3>
+                }
+            </div>
+                <div class="col-12 col-md-5 mb-1">
+                <SaveButton />
+                @if (!IsNew)
+                {
+                    <DeleteEntityButton EntityId="@Model.Id" DeleteConfirmed="DeleteEntity" />
+                    <ExportButton EntityPath="@EntityPath" Request="@ExportRequest" />
+                    <CloneButton />
+                }
+            </div>
+
+                <div class="col-12 col-md mb-1">
+                <Filter CssClass="mt-1" />
+            </div>
+            <div class="w-100"></div>
+            <FluentValidationValidator />
+            <ValidationSummary class="col" />
+        </div>
+        <div class="entity-details">
+            <div id="claims" class="card mb-3">
+                <div class="card-header">
+                    <EntitySubGridTitle Text="@Localizer["Claims"]" Collection="@Model.Claims" CreateModel="CreateClaim" />
+                </div>
+                <div class="card-body">
+                    <EntitiesGrid Items="@Claims" TableClass="table table-hover" Context="claim">
+                        <TableHeader>
+                            <th scope="col">
+                                <SortableHeader Property="Type"
+                                                Text="@Localizer["type"]"
+                                                GridState="_gridState" />
+                            </th>
+                            <th scope="col">
+                                <SortableHeader Property="value"
+                                                Text="@Localizer["value"]"
+                                                GridState="_gridState" />
+                            </th>
+                            <th></th>
+                        </TableHeader>
+                        <RowTemplate>
+                            <td>
+                                <AuthorizeText @bind-Value="@claim.ClaimType" MaxLength="250" />
+                            </td>
+                            <td>
+                                <AuthorizeText @bind-Value="@claim.ClaimValue" MaxLength="250" />
+                            </td>
+                            <td>
+                                <AuthorizeButton Type="button" CssSubClass="btn-primary" Clicked="() => OnDeleteClaimClicked(claim)">
+                                    <span class="oi oi-trash"></span>
+                                </AuthorizeButton>
+                            </td>
+                        </RowTemplate>
+                    </EntitiesGrid>
+                </div>
+            </div>
+        </div>
+    </CascadingValue>
+</EditForm>
+}

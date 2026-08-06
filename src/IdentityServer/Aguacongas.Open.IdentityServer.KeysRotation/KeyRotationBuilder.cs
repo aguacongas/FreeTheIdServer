@@ -1,0 +1,15 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Aguacongas.IdentityServer.KeysRotation
+{
+    /// <summary>
+    /// Keys rotation builder
+    /// </summary>
+    /// <seealso cref="IKeyRotationBuilder" />
+    internal class KeyRotationBuilder : IKeyRotationBuilder
+    {
+        public IServiceCollection Services { get; set; }
+    }
+}

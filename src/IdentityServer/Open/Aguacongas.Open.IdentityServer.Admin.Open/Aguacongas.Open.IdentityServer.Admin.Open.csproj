@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Authors>Olivier Lefebvre</Authors>
+		<Description>Expose OData controllers to manage FreeTheIdServer for Open.IdentityServer.</Description>
+		<Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
+		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer.Admin</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>FreeTheIdServer;Open.IdentityServer;administration</PackageTags>		
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageIcon>package-icon.png</PackageIcon>
+    <EnablePreviewFeatures>True</EnablePreviewFeatures>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<NoWarn>1701;1702;AD0001</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<NoWarn>1701;1702;AD0001</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+    <ProjectReference Include="..\..\Aguacongas.Open.IdentityServer.Admin\Aguacongas.Open.IdentityServer.Admin.csproj" />
+    <ProjectReference Include="..\Aguacongas.Open.IdentityServer.Open\Aguacongas.Open.IdentityServer.Open.csproj" />
+    <ProjectReference Include="..\Aguacongas.Open.IdentityServer.KeysRotation.Open\Aguacongas.Open.IdentityServer.KeysRotation.Open.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Open.IdentityServer.AspNetIdentity" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Extensions\" />
+	  <Folder Include="Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="package-icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+</Project>
+

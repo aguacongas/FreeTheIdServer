@@ -1,0 +1,9 @@
+{
+  "issuer": "https://FreeTheIdServer-Open.herokuapp.com",
+  "jwks_uri": "https://FreeTheIdServer-Open.herokuapp.com/.well-known/openid-configuration/jwks",
+  "authorization_endpoint": "https://FreeTheIdServer-Open.herokuapp.com/connect/authorize",
+  "token_endpoint": "https://FreeTheIdServer-Open.herokuapp.com/connect/token",
+  "userinfo_endpoint": "https://FreeTheIdServer-Open.herokuapp.com/connect/userinfo",
+  "end_session_endpoint": "https://FreeTheIdServer-Open.herokuapp.com/connect/endsession",
+  "check_session_iframe": "https://FreeTheIdServer-Open.herokuapp.com/connect/checksession"
+}

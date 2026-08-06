@@ -1,0 +1,87 @@
+﻿@inject IStringLocalizerAsync<ClientConsents> Localizer
+<div class="mb-3 row">
+    <label class="col col-form-label">
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <AuthorizeCheckbox Name="require-consent" Label="@Localizer["require consent"]" @bind-Value="@Model.RequireConsent" />
+    </div>
+</div>
+@if (Model.RequireConsent)
+{
+<div class="mb-3 row">
+    <label class="col col-form-label" for="logoUri">
+        @Localizer["logo uri"]
+    </label>
+    <div class="col-lg-9 col-sm-12">
+        <AuthorizeText Id="logoUri" Placeholder="@Localizer["logo uri"]" @bind-Value="@Model.LogoUri" MaxLength="2000" />
+    </div>
+    <div class="col-1">
+        <button id="btnAddDisplayName" type="button" class="btn btn-primary btn-sm" @onclick="() => AddResource(Entity.EntityResourceKind.LogoUri)">
+            <span class="oi oi-plus"></span>
+        </button>
+    </div>
+</div>
+    <ClientResources Collection="@Model.Resources" ResourceKind="@Entity.EntityResourceKind.LogoUri" />
+    <div class="mb-3 row">
+        <label class="col col-form-label" for="clientUri">
+            @Localizer["client uri"]
+        </label>
+        <div class="col-lg-9 col-sm-12">
+            <AuthorizeText Id="clientUri" Placeholder="@Localizer["client uri"]" @bind-Value="@Model.ClientUri" MaxLength="2000" />
+        </div>
+        <div class="col-1">
+            <button id="btnAddDisplayName" type="button" class="btn btn-primary btn-sm" @onclick="() => AddResource(Entity.EntityResourceKind.ClientUri)">
+                <span class="oi oi-plus"></span>
+            </button>
+        </div>
+    </div>
+    <ClientResources Collection="@Model.Resources" ResourceKind="@Entity.EntityResourceKind.ClientUri" />
+    <div class="mb-3 row">
+        <label class="col col-form-label" for="policyUri">
+            @Localizer["policy uri"]
+        </label>
+        <div class="col-lg-9 col-sm-12">
+            <AuthorizeText Id="policyUri" Placeholder="@Localizer["policy uri"]" @bind-Value="@Model.PolicyUri" MaxLength="2000" />
+        </div>
+        <div class="col-1">
+            <button id="btnAddDisplayName" type="button" class="btn btn-primary btn-sm" @onclick="() => AddResource(Entity.EntityResourceKind.PolicyUri)">
+                <span class="oi oi-plus"></span>
+            </button>
+        </div>
+    </div>
+    <ClientResources Collection="@Model.Resources" ResourceKind="@Entity.EntityResourceKind.PolicyUri" />
+    <div class="mb-3 row">
+        <label class="col col-form-label" for="tostUri">
+            @Localizer["terms of service uri"]
+        </label>
+        <div class="col-lg-9 col-sm-12">
+            <AuthorizeText Id="tostUri" Placeholder="@Localizer["terms of service uri"]" @bind-Value="@Model.TosUri" MaxLength="2000" />
+        </div>
+        <div class="col-1">
+            <button id="btnAddDisplayName" type="button" class="btn btn-primary btn-sm" @onclick="() => AddResource(Entity.EntityResourceKind.TosUri)">
+                <span class="oi oi-plus"></span>
+            </button>
+        </div>
+    </div>
+    <ClientResources Collection="@Model.Resources" ResourceKind="@Entity.EntityResourceKind.TosUri" />
+    <div class="mb-3 row">
+        <label class="col col-form-label">
+        </label>
+        <div class="col-lg-10 col-sm-12">
+            <AuthorizeCheckbox Name="remember-consent" Label="@Localizer["remenber consent"]" @bind-Value="@Model.AllowRememberConsent" />
+        </div>
+    </div>
+    @if (Model.AllowRememberConsent)
+    {
+        <div class="mb-3 row">
+            <label class="col col-form-label" for="consent-lifetime">
+                @Localizer["consent lifetime"]
+            </label>
+            <div class="col-lg-10 col-sm-12">
+                <AuthorizedToken Name="consent-lifetime" QuickValues="_consentLifetimeQuickValues" @bind-Value="@Model.ConsentLifetime" />
+                <div>
+                </div>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>Aguacongas.FreeTheIdServer.MySql</RootNamespace>
+        <Authors>Olivier Lefebvre</Authors>
+        <Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Aguafrommars/FreeTheIdServer</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>FreeTheIdServer;mysql</PackageTags>
+        <Description>Contains db contexts migrations code for MySql.</Description>
+        <PackageIcon>package-icon.png</PackageIcon>
+				<EnablePreviewFeatures>True</EnablePreviewFeatures>
+    </PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="THIRD-PARTY-NOTICES" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="THIRD-PARTY-NOTICES">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Aguacongas.Open.IdentityServer.EntityFramework.Store\Aguacongas.Open.IdentityServer.EntityFramework.Store.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="package-icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+</Project>
+

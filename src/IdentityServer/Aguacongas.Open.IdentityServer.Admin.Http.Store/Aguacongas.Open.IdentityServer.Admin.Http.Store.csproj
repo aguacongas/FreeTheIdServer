@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Authors>Olivier Lefebvre</Authors>
+		<Description>FreeTheIdServer administration HTTP stores.</Description>
+		<Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
+		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer.Admin.Http.Store</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>FreeTheIdServer;identityserver4;Open-identityserver;administration</PackageTags>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>		
+		<PackageIcon>package-icon.png</PackageIcon>
+		
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<CodeAnalysisRuleSet>Aguacongas.Open.IdentityServer.Admin.Http.Store.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<CodeAnalysisRuleSet>Aguacongas.Open.IdentityServer.Admin.Http.Store.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Aguacongas.Open.IdentityServer.Store\Aguacongas.Open.IdentityServer.Store.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+    <None Include="package-icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+</Project>
+

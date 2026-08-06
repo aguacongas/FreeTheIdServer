@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+
+  aguacongas.FreeTheIdServer.private:
+    env_file: FreeTheIdServer.env
+    image: ${DOCKER_REGISTRY-}FreeTheIdServerprivate:dev
+    build:
+      context: .
+      dockerfile: Aguacongas.FreeTheIdServer.Private/Dockerfile-private
+    volumes:
+      - ./.db:/db
+  
+  aguacongas.FreeTheIdServer.public:
+    env_file: FreeTheIdServer.env
+    image: ${DOCKER_REGISTRY-}FreeTheIdServerpublic:dev
+    build:
+      context: .
+      dockerfile: Aguacongas.FreeTheIdServer.Public/Dockerfile-public
+    links:
+      - "aguacongas.FreeTheIdServer.private:FreeTheIdServerprivate"
+    depends_on:
+      - "aguacongas.FreeTheIdServer.private"
+
+networks:
+   default:
+     external:
+       name: agua

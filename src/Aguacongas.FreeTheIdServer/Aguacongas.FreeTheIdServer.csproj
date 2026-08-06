@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Authors>Olivier Lefebvre</Authors>
+		<Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<IsPackable>true</IsPackable>
+		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer</PackageProjectUrl>
+		<PackageIcon>package-icon.png</PackageIcon>
+		<RepositoryUrl>https://github.com/Aguafrommars/FreeTheIdServer</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>aspnetcore;identityserver4;oidc,oauth;authentication;security</PackageTags>
+		<Description>OpenID/Connect , OAuth and WS-Federation server base on Open.IdentityServer.</Description>
+		<DebugType>portable</DebugType>
+		<UserSecretsId>f6987681-1871-440a-a6ea-a606c2c5ccf6</UserSecretsId>
+		<DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+		
+		<OutputType>Library</OutputType>
+    <EnablePreviewFeatures>True</EnablePreviewFeatures>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<CodeAnalysisRuleSet>Aguacongas.FreeTheIdServer.ruleset</CodeAnalysisRuleSet>
+		<NoWarn>1701;1702;CA1416;NU1603;NU1608</NoWarn>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<CodeAnalysisRuleSet>Aguacongas.FreeTheIdServer.ruleset</CodeAnalysisRuleSet>
+		<NoWarn>1701;1702;CA1416;NU1603;NU1608</NoWarn>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Aguacongas.DynamicConfiguration.Redis" Version="3.1.0" />
+		<PackageReference Include="Aguacongas.DynamicConfiguration.WebApi" Version="3.1.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="9.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.RavenDb" Version="9.0.0" />
+		<PackageReference Include="AspNetCore.HealthChecks.Redis" Version="9.0.0" />
+		<PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.5.3" />
+		<PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.6.3" />
+		<PackageReference Include="Azure.Identity" Version="1.21.0" />
+		<PackageReference Include="Honeycomb.OpenTelemetry" Version="1.5.0" />
+		<PackageReference Include="Open.AspNetCore.Authentication.OAuth2Introspection" Version="7.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="10.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.10" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.17.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.17.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.8.0-rc.1" />
+		<PackageReference Include="OpenTelemetry.Exporter.Prometheus.HttpListener" Version="1.8.0-rc.1" />
+		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.17.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.17.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.17.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.17.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.0.0-rc9.15" />
+		<PackageReference Include="SendGrid" Version="9.29.3" />
+		<PackageReference Include="Serilog" Version="4.4.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+		<PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
+		<PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="9.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Aguacongas.FreeTheIdServer.Authentication\Aguacongas.FreeTheIdServer.Authentication.csproj" />
+		<ProjectReference Include="..\Aguacongas.FreeTheIdServer.BlazorApp\Aguacongas.FreeTheIdServer.BlazorApp.csproj" />
+		<ProjectReference Include="..\Aguacongas.FreeTheIdServer.Identity\Aguacongas.FreeTheIdServer.Identity.csproj" />
+		<ProjectReference Include="..\IdentityServer\Aguacongas.Open.IdentityServer.Admin\Aguacongas.Open.IdentityServer.Admin.csproj" />
+		<ProjectReference Include="..\IdentityServer\Aguacongas.Open.IdentityServer.EntityFramework.Store\Aguacongas.Open.IdentityServer.EntityFramework.Store.csproj" />
+		<ProjectReference Include="..\IdentityServer\Aguacongas.Open.IdentityServer.Http.Store\Aguacongas.Open.IdentityServer.Http.Store.csproj" />
+		<ProjectReference Include="..\IdentityServer\Aguacongas.Open.IdentityServer.MongoDb.Store\Aguacongas.Open.IdentityServer.MongoDb.Store.csproj" />
+		<ProjectReference Include="..\IdentityServer\Aguacongas.Open.IdentityServer.WsFederation\Aguacongas.Open.IdentityServer.WsFederation.csproj" />
+		<ProjectReference Include="..\IdentityServer\Migrations\Aguacongas.FreeTheIdServer.Migrations.MySql\Aguacongas.FreeTheIdServer.Migrations.MySql.csproj" />
+		<ProjectReference Include="..\IdentityServer\Migrations\Aguacongas.FreeTheIdServer.Migrations.Oracle\Aguacongas.FreeTheIdServer.Migrations.Oracle.csproj" />
+		<ProjectReference Include="..\IdentityServer\Migrations\Aguacongas.FreeTheIdServer.Migrations.PostgreSQL\Aguacongas.FreeTheIdServer.Migrations.PostgreSQL.csproj" />
+		<ProjectReference Include="..\IdentityServer\Migrations\Aguacongas.FreeTheIdServer.Migrations.Sqlite\Aguacongas.FreeTheIdServer.Migrations.Sqlite.csproj" />
+		<ProjectReference Include="..\IdentityServer\Migrations\Aguacongas.FreeTheIdServer.Migrations.SqlServer\Aguacongas.FreeTheIdServer.Migrations.SqlServer.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="cluster.admin.client.certificate.pfx">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="idsrvtest.pfx">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="FreeTheIdServer.crt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="FreeTheIdServer.pfx">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="package-icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+</Project>

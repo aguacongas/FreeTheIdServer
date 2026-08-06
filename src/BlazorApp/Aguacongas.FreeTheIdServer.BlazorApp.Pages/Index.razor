@@ -1,0 +1,7 @@
+﻿@page "/"
+@page "/home"
+@inject HttpClient _httpClient
+@inject Settings _settings
+@inject IStringLocalizerAsync<Index> Localizer
+<h1>@Localizer["Welcome"]</h1>
+@_renderFragment

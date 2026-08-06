@@ -1,0 +1,61 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.IdentityServer.Store.Entity;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Stores;
+using Open.IdentityServer.Stores.Serialization;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Aguacongas.IdentityServer.Store
+{
+    public class ReferenceTokenStore : GrantStore<ReferenceToken, Token>, IReferenceTokenStore
+    {
+        private readonly IAdminStore<ReferenceToken> _store;
+        public ReferenceTokenStore(IAdminStore<ReferenceToken> store, IPersistentGrantSerializer serializer)
+            : base(store, serializer)
+        {
+            _store = store;
+        }
+
+        public Task<Token> GetReferenceTokenAsync(string handle, CancellationToken ct)
+            => GetAsync(handle, ct);
+
+        public Task RemoveReferenceTokenAsync(string handle, CancellationToken ct)
+            => RemoveAsync(handle, ct);
+
+        public async Task RemoveReferenceTokensAsync(string subjectId, string clientId, string sessionId, CancellationToken ct)
+        {
+            if (sessionId is not null)
+            {
+                var entity = (await _store.GetAsync(new PageRequest
+                {
+                    Filter = $"{nameof(ReferenceToken.UserId)} eq '{subjectId}' and {nameof(ReferenceToken.ClientId)} eq '{clientId}' and {nameof(ReferenceToken.SessionId)} eq '{sessionId}'"
+                }, ct).ConfigureAwait(false)).Items.FirstOrDefault();
+
+                await RemoveEntityAsync(entity).ConfigureAwait(false);
+            }
+
+            await RemoveAsync(subjectId, clientId, ct).ConfigureAwait(false);
+        }
+
+
+        public Task<string> StoreReferenceTokenAsync(Token token, CancellationToken ct)
+            => StoreAsync(token, token.CreationTime.AddSeconds(token.Lifetime), ct);
+
+        protected override string GetClientId(Token dto)
+            => dto?.ClientId;
+
+        protected override string GetSubjectId(Token dto)
+            => dto?.SubjectId;
+
+        protected override ReferenceToken CreateEntity(Token dto, string clientId, string subjectId, DateTime? expiration)
+        {
+            var entity = base.CreateEntity(dto, clientId, subjectId, expiration);
+            entity.SessionId = dto.SessionId;
+            return entity;
+        }
+    }
+}

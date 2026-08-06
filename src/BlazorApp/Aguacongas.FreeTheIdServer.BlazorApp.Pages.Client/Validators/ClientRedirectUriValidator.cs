@@ -1,0 +1,23 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.IdentityServer.Store.Entity;
+using FluentValidation;
+using Microsoft.Extensions.Localization;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Validators
+{
+    public class ClientRedirectUriValidator : AbstractValidator<ClientUri>
+    {
+        public ClientRedirectUriValidator(Client client, IStringLocalizer localizer)
+        {
+            RuleFor(m => m.Uri).MaximumLength(2000).WithMessage(localizer["An url cannot exceed 2000 char."]);
+            RuleFor(m => m.Uri).Uri().WithMessage((c, v) => $"The url '{v}' is not valid.");
+            RuleFor(m => m.Uri).IsUnique(client.RedirectUris).WithMessage(localizer["Uri must be unique."]);
+            When(m => client.ProtocolType == "saml2p", () =>
+            {
+                RuleFor(m => m.Kind).IsUnique(client.RedirectUris)
+                    .WithMessage(localizer["Cannot have more than one URI per kind."]);
+            });
+        }
+    }
+}

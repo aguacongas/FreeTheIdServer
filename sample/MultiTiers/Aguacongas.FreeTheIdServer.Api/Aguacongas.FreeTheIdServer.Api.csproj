@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<UserSecretsId>3d7ce8dc-f8b3-4d0a-967c-7d1aeead003e</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <EnablePreviewFeatures>True</EnablePreviewFeatures>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<CodeAnalysisRuleSet>Aguacongas.FreeTheIdServer.Api.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<CodeAnalysisRuleSet>Aguacongas.FreeTheIdServer.Api.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Data\**" />
+	  <Compile Remove="Models\**" />
+	  <Content Remove="Data\**" />
+	  <Content Remove="Models\**" />
+	  <EmbeddedResource Remove="Data\**" />
+	  <EmbeddedResource Remove="Models\**" />
+	  <None Remove="Data\**" />
+	  <None Remove="Models\**" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<NoWarn>1701;1702;NU1603</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<NoWarn>1701;1702;NU1603</NoWarn>
+	</PropertyGroup>
+	<ItemGroup>
+    <PackageReference Include="Aguacongas.Open.IdentityServer.Admin.Open" Version="10.0.4" />
+    <PackageReference Include="Aguacongas.Open.IdentityServer.EntityFramework.Store.Open" Version="10.0.4" />
+    <PackageReference Include="Aguacongas.FreeTheIdServer.Migrations.SqlServer" Version="10.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.10">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.10" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+		<PackageReference Include="Serilog" Version="4.4.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+		<PackageReference Include="Serilog.Sinks.Seq" Version="9.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\src\IdentityServer\Open\Aguacongas.Open.IdentityServer.Admin.Open\Aguacongas.Open.IdentityServer.Admin.Open.csproj" />
+	  <ProjectReference Include="..\..\..\src\IdentityServer\Open\Aguacongas.Open.IdentityServer.EntityFramework.Store.Open\Aguacongas.Open.IdentityServer.EntityFramework.Store.Open.csproj" />
+	  <ProjectReference Include="..\..\..\src\IdentityServer\Migrations\Aguacongas.FreeTheIdServer.Migrations.SqlServer\Aguacongas.FreeTheIdServer.Migrations.SqlServer.csproj" />
+	</ItemGroup>
+</Project>
+

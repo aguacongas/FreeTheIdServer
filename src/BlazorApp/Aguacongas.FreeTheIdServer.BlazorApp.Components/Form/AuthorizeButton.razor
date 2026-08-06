@@ -1,0 +1,17 @@
+﻿@inherits ButtonBase
+<AuthorizeView Policy="@SharedConstants.WRITERPOLICY">
+    <Authorized>
+        @if (Clicked.HasDelegate)
+        {
+            <button class="btn @CssSubClass" type="@Type" @onclick="Clicked">
+                @ChildContent
+            </button>
+        }
+        else
+        {
+            <button class="btn @CssSubClass" type="@Type">
+                @ChildContent
+            </button>
+        }
+    </Authorized>
+</AuthorizeView>

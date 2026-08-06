@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: FreeTheIdServer-private
+  namespace: FreeTheIdServer
+  labels:
+    run: FreeTheIdServer-private
+spec:
+  selector:
+    app: FreeTheIdServer-private
+  ports:
+    - port: 5443
+  type: LoadBalancer

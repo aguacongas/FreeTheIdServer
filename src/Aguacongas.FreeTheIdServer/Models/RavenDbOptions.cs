@@ -1,0 +1,16 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+
+namespace Aguacongas.FreeTheIdServer.Models
+{
+    public class RavenDbOptions
+    {
+        public string[] Urls { get; set; }
+
+        public string Database { get; set; }
+
+        public string CertificatePath { get; set; }
+
+        public string CertificatePassword { get; set; }
+    }
+}

@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: FreeTheIdServer-private
+  namespace: FreeTheIdServer
+spec:
+  selector:
+    matchLabels:
+      app: FreeTheIdServer-private
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: FreeTheIdServer-private
+        role: backend
+    spec:
+      containers:
+      - image: aguacongas/FreeTheIdServer:next # update with the version you want to use
+        name: FreeTheIdServer-private
+        ports:
+        - containerPort: 5443
+        envFrom: 
+        - configMapRef:
+            name: private-config
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            secretKeyRef:
+              name: theideserver-connectionstring
+              key: ConnectionString
+        - name: ASPNETCORE_Kestrel__Certificates__Default__Password
+          valueFrom:
+            secretKeyRef:
+              name: FreeTheIdServer-private-secrets
+              key: tls.pwd
+        - name: IdentityServer__Key__KeyProtectionOptions__X509CertificatePassword
+          valueFrom:
+            secretKeyRef:
+              name: FreeTheIdServer-private-secrets
+              key: protect-key
+        - name: DataProtectionOptions__KeyProtectionOptions__X509CertificatePassword
+          valueFrom:
+            secretKeyRef:
+              name: FreeTheIdServer-private-secrets
+              key: protect-key
+        volumeMounts:
+        - name: certificates-volume
+          mountPath: /usr/local/share/ca-certificates
+        - name: config
+          mountPath: /usr/local/share/config
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cp /usr/local/share/config/admin-appsettings.Private.json /app/wwwroot/appsettings.json"]
+      volumes:
+      - name: certificates-volume
+        persistentVolumeClaim:
+          claimName: certificates
+      - name: config
+        persistentVolumeClaim:
+          claimName: config
+  

@@ -1,0 +1,17 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Microsoft.AspNetCore.Builder;
+using Serilog;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((hostingContext, configuration) =>
+                        configuration.ReadFrom.Configuration(hostingContext.Configuration));
+
+builder.AddFreeTheIdServerPublic();
+
+var app = builder.Build();
+
+app.UseFreeTheIdServerPublic(app.Environment, builder.Configuration);
+
+app.Run();

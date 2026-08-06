@@ -1,0 +1,27 @@
+{
+  "administratorEmail": "aguacongas@gmail.com",
+  "apiBaseUrl": "https://FreeTheIdServer.aguafrommars.com/api",
+  "loggingOptions": {
+    "minimum": "Warning"
+  },
+  "authenticationPaths": {
+    "remoteRegisterPath": "/identity/account/register",
+    "remoteProfilePath": "/identity/account/manage"
+  },
+  "userOptions": {
+    "roleClaim": "role"
+  },
+  "providerOptions": {
+    "authority": "https://FreeTheIdServer.aguafrommars.com/",
+    "clientId": "FreeTheIdServeradmin",
+    "defaultScopes": [
+      "openid",
+      "profile",
+      "FreeTheIdServeradminapi"
+    ],
+    "postLogoutRedirectUri": "https://FreeTheIdServer.aguafrommars.com/authentication/logout-callback",
+    "redirectUri": "https://FreeTheIdServer.aguafrommars.com/authentication/login-callback",
+    "responseType": "code"
+  },
+  "welcomeContenUrl": "/api/welcomefragment"
+}

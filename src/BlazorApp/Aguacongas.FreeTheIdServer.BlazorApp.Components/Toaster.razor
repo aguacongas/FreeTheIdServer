@@ -1,0 +1,11 @@
+﻿@inject Notifier _notifier
+
+
+<div aria-live="polite" aria-atomic="true" class="toaster">
+    <div class="toast-list">
+        @foreach (var notification in _notifications)
+        {
+            <Toast @key="@notification" Notification="notification" Closed="OnToastClosed" />
+        }
+    </div>
+</div>

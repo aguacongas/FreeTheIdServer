@@ -1,0 +1,43 @@
+﻿@inject IStringLocalizerAsync<OAuthOptionsProperties> Localizer
+
+<div class="mb-3 row">
+    <label class="col col-form-label" for="authorizationEndpoint">
+        @Localizer["authorization endpoint"]
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <AuthorizeText Id="authorizationEndpoint" Placeholder="https://acme.com/authorize" @bind-Value="@Model.Options.AuthorizationEndpoint" />
+    </div>
+</div>
+<div class="mb-3 row">
+    <label class="col col-form-label" for="tokenEndpoint">
+        @Localizer["token enpoint"]
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <AuthorizeText Id="tokenEndpoint" Placeholder="https://acme.com/token" @bind-Value="@Model.Options.TokenEndpoint" />
+    </div>
+</div>
+<div class="mb-3 row">
+    <label class="col col-form-label" for="userEndpoint">
+        @Localizer["user enpoint"]
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <AuthorizeText Id="userEndpoint" Placeholder="https://acme.com/user" @bind-Value="@Model.Options.UserInformationEndpoint" />
+    </div>
+</div>
+<div class="mb-3 row">
+    <label class="col col-form-label" for="scope">
+        @Localizer["scopes"]
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <ScopeCollection Id="scope" Placeholder="@Localizer["scope"]" Collection="@Model.Options.Scope" />
+    </div>
+</div>
+<RemoteOptionsProperties />
+<div class="mb-3 row">
+    <label class="col col-form-label" for="usePKCE">
+    </label>
+    <div class="col-lg-10 col-sm-12">
+        <AuthorizeCheckbox Name="usePKCE" Label="@Localizer["use PKCE"]" @bind-Value="@Model.Options.UsePkce" />
+    </div>
+</div>
+

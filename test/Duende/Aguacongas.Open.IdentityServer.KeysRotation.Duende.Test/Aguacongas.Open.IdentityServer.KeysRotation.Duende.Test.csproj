@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+    <EnablePreviewFeatures>True</EnablePreviewFeatures>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.10" />
+	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.8.1" />
+	  <PackageReference Include="Moq" Version="4.20.72" />
+	  <PackageReference Include="xunit" Version="2.9.3" />
+	  <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="coverlet.collector" Version="10.0.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EntityFrameworkCore\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="KeyManagement\" />
+    <Folder Include="MongoDb\" />
+    <Folder Include="XmlEncryption\" />
+    <Folder Include="RavenDb\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Shared\Aguacongas.Open.IdentityServer.KeysRotation.Test.Shared\TestCert1.pfx" Link="TestCert1.pfx" />
+    <None Include="..\..\Shared\Aguacongas.Open.IdentityServer.KeysRotation.Test.Shared\TestCert1.PublicKeyOnly.cer" Link="TestCert1.PublicKeyOnly.cer" />
+    <None Include="..\..\Shared\Aguacongas.Open.IdentityServer.KeysRotation.Test.Shared\TestCert2.pfx" Link="TestCert2.pfx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\IdentityServer\Open\Aguacongas.Open.IdentityServer.Admin.Open\Aguacongas.Open.IdentityServer.Admin.Open.csproj" />
+    <ProjectReference Include="..\..\..\src\IdentityServer\Open\Aguacongas.Open.IdentityServer.EntityFramework.Store.Open\Aguacongas.Open.IdentityServer.EntityFramework.Store.Open.csproj" />
+    <ProjectReference Include="..\..\..\src\IdentityServer\Open\Aguacongas.Open.IdentityServer.KeysRotation.Open\Aguacongas.Open.IdentityServer.KeysRotation.Open.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestCert1.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCert1.PublicKeyOnly.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCert2.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
+

@@ -1,0 +1,9 @@
+// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+namespace IdentityServerHost.Quickstart.UI
+{
+    public class LogoutInputModel
+    {
+        public string LogoutId { get; set; }
+    }
+}

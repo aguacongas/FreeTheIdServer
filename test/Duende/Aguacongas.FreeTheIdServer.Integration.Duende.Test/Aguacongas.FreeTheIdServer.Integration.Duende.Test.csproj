@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<UserSecretsId>51a7f0be-96e4-42d5-ad09-37e9adabfff6</UserSecretsId>
+	    <EnablePreviewFeatures>True</EnablePreviewFeatures>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(CollectCoverage)' == 'true' ">
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="bunit" Version="2.8.6" />
+		<PackageReference Include="coverlet.collector" Version="10.0.1">
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		  <PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.Specification.Tests" Version="5.0.17" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.10" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.8.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.10" />
+		<PackageReference Include="Moq" Version="4.20.72" />
+		<PackageReference Include="xunit" Version="2.9.3" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\src\Aguacongas.FreeTheIdServer.Open\Aguacongas.FreeTheIdServer.Open.csproj" />
+		<ProjectReference Include="..\..\..\src\IdentityServer\Aguacongas.Open.IdentityServer.Http.Store\Aguacongas.Open.IdentityServer.Http.Store.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="itfoxtec.identity.saml2.testwebappcore_Certificate.pfx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="test.crt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="test.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="test.pem">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="BlazorApp\Pages\" />
+	</ItemGroup>
+	
+	<Target Name="FixCodeCoverage" AfterTargets="Build" Condition=" '$(CollectCoverage)' == 'true' ">
+	  <Warning Text="Fixing Coverlet Microsoft.AspNetCore.Http.Features.dll issue: https://github.com/coverlet-coverage/coverlet/issues/1328"></Warning>
+	  <Copy SourceFiles="$(ProjectDir)$(OutputPath)refs\Microsoft.AspNetCore.Http.Features.dll" DestinationFolder="$(ProjectDir)$(OutputPath)" />
+	</Target>
+
+</Project>
+

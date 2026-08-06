@@ -1,0 +1,16 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.IdentityServer.Store.Entity;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.ExternalProvider.Components
+{
+    public partial class ClaimTransformations
+    {
+        IEnumerable<ExternalClaimTransformation> Transformations => Collection.Where(t => t.FromClaimType == null ||
+            t.FromClaimType.Contains(HandleModificationState.FilterTerm) ||
+            (t.ToClaimType != null &&
+                t.ToClaimType.Contains(HandleModificationState.FilterTerm)));
+    }
+}

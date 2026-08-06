@@ -1,0 +1,40 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.IdentityServer.Abstractions;
+using Open.IdentityServer.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace Aguacongas.FreeTheIdServer.CustomClaimsProviders;
+
+public class WebServiceClaimsProvider(HttpClient httpClient) : IProvideClaims
+{
+    private readonly HttpClient _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+
+    public async Task<IEnumerable<Claim>> ProvideClaims(ClaimsPrincipal subject, IConnectedApplication application, string caller, Resource resource)
+    {
+        var response = await _httpClient.GetAsync($"/claims?subject={subject.Identity.Name}&client={application.DisplayName}").ConfigureAwait(false);
+        response.EnsureSuccessStatusCode();
+        var content = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        var entities = await JsonSerializer.DeserializeAsync<IEnumerable<SerializedClaim>>(content).ConfigureAwait(false);
+        return entities.Select(e => e.ToClaim());
+    }
+
+    [SuppressMessage("Minor Code Smell", "S3459:Unassigned members should be removed", Justification = "Deserialized")]
+    class SerializedClaim
+    {
+
+        public string Type { get; }
+
+        public string Value { get; }
+
+        public Claim ToClaim()
+            => new(Type, Value);
+    }
+}

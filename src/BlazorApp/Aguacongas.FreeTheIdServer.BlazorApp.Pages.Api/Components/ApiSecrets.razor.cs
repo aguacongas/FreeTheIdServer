@@ -1,0 +1,19 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.IdentityServer.Store.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Api.Components
+{
+    public partial class ApiSecrets
+    {
+        private IEnumerable<ApiSecret> Secrets => Collection.Where(s => (s.Description != null && s.Description.Contains(HandleModificationState.FilterTerm)) || (s.Type != null && s.Type.Contains(HandleModificationState.FilterTerm)));
+
+        private static void GenerateSecret(ApiSecret secret)
+        {
+            secret.Value = Guid.NewGuid().ToString();
+        }
+    }
+}

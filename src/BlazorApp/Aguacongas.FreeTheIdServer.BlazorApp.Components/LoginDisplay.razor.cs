@@ -1,0 +1,72 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Microsoft.JSInterop;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Components
+{
+    public partial class LoginDisplay
+    {
+        private IEnumerable<string> _supportedCultures = Array.Empty<string>();
+        private string _selectedCulture = CultureInfo.CurrentCulture.Name;
+
+        protected override async Task OnInitializedAsync()
+        {
+            Localizer.OnResourceReady = () => InvokeAsync(StateHasChanged);
+            _supportedCultures = await _shareLocalizer.GetSupportedCulturesAsync().ConfigureAwait(false);
+            var currentCulture = CultureInfo.CurrentCulture;
+            _selectedCulture = _supportedCultures.FirstOrDefault(c => c == currentCulture.Name ||
+                (currentCulture.Parent != null && c == currentCulture.Parent.Name)) ?? "en";
+            SetPathsCulture();
+            await base.OnInitializedAsync().ConfigureAwait(false);
+        }
+
+        private void SetPathsCulture()
+        {
+            var settings = _options.Value;
+            settings.RemoteRegisterPath = SetCultureInPath(settings.RemoteRegisterPath);
+            settings.RemoteProfilePath = SetCultureInPath(settings.RemoteProfilePath);
+            var oidcSettings = _oidcOptions.Value;
+            oidcSettings.Authority = SetCultureInPath(oidcSettings.Authority);
+
+        }
+
+        private Task BeginSignOut(MouseEventArgs args)
+        {
+            _navigationManager.NavigateToLogout(_options.Value.LogOutPath);
+            return Task.CompletedTask;
+        }
+
+        private string GetActiveClass(string culture)
+            => _selectedCulture == culture ? "active" : null;
+
+        private async Task SetSelectCulture(string culture)
+        {
+            _selectedCulture = culture;
+            CultureInfo.CurrentCulture = CultureInfo.GetCultures(CultureTypes.AllCultures)
+                .FirstOrDefault(c => c.Name == culture) ?? CultureInfo.CurrentCulture;
+            await _jsRuntime.InvokeVoidAsync("localStorage.setItem", "culture", _selectedCulture).ConfigureAwait(false);
+            await _shareLocalizer.Reset().ConfigureAwait(false);
+
+            var settings = _options.Value;
+            settings.RemoteRegisterPath = ResetCultureInPath(settings.RemoteProfilePath);
+            settings.RemoteProfilePath = ResetCultureInPath(settings.RemoteProfilePath);
+            var oidcSettings = _oidcOptions.Value;
+            oidcSettings.Authority = ResetCultureInPath(oidcSettings.Authority);
+
+            SetPathsCulture();
+        }
+
+        private static string ResetCultureInPath(string path)
+            => path?.Split('?')[0];
+
+        private string SetCultureInPath(string path)
+            => path != null ? $"{ResetCultureInPath(path)}?culture={_selectedCulture}" : null;
+    }
+}

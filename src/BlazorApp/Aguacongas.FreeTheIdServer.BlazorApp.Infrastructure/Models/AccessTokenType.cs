@@ -1,0 +1,19 @@
+﻿// Project: Aguafrommars/FreeTheIdServer
+// Copyright (c) 2026 @Olivier Lefebvre
+namespace Aguacongas.FreeTheIdServer.BlazorApp.Models
+{
+    /// <summary>
+    /// Access token type
+    /// </summary>
+    public enum AccessTokenType
+    {
+        /// <summary>
+        /// Self-contained Json Web Token
+        /// </summary>
+        Jwt = 0,
+        /// <summary>
+        /// Reference token
+        /// </summary>
+        Reference = 1
+    }
+}
