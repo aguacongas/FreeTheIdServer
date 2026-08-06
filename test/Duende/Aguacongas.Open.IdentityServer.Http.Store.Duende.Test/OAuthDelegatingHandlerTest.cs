@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Http.Store.Test
+namespace Aguacongas.Open.IdentityServer.Http.Store.Test
 {
     public class OAuthDelegatingHandlerTest
     {

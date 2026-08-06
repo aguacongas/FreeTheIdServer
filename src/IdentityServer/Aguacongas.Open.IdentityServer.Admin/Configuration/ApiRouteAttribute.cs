@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Aguacongas.IdentityServer.Admin.Configuration;
+namespace Aguacongas.Open.IdentityServer.Admin.Configuration;
 
 /// <summary>
 /// Api route attribute

@@ -1,3 +1,3 @@
-﻿# Aguacongas.IdentityServer.WsFederation
+﻿# Aguacongas.Open.IdentityServer.WsFederation
 
-Contains classes for `Aguacongas.IdentityServer.WsFederation.Open`.
+Contains classes for `Aguacongas.Open.IdentityServer.WsFederation.Open`.

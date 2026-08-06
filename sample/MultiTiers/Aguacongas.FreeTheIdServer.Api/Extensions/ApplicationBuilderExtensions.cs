@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
 using Aguacongas.FreeTheIdServer.Admin.Hubs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;

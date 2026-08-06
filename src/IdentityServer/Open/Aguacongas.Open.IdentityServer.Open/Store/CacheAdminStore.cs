@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Abstractions;
 using Open.IdentityServer.Extensions;
 using Configuration = Open.IdentityServer.Configuration;
 using Microsoft.Extensions.Logging;
@@ -8,7 +8,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     public class CacheAdminStore<TStore, TEntity> : IAdminStore<TEntity> 
         where TStore: IAdminStore<TEntity>

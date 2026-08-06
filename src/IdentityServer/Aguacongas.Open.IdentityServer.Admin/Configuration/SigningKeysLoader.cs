@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Aguacongas.IdentityServer.Admin.Configuration
+namespace Aguacongas.Open.IdentityServer.Admin.Configuration
 {
     /// <summary>
     /// 

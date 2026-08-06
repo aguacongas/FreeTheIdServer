@@ -1,9 +1,9 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.AspNetCore.Authentication;
-using Aguacongas.IdentityServer.MongoDb.Store;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.MongoDb.Store;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Aguacongas.FreeTheIdServer.Authentication;
 
 namespace Microsoft.Extensions.DependencyInjection

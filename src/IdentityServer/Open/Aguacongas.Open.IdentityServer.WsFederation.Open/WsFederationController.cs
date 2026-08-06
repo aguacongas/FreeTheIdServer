@@ -1,11 +1,11 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.WsFederation.Metadata;
+using Aguacongas.Open.IdentityServer.WsFederation.Metadata;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.WsFederation
+namespace Aguacongas.Open.IdentityServer.WsFederation
 {
     /// <summary>
     /// Ws-Federation endpoints controller

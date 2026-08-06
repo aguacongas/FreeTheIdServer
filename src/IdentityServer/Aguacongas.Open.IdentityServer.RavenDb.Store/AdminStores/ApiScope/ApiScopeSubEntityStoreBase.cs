@@ -1,15 +1,15 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.Extensions.Logging;
 using Raven.Client.Documents.Session;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.ApiScope
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.ApiScope
 {
     public abstract class ApiScopeSubEntityStoreBase<TEntity> : AdminStore<TEntity>
         where TEntity : class, Entity.IEntityId, Entity.IApiScopeSubEntity, new()

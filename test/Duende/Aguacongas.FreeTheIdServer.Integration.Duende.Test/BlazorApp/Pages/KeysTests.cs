@@ -1,9 +1,9 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.KeysRotation;
-using Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.KeysRotation;
+using Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore;
+using Aguacongas.Open.IdentityServer.Store;
 using AngleSharp.Dom;
 using Bunit;
 using Microsoft.AspNetCore.Components;

@@ -1,9 +1,9 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation;
-using Aguacongas.IdentityServer.KeysRotation.RavenDb;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.KeysRotation;
+using Aguacongas.Open.IdentityServer.KeysRotation.RavenDb;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Aguacongas.FreeTheIdServer.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
@@ -19,12 +19,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Xunit;
-using MongoDb = Aguacongas.IdentityServer.KeysRotation.MongoDb;
+using MongoDb = Aguacongas.Open.IdentityServer.KeysRotation.MongoDb;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Primitives;
-using Aguacongas.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Abstractions;
 using Microsoft.AspNetCore.Identity;
 using Aguacongas.FreeTheIdServer.IntegrationTest.BlazorApp;
 using System.Net.Http;

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
 namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Role
 {

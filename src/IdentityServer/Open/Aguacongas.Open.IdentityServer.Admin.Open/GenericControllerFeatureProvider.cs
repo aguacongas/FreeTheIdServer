@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.KeysRotation;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Aguacongas.IdentityServer.Admin
+namespace Aguacongas.Open.IdentityServer.Admin
 {
     /// <summary>
     /// Generic API contoller feature

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.WsFederation;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.WsFederation
+namespace Aguacongas.Open.IdentityServer.WsFederation
 {
     /// <summary>
     /// 

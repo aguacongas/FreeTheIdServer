@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Validators;
+﻿using Aguacongas.Open.IdentityServer.Validators;
 using Aguacongas.FreeTheIdServer.Models;
 using Open.IdentityServer.Validation;
 using IdentityModel;

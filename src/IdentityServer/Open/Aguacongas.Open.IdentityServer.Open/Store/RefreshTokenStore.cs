@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Open.IdentityServer.Stores;
 using Open.IdentityServer.Stores.Serialization;
 using System;
@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using IsModels = Open.IdentityServer.Models;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     public class RefreshTokenStore : GrantStore<RefreshToken, IsModels.RefreshToken>, IRefreshTokenStore
     {
@@ -17,20 +17,20 @@ namespace Aguacongas.IdentityServer.Store
         {
         }
 
-        public Task<IsModels.RefreshToken> GetRefreshTokenAsync(string refreshTokenHandle, CancellationToken ct)
-            => GetAsync(refreshTokenHandle, ct);
+        public Task<IsModels.RefreshToken> GetRefreshTokenAsync(string refreshTokenHandle)
+            => GetAsync(refreshTokenHandle);
 
-        public Task RemoveRefreshTokenAsync(string refreshTokenHandle, CancellationToken ct)
-            => RemoveAsync(refreshTokenHandle, ct);
+        public Task RemoveRefreshTokenAsync(string refreshTokenHandle)
+            => RemoveAsync(refreshTokenHandle);
 
-        public Task RemoveRefreshTokensAsync(string subjectId, string clientId, CancellationToken ct)
-            => RemoveAsync(subjectId, clientId, ct);
+        public Task RemoveRefreshTokensAsync(string subjectId, string clientId)
+            => RemoveAsync(subjectId, clientId);
 
-        public Task<string> StoreRefreshTokenAsync(IsModels.RefreshToken refreshToken, CancellationToken ct)
-            => StoreAsync(refreshToken, refreshToken.CreationTime.AddSeconds(refreshToken.Lifetime), ct);
+        public Task<string> StoreRefreshTokenAsync(IsModels.RefreshToken refreshToken)
+            => StoreAsync(refreshToken, refreshToken.CreationTime.AddSeconds(refreshToken.Lifetime));
 
-        public Task UpdateRefreshTokenAsync(string handle, IsModels.RefreshToken refreshToken, CancellationToken ct)
-            => UpdateAsync(handle, refreshToken, refreshToken.CreationTime.AddSeconds(refreshToken.Lifetime), ct);
+        public Task UpdateRefreshTokenAsync(string handle, IsModels.RefreshToken refreshToken)
+            => UpdateAsync(handle, refreshToken, refreshToken.CreationTime.AddSeconds(refreshToken.Lifetime));
 
         protected override string GetClientId(IsModels.RefreshToken dto)
             => dto?.ClientId;

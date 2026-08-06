@@ -1,9 +1,9 @@
-﻿using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+﻿using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Aguacongas.FreeTheIdServer.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace Aguacongas.IdentityServer.Admin
+namespace Aguacongas.Open.IdentityServer.Admin
 {
     /// <summary>
     /// User API controller

@@ -1,10 +1,10 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Artifact;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Metadata;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Signin;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Validation;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Artifact;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Metadata;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Signin;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Validation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

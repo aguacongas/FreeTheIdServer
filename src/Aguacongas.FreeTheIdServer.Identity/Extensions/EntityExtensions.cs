@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Microsoft.AspNetCore.Identity;
 
-namespace Aguacongas.IdentityServer.Store.Entity
+namespace Aguacongas.Open.IdentityServer.Store.Entity
 {
     public static class EntityExtensions
     {

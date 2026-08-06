@@ -1,4 +1,4 @@
-# Aguacongas.IdentityServer.Saml2p.Open
+# Aguacongas.Open.IdentityServer.Saml2p.Open
 
 Add a SAML2P controller to your Open Identity server.  
 This lib uses [`ITfoxtec.Identity.Saml2.MvcCore`](https://www.itfoxtec.com/IdentitySaml2) internally to implements the protocol.

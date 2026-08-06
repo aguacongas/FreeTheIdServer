@@ -3,7 +3,7 @@
 using System;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test
 {
     public class ECDsaEncryptorTest
     {

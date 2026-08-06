@@ -4,7 +4,7 @@ using Raven.Client.Documents;
 using Raven.TestDriver;
 using System;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.Test
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.Test
 {
     class RavenDbTestDriverWrapper : RavenTestDriver
     {

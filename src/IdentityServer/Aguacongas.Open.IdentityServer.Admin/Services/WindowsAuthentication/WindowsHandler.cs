@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin.Services.WindowsAuthentication;
+namespace Aguacongas.Open.IdentityServer.Admin.Services.WindowsAuthentication;
 
 /// <summary>
 /// Authenticates requests using Negotiate, Kerberos, or NTLM.

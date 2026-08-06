@@ -1,9 +1,9 @@
-﻿using Aguacongas.IdentityServer.Admin.Services;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+﻿using Aguacongas.Open.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using System;
 
-namespace Aguacongas.IdentityServer.Admin.Open.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Open.Services
 {
     /// <summary>
     /// Stores used by <see cref="RegisterClientService"/>

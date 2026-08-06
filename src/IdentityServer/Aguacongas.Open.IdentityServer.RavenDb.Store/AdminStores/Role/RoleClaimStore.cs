@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.AdminStores.Role
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.AdminStores.Role
 {
     public class RoleClaimStore : AdminStore<Entity.RoleClaim>
     {

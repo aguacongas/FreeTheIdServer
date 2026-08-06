@@ -1,14 +1,12 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation;
-using Aguacongas.IdentityServer.KeysRotation.Open;
-using Open.IdentityServer.Services.KeyManagement;
-using Open.IdentityServer.Stores;
+using Aguacongas.Open.IdentityServer.KeysRotation;
 using Microsoft.AspNetCore.DataProtection.Internal;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
+using Open.IdentityServer.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +40,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddDataProtection();
             services.TryAddEnumerable(
                     ServiceDescriptor.Singleton<IConfigureOptions<KeyRotationOptions>, KeyRotationOptionsSetup>());
-            services.AddTransient<IAutomaticKeyManagerKeyStore, NullKeyManagerKeyStore>();
             return new KeyRotationBuilder
             {
                 Services = services

@@ -1,13 +1,13 @@
-﻿using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Admin.Configuration;
-using Aguacongas.IdentityServer.Admin.Models;
-using Aguacongas.IdentityServer.Store;
+﻿using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.Admin.Models;
+using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin
+namespace Aguacongas.Open.IdentityServer.Admin
 {
     /// <summary>
     /// Personal access token controller

@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin.Services;
 using Aguacongas.FreeTheIdServer.Services;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;

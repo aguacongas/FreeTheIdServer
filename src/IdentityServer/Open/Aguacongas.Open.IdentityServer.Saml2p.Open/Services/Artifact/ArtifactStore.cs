@@ -1,7 +1,7 @@
-﻿using Aguacongas.IdentityServer.Store;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+﻿using Aguacongas.Open.IdentityServer.Store;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Artifact;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Artifact;
 
 /// <summary>
 /// Artifact store

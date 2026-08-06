@@ -10,6 +10,6 @@ public class EmptyEventService : IEventService
     public bool CanRaiseEventType(EventTypes evtType)
     => true;
 
-    public Task RaiseAsync(Event evt, CancellationToken ct)
+    public Task RaiseAsync(Event evt)
     => Task.CompletedTask;
 }

@@ -1,11 +1,11 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.WsFederation.Stores;
+using Aguacongas.Open.IdentityServer.WsFederation.Stores;
 using Open.IdentityServer.Models;
 using Microsoft.IdentityModel.Protocols.WsFederation;
 using System.Security.Claims;
 
-namespace Aguacongas.IdentityServer.WsFederation.Validation
+namespace Aguacongas.Open.IdentityServer.WsFederation.Validation
 {
     /// <summary>
     /// 

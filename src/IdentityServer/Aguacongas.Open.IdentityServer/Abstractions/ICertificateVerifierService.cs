@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Abstractions
+namespace Aguacongas.Open.IdentityServer.Abstractions
 {
     public interface ICertificateVerifierService
     {

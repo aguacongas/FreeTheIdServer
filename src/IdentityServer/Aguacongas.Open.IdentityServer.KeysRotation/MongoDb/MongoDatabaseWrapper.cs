@@ -5,7 +5,7 @@ using System.Linq;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
-namespace Aguacongas.IdentityServer.KeysRotation.MongoDb
+namespace Aguacongas.Open.IdentityServer.KeysRotation.MongoDb
 {
     public class MongoCollectionWrapper<TKey>
         where TKey : IXmlKey

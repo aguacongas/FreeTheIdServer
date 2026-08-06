@@ -3,7 +3,7 @@
 using System;
 using Raven.Client.Documents.Session;
 
-namespace Aguacongas.IdentityServer.KeysRotation.RavenDb
+namespace Aguacongas.Open.IdentityServer.KeysRotation.RavenDb
 {
     public class DocumentSessionWrapper
     {

@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Open.IdentityServer.Stores;
 using Open.IdentityServer.Stores.Serialization;
 using IdentityModel;
@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using IsModels = Open.IdentityServer.Models;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     public class AuthorizationCodeStore : GrantStore<AuthorizationCode, IsModels.AuthorizationCode>, IAuthorizationCodeStore
     {
@@ -20,14 +20,14 @@ namespace Aguacongas.IdentityServer.Store
         {
         }
 
-        public Task<IsModels.AuthorizationCode> GetAuthorizationCodeAsync(string code, CancellationToken ct)
-            => GetAsync(code, ct);
+        public Task<IsModels.AuthorizationCode> GetAuthorizationCodeAsync(string code)
+            => GetAsync(code);
 
-        public Task RemoveAuthorizationCodeAsync(string code, CancellationToken ct)
-            => RemoveAsync(code, ct);
+        public Task RemoveAuthorizationCodeAsync(string code)
+            => RemoveAsync(code);
 
-        public Task<string> StoreAuthorizationCodeAsync(IsModels.AuthorizationCode code, CancellationToken ct)
-            => StoreAsync(code, code.CreationTime.AddSeconds(code.Lifetime), ct);
+        public Task<string> StoreAuthorizationCodeAsync(IsModels.AuthorizationCode code)
+            => StoreAsync(code, code.CreationTime.AddSeconds(code.Lifetime));
 
         protected override string GetClientId(IsModels.AuthorizationCode dto)
             => dto?.ClientId;

@@ -1,10 +1,10 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Validation;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Validation;
 using ITfoxtec.Identity.Saml2;
 using ITfoxtec.Identity.Saml2.Schemas;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Signin;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Signin;
 
 /// <summary>
 /// Signing response generator interface

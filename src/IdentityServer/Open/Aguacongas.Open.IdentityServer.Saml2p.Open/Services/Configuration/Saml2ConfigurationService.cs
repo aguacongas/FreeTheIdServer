@@ -1,39 +1,27 @@
-﻿using Open.IdentityServer.Services;
-using Open.IdentityServer.Stores;
-using ITfoxtec.Identity.Saml2;
+﻿using ITfoxtec.Identity.Saml2;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Open.IdentityServer.Extensions;
+using Open.IdentityServer.Stores;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
 
 /// <summary>
 /// Saml2P configuration service
 /// </summary>
-public class Saml2ConfigurationService : ISaml2ConfigurationService
+/// <remarks>
+/// Initialize a new instance of <see cref="Saml2ConfigurationService"/>
+/// </remarks>
+/// <param name="signingCredentialStore"></param>
+/// <param name="contextAccessor"></param>
+/// <param name="httpContextAccessor"></param>
+/// <param name="options"></param>
+public class Saml2ConfigurationService(ISigningCredentialStore signingCredentialStore,
+    IHttpContextAccessor contextAccessor,
+    IHttpContextAccessor httpContextAccessor,
+    IOptions<Saml2POptions> options) : ISaml2ConfigurationService
 {
-    private readonly ISigningCredentialStore _signingCredentialStore;
-    private readonly IOptions<Saml2POptions> _options;
-    private readonly IIssuerNameService _issuerNameService;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    /// <summary>
-    /// Initialize a new instance of <see cref="Saml2ConfigurationService"/>
-    /// </summary>
-    /// <param name="signingCredentialStore"></param>
-    /// <param name="issuerNameService"></param>
-    /// <param name="httpContextAccessor"></param>
-    /// <param name="options"></param>
-    public Saml2ConfigurationService(ISigningCredentialStore signingCredentialStore,
-        IIssuerNameService issuerNameService,
-        IHttpContextAccessor httpContextAccessor,
-        IOptions<Saml2POptions> options)
-    {
-        _signingCredentialStore = signingCredentialStore;
-        _issuerNameService = issuerNameService;
-        _httpContextAccessor = httpContextAccessor;
-        _options = options;
-    }
 
     /// <summary>
     /// Gets the configuration
@@ -42,10 +30,10 @@ public class Saml2ConfigurationService : ISaml2ConfigurationService
     /// <exception cref="InvalidOperationException"></exception>
     public async Task<Saml2Configuration> GetConfigurationAsync()
     {
-        var request = (_httpContextAccessor.HttpContext?.Request) ?? throw new InvalidOperationException("Http request cannot be null");
+        var request = (httpContextAccessor.HttpContext?.Request) ?? throw new InvalidOperationException("Http request cannot be null");
         var location = Location(request);
-        var settings = _options.Value;
-        var credentials = await _signingCredentialStore.GetSigningCredentialsAsync(CancellationToken.None).ConfigureAwait(false);
+        var settings = options.Value;
+        var credentials = await signingCredentialStore.GetSigningCredentialsAsync().ConfigureAwait(false);
 
         return new Saml2Configuration
         {
@@ -56,9 +44,9 @@ public class Saml2ConfigurationService : ISaml2ConfigurationService
             },
             SingleSignOnDestination = new Uri($"{location}/login"),
             SingleLogoutDestination = new Uri($"{location}/logout"),
-            Issuer = await _issuerNameService.GetCurrentAsync(CancellationToken.None).ConfigureAwait(false),
+            Issuer = contextAccessor.HttpContext.GetIdentityServerIssuerUri(),
             SignatureAlgorithm = settings.SignatureAlgorithm,
-            SigningCertificate = credentials.Key.GetX509Certificate(_signingCredentialStore),
+            SigningCertificate = credentials.Key.GetX509Certificate(signingCredentialStore),
             CertificateValidationMode = settings.CertificateValidationMode,
             RevocationMode = settings.RevocationMode
         };

@@ -1,16 +1,16 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services.Signin;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Validation;
-using Open.IdentityServer.Configuration;
-using Open.IdentityServer.Services;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Signin;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Validation;
 using ITfoxtec.Identity.Saml2;
 using ITfoxtec.Identity.Saml2.Schemas;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Open.IdentityServer.Configuration;
+using Open.IdentityServer.Services;
 using System.Text.Encodings.Web;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services;
 
 /// <summary>
 /// Saml2P service
@@ -68,7 +68,7 @@ public class Saml2PService : ISaml2PService
     /// <returns></returns>
     public async Task<IActionResult> LoginAsync(HttpRequest request, IUrlHelper helper)
     {
-        var user = await _userSession.GetUserAsync(CancellationToken.None).ConfigureAwait(false) ??
+        var user = await _userSession.GetUserAsync().ConfigureAwait(false) ??
             throw new InvalidOperationException("No user found in session");
 
         var signinResult = await _signInValidator.ValidateLoginAsync(request, user).ConfigureAwait(false);

@@ -3,7 +3,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Aguacongas.IdentityServer.Abstractions
+namespace Aguacongas.Open.IdentityServer.Abstractions
 {
     public interface ISetupClaimsProvider
     {

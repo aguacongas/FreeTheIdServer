@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin.Open.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Open.Services;
 
 /// <summary>
 /// Interface to verify registration token and client existence

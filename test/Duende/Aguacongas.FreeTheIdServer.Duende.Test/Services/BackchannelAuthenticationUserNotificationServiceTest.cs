@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Services;
+﻿using Aguacongas.Open.IdentityServer.Services;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Services;
 using IdentityModel;

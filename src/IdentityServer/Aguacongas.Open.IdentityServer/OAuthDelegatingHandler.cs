@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer
+namespace Aguacongas.Open.IdentityServer
 {
     public class OAuthDelegatingHandler: OAuthDelegatingHandler<IdentityServerOptions>
     {

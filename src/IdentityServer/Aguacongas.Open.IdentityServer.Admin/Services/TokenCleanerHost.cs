@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Services
 {
     /// <summary>
     /// Clean tokens.
@@ -124,10 +124,6 @@ namespace Aguacongas.IdentityServer.Admin.Services
                 var deviveCodeStore = service.GetRequiredService<IAdminStore<DeviceCode>>();
                 var deviveCodeStoreResponse = await deviveCodeStore.GetAsync(pageRequest, cancellationToken).ConfigureAwait(false);
                 await RemoveExpiredTokensAsync(deviveCodeStore, deviveCodeStoreResponse.Items, cancellationToken).ConfigureAwait(false);
-
-                var backChannelAuthenticationRequestStore = service.GetRequiredService<IAdminStore<BackChannelAuthenticationRequest>>();
-                var backChannelAuthenticationRequestResponse = await backChannelAuthenticationRequestStore.GetAsync(pageRequest, cancellationToken).ConfigureAwait(false);
-                await RemoveExpiredTokensAsync(backChannelAuthenticationRequestStore, backChannelAuthenticationRequestResponse.Items, cancellationToken).ConfigureAwait(false);
 
                 var authorizationCodeStore = service.GetRequiredService<IAdminStore<AuthorizationCode>>();
                 var authorizationCodeResponse = await authorizationCodeStore.GetAsync(pageRequest, cancellationToken).ConfigureAwait(false);

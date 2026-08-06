@@ -2,7 +2,7 @@
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Security;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
 
 /// <summary>
 /// Saml2P options

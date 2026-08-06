@@ -1,9 +1,9 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Metadata;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Metadata;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open;
 
 /// <summary>
 /// Saml2P controller

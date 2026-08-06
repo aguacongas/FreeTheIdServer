@@ -5,7 +5,7 @@ using System;
 using System.Security.Cryptography;
 using static Open.IdentityServer.IdentityServerConstants;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     public sealed class ECDsaEncryptorConfiguration : SigningAlgorithmConfiguration
     {

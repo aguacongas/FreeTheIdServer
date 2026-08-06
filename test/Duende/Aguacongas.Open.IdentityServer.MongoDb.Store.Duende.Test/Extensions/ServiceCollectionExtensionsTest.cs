@@ -1,8 +1,8 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Admin.Services;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.Authentication;
 using Aguacongas.FreeTheIdServer.Models;
 using Microsoft.AspNetCore.Identity;
@@ -16,10 +16,10 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Xunit;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 using ISConfiguration = Open.IdentityServer.Configuration;
 
-namespace Aguacongas.IdentityServer.MongoDb.Store.Test.Extensions
+namespace Aguacongas.Open.IdentityServer.MongoDb.Store.Test.Extensions
 {
     public class ServiceCollectionExtensionsTest
     {

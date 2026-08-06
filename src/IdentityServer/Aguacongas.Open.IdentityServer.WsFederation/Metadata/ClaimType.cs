@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 
-namespace Aguacongas.IdentityServer.WsFederation
+namespace Aguacongas.Open.IdentityServer.WsFederation
 {
     /// <summary>
     /// Defines a claim type

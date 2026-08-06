@@ -3,7 +3,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     /// <summary>
     /// Admin store interface

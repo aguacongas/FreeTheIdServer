@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.FreeTheIdServer.BlazorApp.Models;
 using FluentValidation;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Models = Aguacongas.FreeTheIdServer.BlazorApp.Models;
 using Microsoft.Extensions.Localization;
 

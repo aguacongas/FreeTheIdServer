@@ -4,7 +4,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Abstractions
+namespace Aguacongas.Open.IdentityServer.Abstractions
 {
     public interface IFlushableCache<T> where T : class
     {

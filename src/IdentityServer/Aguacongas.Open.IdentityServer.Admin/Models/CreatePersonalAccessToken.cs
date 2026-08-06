@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Aguacongas.IdentityServer.Admin.Models
+namespace Aguacongas.Open.IdentityServer.Admin.Models
 {
     /// <summary>
     /// Create a personal access token

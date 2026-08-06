@@ -1,18 +1,18 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.EntityFramework.Store
+namespace Aguacongas.Open.IdentityServer.EntityFramework.Store
 {
     public class OperationalDbContext : DbContext, IDataProtectionKeyContext, IKeyRotationContext
     {
-        public OperationalDbContext(DbContextOptions<OperationalDbContext> options):base(options)
+        public OperationalDbContext(DbContextOptions<OperationalDbContext> options) : base(options)
         {
         }
 
@@ -23,7 +23,7 @@ namespace Aguacongas.IdentityServer.EntityFramework.Store
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
 
         public virtual DbSet<UserConsent> UserConstents { get; set; }
-        
+
         public virtual DbSet<DeviceCode> DeviceCodes { get; set; }
 
         public virtual DbSet<OneTimeToken> OneTimeTokens { get; set; }
@@ -35,10 +35,6 @@ namespace Aguacongas.IdentityServer.EntityFramework.Store
         public virtual DbSet<UserSession> UserSessions { get; set; }
 
         public virtual DbSet<Saml2PArtifact> Saml2pArtifact { get; set; }
-
-        public virtual DbSet<BackChannelAuthenticationRequest> BackChannelAuthenticationRequests { get; set; }
-
-        public virtual DbSet<PushedAuthorizationRequest> PushedAuthorizationRequests { get; set; }
 
         public override int SaveChanges()
         {

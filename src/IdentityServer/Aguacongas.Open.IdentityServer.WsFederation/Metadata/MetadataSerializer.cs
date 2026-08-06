@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace Aguacongas.IdentityServer.WsFederation.Metadata
+namespace Aguacongas.Open.IdentityServer.WsFederation.Metadata
 {
     /// <summary>
     /// Serializes WS-Federation metadata.

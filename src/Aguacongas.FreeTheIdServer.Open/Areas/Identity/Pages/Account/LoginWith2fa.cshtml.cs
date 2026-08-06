@@ -90,9 +90,9 @@ public class LoginWith2faModel(SignInManager<ApplicationUser> signInManager,
 
     private async Task<IActionResult> OnSiginSuccesss(ApplicationUser user, string returnUrl)
     {
-        var context = await interaction.GetAuthorizationContextAsync(returnUrl, HttpContext.RequestAborted).ConfigureAwait(false);
+        var context = await interaction.GetAuthorizationContextAsync(returnUrl).ConfigureAwait(false);
 
-        await events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client?.ClientId), HttpContext.RequestAborted);
+        await events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client?.ClientId));
 
         if (context != null)
         {

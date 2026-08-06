@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-namespace Aguacongas.IdentityServer.Admin.Http.Store
+namespace Aguacongas.Open.IdentityServer.Admin.Http.Store
 {
     public interface IAuthenticatedEncryptorDescriptor
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Metadata;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Metadata;
 
 /// <summary>
 /// Metadata response generator interface

@@ -4,7 +4,7 @@ using Open.IdentityServer.Stores;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     public interface IKeyRingStore: IKeyRing, IValidationKeysStore, ISigningCredentialStore
     {

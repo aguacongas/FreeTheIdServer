@@ -1,10 +1,10 @@
-﻿using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+﻿using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin.Open.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Open.Services;
 
 /// <summary>
 /// Verifies the registration token and client existence

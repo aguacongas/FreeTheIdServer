@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.Text.Json.Serialization;
 
-namespace Aguacongas.IdentityServer.Admin.Http.Store
+namespace Aguacongas.Open.IdentityServer.Admin.Http.Store
 {
     public class ProblemDetails
     {

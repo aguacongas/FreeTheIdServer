@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Aguacongas.IdentityServer.Store.Entity;
+namespace Aguacongas.Open.IdentityServer.Store.Entity;
 
 /// <summary>
 /// Saml2P artifact

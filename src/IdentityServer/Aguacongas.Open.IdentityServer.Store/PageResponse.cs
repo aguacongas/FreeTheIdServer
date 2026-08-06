@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.Collections.Generic;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     /// <summary>
     /// Represents a page of <typeparamref name="T"/>

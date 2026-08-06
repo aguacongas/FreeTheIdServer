@@ -1,9 +1,9 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Configuration;
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.KeysRotation;
-using Aguacongas.IdentityServer.KeysRotation.Extensions;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.KeysRotation;
+using Aguacongas.Open.IdentityServer.KeysRotation.Extensions;
 using Aguacongas.FreeTheIdServer.Models;
 using Open.IdentityServer.Configuration;
 using StackExchange.Redis;

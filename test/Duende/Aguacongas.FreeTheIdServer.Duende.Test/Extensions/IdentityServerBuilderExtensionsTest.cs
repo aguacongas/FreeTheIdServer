@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 
-using Aguacongas.IdentityServer.KeysRotation.AzureKeyVault;
+using Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;

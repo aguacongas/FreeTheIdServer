@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.Data;
 using Aguacongas.FreeTheIdServer.Models;
 using IdentityModel;
@@ -14,7 +14,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
 namespace Aguacongas.FreeTheIdServer
 {

@@ -1,22 +1,17 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer;
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Open.Validators;
-using Aguacongas.IdentityServer.Services;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Validators;
 using Aguacongas.FreeTheIdServer.Authentication;
+using Aguacongas.Open.IdentityServer;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Open.Validators;
+using Aguacongas.Open.IdentityServer.Store;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Open.IdentityServer.Services;
 using Open.IdentityServer.Stores;
 using Open.IdentityServer.Stores.Serialization;
 using Open.IdentityServer.Validation;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
-using System;
 using System.Net.Http;
-using System.Reflection;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -61,63 +56,12 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddTransient<IRefreshTokenStore>(p => p.GetRequiredService<RefreshTokenStore>())
                 .AddTransient<IReferenceTokenStore>(p => p.GetRequiredService<ReferenceTokenStore>())
                 .AddTransient<IUserConsentStore>(p => p.GetRequiredService<UserConsentStore>())
-                .AddTransient<BackChannelAuthenticationRequestStore>()
-                .AddTransient<IBackChannelAuthenticationRequestStore>(p => p.GetRequiredService<BackChannelAuthenticationRequestStore>())
                 .AddTransient<IDeviceFlowStore>(p => p.GetRequiredService<DeviceFlowStore>())
-                .AddTransient<IPersistedGrantStore, PersistedGrantStore>()
-                .AddTransient<IPushedAuthorizationRequestStore, PushedAuthorizationRequestStore>()
-                .AddTransient<IIdentityProviderStore, IdentityProviderStore>();
+                .AddTransient<IPersistedGrantStore, PersistedGrantStore>();
         }
 
         public static IServiceCollection AddTokenExchange(this IServiceCollection services)
         => services.AddTransient<IExtensionGrantValidator, TokenExchangeGrantValidator>();
 
-        public static IServiceCollection AddCibaServices(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.Configure<BackchannelAuthenticationUserNotificationServiceOptions>(configuration)
-                .AddSingleton<OAuthTokenManager<BackchannelAuthenticationUserNotificationServiceOptions>>()
-                .AddTransient(p =>
-                {
-                    var settings = p.GetRequiredService<IOptions<BackchannelAuthenticationUserNotificationServiceOptions>>().Value;
-
-                    var serviceType = GetBackchannelAuthenticationUserNotificationServiceType(settings);
-                    var constructor = serviceType.GetConstructors()[0];
-                    var parameters = constructor.GetParameters();
-                    var arguments = new object[parameters.Length];
-                    for (var i = 0; i < parameters.Length; i++)
-                    {
-                        var parameterType = parameters[i].ParameterType;
-                        if (parameterType == typeof(HttpClient))
-                        {
-                            var factory = p.GetRequiredService<IHttpClientFactory>();
-                            arguments[i] = factory.CreateClient(settings.HttpClientName ?? "ciba");
-                            continue;
-                        }
-                        arguments[i] = p.GetRequiredService(parameterType);
-                    }
-
-                    return constructor.Invoke(arguments) as IBackchannelAuthenticationUserNotificationService;
-                })
-                .AddTransient<IBackchannelAuthenticationUserValidator, BackchannelAuthenticationUserValidator>()
-                .AddTransient<OAuthDelegatingHandler<BackchannelAuthenticationUserNotificationServiceOptions>>()
-                .AddHttpClient(configuration.GetValue<string>("HttpClientName") ?? "ciba")
-                .ConfigurePrimaryHttpMessageHandler(p => p.GetRequiredService<HttpClientHandler>())
-                .AddHttpMessageHandler<OAuthDelegatingHandler<BackchannelAuthenticationUserNotificationServiceOptions>>();
-
-            return services;
-        }
-
-        private static Type GetBackchannelAuthenticationUserNotificationServiceType(BackchannelAuthenticationUserNotificationServiceOptions settings)
-        {
-            if (!string.IsNullOrEmpty(settings.AssemblyPath))
-            {
-#pragma warning disable S3885 // "Assembly.Load" should be used
-                var assembly = Assembly.LoadFrom(settings.AssemblyPath);
-#pragma warning restore S3885 // "Assembly.Load" should be used
-                return assembly.GetType(settings.ServiceType, true);
-            }
-
-            return Type.GetType(settings.ServiceType, true);
-        }
     }
 }

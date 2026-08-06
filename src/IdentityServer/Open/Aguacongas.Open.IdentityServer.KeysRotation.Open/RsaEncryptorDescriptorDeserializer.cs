@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     public sealed class RsaEncryptorDescriptorDeserializer : IAuthenticatedEncryptorDescriptorDeserializer
     {

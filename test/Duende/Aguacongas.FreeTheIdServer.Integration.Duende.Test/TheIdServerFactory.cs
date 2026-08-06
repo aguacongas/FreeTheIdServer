@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.DynamicConfiguration.Razor.Services;
-using Aguacongas.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
 using Aguacongas.FreeTheIdServer.BlazorApp.Infrastructure.Services;
 using Aguacongas.FreeTheIdServer.BlazorApp.Models;
 using Aguacongas.FreeTheIdServer.Models;

@@ -1,13 +1,13 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Models;
+using Aguacongas.Open.IdentityServer.Models;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Services
 {
     /// <summary>
     /// SendGrid email sender

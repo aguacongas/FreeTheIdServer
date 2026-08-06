@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Aguacongas.IdentityServer.WsFederation.Stores
+namespace Aguacongas.Open.IdentityServer.WsFederation.Stores
 {
 
     /// <summary>

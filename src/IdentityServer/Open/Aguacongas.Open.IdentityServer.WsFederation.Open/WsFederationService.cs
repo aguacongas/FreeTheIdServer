@@ -1,19 +1,19 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.WsFederation.Validation;
-using Open.IdentityServer.Extensions;
-using Open.IdentityServer.Services;
+using Aguacongas.Open.IdentityServer.WsFederation.Validation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Protocols.WsFederation;
+using Open.IdentityServer.Extensions;
+using Open.IdentityServer.Services;
 using System;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Configuration = Open.IdentityServer.Configuration;
 
-namespace Aguacongas.IdentityServer.WsFederation;
+namespace Aguacongas.Open.IdentityServer.WsFederation;
 
 /// <summary>
 /// 
@@ -59,7 +59,7 @@ public class WsFederationService(ISignInValidator signinValidator,
     {
         var queryString = request.QueryString;
 
-        var user = await _userSession.GetUserAsync(request.HttpContext.RequestAborted).ConfigureAwait(false);
+        var user = await _userSession.GetUserAsync().ConfigureAwait(false);
         var message = WsFederationMessage.FromQueryString(queryString.ToString());
 
         if (message.IsSignInMessage)
@@ -108,7 +108,7 @@ public class WsFederationService(ISignInValidator signinValidator,
         {
             // create protocol response
             var responseMessage = await _generator.GenerateResponseAsync(result, request.HttpContext.RequestAborted).ConfigureAwait(false);
-            await _userSession.AddClientIdAsync(result.Client.ClientId, request.HttpContext.RequestAborted).ConfigureAwait(false);
+            await _userSession.AddClientIdAsync(result.Client.ClientId).ConfigureAwait(false);
 
             return new SignInResult(responseMessage);
         }

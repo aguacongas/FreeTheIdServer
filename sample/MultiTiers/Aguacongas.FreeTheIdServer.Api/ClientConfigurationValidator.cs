@@ -6,6 +6,6 @@ namespace Aguacongas.FreeTheIdServer.Api;
 
 public class EmptyClientConfigurationValidator : IClientConfigurationValidator
 {
-    public Task ValidateAsync(ClientConfigurationValidationContext context, CancellationToken ct)
+    public Task ValidateAsync(ClientConfigurationValidationContext context)
     => Task.CompletedTask;
 }

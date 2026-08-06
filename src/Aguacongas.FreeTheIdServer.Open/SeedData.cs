@@ -1,16 +1,16 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.Data;
 using Aguacongas.FreeTheIdServer.Models;
-using Open.IdentityServer;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Open.IdentityServer;
 using System.Security.Claims;
 using System.Text.Json;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 using ISModels = Open.IdentityServer.Models;
 
 namespace Aguacongas.FreeTheIdServer
@@ -84,7 +84,7 @@ namespace Aguacongas.FreeTheIdServer
                 var claimList = configuration.GetSection($"InitialData:Users:{index}:Claims").Get<IEnumerable<Entity.UserClaim>>()!
                     .Select(c => new Claim(c.ClaimType, c.ClaimValue, c.OriginalType, c.Issuer))
                     .ToList();
-                claimList.Add(new Claim(JwtClaimTypes.UpdatedAt, DateTime.Now.ToEpochTime().ToString(), ClaimValueTypes.Integer64));
+                claimList.Add(new Claim(IdentityModel.JwtClaimTypes.UpdatedAt, DateTime.Now.ToEpochTime().ToString(), ClaimValueTypes.Integer64));
                 ExcuteAndCheckResult(() => userMgr.AddClaimsAsync(user, claimList))
                     .GetAwaiter().GetResult();
 

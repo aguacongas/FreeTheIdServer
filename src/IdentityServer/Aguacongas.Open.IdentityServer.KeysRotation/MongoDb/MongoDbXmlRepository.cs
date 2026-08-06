@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace Aguacongas.IdentityServer.KeysRotation.MongoDb
+namespace Aguacongas.Open.IdentityServer.KeysRotation.MongoDb
 {
     public class MongoDbXmlRepository<TKey> : IXmlRepository
         where TKey: IXmlKey, new()

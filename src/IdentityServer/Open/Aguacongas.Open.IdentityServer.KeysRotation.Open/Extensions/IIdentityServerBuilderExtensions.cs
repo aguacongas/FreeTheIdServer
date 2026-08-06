@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using static Open.IdentityServer.IdentityServerConstants;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Extensions
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Extensions
 {
     /// <summary>
     /// <see cref="IIdentityServerBuilder"/> extensions

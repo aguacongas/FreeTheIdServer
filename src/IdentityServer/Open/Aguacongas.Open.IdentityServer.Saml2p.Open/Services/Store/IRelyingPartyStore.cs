@@ -1,4 +1,4 @@
-﻿namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
+﻿namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
 
 /// <summary>
 /// Relying party store interface

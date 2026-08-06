@@ -1,19 +1,18 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.FreeTheIdServer.Models;
-using Open.IdentityServer;
-using Open.IdentityServer.Events;
-using Open.IdentityServer.Extensions;
-using Open.IdentityServer.Models;
-using Open.IdentityServer.Services;
-using Open.IdentityServer.Stores;
-using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
+using Open.IdentityServer;
+using Open.IdentityServer.Events;
+using Open.IdentityServer.Extensions;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Services;
+using Open.IdentityServer.Stores;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Encodings.Web;
 
@@ -61,7 +60,7 @@ public class AccountController(
     public async Task<IActionResult> Login(LoginInputModel model, string button)
     {
         // check if we are in the context of an authorization request
-        var context = await interaction.GetAuthorizationContextAsync(model.ReturnUrl, HttpContext.RequestAborted).ConfigureAwait(false);
+        var context = await interaction.GetAuthorizationContextAsync(model.ReturnUrl).ConfigureAwait(false);
 
         var action = button?.Trim();
 
@@ -91,7 +90,7 @@ public class AccountController(
                 return Redirect($"/Identity/Account/LoginWith2fa?rememberMe={model.RememberLogin}&returnUrl={urlEncoder.Encode(model.ReturnUrl!)}");
             }
 
-            await events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId: context?.Client.ClientId), HttpContext.RequestAborted).ConfigureAwait(false);
+            await events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId: context?.Client.ClientId)).ConfigureAwait(false);
             ModelState.AddModelError(string.Empty, _localizer.GetString(options.Value.InvalidCredentialsErrorMessage));
         }
 
@@ -103,7 +102,7 @@ public class AccountController(
     private async Task<IActionResult> OnSiginSuccesss(LoginInputModel model, AuthorizationRequest context)
     {
         var user = await userManager.FindByNameAsync(model.Username!).ConfigureAwait(false);
-        await events.RaiseAsync(new UserLoginSuccessEvent(user!.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId), HttpContext.RequestAborted).ConfigureAwait(false);
+        await events.RaiseAsync(new UserLoginSuccessEvent(user!.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId)).ConfigureAwait(false);
 
         if (context != null)
         {
@@ -146,7 +145,7 @@ public class AccountController(
             // if the user cancels, send a result back into IdentityServer as if they 
             // denied the consent (even if this client does not require consent).
             // this will send back an access denied OIDC error response to the client.
-            await interaction.DenyAuthorizationAsync(context, InteractionError.AccessDenied, HttpContext.RequestAborted).ConfigureAwait(false);
+            await interaction.DenyAuthorizationAsync(context, AuthorizationError.AccessDenied).ConfigureAwait(false);
 
             // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
             if (context.IsNativeClient())
@@ -206,7 +205,7 @@ public class AccountController(
             await signInManager.SignOutAsync().ConfigureAwait(false);
 
             // raise the logout event
-            await events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName()), HttpContext.RequestAborted).ConfigureAwait(false);
+            await events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName())).ConfigureAwait(false);
         }
 
         // check if we need to trigger sign-out at an upstream identity provider
@@ -236,7 +235,7 @@ public class AccountController(
     /*****************************************/
     private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
     {
-        var context = await interaction.GetAuthorizationContextAsync(returnUrl, HttpContext.RequestAborted).ConfigureAwait(false);
+        var context = await interaction.GetAuthorizationContextAsync(returnUrl).ConfigureAwait(false);
 
         if (context?.IdP != null && await schemeProvider.GetSchemeAsync(context.IdP).ConfigureAwait(false) != null)
         {
@@ -274,7 +273,7 @@ public class AccountController(
         var clientId = context?.Client?.ClientId;
         if (clientId != null)
         {
-            var client = await clientStore.FindEnabledClientByIdAsync(clientId, HttpContext.RequestAborted).ConfigureAwait(false);
+            var client = await clientStore.FindEnabledClientByIdAsync(clientId).ConfigureAwait(false);
             if (client != null)
             {
                 allowLocal = client.EnableLocalLogin;
@@ -318,7 +317,7 @@ public class AccountController(
             return vm;
         }
 
-        var context = await interaction.GetLogoutContextAsync(logoutId, HttpContext.RequestAborted).ConfigureAwait(false);
+        var context = await interaction.GetLogoutContextAsync(logoutId).ConfigureAwait(false);
         if (context?.ShowSignoutPrompt == false)
         {
             // it's safe to automatically sign-out
@@ -334,7 +333,7 @@ public class AccountController(
     private async Task<LoggedOutViewModel> BuildLoggedOutViewModelAsync(string logoutId)
     {
         // get context information (client name, post logout redirect URI and iframe for federated signout)
-        var logout = await interaction.GetLogoutContextAsync(logoutId, HttpContext.RequestAborted).ConfigureAwait(false);
+        var logout = await interaction.GetLogoutContextAsync(logoutId).ConfigureAwait(false);
 
         var vm = new LoggedOutViewModel
         {
@@ -347,7 +346,7 @@ public class AccountController(
 
         if (User?.Identity?.IsAuthenticated == true)
         {
-            var idp = User.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
+            var idp = User.FindFirst(IdentityModel.JwtClaimTypes.IdentityProvider)?.Value;
             if (idp != null && idp != IdentityServerConstants.LocalIdentityProvider)
             {
                 var provider = HttpContext.RequestServices.GetRequiredService<IAuthenticationHandlerProvider>();
@@ -359,7 +358,7 @@ public class AccountController(
                     // if there's no current logout context, we need to create one
                     // this captures necessary info from the current logged in user
                     // before we signout and redirect away to the external IdP for signout
-                    vm.LogoutId ??= await interaction.CreateLogoutContextAsync(HttpContext.RequestAborted).ConfigureAwait(false);
+                    vm.LogoutId ??= await interaction.CreateLogoutContextAsync().ConfigureAwait(false);
 
                     vm.ExternalAuthenticationScheme = idp;
                 }

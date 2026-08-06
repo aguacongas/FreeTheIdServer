@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Primitives;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Services
 {
     /// <summary>
     /// 

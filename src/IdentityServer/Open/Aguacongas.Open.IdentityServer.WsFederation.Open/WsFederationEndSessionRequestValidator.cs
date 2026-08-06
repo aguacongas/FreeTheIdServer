@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.WsFederation;
+namespace Aguacongas.Open.IdentityServer.WsFederation;
 
 /// <summary>
 /// 
@@ -30,9 +30,9 @@ public class WsFederationEndSessionRequestValidator(EndSessionRequestValidator p
     /// <param name="subject"></param>
     /// <param name="ct"></param>
     /// <returns></returns>
-    public async Task<EndSessionValidationResult> ValidateAsync(NameValueCollection parameters, ClaimsPrincipal subject, CancellationToken ct)
+    public async Task<EndSessionValidationResult> ValidateAsync(NameValueCollection parameters, ClaimsPrincipal subject)
     {
-        var result = await _parent.ValidateAsync(parameters, subject, ct).ConfigureAwait(false);
+        var result = await _parent.ValidateAsync(parameters, subject).ConfigureAwait(false);
         var redirectUri = parameters.Get(WsFederationConstants.Wreply);
         if (!string.IsNullOrEmpty(redirectUri))
         {
@@ -47,6 +47,6 @@ public class WsFederationEndSessionRequestValidator(EndSessionRequestValidator p
     /// <param name="parameters"></param>
     /// <param name="ct"></param>
     /// <returns></returns>
-    public Task<EndSessionCallbackValidationResult> ValidateCallbackAsync(NameValueCollection parameters, CancellationToken ct)
-    => _parent.ValidateCallbackAsync(parameters, ct);
+    public Task<EndSessionCallbackValidationResult> ValidateCallbackAsync(NameValueCollection parameters)
+    => _parent.ValidateCallbackAsync(parameters);
 }

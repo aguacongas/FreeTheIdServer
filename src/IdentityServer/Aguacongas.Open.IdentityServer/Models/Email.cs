@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Aguacongas.IdentityServer.Models
+namespace Aguacongas.Open.IdentityServer.Models
 {
     /// <summary>
     /// Email content

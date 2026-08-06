@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using OData2Linq;
 using Microsoft.OData.Edm;
 using System.Linq;

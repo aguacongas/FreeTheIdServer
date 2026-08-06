@@ -19,7 +19,7 @@ namespace Aguacongas.FreeTheIdServer.Oracle.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6");
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.EntityFramework.Store.UserClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.EntityFramework.Store.UserClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -217,7 +217,7 @@ namespace Aguacongas.FreeTheIdServer.Oracle.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.EntityFramework.Store.UserClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.EntityFramework.Store.UserClaim", b =>
                 {
                     b.HasOne("Aguacongas.FreeTheIdServer.Models.ApplicationUser", null)
                         .WithMany()

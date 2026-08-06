@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.Security.Cryptography.X509Certificates;
 
-namespace Aguacongas.IdentityServer.Admin.Configuration
+namespace Aguacongas.Open.IdentityServer.Admin.Configuration
 {
     /// <summary>
     /// Signing key definition

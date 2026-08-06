@@ -1,12 +1,12 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.AspNetCore.Authentication;
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Admin;
-using Aguacongas.IdentityServer.Admin.Filters;
-using Aguacongas.IdentityServer.Admin.Services;
-using Aguacongas.IdentityServer.KeysRotation;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin;
+using Aguacongas.Open.IdentityServer.Admin.Filters;
+using Aguacongas.Open.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.KeysRotation;
+using Aguacongas.Open.IdentityServer.Store;
 using Open.IdentityServer.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Negotiate;
@@ -70,12 +70,12 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddTransient(p => new KeyManagerWrapper<IAuthenticatedEncryptorDescriptor>(new[] { new Tuple<IKeyManager, string, IEnumerable<IKey>>(p.GetRequiredService<IKeyManager>(), "dataprotection", p.GetRequiredService<IKeyManager>().GetAllKeys()) },
                     p.GetRequiredService<IDefaultKeyResolver>(),
                     p.GetRequiredService<IProviderClient>()))
-                .AddTransient(p => new KeyManagerWrapper<RsaEncryptorDescriptor>(p.GetService<IEnumerable<Aguacongas.IdentityServer.KeysRotation.ICacheableKeyRingProvider>>()
+                .AddTransient(p => new KeyManagerWrapper<RsaEncryptorDescriptor>(p.GetService<IEnumerable<Aguacongas.Open.IdentityServer.KeysRotation.ICacheableKeyRingProvider>>()
                         .Where(rp => rp.GetType().GenericTypeArguments[0] == typeof(RsaEncryptorConfiguration))
                         .Select(p => new Tuple<IKeyManager, string, IEnumerable<IKey>>(p.KeyManager, p.Algorithm, p.GetAllKeys())),
                     p.GetRequiredService<IDefaultKeyResolver>(),
                     p.GetRequiredService<IProviderClient>()))
-                .AddTransient(p => new KeyManagerWrapper<ECDsaEncryptorDescriptor>(p.GetService<IEnumerable<Aguacongas.IdentityServer.KeysRotation.ICacheableKeyRingProvider>>()
+                .AddTransient(p => new KeyManagerWrapper<ECDsaEncryptorDescriptor>(p.GetService<IEnumerable<Aguacongas.Open.IdentityServer.KeysRotation.ICacheableKeyRingProvider>>()
                         .Where(rp => rp.GetType().GenericTypeArguments[0] == typeof(ECDsaEncryptorConfiguration))
                         .Select(p => new Tuple<IKeyManager, string, IEnumerable<IKey>>(p.KeyManager, p.Algorithm, p.GetAllKeys())),
                     p.GetRequiredService<IDefaultKeyResolver>(),

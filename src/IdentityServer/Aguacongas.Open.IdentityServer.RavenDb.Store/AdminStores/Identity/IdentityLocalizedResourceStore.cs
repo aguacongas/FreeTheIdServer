@@ -1,10 +1,10 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.Identity
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.Identity
 {
     public class IdentityLocalizedResourceStore : IdentitySubEntityStoreBase<IdentityLocalizedResource>
     {

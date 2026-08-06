@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Filters;
+using Aguacongas.Open.IdentityServer.Admin.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Test.Filters
+namespace Aguacongas.Open.IdentityServer.Admin.Test.Filters
 {
     public class ExceptionFilterTest
     {

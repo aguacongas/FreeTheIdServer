@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     /// <summary>
     /// Implements <see cref="IAuthenticatedEncryptorDescriptor"/> for <see cref="RsaSecurityKey"/>

@@ -1,11 +1,4 @@
 ﻿using Aguacongas.DynamicConfiguration.Redis;
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Admin.Http.Store;
-using Aguacongas.IdentityServer.Admin.Services;
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
-using Aguacongas.IdentityServer.Services;
-using Aguacongas.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.Authentication;
 using Aguacongas.FreeTheIdServer.BlazorApp.Infrastructure.Services;
 using Aguacongas.FreeTheIdServer.BlazorApp.Models;
@@ -18,12 +11,14 @@ using Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher;
 using Aguacongas.FreeTheIdServer.Models;
 using Aguacongas.FreeTheIdServer.Services;
 using Aguacongas.FreeTheIdServer.UI;
-using Open.AspNetCore.Authentication.OAuth2Introspection;
-using Open.AspNetCore.Authentication.OAuth2Introspection.Infrastructure;
-using Open.ConformanceReport;
-using Open.IdentityServer.Configuration;
-using Open.IdentityServer.ConformanceReport;
-using Open.IdentityServer.Services;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin.Http.Store;
+using Aguacongas.Open.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
+using Aguacongas.Open.IdentityServer.Store;
+using Duende.AspNetCore.Authentication.OAuth2Introspection;
+using Duende.AspNetCore.Authentication.OAuth2Introspection.Infrastructure;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -38,6 +33,8 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using Open.IdentityServer.Configuration;
+using Open.IdentityServer.Services;
 using Raven.Client.Documents;
 using System.Security.Cryptography.X509Certificates;
 using ConfigurationModel = Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
@@ -83,35 +80,22 @@ public static class ServiceCollectionExtensions
         var identityServerBuilder = services.AddClaimsProviders(configurationManager)
             .Configure<ForwardedHeadersOptions>(configurationManager.GetSection(nameof(ForwardedHeadersOptions)))
             .Configure<AccountOptions>(configurationManager.GetSection(nameof(AccountOptions)))
-            .Configure<Aguacongas.IdentityServer.Admin.Options.DynamicClientRegistrationOptions>(configurationManager.GetSection(nameof(Aguacongas.IdentityServer.Admin.Options.DynamicClientRegistrationOptions)))
+            .Configure<Aguacongas.Open.IdentityServer.Admin.Options.DynamicClientRegistrationOptions>(configurationManager.GetSection(nameof(Aguacongas.Open.IdentityServer.Admin.Options.DynamicClientRegistrationOptions)))
             .Configure<TokenValidationParameters>(configurationManager.GetSection(nameof(TokenValidationParameters)))
             .Configure<SiteOptions>(configurationManager.GetSection(nameof(SiteOptions)))
-            .Configure<ConformanceReportOptions>(configurationManager.GetSection(nameof(ConformanceReportOptions)))
             .ConfigureNonBreakingSameSiteCookies()
             .AddOidcStateDataFormatterCache()
             .Configure<IdentityServerOptions>(configurationManager.GetSection(nameof(IdentityServerOptions)))
-            .Configure<DynamicProviderOptions>(options => { })
-            .AddTransient(p => p.GetRequiredService<IOptions<DynamicProviderOptions>>().Value)
             .AddIdentityServer(options =>
             {
-                options.DPoP.SupportedDPoPSigningAlgorithms = [];
-                options.SupportedClientAssertionSigningAlgorithms = [];
-                options.SupportedRequestObjectSigningAlgorithms = [];
                 configurationManager.Bind(nameof(IdentityServerOptions), options);
             })
-            .AddCiba(configurationManager.GetSection(nameof(BackchannelAuthenticationUserNotificationServiceOptions)))
             .AddAspNetIdentity<ApplicationUser>()
             .AddDynamicClientRegistration()
             .AddJwtBearerClientAuthentication()
             .AddMutualTlsSecretValidators()
-            .AddConformanceReport()
-            .ConfigureDiscovey(configurationManager.GetSection(nameof(Aguacongas.IdentityServer.IdentityServerOptions)))
+            .ConfigureDiscovey(configurationManager.GetSection(nameof(Aguacongas.Open.IdentityServer.IdentityServerOptions)))
             .ConfigureKey(configurationManager.GetSection("IdentityServer:Key"));
-
-        if (configurationManager.GetValue<bool>("IdentityServerOptions:EnableServerSideSession"))
-        {
-            identityServerBuilder.AddServerSideSessions<ServerSideSessionStore>();
-        }
 
         identityServerBuilder.AddJwtRequestUriHttpClient();
 
@@ -119,7 +103,7 @@ public static class ServiceCollectionExtensions
         {
             identityServerBuilder.Services.AddTransient<IProfileService>(p =>
             {
-                var options = p.GetRequiredService<IOptions<Aguacongas.IdentityServer.IdentityServerOptions>>().Value;
+                var options = p.GetRequiredService<IOptions<Aguacongas.Open.IdentityServer.IdentityServerOptions>>().Value;
                 var httpClient = p.GetRequiredService<IHttpClientFactory>().CreateClient(options.HttpClientName);
                 return new ProxyProfilService<ApplicationUser>(httpClient,
                     p.GetRequiredService<UserManager<ApplicationUser>>(),
@@ -198,8 +182,8 @@ public static class ServiceCollectionExtensions
             .AddTransient<IReadOnlyLocalizedResourceStore, PreRenderLocalizedResourceStore>()
             .AddTransient<IAccessTokenProvider, AccessTokenProvider>()
             .AddTransient<JSInterop.IJSRuntime, JSRuntime>()
-            .AddTransient<IKeyStore<ECDsaEncryptorDescriptor>, KeyStore<ECDsaEncryptorDescriptor, Aguacongas.IdentityServer.KeysRotation.ECDsaEncryptorDescriptor>>()
-            .AddTransient<IKeyStore<RsaEncryptorDescriptor>, KeyStore<RsaEncryptorDescriptor, Aguacongas.IdentityServer.KeysRotation.RsaEncryptorDescriptor>>()
+            .AddTransient<IKeyStore<ECDsaEncryptorDescriptor>, KeyStore<ECDsaEncryptorDescriptor, Aguacongas.Open.IdentityServer.KeysRotation.ECDsaEncryptorDescriptor>>()
+            .AddTransient<IKeyStore<RsaEncryptorDescriptor>, KeyStore<RsaEncryptorDescriptor, Aguacongas.Open.IdentityServer.KeysRotation.RsaEncryptorDescriptor>>()
             .AddTransient<IKeyStore<IAuthenticatedEncryptorDescriptor>, KeyStore<IAuthenticatedEncryptorDescriptor, ConfigurationModel.IAuthenticatedEncryptorDescriptor>>()
             .AddAdminApplication(new Settings())
             .AddDatabaseDeveloperPageExceptionFilter()
@@ -346,7 +330,7 @@ public static class ServiceCollectionExtensions
 
     private static void AddDefaultServices(IServiceCollection services, IConfiguration configuration, DbTypes dbType)
     {
-        services.Configure<Aguacongas.IdentityServer.IdentityServerOptions>(options => configuration.Bind("ApiAuthentication", options))
+        services.Configure<Aguacongas.Open.IdentityServer.IdentityServerOptions>(options => configuration.Bind("ApiAuthentication", options))
             .AddIdentityProviderStore();
 
         if (dbType == DbTypes.RavenDb)

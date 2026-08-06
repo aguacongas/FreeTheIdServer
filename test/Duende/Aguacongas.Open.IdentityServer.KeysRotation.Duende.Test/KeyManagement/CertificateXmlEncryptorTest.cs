@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Configuration;
-using Aguacongas.IdentityServer.KeysRotation.XmlEncryption;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.KeysRotation.XmlEncryption;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using System;
@@ -9,7 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test.KeyManagement
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.KeyManagement
 {
     public class CertificateXmlEncryptorTest
     {

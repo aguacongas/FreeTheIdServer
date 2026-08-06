@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.Extensions.Logging;
 using Raven.Client.Documents.Session;
 using System;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store
 {
     public class ExternalClaimTransformationStore : AdminStore<ExternalClaimTransformation>
     {

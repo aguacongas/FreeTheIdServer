@@ -3,7 +3,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Aguacongas.IdentityServer.Admin.Models
+namespace Aguacongas.Open.IdentityServer.Admin.Models
 {
     /// <summary>
     /// 

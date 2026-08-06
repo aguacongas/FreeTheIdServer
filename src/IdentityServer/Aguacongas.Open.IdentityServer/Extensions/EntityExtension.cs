@@ -1,9 +1,9 @@
-﻿using Aguacongas.IdentityServer.Extensions;
+﻿using Aguacongas.Open.IdentityServer.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     public static class EntityExtension
     {

@@ -22,7 +22,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.EntityFramework.Store.UserClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.EntityFramework.Store.UserClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -224,7 +224,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.EntityFramework.Store.UserClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.EntityFramework.Store.UserClaim", b =>
                 {
                     b.HasOne("Aguacongas.FreeTheIdServer.Models.ApplicationUser", null)
                         .WithMany()

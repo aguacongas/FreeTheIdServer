@@ -2,9 +2,9 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.ApiScope
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.ApiScope
 {
     public class ApiScopeLocalizedResourceStore : ApiScopeSubEntityStoreBase<Entity.ApiScopeLocalizedResource>
     {

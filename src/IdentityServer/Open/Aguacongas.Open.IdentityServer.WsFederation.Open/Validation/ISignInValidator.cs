@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.WsFederation.Validation;
+namespace Aguacongas.Open.IdentityServer.WsFederation.Validation;
 
 /// <summary>
 /// 

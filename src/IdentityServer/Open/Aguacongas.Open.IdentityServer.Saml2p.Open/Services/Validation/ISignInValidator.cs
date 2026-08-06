@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Validation;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Validation;
 
 /// <summary>
 /// Signing requests validator interface

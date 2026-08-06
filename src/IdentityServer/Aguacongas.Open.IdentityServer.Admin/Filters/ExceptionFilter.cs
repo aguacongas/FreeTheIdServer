@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Models;
+using Aguacongas.Open.IdentityServer.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -11,7 +11,7 @@ using System;
 using System.Linq;
 using System.Net;
 
-namespace Aguacongas.IdentityServer.Admin.Filters
+namespace Aguacongas.Open.IdentityServer.Admin.Filters
 {
     /// <summary>
     /// Exception filter
@@ -40,7 +40,7 @@ namespace Aguacongas.IdentityServer.Admin.Filters
             var exception = context.Exception;
             if (context.ActionDescriptor is ControllerActionDescriptor actionDescriptor &&
                 actionDescriptor.ControllerTypeInfo
-                    .FullName.StartsWith("Aguacongas.IdentityServer.Admin"))
+                    .FullName.StartsWith("Aguacongas.Open.IdentityServer.Admin"))
             {
                 ProcessApiException(context, exception);
             }

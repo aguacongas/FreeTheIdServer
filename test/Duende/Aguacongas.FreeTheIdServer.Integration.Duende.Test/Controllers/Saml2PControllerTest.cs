@@ -1,6 +1,6 @@
-﻿using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+﻿using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Aguacongas.FreeTheIdServer.Data;
 using Aguacongas.FreeTheIdServer.IntegrationTest.BlazorApp;
 using Aguacongas.FreeTheIdServer.UI;
@@ -1038,7 +1038,7 @@ public class Saml2PControllerTest(FreeTheIdServerFactory factory)
 
         var profileServiceMock = new Mock<IProfileService>();
         profileServiceMock.Setup(m => m.GetProfileDataAsync(It.IsAny<ISModels.ProfileDataRequestContext>(), It.IsAny<CancellationToken>()))
-            .Callback<ISModels.ProfileDataRequestContext, CancellationToken>((ctx, ct) => ctx.IssuedClaims =
+            .Callback<ISModels.ProfileDataRequestContext, CancellationToken>((ctx) => ctx.IssuedClaims =
             [
                     new Claim(JwtClaimTypes.Name, name),
                     new Claim(JwtClaimTypes.Subject, sub),
@@ -1167,7 +1167,7 @@ public class Saml2PControllerTest(FreeTheIdServerFactory factory)
 
         var profileServiceMock = new Mock<IProfileService>();
         profileServiceMock.Setup(m => m.GetProfileDataAsync(It.IsAny<ISModels.ProfileDataRequestContext>(), It.IsAny<CancellationToken>()))
-            .Callback<ISModels.ProfileDataRequestContext, CancellationToken>((ctx, ct) => ctx.IssuedClaims =
+            .Callback<ISModels.ProfileDataRequestContext, CancellationToken>((ctx) => ctx.IssuedClaims =
             [
                     new Claim(JwtClaimTypes.Name, name),
                     new Claim(JwtClaimTypes.Subject, sub),

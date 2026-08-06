@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace Aguacongas.IdentityServer.Admin.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Services
 {
     /// <summary>
     /// public static class KeyManagement

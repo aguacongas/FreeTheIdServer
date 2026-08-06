@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation.RavenDb;
+using Aguacongas.Open.IdentityServer.KeysRotation.RavenDb;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test.RavenDb
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.RavenDb
 {
     public class RavenDbXmlRepositoryTest
     {

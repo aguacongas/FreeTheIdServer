@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     public sealed class RsaEncryptorFactory : IAuthenticatedEncryptorFactory
     {

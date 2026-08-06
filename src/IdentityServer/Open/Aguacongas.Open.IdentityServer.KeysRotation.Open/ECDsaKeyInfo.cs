@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     public class ECDsaKeyInfo
     {

@@ -1,8 +1,8 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using System.Collections.Generic;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
 namespace Aguacongas.FreeTheIdServer.BlazorApp.Models
 {
@@ -19,8 +19,6 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Models
         public ICollection<Entity.UserToken> Tokens { get; set; }
         public ICollection<Entity.ReferenceToken> ReferenceTokens { get; set; }
         public ICollection<Entity.RefreshToken> RefreshTokens { get; set; }
-
-        public ICollection<Entity.BackChannelAuthenticationRequest> BackChannelAuthenticationRequests { get; set; }
 
         public ICollection<Entity.UserSession> Sessions { get; set; }
 

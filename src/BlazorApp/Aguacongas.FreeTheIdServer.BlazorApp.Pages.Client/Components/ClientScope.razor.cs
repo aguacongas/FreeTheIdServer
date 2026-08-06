@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.BlazorApp.Models;
 using Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client.Extentions;
 using Microsoft.AspNetCore.Components;
@@ -10,7 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EntityNS = Aguacongas.IdentityServer.Store.Entity;
+using EntityNS = Aguacongas.Open.IdentityServer.Store.Entity;
 
 namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client.Components
 {

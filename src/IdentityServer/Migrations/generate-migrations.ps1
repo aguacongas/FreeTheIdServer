@@ -9,7 +9,7 @@ Get-ChildItem `
     Set-Location $path
     $segments = $_.Name.Split(".")
     $rdms = $segments[$segmentFreeTheIdServer1]
-    $startup = "../Aguacongas.TheIdServer.$rdms.Startup"
+    $startup = "../Aguacongas.FreeTheIdServer.$rdms.Startup"
     Write-Host "generate migration for $rdms in $path using startup project $startup for context $context"
     & dotnet ef --startup-project $startup migrations add $migrationName --context $context
 }

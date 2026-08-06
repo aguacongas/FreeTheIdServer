@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationM
 using System;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Test
+namespace Aguacongas.Open.IdentityServer.Admin.Test
 {
     public class GenericKeyControllerTest
     {

@@ -1,8 +1,8 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.RavenDb.Store.Test;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.Test;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.AdminStores.Test
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.AdminStores.Test
 {
     public class AdminStoreTest
     {

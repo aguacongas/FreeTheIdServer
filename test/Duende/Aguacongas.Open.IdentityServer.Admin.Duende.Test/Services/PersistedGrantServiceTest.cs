@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Services;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Store;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Stores.Serialization;
 using Microsoft.AspNetCore.DataProtection;
@@ -13,9 +13,9 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Xunit;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.Admin.Test.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Test.Services;
 
 public class PersistedGrantServiceTest
 {

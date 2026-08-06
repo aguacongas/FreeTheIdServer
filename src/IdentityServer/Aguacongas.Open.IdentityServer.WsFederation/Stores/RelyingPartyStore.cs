@@ -1,13 +1,13 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using System;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.WsFederation.Stores
+namespace Aguacongas.Open.IdentityServer.WsFederation.Stores
 {
     /// <summary>
     /// IRelyingPartyStore implementation

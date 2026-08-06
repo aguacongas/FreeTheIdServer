@@ -8,7 +8,7 @@ using Moq;
 using System.Security.Cryptography;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test
 {
     public class RsaEncryptorFactoryTest
     {

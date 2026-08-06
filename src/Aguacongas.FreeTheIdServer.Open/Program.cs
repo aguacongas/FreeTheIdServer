@@ -2,7 +2,6 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.FreeTheIdServer;
 using Aguacongas.FreeTheIdServer.Options.OpenTelemetry;
-using Open.ConformanceReport.Endpoints;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -55,6 +54,6 @@ app.Use(async (context, next) =>
     await next().ConfigureAwait(false);
 });
 app.UseFreeTheIdServer(app.Environment, configuration);
-app.MapConformanceReport();
+
 
 await app.RunAsync().ConfigureAwait(false);

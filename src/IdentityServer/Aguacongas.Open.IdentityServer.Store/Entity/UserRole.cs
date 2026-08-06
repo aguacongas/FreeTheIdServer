@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.ComponentModel.DataAnnotations;
 
-namespace Aguacongas.IdentityServer.Store.Entity
+namespace Aguacongas.Open.IdentityServer.Store.Entity
 {
     /// <summary>
     /// User role

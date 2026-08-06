@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 // Updated for Azure.Security.KeyVault.Keys SDK
 
-using Aguacongas.IdentityServer.KeysRotation.AzureKeyVault;
+using Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault;
 using Azure.Core;
 using Azure.Identity;
 using Azure.Storage;
@@ -16,7 +16,7 @@ using System.Security.Cryptography.X509Certificates;
 using Xunit;
 using static Open.IdentityServer.IdentityServerConstants;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test.Extensions
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.Extensions
 {
     public class KeyRotationBuilderExtensionsTest
     {
@@ -590,7 +590,7 @@ namespace Aguacongas.IdentityServer.KeysRotation.Test.Extensions
             var builder = new KeyRotationBuilder { Services = services };
 
             // Act
-            builder.PersistKeysToMongoDb(sp => new Mock<IMongoCollection<Aguacongas.IdentityServer.KeysRotation.MongoDb.KeyRotationKey>>().Object);
+            builder.PersistKeysToMongoDb(sp => new Mock<IMongoCollection<Aguacongas.Open.IdentityServer.KeysRotation.MongoDb.KeyRotationKey>>().Object);
 
             // Assert
             Assert.NotEmpty(services);
@@ -890,9 +890,9 @@ namespace Aguacongas.IdentityServer.KeysRotation.Test.Extensions
             public IServiceCollection Services { get; set; }
         }
 
-        private class TestDbContext : Microsoft.EntityFrameworkCore.DbContext, Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore.IKeyRotationContext
+        private class TestDbContext : Microsoft.EntityFrameworkCore.DbContext, Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore.IKeyRotationContext
         {
-            public Microsoft.EntityFrameworkCore.DbSet<Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore.KeyRotationKey> KeyRotationKeys { get; set; }
+            public Microsoft.EntityFrameworkCore.DbSet<Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore.KeyRotationKey> KeyRotationKeys { get; set; }
         }
 
     }

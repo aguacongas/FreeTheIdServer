@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Open.Test
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Open.Test
 {
     public class SkipCiFactAttribute : FactAttribute
     {

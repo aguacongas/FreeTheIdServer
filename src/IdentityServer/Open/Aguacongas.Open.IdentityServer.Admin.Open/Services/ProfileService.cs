@@ -1,24 +1,22 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 using Open.IdentityServer;
 using Open.IdentityServer.Extensions;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Services;
-using IdentityModel;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using AspNetIdentity = Open.IdentityServer.AspNetIdentity;
 
-namespace Aguacongas.IdentityServer.Admin.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Services;
 
 /// <summary>
 /// Defines profile service properties key constantes
@@ -59,7 +57,7 @@ public class ProfileService<TUser>(UserManager<TUser> userManager,
     /// </summary>
     /// <param name="context">The context.</param>
     /// <param name="ct"></param>
-    public override async Task GetProfileDataAsync(ProfileDataRequestContext context, CancellationToken ct)
+    public override async Task GetProfileDataAsync(ProfileDataRequestContext context)
     {
         var user = await FindUserAsync(context.Subject.GetSubjectId()).ConfigureAwait(false);
         var principal = user != null ? await GetClaimsPrincipalAsync(user).ConfigureAwait(false) : context.Subject;
@@ -68,30 +66,30 @@ public class ProfileService<TUser>(UserManager<TUser> userManager,
 
         foreach (var resource in requestedResources.IdentityResources)
         {
-            var claims = await GetClaimsFromResource(resource, principal, context.Application, context.Caller).ConfigureAwait(false);
+            var claims = await GetClaimsFromResource(resource, principal, context.Client, context.Caller).ConfigureAwait(false);
             context.AddRequestedClaims(claims);
         }
 
         foreach (var resource in requestedResources.ApiResources)
         {
-            var claims = await GetClaimsFromResource(resource, principal, context.Application, context.Caller).ConfigureAwait(false);
+            var claims = await GetClaimsFromResource(resource, principal, context.Client, context.Caller).ConfigureAwait(false);
             context.AddRequestedClaims(claims);
         }
 
         foreach (var resource in requestedResources.ApiScopes)
         {
-            var claims = await GetClaimsFromResource(resource, principal, context.Application, context.Caller).ConfigureAwait(false);
+            var claims = await GetClaimsFromResource(resource, principal, context.Client, context.Caller).ConfigureAwait(false);
             context.AddRequestedClaims(claims);
         }
 
-        await base.GetProfileDataAsync(context, ct).ConfigureAwait(false);
+        await base.GetProfileDataAsync(context).ConfigureAwait(false);
 
         context.IssuedClaims = SanetizeIssuedClaims(context.IssuedClaims);
 
         // add actor claim if needed
-        if (context.Subject.HasClaim(c => c.Type == JwtClaimTypes.AuthenticationMethod) && context.Subject.GetAuthenticationMethod() == OidcConstants.GrantTypes.TokenExchange)
+        if (context.Subject.HasClaim(c => c.Type == IdentityModel.JwtClaimTypes.AuthenticationMethod) && context.Subject.GetAuthenticationMethod() == IdentityModel.OidcConstants.GrantTypes.TokenExchange)
         {
-            var act = context.Subject.FindFirst(JwtClaimTypes.Actor);
+            var act = context.Subject.FindFirst(IdentityModel.JwtClaimTypes.Actor);
             if (act != null)
             {
                 context.IssuedClaims.Add(act);
@@ -120,7 +118,7 @@ public class ProfileService<TUser>(UserManager<TUser> userManager,
     /// <param name="caller">The caller.</param>
     /// <param name="providerTypeName">Name of the provider type.</param>
     /// <returns></returns>
-    protected virtual Task<IEnumerable<Claim>> GetClaimsFromResource(Resource resource, ClaimsPrincipal subject, IConnectedApplication application, string caller, string providerTypeName)
+    protected virtual Task<IEnumerable<Claim>> GetClaimsFromResource(Resource resource, ClaimsPrincipal subject, Client application, string caller, string providerTypeName)
     {
         var provider = _claimsProvider.FirstOrDefault(p => p.GetType().FullName == providerTypeName);
 
@@ -145,7 +143,7 @@ public class ProfileService<TUser>(UserManager<TUser> userManager,
         return provider.ProvideClaims(subject, application, caller, resource);
     }
 
-    private Task<IEnumerable<Claim>> GetClaimsFromResource(Resource resource, ClaimsPrincipal subject, IConnectedApplication application, string caller)
+    private Task<IEnumerable<Claim>> GetClaimsFromResource(Resource resource, ClaimsPrincipal subject, Client application, string caller)
     {
         if (!resource.Properties.TryGetValue(ProfileServiceProperties.ClaimProviderTypeKey, out string providerTypeName))
         {
@@ -162,13 +160,13 @@ public class ProfileService<TUser>(UserManager<TUser> userManager,
         foreach (var claim in issuedClaims)
         {
             var value = claim.Value;
-            if (claim.Type == JwtClaimTypes.UpdatedAt)
+            if (claim.Type == IdentityModel.JwtClaimTypes.UpdatedAt)
             {
                 claimList.Add(new Claim(claim.Type, value, ClaimValueTypes.Integer64));
                 continue;
             }
 
-            if (claim.Type == JwtClaimTypes.Address)
+            if (claim.Type == IdentityModel.JwtClaimTypes.Address)
             {
                 try
                 {

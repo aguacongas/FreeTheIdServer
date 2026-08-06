@@ -9,10 +9,10 @@
 // use discard intead of unused instance
 // use inline declaration
 // use object locker instead of this
-using Open.IdentityServer.Models;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.IdentityModel.Tokens;
+using Open.IdentityServer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 // namespace change from original Microsoft.AspNetCore.DataProtection.KeyManagement
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     /// <summary>
     /// A basic implementation of <see cref="IKeyRingStore"/>.
@@ -75,7 +75,7 @@ namespace Aguacongas.IdentityServer.KeysRotation
             return holder?.GetEncryptorInstance(out isRevoked);
         }
 
-        public Task<SigningCredentials> GetSigningCredentialsAsync(CancellationToken ct) // interface implementation chance from orignal IKeyRing
+        public Task<SigningCredentials> GetSigningCredentialsAsync() // interface implementation chance from orignal IKeyRing
         {
             if (_defaultKeyHolder.GetEncryptorInstance(out bool isRevoked) is TE encryptor)
             {
@@ -85,7 +85,7 @@ namespace Aguacongas.IdentityServer.KeysRotation
         }
 
 
-        public Task<IReadOnlyCollection<SecurityKeyInfo>> GetValidationKeysAsync(CancellationToken ct)
+        public Task<IEnumerable<SecurityKeyInfo>> GetValidationKeysAsync()
         {
             var signingCredentialsList = _keyIdToKeyHolderMap.Values
                 .Where(h => h.GetEncryptorInstance(out bool isRevoked) is TC && !isRevoked && h.Key.ExpirationDate <= DateTimeOffset.UtcNow + _configuration.KeyRetirement)
@@ -93,7 +93,7 @@ namespace Aguacongas.IdentityServer.KeysRotation
                 .Where(e => e != null)
                 .Select((TE e) => e.GetSecurityKeyInfo(_configuration.SigningAlgorithm))
                 .ToArray();
-            return Task.FromResult(signingCredentialsList as IReadOnlyCollection<SecurityKeyInfo>);
+            return Task.FromResult(signingCredentialsList as IEnumerable<SecurityKeyInfo>);
         }
         // used for providing lazy activation of the authenticated encryptor instance
         private sealed class KeyHolder

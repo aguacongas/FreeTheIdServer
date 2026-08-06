@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.Net.Http;
 
-namespace Aguacongas.IdentityServer.Admin.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Services
 {
     /// <summary>
     /// 

@@ -1,10 +1,10 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation.XmlEncryption;
+using Aguacongas.Open.IdentityServer.KeysRotation.XmlEncryption;
 using System;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test.XmlEncryption
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.XmlEncryption
 {
     public class CertificateXmlEncryptorTest
     {

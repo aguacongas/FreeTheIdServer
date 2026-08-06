@@ -19,7 +19,7 @@ using System.Xml;
 using System.Xml.Linq;
 
 // namespace change from original Microsoft.AspNetCore.DataProtection.XmlEncryption
-namespace Aguacongas.IdentityServer.KeysRotation.XmlEncryption
+namespace Aguacongas.Open.IdentityServer.KeysRotation.XmlEncryption
 {
     /// <summary>
     /// An <see cref="IXmlEncryptor"/> that can perform XML encryption by using an X.509 certificate.

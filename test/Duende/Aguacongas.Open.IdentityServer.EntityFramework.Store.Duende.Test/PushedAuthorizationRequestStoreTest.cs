@@ -1,6 +1,6 @@
-﻿using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+﻿using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +11,7 @@ using Xunit;
 using ISConfiguration = Open.IdentityServer.Configuration;
 using ISModels = Open.IdentityServer.Models;
 
-namespace Aguacongas.IdentityServer.EntityFramework.Store.Open.Test;
+namespace Aguacongas.Open.IdentityServer.EntityFramework.Store.Open.Test;
 
 public class PushedAuthorizationRequestStoreTest
 {

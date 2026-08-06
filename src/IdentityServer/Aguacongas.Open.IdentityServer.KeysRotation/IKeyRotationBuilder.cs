@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     /// <summary>
     /// Keys rotation builder interface

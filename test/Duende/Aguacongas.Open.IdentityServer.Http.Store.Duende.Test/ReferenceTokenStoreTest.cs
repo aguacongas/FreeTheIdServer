@@ -1,14 +1,14 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Open.IdentityServer.Stores.Serialization;
 using Moq;
 using System.Threading.Tasks;
 using Xunit;
 using ISModels = Open.IdentityServer.Models;
 
-namespace Aguacongas.IdentityServer.Http.Store.Test;
+namespace Aguacongas.Open.IdentityServer.Http.Store.Test;
 
 public class ReferenceTokenStoreTest
 {

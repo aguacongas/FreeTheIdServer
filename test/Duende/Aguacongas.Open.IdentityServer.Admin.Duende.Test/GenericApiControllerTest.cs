@@ -1,10 +1,10 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using System;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Test
+namespace Aguacongas.Open.IdentityServer.Admin.Test
 {
     public class GenericApiControllerTest
     {

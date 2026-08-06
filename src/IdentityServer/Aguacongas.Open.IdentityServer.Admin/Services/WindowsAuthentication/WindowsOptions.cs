@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.Negotiate;
 using System;
 
-namespace Aguacongas.IdentityServer.Admin.Services.WindowsAuthentication;
+namespace Aguacongas.Open.IdentityServer.Admin.Services.WindowsAuthentication;
 
 /// <summary>
 /// Options class provides information needed to control Windows Authentication handler behavior

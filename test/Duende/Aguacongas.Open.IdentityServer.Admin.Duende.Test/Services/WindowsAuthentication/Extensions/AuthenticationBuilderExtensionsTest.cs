@@ -1,8 +1,8 @@
-﻿using Aguacongas.IdentityServer.Admin.Services.WindowsAuthentication;
+﻿using Aguacongas.Open.IdentityServer.Admin.Services.WindowsAuthentication;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Open.Test.Services.WindowsAuthentication.Extensions
+namespace Aguacongas.Open.IdentityServer.Open.Test.Services.WindowsAuthentication.Extensions
 {
     public class AuthenticationBuilderExtensions
     {

@@ -11,7 +11,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.KeysRotation.AzureKeyVault
+namespace Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault
 {
     public class KeyVaultClientWrapper : IKeyVaultWrappingClient
     {

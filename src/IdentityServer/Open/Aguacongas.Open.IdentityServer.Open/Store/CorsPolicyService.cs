@@ -1,12 +1,12 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Open.IdentityServer.Services;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     /// <summary>
     /// <see cref="ICorsPolicyService"/> implementation
@@ -31,7 +31,7 @@ namespace Aguacongas.IdentityServer.Store
         /// </summary>
         /// <param name="origin">The origin.</param>
         /// <returns></returns>
-        public async Task<bool> IsOriginAllowedAsync(string origin, CancellationToken ct)
+        public async Task<bool> IsOriginAllowedAsync(string origin)
         {
             var corsUri = new Uri(origin);
             var sanetized = $"{corsUri.Scheme.ToUpperInvariant()}://{corsUri.Host.ToUpperInvariant()}:{corsUri.Port}";
@@ -39,7 +39,7 @@ namespace Aguacongas.IdentityServer.Store
             {
                 Filter = $"{nameof(ClientUri.SanetizedCorsUri)} eq '{sanetized}'",
                 Select = nameof(ClientUri.SanetizedCorsUri)
-            }, ct).ConfigureAwait(false);
+            }).ConfigureAwait(false);
             return response.Count > 0;
         }
     }

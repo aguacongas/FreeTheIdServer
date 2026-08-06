@@ -1,18 +1,18 @@
 // Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.FreeTheIdServer.UI;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Open.IdentityServer;
 using Open.IdentityServer.Events;
 using Open.IdentityServer.Extensions;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Services;
 using Open.IdentityServer.Validation;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using ISConfiguration = Open.IdentityServer.Configuration;
 
-namespace Aguacongas.IdentityServer.UI.Device;
+namespace Aguacongas.Open.IdentityServer.UI.Device;
 
 [Authorize]
 [SecurityHeaders]
@@ -75,7 +75,7 @@ public class DeviceController(
     {
         var result = new ProcessConsentResult();
 
-        var request = await interaction.GetAuthorizationContextAsync(model.UserCode!, HttpContext.RequestAborted);
+        var request = await interaction.GetAuthorizationContextAsync(model.UserCode!);
         if (request == null) return result;
 
         ConsentResponse? grantedConsent = null;
@@ -83,10 +83,10 @@ public class DeviceController(
         // user clicked 'no' - send back the standard 'access_denied' response
         if (model.Button == "no")
         {
-            grantedConsent = new ConsentResponse { Error = InteractionError.AccessDenied };
+            grantedConsent = new ConsentResponse { Error = AuthorizationError.AccessDenied };
 
             // emit event
-            await eventService.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(), request.Client.ClientId, request.ValidatedResources.RawScopeValues), HttpContext.RequestAborted);
+            await eventService.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(), request.Client.ClientId, request.ValidatedResources.RawScopeValues));
         }
         // user clicked 'yes' - validate the data
         else if (model.Button == "yes")
@@ -112,8 +112,7 @@ public class DeviceController(
                         request.Client.ClientId,
                         request.ValidatedResources.RawScopeValues,
                         grantedConsent.ScopesValuesConsented,
-                        grantedConsent.RememberConsent),
-                    HttpContext.RequestAborted);
+                        grantedConsent.RememberConsent));
             }
             else
             {
@@ -128,7 +127,7 @@ public class DeviceController(
         if (grantedConsent != null)
         {
             // communicate outcome of consent back to identityserver
-            await interaction.HandleRequestAsync(model.UserCode!, grantedConsent, HttpContext.RequestAborted);
+            await interaction.HandleRequestAsync(model.UserCode!, grantedConsent);
 
             // indicate that's it ok to redirect back to authorization endpoint
             result.RedirectUri = model.ReturnUrl;
@@ -145,7 +144,7 @@ public class DeviceController(
 
     private async Task<DeviceAuthorizationViewModel?> BuildViewModelAsync(string userCode, DeviceAuthorizationInputModel? model = null)
     {
-        var request = await interaction.GetAuthorizationContextAsync(userCode, HttpContext.RequestAborted);
+        var request = await interaction.GetAuthorizationContextAsync(userCode);
         if (request != null)
         {
             return CreateConsentViewModel(userCode, model, request);

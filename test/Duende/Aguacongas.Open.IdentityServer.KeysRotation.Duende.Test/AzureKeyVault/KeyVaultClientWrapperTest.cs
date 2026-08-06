@@ -4,14 +4,14 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Aguacongas.IdentityServer.KeysRotation.AzureKeyVault;
+using Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault;
 using Azure.Core;
 using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Keys.Cryptography;
 using Moq;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Open.Test.AzureKeyVault
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Open.Test.AzureKeyVault
 {
     public class KeyVaultClientWrapperTest
     {

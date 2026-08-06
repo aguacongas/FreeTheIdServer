@@ -1,9 +1,9 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.ServiceModel.Security;
 
-namespace Aguacongas.IdentityServer.Saml2P.Open.Test.Extensions;
+namespace Aguacongas.Open.IdentityServer.Saml2P.Open.Test.Extensions;
 public class ServiceCollectionExtensionsTest
 {
     [Fact]

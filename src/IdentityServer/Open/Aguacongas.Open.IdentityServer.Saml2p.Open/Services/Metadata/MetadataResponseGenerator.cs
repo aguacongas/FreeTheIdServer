@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
 using ITfoxtec.Identity.Saml2;
 using ITfoxtec.Identity.Saml2.MvcCore;
 using ITfoxtec.Identity.Saml2.Schemas;
@@ -6,7 +6,7 @@ using ITfoxtec.Identity.Saml2.Schemas.Metadata;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Metadata;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Metadata;
 
 /// <summary>
 /// Metadata response generator

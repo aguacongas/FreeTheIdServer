@@ -1,7 +1,7 @@
 // Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.KeysRotation.Open.Test;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.KeysRotation.Open.Test;
 using Open.IdentityServer;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
@@ -22,7 +22,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test;
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test;
 
 public class KeyRingProviderTest
 {

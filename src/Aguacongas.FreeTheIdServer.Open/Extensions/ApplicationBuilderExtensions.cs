@@ -1,9 +1,9 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Admin.Services;
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer;
 using Aguacongas.FreeTheIdServer.Admin.Hubs;
 using Aguacongas.FreeTheIdServer.Authentication;

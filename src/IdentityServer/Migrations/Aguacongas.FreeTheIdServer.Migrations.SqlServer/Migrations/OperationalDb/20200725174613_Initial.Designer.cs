@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using System;
-using Aguacongas.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -22,7 +22,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations.OperationalDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.AuthorizationCode", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.AuthorizationCode", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -55,7 +55,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations.OperationalDb
                     b.ToTable("AuthorizationCodes");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.DeviceCode", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.DeviceCode", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -93,7 +93,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations.OperationalDb
                     b.ToTable("DeviceCodes");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.OneTimeToken", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.OneTimeToken", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -126,7 +126,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations.OperationalDb
                     b.ToTable("OneTimeTokens");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ReferenceToken", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ReferenceToken", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -159,7 +159,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations.OperationalDb
                     b.ToTable("ReferenceTokens");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.RefreshToken", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.RefreshToken", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -192,7 +192,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations.OperationalDb
                     b.ToTable("RefreshTokens");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserConsent", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserConsent", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");

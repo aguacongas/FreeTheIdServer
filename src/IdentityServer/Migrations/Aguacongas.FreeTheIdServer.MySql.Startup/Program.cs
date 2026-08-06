@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
 using Aguacongas.FreeTheIdServer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

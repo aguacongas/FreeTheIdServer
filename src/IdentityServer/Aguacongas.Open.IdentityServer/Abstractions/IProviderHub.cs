@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Abstractions
+namespace Aguacongas.Open.IdentityServer.Abstractions
 {
     public interface IProviderHub
     {

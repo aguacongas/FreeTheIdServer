@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 // Updated for Azure.Security.KeyVault.Keys SDK
 
-using Aguacongas.IdentityServer.KeysRotation.AzureKeyVault;
+using Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault;
 using Azure.Security.KeyVault.Keys.Cryptography;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test.AzureKeyVault
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
 {
     public class AzureKeyVaultXmlEncryptorTest
     {
@@ -117,7 +117,7 @@ namespace Aguacongas.IdentityServer.KeysRotation.Test.AzureKeyVault
                     It.IsAny<KeyWrapAlgorithm>(),
                     It.IsAny<byte[]>(),
                     It.IsAny<CancellationToken>()))
-                .Callback<string, KeyWrapAlgorithm, byte[], CancellationToken>((keyId, algorithm, data, ct) =>
+                .Callback<string, KeyWrapAlgorithm, byte[], CancellationToken>((keyId, algorithm, data) =>
                 {
                     capturedAlgorithm = algorithm;
                 })

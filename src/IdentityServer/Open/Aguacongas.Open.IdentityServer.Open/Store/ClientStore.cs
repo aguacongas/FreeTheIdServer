@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     public class ClientStore : IClientStore
     {
@@ -18,12 +18,12 @@ namespace Aguacongas.IdentityServer.Store
         {
             _store = store ?? throw new ArgumentNullException(nameof(store));
         }
-        public async Task<Client> FindClientByIdAsync(string clientId, CancellationToken ct)
+        public async Task<Client> FindClientByIdAsync(string clientId)
         {
             var entity = await _store.GetAsync(clientId, new GetRequest
             {
                 Expand = $"{nameof(Entity.Client.IdentityProviderRestrictions)},{nameof(Entity.Client.ClientClaims)},{nameof(Entity.Client.ClientSecrets)},{nameof(Entity.Client.AllowedGrantTypes)},{nameof(Entity.Client.RedirectUris)},{nameof(Entity.Client.AllowedScopes)},{nameof(Entity.Client.Properties)},{nameof(Entity.Client.Resources)},{nameof(Entity.Client.AllowedIdentityTokenSigningAlgorithms)}"
-            }, ct).ConfigureAwait(false);
+            }).ConfigureAwait(false);
             return entity.ToClient();
         }
 
@@ -32,7 +32,7 @@ namespace Aguacongas.IdentityServer.Store
             var result = await _store.GetAsync(new PageRequest
             {
                 Expand = $"{nameof(Entity.Client.IdentityProviderRestrictions)},{nameof(Entity.Client.ClientClaims)},{nameof(Entity.Client.ClientSecrets)},{nameof(Entity.Client.AllowedGrantTypes)},{nameof(Entity.Client.RedirectUris)},{nameof(Entity.Client.AllowedScopes)},{nameof(Entity.Client.Properties)},{nameof(Entity.Client.Resources)},{nameof(Entity.Client.AllowedIdentityTokenSigningAlgorithms)}"
-            }, ct).ConfigureAwait(false);
+            }).ConfigureAwait(false);
 
             foreach (var item in result.Items)
             {

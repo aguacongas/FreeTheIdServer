@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Abstractions;
 using Open.IdentityServer.Models;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ public class WebServiceClaimsProvider(HttpClient httpClient) : IProvideClaims
 {
     private readonly HttpClient _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
-    public async Task<IEnumerable<Claim>> ProvideClaims(ClaimsPrincipal subject, IConnectedApplication application, string caller, Resource resource)
+    public async Task<IEnumerable<Claim>> ProvideClaims(ClaimsPrincipal subject, Client application, string caller, Resource resource)
     {
         var response = await _httpClient.GetAsync($"/claims?subject={subject.Identity.Name}&client={application.DisplayName}").ConfigureAwait(false);
         response.EnsureSuccessStatusCode();

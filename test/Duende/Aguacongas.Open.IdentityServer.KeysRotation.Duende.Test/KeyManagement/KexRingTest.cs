@@ -6,7 +6,7 @@ using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test.KeyManagement;
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.KeyManagement;
 
 public class KexRingTest
 {

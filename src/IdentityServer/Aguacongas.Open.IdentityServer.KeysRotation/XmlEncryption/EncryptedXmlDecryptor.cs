@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.DataProtection.XmlEncryption;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Aguacongas.IdentityServer.KeysRotation.XmlEncryption
+namespace Aguacongas.Open.IdentityServer.KeysRotation.XmlEncryption
 {
     // namespace change from original Microsoft.AspNetCore.DataProtection.XmlEncryption
     public sealed class EncryptedXmlDecryptor : IInternalEncryptedXmlDecryptor, IXmlDecryptor

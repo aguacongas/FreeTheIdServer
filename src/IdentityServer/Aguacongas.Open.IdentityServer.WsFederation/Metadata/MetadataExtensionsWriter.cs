@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace Aguacongas.IdentityServer.WsFederation
+namespace Aguacongas.Open.IdentityServer.WsFederation
 {
     /// <summary>
     /// Write supported claim list

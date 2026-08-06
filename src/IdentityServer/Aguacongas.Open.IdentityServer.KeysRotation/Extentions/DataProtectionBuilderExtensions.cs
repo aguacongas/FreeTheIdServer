@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation.RavenDb;
+using Aguacongas.Open.IdentityServer.KeysRotation.RavenDb;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.Extensions.Logging;
@@ -10,7 +10,7 @@ using MongoDB.Driver;
 using Raven.Client.Documents;
 using Raven.Client.Documents.Session;
 using System;
-using mongoDb = Aguacongas.IdentityServer.KeysRotation.MongoDb;
+using mongoDb = Aguacongas.Open.IdentityServer.KeysRotation.MongoDb;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

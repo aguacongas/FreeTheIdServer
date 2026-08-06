@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Open.Validators;
+﻿using Aguacongas.Open.IdentityServer.Open.Validators;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Validation;
 using IdentityModel;
@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Open.Test.Validators;
+namespace Aguacongas.Open.IdentityServer.Open.Test.Validators;
 
 public class TokenExchangeGrantValidatorTest
 {

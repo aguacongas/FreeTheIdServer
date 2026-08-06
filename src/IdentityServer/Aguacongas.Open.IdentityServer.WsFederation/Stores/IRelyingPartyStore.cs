@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.WsFederation.Stores
+namespace Aguacongas.Open.IdentityServer.WsFederation.Stores
 {
     /// <summary>
     /// 

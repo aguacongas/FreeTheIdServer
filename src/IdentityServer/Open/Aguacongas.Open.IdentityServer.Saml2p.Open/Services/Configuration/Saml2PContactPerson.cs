@@ -1,6 +1,6 @@
 ﻿using ITfoxtec.Identity.Saml2.Schemas.Metadata;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
 
 /// <summary>
 /// Contact person

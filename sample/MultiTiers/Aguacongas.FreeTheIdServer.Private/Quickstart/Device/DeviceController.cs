@@ -78,7 +78,7 @@ namespace IdentityServerHost.Quickstart.UI
         {
             var result = new ProcessConsentResult();
 
-            var request = await _interaction.GetAuthorizationContextAsync(model.UserCode, HttpContext.RequestAborted);
+            var request = await _interaction.GetAuthorizationContextAsync(model.UserCode);
             if (request == null) return result;
 
             ConsentResponse grantedConsent = null;
@@ -90,7 +90,7 @@ namespace IdentityServerHost.Quickstart.UI
 
                 // emit event
                 await _events.RaiseAsync(new ConsentDeniedEvent(User.GetSubjectId(), request.Client.ClientId, request.ValidatedResources.RawScopeValues)
-                    , HttpContext.RequestAborted);
+                    );
             }
             // user clicked 'yes' - validate the data
             else if (model.Button == "yes")
@@ -112,7 +112,7 @@ namespace IdentityServerHost.Quickstart.UI
                     };
 
                     // emit event
-                    await _events.RaiseAsync(new ConsentGrantedEvent(User.GetSubjectId(), request.Client.ClientId, request.ValidatedResources.RawScopeValues, grantedConsent.ScopesValuesConsented, grantedConsent.RememberConsent), HttpContext.RequestAborted);
+                    await _events.RaiseAsync(new ConsentGrantedEvent(User.GetSubjectId(), request.Client.ClientId, request.ValidatedResources.RawScopeValues, grantedConsent.ScopesValuesConsented, grantedConsent.RememberConsent));
                 }
                 else
                 {
@@ -127,7 +127,7 @@ namespace IdentityServerHost.Quickstart.UI
             if (grantedConsent != null)
             {
                 // communicate outcome of consent back to identityserver
-                await _interaction.HandleRequestAsync(model.UserCode, grantedConsent, HttpContext.RequestAborted);
+                await _interaction.HandleRequestAsync(model.UserCode, grantedConsent);
 
                 // indicate that's it ok to redirect back to authorization endpoint
                 result.RedirectUri = model.ReturnUrl;
@@ -144,7 +144,7 @@ namespace IdentityServerHost.Quickstart.UI
 
         private async Task<DeviceAuthorizationViewModel> BuildViewModelAsync(string userCode, DeviceAuthorizationInputModel model = null)
         {
-            var request = await _interaction.GetAuthorizationContextAsync(userCode, HttpContext.RequestAborted);
+            var request = await _interaction.GetAuthorizationContextAsync(userCode);
             if (request != null)
             {
                 return CreateConsentViewModel(userCode, model, request);

@@ -3,7 +3,7 @@
 using Aguacongas.FreeTheIdServer.BlazorApp.Services;
 using Microsoft.AspNetCore.Components;
 using System.Linq;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
 namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client.Components
 {

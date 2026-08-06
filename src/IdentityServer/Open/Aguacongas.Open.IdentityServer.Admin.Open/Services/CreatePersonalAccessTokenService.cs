@@ -1,19 +1,18 @@
-﻿using Aguacongas.IdentityServer.Abstractions;
+﻿using Aguacongas.Open.IdentityServer.Abstractions;
+using Microsoft.AspNetCore.Http;
 using Open.IdentityServer;
+using Open.IdentityServer.Extensions;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Services;
 using Open.IdentityServer.Stores;
-using IdentityModel;
-using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Services;
 
 /// <summary>
 /// Creates personal access tokens
@@ -21,7 +20,7 @@ namespace Aguacongas.IdentityServer.Admin.Services;
 /// <remarks>
 /// Initializes a new instance of the <see cref="CreatePersonalAccessTokenService"/> class.
 /// </remarks>
-/// <param name="issuerNameService">The <see cref="IIssuerNameService"/></param>
+/// <param name="contextAccessor">The context accessor</param>
 /// <param name="tokenService">The token service.</param>
 /// <param name="clientStore">The client store.</param>
 /// <param name="resourceStore">The resource store.</param>
@@ -31,9 +30,9 @@ namespace Aguacongas.IdentityServer.Admin.Services;
 /// clientStore
 /// </exception>
 /// <exception cref="ArgumentNullException"></exception>
-public class CreatePersonalAccessTokenService(IIssuerNameService issuerNameService, ITokenService tokenService, IClientStore clientStore, IResourceStore resourceStore) : ICreatePersonalAccessToken
+public class CreatePersonalAccessTokenService(IHttpContextAccessor contextAccessor, ITokenService tokenService, IClientStore clientStore, IResourceStore resourceStore) : ICreatePersonalAccessToken
 {
-    private readonly IIssuerNameService _issuerNameService = issuerNameService ?? throw new ArgumentNullException(nameof(issuerNameService));
+    private readonly IHttpContextAccessor _contextAccessor = contextAccessor ?? throw new ArgumentNullException(nameof(contextAccessor));
     private readonly ITokenService _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
     private readonly IClientStore _clientStore = clientStore ?? throw new ArgumentNullException(nameof(clientStore));
     private readonly IResourceStore _resourceStore = resourceStore ?? throw new ArgumentNullException(nameof(resourceStore));
@@ -68,9 +67,9 @@ public class CreatePersonalAccessTokenService(IIssuerNameService issuerNameServi
         scopes ??= [];
         claimTypes ??= [];
 
-        claimTypes = claimTypes.Where(c => c != JwtClaimTypes.Name &&
-            c != JwtClaimTypes.ClientId &&
-            c != JwtClaimTypes.Subject);
+        claimTypes = claimTypes.Where(c => c != IdentityModel.JwtClaimTypes.Name &&
+            c != IdentityModel.JwtClaimTypes.ClientId &&
+            c != IdentityModel.JwtClaimTypes.Subject);
 
         var user = new ClaimsPrincipal(new ClaimsIdentity(context.User.Claims.Select(c =>
         {
@@ -79,13 +78,13 @@ public class CreatePersonalAccessTokenService(IIssuerNameService issuerNameServi
                 return new Claim(newType, c.Value);
             }
             return c;
-        }), "Bearer", JwtClaimTypes.Name, JwtClaimTypes.Role));
+        }), "Bearer", IdentityModel.JwtClaimTypes.Name, IdentityModel.JwtClaimTypes.Role));
 
-        var clientId = user.Claims.First(c => c.Type == JwtClaimTypes.ClientId).Value;
-        await ValidateRequestAsync(apis, scopes, user, clientId, context.RequestAborted).ConfigureAwait(false);
+        var clientId = user.Claims.First(c => c.Type == IdentityModel.JwtClaimTypes.ClientId).Value;
+        await ValidateRequestAsync(apis, scopes, user, clientId).ConfigureAwait(false);
 
-        var issuer = await _issuerNameService.GetCurrentAsync(context.RequestAborted).ConfigureAwait(false);
-        var sub = user.FindFirstValue(JwtClaimTypes.Subject) ?? user.FindFirstValue("nameid");
+        var issuer = _contextAccessor.HttpContext.GetIdentityServerIssuerUri();
+        var sub = user.FindFirstValue(IdentityModel.JwtClaimTypes.Subject) ?? user.FindFirstValue("nameid");
         var userName = user.Identity.Name;
 
         return await _tokenService.CreateSecurityTokenAsync(new Token(IdentityServerConstants.TokenTypes.AccessToken)
@@ -96,16 +95,16 @@ public class CreatePersonalAccessTokenService(IIssuerNameService issuerNameServi
             Claims = user.Claims.Where(c => claimTypes.Any(t => c.Type == t))
                 .Concat(new[]
                 {
-                    new Claim(JwtClaimTypes.Name, userName),
-                    new Claim(JwtClaimTypes.ClientId, clientId),
-                    new Claim(JwtClaimTypes.Subject, sub)
+                    new Claim(IdentityModel.JwtClaimTypes.Name, userName),
+                    new Claim(IdentityModel.JwtClaimTypes.ClientId, clientId),
+                    new Claim(IdentityModel.JwtClaimTypes.Subject, sub)
                 })
                 .Concat(scopes.Select(s => new Claim("scope", s)))
                 .ToArray(),
             CreationTime = DateTime.UtcNow,
             Lifetime = Convert.ToInt32(TimeSpan.FromDays(lifetimeDays).TotalSeconds),
             Issuer = issuer
-        }, context.RequestAborted);
+        });
     }
 
     private static void CheckParams(IEnumerable<string> apis)
@@ -113,10 +112,10 @@ public class CreatePersonalAccessTokenService(IIssuerNameService issuerNameServi
         ArgumentNullException.ThrowIfNull(apis);
     }
 
-    private async Task ValidateRequestAsync(IEnumerable<string> apis, IEnumerable<string> scopes, ClaimsPrincipal user, string clientId, CancellationToken cancellationToken)
+    private async Task ValidateRequestAsync(IEnumerable<string> apis, IEnumerable<string> scopes, ClaimsPrincipal user, string clientId)
     {
-        var client = await _clientStore.FindEnabledClientByIdAsync(user.Claims.First(c => c.Type == "client_id").Value, cancellationToken).ConfigureAwait(false) ?? throw new InvalidOperationException($"Client not found for client id '{clientId}'.");
-        var apiList = await _resourceStore.FindApiScopesByNameAsync(apis, cancellationToken).ConfigureAwait(false);
+        var client = await _clientStore.FindEnabledClientByIdAsync(user.Claims.First(c => c.Type == "client_id").Value).ConfigureAwait(false) ?? throw new InvalidOperationException($"Client not found for client id '{clientId}'.");
+        var apiList = await _resourceStore.FindApiScopesByNameAsync(apis).ConfigureAwait(false);
         var apiNotFound = apis.Where(a => !apiList.Any(s => s.Name == a));
         if (apiNotFound.Any())
         {

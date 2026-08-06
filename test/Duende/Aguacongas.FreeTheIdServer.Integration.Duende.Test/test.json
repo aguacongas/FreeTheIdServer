@@ -1,6 +1,6 @@
 {
   "_metadata": {
-    "typeName": "Aguacongas.IdentityServer.Store.Entity.ApiScope, Aguacongas.IdentityServer.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+    "typeName": "Aguacongas.Open.IdentityServer.Store.Entity.ApiScope, Aguacongas.Open.IdentityServer.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
   },
   "items": [
     {

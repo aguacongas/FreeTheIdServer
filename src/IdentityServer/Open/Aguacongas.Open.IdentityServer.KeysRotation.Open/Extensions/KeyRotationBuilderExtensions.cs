@@ -2,11 +2,11 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 // Migration to Azure.Security.KeyVault SDK
 
-using Aguacongas.IdentityServer.KeysRotation;
-using Aguacongas.IdentityServer.KeysRotation.AzureKeyVault;
-using Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore;
-using Aguacongas.IdentityServer.KeysRotation.RavenDb;
-using Aguacongas.IdentityServer.KeysRotation.XmlEncryption;
+using Aguacongas.Open.IdentityServer.KeysRotation;
+using Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault;
+using Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore;
+using Aguacongas.Open.IdentityServer.KeysRotation.RavenDb;
+using Aguacongas.Open.IdentityServer.KeysRotation.XmlEncryption;
 using Azure.Core;
 using Azure.Identity;
 using Azure.Storage;
@@ -26,7 +26,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using static Open.IdentityServer.IdentityServerConstants;
-using mongoDb = Aguacongas.IdentityServer.KeysRotation.MongoDb;
+using mongoDb = Aguacongas.Open.IdentityServer.KeysRotation.MongoDb;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -255,7 +255,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 var loggerFactory = services.GetService<ILoggerFactory>() ?? NullLoggerFactory.Instance;
                 return new ConfigureOptions<KeyRotationOptions>(options =>
                 {
-                    options.XmlRepository = new RavenDbXmlRepository<Aguacongas.IdentityServer.KeysRotation.RavenDb.KeyRotationKey>(services, loggerFactory);
+                    options.XmlRepository = new RavenDbXmlRepository<Aguacongas.Open.IdentityServer.KeysRotation.RavenDb.KeyRotationKey>(services, loggerFactory);
                 });
             })
                 .AddTransient(p => new DocumentSessionWrapper(getSession(p)));

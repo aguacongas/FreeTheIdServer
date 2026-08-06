@@ -4,7 +4,7 @@ using Open.IdentityServer.Models;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     public interface ISigningAlgortithmEncryptor : IAuthenticatedEncryptor
     {

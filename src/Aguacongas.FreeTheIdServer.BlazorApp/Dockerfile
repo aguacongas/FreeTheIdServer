@@ -27,8 +27,8 @@ COPY ["src/BlazorApp/Aguacongas.FreeTheIdServer.BlazorApp.Pages.Role/Aguacongas.
 COPY ["src/BlazorApp/Aguacongas.FreeTheIdServer.BlazorApp.Pages.Roles/Aguacongas.FreeTheIdServer.BlazorApp.Pages.Roles.csproj", "src/BlazorApp/Aguacongas.FreeTheIdServer.BlazorApp.Pages.Roles/"]
 COPY ["src/BlazorApp/Aguacongas.FreeTheIdServer.BlazorApp.Pages.User/Aguacongas.FreeTheIdServer.BlazorApp.Pages.User.csproj", "src/BlazorApp/Aguacongas.FreeTheIdServer.BlazorApp.Pages.User/"]
 COPY ["src/BlazorApp/Aguacongas.FreeTheIdServer.BlazorApp.Pages.Users/Aguacongas.FreeTheIdServer.BlazorApp.Pages.Users.csproj", "src/BlazorApp/Aguacongas.FreeTheIdServer.BlazorApp.Pages.Users/"]
-COPY ["src/IdentityServer/Aguacongas.IdentityServer.Admin.Http.Store/Aguacongas.IdentityServer.Admin.Http.Store.csproj", "src/IdentityServer/Aguacongas.IdentityServer.Admin.Http.Store/"]
-COPY ["src/IdentityServer/Aguacongas.IdentityServer.Store/Aguacongas.IdentityServer.Store.csproj", "src/IdentityServer/Aguacongas.IdentityServer.Store/"]
+COPY ["src/IdentityServer/Aguacongas.Open.IdentityServer.Admin.Http.Store/Aguacongas.Open.IdentityServer.Admin.Http.Store.csproj", "src/IdentityServer/Aguacongas.Open.IdentityServer.Admin.Http.Store/"]
+COPY ["src/IdentityServer/Aguacongas.Open.IdentityServer.Store/Aguacongas.Open.IdentityServer.Store.csproj", "src/IdentityServer/Aguacongas.Open.IdentityServer.Store/"]
 COPY ["src/Aguacongas.FreeTheIdServer.BlazorApp/nginx.conf", "src/Aguacongas.FreeTheIdServer.BlazorApp/"]
 RUN apt-get update -y && apt-get install -y python3 gcc && apt-get clean
 RUN dotnet workload install wasm-tools

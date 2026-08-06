@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Abstractions;
+﻿using Aguacongas.Open.IdentityServer.Abstractions;
 using System.Threading;
 using System.Threading.Tasks;
 

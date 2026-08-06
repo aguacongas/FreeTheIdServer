@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
@@ -36,40 +36,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference
-			Include="..\Aguacongas.FreeTheIdServer.BlazorApp\Aguacongas.FreeTheIdServer.BlazorApp.csproj" />
+		<ProjectReference Include="..\Aguacongas.FreeTheIdServer.BlazorApp\Aguacongas.FreeTheIdServer.BlazorApp.csproj" />
 		<ProjectReference Include="..\Aguacongas.FreeTheIdServer\Aguacongas.FreeTheIdServer.csproj" />
-		<ProjectReference
-			Include="..\IdentityServer\Aguacongas.Open.IdentityServer.Admin\Aguacongas.Open.IdentityServer.Admin.csproj" />
-		<ProjectReference
-			Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.Admin.Open\Aguacongas.Open.IdentityServer.Admin.Open.csproj" />
-		<ProjectReference
-			Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.EntityFramework.Store.Open\Aguacongas.Open.IdentityServer.EntityFramework.Store.Open.csproj" />
-		<ProjectReference
-			Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.KeysRotation.Open\Aguacongas.Open.IdentityServer.KeysRotation.Open.csproj" />
-		<ProjectReference
-			Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.MongoDb.Store.Open\Aguacongas.Open.IdentityServer.MongoDb.Store.Open.csproj" />
-		<ProjectReference
-			Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.RavenDb.Store.Open\Aguacongas.Open.IdentityServer.RavenDb.Store.Open.csproj" />
-		<ProjectReference
-			Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.Saml2p.Open\Aguacongas.Open.IdentityServer.Saml2p.Open.csproj" />
-		<ProjectReference
-			Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.WsFederation.Open\Aguacongas.Open.IdentityServer.WsFederation.Open.csproj" />
-		<ProjectReference
-			Include="..\Identity\Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher\Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher.csproj" />
-		<ProjectReference
-			Include="..\Identity\Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher\Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher.csproj" />
-		<ProjectReference
-			Include="..\Identity\Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher\Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher.csproj" />
-		<ProjectReference
-			Include="..\Identity\Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher\Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher.csproj" />
+		<ProjectReference Include="..\IdentityServer\Aguacongas.Open.IdentityServer.Admin\Aguacongas.Open.IdentityServer.Admin.csproj" />
+		<ProjectReference Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.Admin.Open\Aguacongas.Open.IdentityServer.Admin.Open.csproj" />
+		<ProjectReference Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.EntityFramework.Store.Open\Aguacongas.Open.IdentityServer.EntityFramework.Store.Open.csproj" />
+		<ProjectReference Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.KeysRotation.Open\Aguacongas.Open.IdentityServer.KeysRotation.Open.csproj" />
+		<ProjectReference Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.MongoDb.Store.Open\Aguacongas.Open.IdentityServer.MongoDb.Store.Open.csproj" />
+		<ProjectReference Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.RavenDb.Store.Open\Aguacongas.Open.IdentityServer.RavenDb.Store.Open.csproj" />
+		<ProjectReference Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.Saml2p.Open\Aguacongas.Open.IdentityServer.Saml2p.Open.csproj" />
+		<ProjectReference Include="..\IdentityServer\Open\Aguacongas.Open.IdentityServer.WsFederation.Open\Aguacongas.Open.IdentityServer.WsFederation.Open.csproj" />
+		<ProjectReference Include="..\Identity\Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher\Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher.csproj" />
+		<ProjectReference Include="..\Identity\Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher\Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher.csproj" />
+		<ProjectReference Include="..\Identity\Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher\Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher.csproj" />
+		<ProjectReference Include="..\Identity\Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher\Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Open.IdentityServer.ConformanceReport" Version="2.0.0" />
+		<PackageReference Include="Duende.AspNetCore.Authentication.OAuth2Introspection" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.10" />
-		<PackageReference Include="Open.IdentityServer.Configuration" Version="2.0.0" />
-		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets"
-			Version="1.23.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
 	</ItemGroup>
 </Project>

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace Aguacongas.IdentityServer.KeysRotation.RavenDb
+namespace Aguacongas.Open.IdentityServer.KeysRotation.RavenDb
 {
     public class RavenDbXmlRepository<TKey> : IXmlRepository
         where TKey: IXmlKey, new()

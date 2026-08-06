@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Open.IdentityServer.Stores.Serialization;
 using IdentityModel;
 using Moq;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Xunit;
 using IsModels = Open.IdentityServer.Models;
 
-namespace Aguacongas.IdentityServer.Store.Test;
+namespace Aguacongas.Open.IdentityServer.Store.Test;
 
 public class BackChannelAuthenticationRequestStoreTest
 {

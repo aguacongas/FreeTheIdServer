@@ -1,15 +1,15 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.KeysRotation;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Aguacongas.IdentityServer.Admin.Extensions
+namespace Aguacongas.Open.IdentityServer.Admin.Extensions
 {
     /// <summary>
     /// <see cref="IKey"/> extensions

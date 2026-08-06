@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
 using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection;

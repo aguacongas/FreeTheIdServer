@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Test.Configuration
+namespace Aguacongas.Open.IdentityServer.Admin.Test.Configuration
 {
     public class ConfigureSigningCredentialsTest
     {

@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     /// <summary>
     /// Options that control how an <see cref="Microsoft.AspNetCore.DataProtection.KeyManagement.IKeyManager"/> should behave.

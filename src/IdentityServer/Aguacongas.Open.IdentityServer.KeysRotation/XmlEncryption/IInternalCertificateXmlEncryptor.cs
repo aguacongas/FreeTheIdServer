@@ -10,7 +10,7 @@ using System.Security.Cryptography.Xml;
 using System.Xml;
 
 // namespace change from proginal Microsoft.AspNetCore.DataProtection.XmlEncryption
-namespace Aguacongas.IdentityServer.KeysRotation.XmlEncryption
+namespace Aguacongas.Open.IdentityServer.KeysRotation.XmlEncryption
 {
     /// <summary>
     /// Internal implementation details of <see cref="CertificateXmlEncryptor"/> for unit testing.

@@ -1,4 +1,4 @@
-namespace Aguacongas.IdentityServer.Saml2p.Open.Test;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Test;
 
 public class UnitTest1
 {

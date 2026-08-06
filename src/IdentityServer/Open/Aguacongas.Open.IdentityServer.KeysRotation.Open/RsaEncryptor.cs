@@ -5,7 +5,7 @@ using static Open.IdentityServer.IdentityServerConstants;
 using Microsoft.IdentityModel.Tokens;
 using System;
 
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     internal class RsaEncryptor: ISigningAlgortithmEncryptor
     {

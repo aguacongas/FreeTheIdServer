@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store
 {
     public class ApiApiScopeStore : AdminStore<Entity.ApiApiScope>
     {

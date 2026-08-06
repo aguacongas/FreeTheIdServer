@@ -12,7 +12,7 @@ using System.Xml.Linq;
 using Azure.Security.KeyVault.Keys.Cryptography;
 using Microsoft.AspNetCore.DataProtection.XmlEncryption;
 
-namespace Aguacongas.IdentityServer.KeysRotation.AzureKeyVault
+namespace Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault
 {
     internal class AzureKeyVaultXmlEncryptor : IXmlEncryptor
     {

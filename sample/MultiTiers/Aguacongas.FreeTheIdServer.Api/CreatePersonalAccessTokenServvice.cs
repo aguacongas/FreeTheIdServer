@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Abstractions;
+﻿using Aguacongas.Open.IdentityServer.Abstractions;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;

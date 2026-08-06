@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Store.Entity;
+﻿using Aguacongas.Open.IdentityServer.Store.Entity;
 using Aguacongas.FreeTheIdServer.BlazorApp.Pages;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;

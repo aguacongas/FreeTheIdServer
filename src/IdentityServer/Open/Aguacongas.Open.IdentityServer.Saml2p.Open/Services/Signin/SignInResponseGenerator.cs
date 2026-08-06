@@ -1,11 +1,7 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services.Artifact;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Validation;
-using Open.IdentityServer.Extensions;
-using Open.IdentityServer.Models;
-using Open.IdentityServer.Services;
-using Open.IdentityServer.Stores;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Artifact;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Validation;
 using IdentityModel;
 using ITfoxtec.Identity.Saml2;
 using ITfoxtec.Identity.Saml2.MvcCore;
@@ -14,11 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens.Saml2;
+using Open.IdentityServer.Extensions;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Services;
+using Open.IdentityServer.Stores;
 using System.Security.Claims;
 using ClaimProperties = Microsoft.IdentityModel.Tokens.Saml.ClaimProperties;
 using ISValidation = Open.IdentityServer.Validation;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Signin;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Signin;
 
 /// <summary>
 /// Signing  response generator
@@ -88,7 +88,7 @@ public class SignInResponseGenerator : ISignInResponseGenerator
 
         if (result.Client?.ClientId is not null)
         {
-            await _userSession.AddClientIdAsync(result.Client.ClientId, default).ConfigureAwait(false);
+            await _userSession.AddClientIdAsync(result.Client.ClientId).ConfigureAwait(false);
         }
 
         return soapEnvelope.ToActionResult();
@@ -149,7 +149,7 @@ public class SignInResponseGenerator : ISignInResponseGenerator
             SessionIndex = samlLogoutRequest?.SessionIndex
         };
 
-        await _userSession.RemoveSessionIdCookieAsync(default).ConfigureAwait(false);
+        await _userSession.RemoveSessionIdCookieAsync().ConfigureAwait(false);
 
         return responseBinding.Bind(saml2LogoutResponse).ToActionResult();
     }
@@ -186,7 +186,7 @@ public class SignInResponseGenerator : ISignInResponseGenerator
 
         if (status == Saml2StatusCodes.Success && clientId is not null)
         {
-            await _userSession.AddClientIdAsync(clientId, default).ConfigureAwait(false);
+            await _userSession.AddClientIdAsync(clientId).ConfigureAwait(false);
         }
 
         return responseBinding.Bind(saml2AuthnResponse).ToActionResult();
@@ -238,7 +238,7 @@ public class SignInResponseGenerator : ISignInResponseGenerator
             Id = saml2ArtifactResolve.Artifact,
             ClientId = clientId,
             CreatedAt = DateTime.UtcNow,
-            SessionId = await _userSession.GetSessionIdAsync(default).ConfigureAwait(false),
+            SessionId = await _userSession.GetSessionIdAsync().ConfigureAwait(false),
             UserId = userId,
             Data = xml.OuterXml,
             Expiration = DateTime.UtcNow.AddMinutes(settings.SubjectConfirmationLifetime),
@@ -294,7 +294,7 @@ public class SignInResponseGenerator : ISignInResponseGenerator
 
         var requestedClaimTypes = new List<string>();
 
-        var resources = await _resources.FindEnabledIdentityResourcesByScopeAsync(result.Client?.AllowedScopes, default).ConfigureAwait(false);
+        var resources = await _resources.FindEnabledIdentityResourcesByScopeAsync(result.Client?.AllowedScopes).ConfigureAwait(false);
         foreach (var resource in resources)
         {
             foreach (var claim in resource.UserClaims)
@@ -309,7 +309,7 @@ public class SignInResponseGenerator : ISignInResponseGenerator
         {
             Subject = user,
             RequestedClaimTypes = requestedClaimTypes,
-            Application = client,
+            Client = client,
             Caller = "SAML 2.0",
             RequestedResources = new ISValidation.ResourceValidationResult
             {
@@ -321,7 +321,7 @@ public class SignInResponseGenerator : ISignInResponseGenerator
         };
 #pragma warning restore CS8601 // Possible null reference assignment.
 
-        await _profile.GetProfileDataAsync(ctx, default).ConfigureAwait(false);
+        await _profile.GetProfileDataAsync(ctx).ConfigureAwait(false);
 
         if (client is not null)
         {

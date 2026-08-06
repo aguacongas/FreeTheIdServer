@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.Collections.Generic;
 
-namespace Aguacongas.IdentityServer.WsFederation
+namespace Aguacongas.Open.IdentityServer.WsFederation
 {
     /// <summary>
     /// WS-Federation options

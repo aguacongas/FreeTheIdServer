@@ -3,7 +3,7 @@
 using Raven.Client.Documents.Session;
 using System;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store
 {
     public class ScopedAsynDocumentcSession : IDisposable
     {

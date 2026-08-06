@@ -1,16 +1,16 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Configuration;
-using Aguacongas.IdentityServer.Admin.Models;
-using Aguacongas.IdentityServer.Admin.Services;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.Admin.Models;
+using Aguacongas.Open.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Admin
+namespace Aguacongas.Open.IdentityServer.Admin
 {
     /// <summary>
     /// 

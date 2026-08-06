@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.AspNetCore.Authentication;
 using Aguacongas.AspNetCore.Authentication.TestBase;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using IdentityModel;
 using Microsoft.Extensions.DependencyInjection;
 using System;

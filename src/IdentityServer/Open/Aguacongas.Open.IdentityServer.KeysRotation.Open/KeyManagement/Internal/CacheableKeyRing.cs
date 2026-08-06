@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Threading;
 
 // namespace change from original Microsoft.AspNetCore.DataProtection.KeyManagement.Internal
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     /// <summary>
     /// Wraps both a keyring and its expiration policy.

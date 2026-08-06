@@ -1,10 +1,10 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Store;
+using Microsoft.AspNetCore.Identity;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Stores;
-using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +12,9 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.Admin.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Services
 {
     /// <summary>
     /// PRoxy user claims provider.
@@ -73,11 +73,11 @@ namespace Aguacongas.IdentityServer.Admin.Services
         /// <returns></returns>
         public async Task<PageResponse<Entity.UserClaim>> GetAsync(string resourceName, string userId, string clientId, string caller, string providerTypeName, CancellationToken cancellationToken)
         {
-            var identityResourceList = await _resourceStore.FindEnabledIdentityResourcesByScopeAsync([resourceName], cancellationToken)
+            var identityResourceList = await _resourceStore.FindEnabledIdentityResourcesByScopeAsync([resourceName])
                 .ConfigureAwait(false);
-            var apiResourceList = await _resourceStore.FindApiResourcesByNameAsync([resourceName], cancellationToken).ConfigureAwait(false);
+            var apiResourceList = await _resourceStore.FindApiResourcesByNameAsync([resourceName]).ConfigureAwait(false);
             var apiResource = apiResourceList.FirstOrDefault();
-            var client = await _clientStore.FindClientByIdAsync(clientId, cancellationToken).ConfigureAwait(false);
+            var client = await _clientStore.FindClientByIdAsync(clientId).ConfigureAwait(false);
             var user = await _userManager.FindByIdAsync(userId).ConfigureAwait(false);
 
             var claimList = new List<Claim>();

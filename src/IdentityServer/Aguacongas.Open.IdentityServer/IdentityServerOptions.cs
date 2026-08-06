@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-namespace Aguacongas.IdentityServer
+namespace Aguacongas.Open.IdentityServer
 {
     public class IdentityServerOptions
     {

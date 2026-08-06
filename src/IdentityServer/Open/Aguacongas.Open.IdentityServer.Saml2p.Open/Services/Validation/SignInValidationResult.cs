@@ -1,10 +1,10 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
 using Open.IdentityServer.Models;
 using ITfoxtec.Identity.Saml2;
 using ITfoxtec.Identity.Saml2.Http;
 using System.Security.Claims;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Validation;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Validation;
 
 /// <summary>
 /// Signing validation result

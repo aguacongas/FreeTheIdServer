@@ -1,13 +1,13 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.RavenDb.Store.AdminStores.User;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.AdminStores.User;
+using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.Extensions.Logging;
 using Raven.Client.Documents.Session;
 using System.Collections.Generic;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.Test.AdminStores.User
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.Test.AdminStores.User
 {
     public class UserClaimStoreTest : UserSubEntityStoreTestBase<Entity.UserClaim>
     {

@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.RavenDb.Store.AdminStores.Role;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.AdminStores.Role;
+using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Raven.Client.Documents.Session;
@@ -9,9 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.Test.AdminStores.Role
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.Test.AdminStores.Role
 {
     public class RoleClaimStoreTest
     {

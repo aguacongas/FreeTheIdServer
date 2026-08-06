@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Newtonsoft.Json;
 
-namespace Aguacongas.IdentityServer.Admin.Models
+namespace Aguacongas.Open.IdentityServer.Admin.Models
 {
     /// <summary>
     /// Defines an entity metadate

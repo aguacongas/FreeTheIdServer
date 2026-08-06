@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Admin.Services;
 using Open.IdentityServer;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Services;
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 using Xunit;
 using ISConfiguration = Open.IdentityServer.Configuration;
 
-namespace Aguacongas.IdentityServer.Admin.Test.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Test.Services;
 
 public class CustomJwtRequestValidatorTest
 {

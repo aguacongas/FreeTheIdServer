@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Store;
+﻿using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 

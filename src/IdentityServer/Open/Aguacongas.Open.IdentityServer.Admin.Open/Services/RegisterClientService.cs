@@ -1,15 +1,15 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Open.Services;
-using Aguacongas.IdentityServer.Admin.Models;
-using Aguacongas.IdentityServer.Admin.Options;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
-using Open.IdentityServer.ResponseHandling;
+using Aguacongas.Open.IdentityServer.Admin.Models;
+using Aguacongas.Open.IdentityServer.Admin.Open.Services;
+using Aguacongas.Open.IdentityServer.Admin.Options;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Open.IdentityServer.ResponseHandling;
 using SendGrid.Helpers.Errors.Model;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ using static Open.IdentityServer.IdentityServerConstants;
 using IsConfiguration = Open.IdentityServer.Configuration;
 using IsModels = Open.IdentityServer.Models;
 
-namespace Aguacongas.IdentityServer.Admin.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Services
 {
     /// <summary>
     /// 
@@ -82,7 +82,7 @@ namespace Aguacongas.IdentityServer.Admin.Services
         public async Task<ClientRegisteration> RegisterAsync(ClientRegisteration registration, HttpContext httpContext)
         {
             var uri = $"{httpContext.Request.Scheme}://{httpContext.Request.Host}/";
-            var discovery = await _discoveryResponseGenerator.CreateDiscoveryDocumentAsync(uri, uri, httpContext.RequestAborted).ConfigureAwait(false);
+            var discovery = await _discoveryResponseGenerator.CreateDiscoveryDocumentAsync(uri, uri).ConfigureAwait(false);
             ValidateCaller(registration, httpContext);
             Validate(registration, discovery);
 
@@ -304,7 +304,7 @@ namespace Aguacongas.IdentityServer.Admin.Services
         {
             var client = await GetClientAsync(clientId).ConfigureAwait(false);
 
-            var discovery = await _discoveryResponseGenerator.CreateDiscoveryDocumentAsync(uri, uri, cancellationToken).ConfigureAwait(false);
+            var discovery = await _discoveryResponseGenerator.CreateDiscoveryDocumentAsync(uri, uri).ConfigureAwait(false);
             Validate(registration, discovery);
             await UpdateClient(registration, client).ConfigureAwait(false);
             await UpdateRedirectUris(clientId, registration).ConfigureAwait(false);
@@ -357,7 +357,7 @@ namespace Aguacongas.IdentityServer.Admin.Services
         {
             var client = await GetClientAsync(clientId).ConfigureAwait(false);
 
-            var discovery = await _discoveryResponseGenerator.CreateDiscoveryDocumentAsync(uri, uri, cancellationToken).ConfigureAwait(false);
+            var discovery = await _discoveryResponseGenerator.CreateDiscoveryDocumentAsync(uri, uri).ConfigureAwait(false);
 
             return new ClientRegisteration
             {

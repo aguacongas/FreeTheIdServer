@@ -1,12 +1,12 @@
-﻿using Aguacongas.IdentityServer.Store;
+﻿using Aguacongas.Open.IdentityServer.Store;
 using ITfoxtec.Identity.Saml2.Cryptography;
 using ITfoxtec.Identity.Saml2.Schemas.Metadata;
 using System.Security.Cryptography.X509Certificates;
 using static Open.IdentityServer.IdentityServerConstants;
 using static Microsoft.IdentityModel.Tokens.Saml2.Saml2Constants;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
 
 /// <summary>
 /// Relying party store

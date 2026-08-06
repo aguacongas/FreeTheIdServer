@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.FreeTheIdServer.UI;
 
-namespace Aguacongas.IdentityServer.UI.Device
+namespace Aguacongas.Open.IdentityServer.UI.Device
 {
     public class DeviceAuthorizationInputModel : ConsentInputModel
     {

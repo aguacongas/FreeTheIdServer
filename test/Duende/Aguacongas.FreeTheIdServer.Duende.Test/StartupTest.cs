@@ -1,9 +1,9 @@
 // Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.AspNetCore.Authentication;
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Admin.Configuration;
-using Aguacongas.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.Admin.Services;
 using Aguacongas.FreeTheIdServer.Admin.Hubs;
 using Aguacongas.FreeTheIdServer.Authentication;
 using Aguacongas.FreeTheIdServer.Models;

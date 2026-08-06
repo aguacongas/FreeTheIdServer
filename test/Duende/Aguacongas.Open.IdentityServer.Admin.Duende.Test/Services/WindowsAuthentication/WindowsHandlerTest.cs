@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Admin.Services.WindowsAuthentication;
+﻿using Aguacongas.Open.IdentityServer.Admin.Services.WindowsAuthentication;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -9,7 +9,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Open.Test.Services.WindowsAuthentication
+namespace Aguacongas.Open.IdentityServer.Admin.Open.Test.Services.WindowsAuthentication
 {
     public class WindowsHandlerTest
     {

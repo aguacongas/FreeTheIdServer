@@ -1,11 +1,11 @@
 // Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Open.IdentityServer.Events;
 using Open.IdentityServer.Extensions;
 using Open.IdentityServer.Services;
 using Open.IdentityServer.Stores;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Aguacongas.FreeTheIdServer.Areas.Identity.Pages.Account.Manage;
 
@@ -26,23 +26,23 @@ public class GrantsModel(IIdentityServerInteractionService interaction,
 
     public async Task<IActionResult> OnPostRevokeAsync(string clientId)
     {
-        await interaction.RevokeUserConsentAsync(clientId.Normalize(), HttpContext.RequestAborted);
-        await events.RaiseAsync(new GrantsRevokedEvent(User.GetSubjectId(), clientId), HttpContext.RequestAborted);
+        await interaction.RevokeUserConsentAsync(clientId.Normalize());
+        await events.RaiseAsync(new GrantsRevokedEvent(User.GetSubjectId(), clientId));
 
         return RedirectToPage();
     }
 
     private async Task BuildViewModelAsync()
     {
-        var grants = await interaction.GetAllUserGrantsAsync(HttpContext.RequestAborted);
+        var grants = await interaction.GetAllUserGrantsAsync();
 
         var list = new List<GrantViewModel>();
         foreach (var grant in grants)
         {
-            var client = await clients.FindClientByIdAsync(grant.ClientId, HttpContext.RequestAborted);
+            var client = await clients.FindClientByIdAsync(grant.ClientId);
             if (client != null)
             {
-                var resourcesByScope = await _resources.FindResourcesByScopeAsync(grant.Scopes, HttpContext.RequestAborted);
+                var resourcesByScope = await _resources.FindResourcesByScopeAsync(grant.Scopes);
 
                 var item = new GrantViewModel()
                 {

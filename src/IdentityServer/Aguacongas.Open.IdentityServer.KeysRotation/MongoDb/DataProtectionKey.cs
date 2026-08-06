@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-namespace Aguacongas.IdentityServer.KeysRotation.MongoDb
+namespace Aguacongas.Open.IdentityServer.KeysRotation.MongoDb
 {
     /// <summary>
     /// Code first model used by <see cref="EntityFrameworkCoreXmlRepository{TContext}"/>.

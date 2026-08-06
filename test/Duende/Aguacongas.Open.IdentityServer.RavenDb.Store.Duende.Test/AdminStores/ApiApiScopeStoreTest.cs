@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.Test.AdminStores
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.Test.AdminStores
 {
     public class ApiApiScopeStoreTest
     {

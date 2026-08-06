@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.Abstractions
+namespace Aguacongas.Open.IdentityServer.Abstractions
 {
     /// <summary>
     /// Class implementing this interface creates personal access token (PAT)

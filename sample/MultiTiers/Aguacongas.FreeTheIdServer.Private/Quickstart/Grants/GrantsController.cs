@@ -51,8 +51,8 @@ namespace IdentityServerHost.Quickstart.UI
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Revoke(string clientId)
         {
-            await _interaction.RevokeUserConsentAsync(clientId, HttpContext.RequestAborted);
-            await _events.RaiseAsync(new GrantsRevokedEvent(User.GetSubjectId(), clientId), HttpContext.RequestAborted);
+            await _interaction.RevokeUserConsentAsync(clientId);
+            await _events.RaiseAsync(new GrantsRevokedEvent(User.GetSubjectId(), clientId));
 
             return RedirectToAction("Index");
         }
@@ -64,10 +64,10 @@ namespace IdentityServerHost.Quickstart.UI
             var list = new List<GrantViewModel>();
             foreach (var grant in grants)
             {
-                var client = await _clients.FindClientByIdAsync(grant.ClientId, HttpContext.RequestAborted);
+                var client = await _clients.FindClientByIdAsync(grant.ClientId);
                 if (client != null)
                 {
-                    var resources = await _resources.FindResourcesByScopeAsync(grant.Scopes, HttpContext.RequestAborted);
+                    var resources = await _resources.FindResourcesByScopeAsync(grant.Scopes);
 
                     var item = new GrantViewModel()
                     {

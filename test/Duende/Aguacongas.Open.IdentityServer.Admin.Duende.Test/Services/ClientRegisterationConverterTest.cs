@@ -1,12 +1,12 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Models;
+using Aguacongas.Open.IdentityServer.Admin.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Test.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
 {
     public class ClientRegisterationConverterTest
     {

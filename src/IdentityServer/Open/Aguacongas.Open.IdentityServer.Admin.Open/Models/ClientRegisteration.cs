@@ -1,11 +1,11 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Admin.Services;
 using Open.IdentityServer.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Aguacongas.IdentityServer.Admin.Models
+namespace Aguacongas.Open.IdentityServer.Admin.Models
 {
     /// <summary>
     /// 

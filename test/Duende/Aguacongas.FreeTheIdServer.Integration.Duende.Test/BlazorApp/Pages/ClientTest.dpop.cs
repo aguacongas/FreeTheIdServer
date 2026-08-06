@@ -38,9 +38,9 @@
 //    isoler le comportement de FilterFocusChanged/IsWebClient, je mute
 //    Model.AllowedGrantTypes directement par réflexion (sans passer par
 //    HandleModificationState) puis force un re-render avec component.Render().
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Bunit;
 using Bunit.Extensions.WaitForHelpers;
 using Microsoft.AspNetCore.Components;

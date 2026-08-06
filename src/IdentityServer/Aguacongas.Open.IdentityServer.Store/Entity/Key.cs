@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System;
 
-namespace Aguacongas.IdentityServer.Store.Entity
+namespace Aguacongas.Open.IdentityServer.Store.Entity
 {
     /// <summary>
     /// Represent a key

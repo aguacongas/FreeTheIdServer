@@ -8,7 +8,7 @@ using Azure.Security.KeyVault.Keys.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.KeysRotation.AzureKeyVault
+namespace Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault
 {
     public interface IKeyVaultWrappingClient
     {

@@ -1,11 +1,11 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Store;
-using Open.IdentityServer.Extensions;
-using Open.IdentityServer.Models;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using Open.IdentityServer.Extensions;
+using Open.IdentityServer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +13,9 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.Admin.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Services;
 
 /// <summary>
 /// Proy profile service
@@ -52,10 +52,10 @@ public class ProxyProfilService<TUser>(HttpClient httpClient,
     /// <param name="caller">The caller.</param>
     /// <param name="providerTypeName">Name of the provider type.</param>
     /// <returns></returns>
-    protected override async Task<IEnumerable<Claim>> GetClaimsFromResource(Resource resource, ClaimsPrincipal subject, IConnectedApplication application, string caller, string providerTypeName)
+    protected override async Task<IEnumerable<Claim>> GetClaimsFromResource(Resource resource, ClaimsPrincipal subject, Client application, string caller, string providerTypeName)
     {
         var response = await _httpClient
-            .GetAsync($"claimsprovider?resourceName={resource.Name}&userId={subject.GetSubjectId()}&clientId={application.Identifier}&caller={caller}&providerTypeName={providerTypeName}")
+            .GetAsync($"claimsprovider?resourceName={resource.Name}&userId={subject.GetSubjectId()}&clientId={application.ClientId}&caller={caller}&providerTypeName={providerTypeName}")
             .ConfigureAwait(false);
 
         var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);

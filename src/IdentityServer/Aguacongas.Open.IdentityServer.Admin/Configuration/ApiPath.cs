@@ -1,4 +1,4 @@
-﻿namespace Aguacongas.IdentityServer.Admin.Configuration;
+﻿namespace Aguacongas.Open.IdentityServer.Admin.Configuration;
 
 /// <summary>
 /// Api base path

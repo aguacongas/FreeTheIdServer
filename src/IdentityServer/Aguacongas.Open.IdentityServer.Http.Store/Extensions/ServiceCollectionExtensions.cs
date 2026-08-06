@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer;
+using Aguacongas.Open.IdentityServer;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;

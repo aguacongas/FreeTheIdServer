@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Aguacongas.IdentityServer.Admin.Services.WindowsAuthentication;
+namespace Aguacongas.Open.IdentityServer.Admin.Services.WindowsAuthentication;
 
 /// <summary>
 /// Reconfigures the WindowsOptions to defer to the integrated server authentication if present.

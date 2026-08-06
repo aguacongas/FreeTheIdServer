@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation.MongoDb;
+using Aguacongas.Open.IdentityServer.KeysRotation.MongoDb;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test.MongoDb
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.MongoDb
 {
     public class MongoDbXmlRepositoryTest
     {

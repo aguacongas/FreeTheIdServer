@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-namespace Aguacongas.IdentityServer.Store.Entity
+namespace Aguacongas.Open.IdentityServer.Store.Entity
 {
     /// <summary>
     /// Client localized resource

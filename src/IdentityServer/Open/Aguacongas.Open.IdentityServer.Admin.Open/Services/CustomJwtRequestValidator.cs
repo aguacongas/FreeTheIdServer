@@ -1,19 +1,20 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Open.IdentityServer.Services;
-using Open.IdentityServer.Validation;
 using IdentityModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Services;
+using Open.IdentityServer.Validation;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using IsConfiguration = Open.IdentityServer.Configuration;
 
-namespace Aguacongas.IdentityServer.Admin.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Services;
 
 /// <summary>
 /// 
@@ -23,31 +24,35 @@ namespace Aguacongas.IdentityServer.Admin.Services;
 /// Initializes a new instance of the <see cref="CustomJwtRequestValidator" /> class.
 /// </remarks>
 /// <param name="tokenValidationOptions">The token validation options.</param>
-/// <param name="issuerNameService">The issuer name service.</param>
+/// <param name="contextAccessor">The context accessor.</param>
 /// <param name="options">The options.</param>
+/// <param name="telemetry">The telemetry service.</param>
 /// <param name="logger">The logger.</param>
 /// <exception cref="ArgumentNullException">tokenValidationOptions</exception>
 public class CustomJwtRequestValidator(IOptions<TokenValidationParameters> tokenValidationOptions,
     IsConfiguration.IdentityServerOptions options,
-    IIssuerNameService issuerNameService,
-    ILogger<CustomJwtRequestValidator> logger) : JwtRequestValidator(options, issuerNameService, logger)
+    IHttpContextAccessor contextAccessor,
+    ITelemetryService telemetry,
+    ILogger<CustomJwtRequestValidator> logger) : JwtRequestValidator(contextAccessor, options, telemetry, logger)
 {
     private readonly TokenValidationParameters _tokenValidationOptions = tokenValidationOptions?.Value ?? throw new ArgumentNullException(nameof(tokenValidationOptions));
 
     /// <summary>
     /// Validates the JWT token
     /// </summary>
-    /// <param name="context">The context.</param>
-    /// <param name="keys">The keys.</param>
-    /// <param name="ct"></param>
-    /// <returns></returns>
-    protected override async Task<JsonWebToken> ValidateJwtAsync(JwtRequestValidationContext context, IEnumerable<SecurityKey> keys, CancellationToken ct)
+    /// <param name="jwtTokenString">The raw JWT string to validate.</param>
+    /// <param name="keys">The trusted signing keys to validate the JWT signature against.</param>
+    /// <param name="client">The client associated with the request, used to validate the issuer.</param>
+    /// <returns>
+    /// A task that resolves to the validated <see cref="JsonWebToken"/>.
+    /// </returns>
+    protected override async Task<JsonWebToken> ValidateJwtAsync(string jwtTokenString, IEnumerable<SecurityKey> keys, Client client)
     {
         var tokenValidationParameters = new TokenValidationParameters
         {
             IssuerSigningKeys = keys,
-            ValidIssuer = context.Client.ClientId,
-            ValidAudience = await GetAudienceUri(ct).ConfigureAwait(false),
+            ValidIssuer = client.ClientId,
+            ValidAudience = AudienceUri,
             ValidateIssuerSigningKey = _tokenValidationOptions.ValidateIssuerSigningKey,
             ValidateIssuer = _tokenValidationOptions.ValidateIssuer,
             ValidateAudience = _tokenValidationOptions.ValidateAudience,
@@ -63,7 +68,7 @@ public class CustomJwtRequestValidator(IOptions<TokenValidationParameters> token
             tokenValidationParameters.ValidTypes = [JwtClaimTypes.JwtTypes.AuthorizationRequest];
         }
 
-        var result = await Handler.ValidateTokenAsync(context.JwtTokenString, tokenValidationParameters).ConfigureAwait(false);
+        var result = await Handler.ValidateTokenAsync(jwtTokenString, tokenValidationParameters).ConfigureAwait(false);
         if (!result.IsValid)
         {
             throw result.Exception;

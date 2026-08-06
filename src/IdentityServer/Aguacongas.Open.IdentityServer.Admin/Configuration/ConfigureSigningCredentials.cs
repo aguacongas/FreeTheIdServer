@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Options;
+using Aguacongas.Open.IdentityServer.Admin.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Aguacongas.IdentityServer.Admin.Configuration
+namespace Aguacongas.Open.IdentityServer.Admin.Configuration
 {
     /// <summary>
     /// Configure signin credentials

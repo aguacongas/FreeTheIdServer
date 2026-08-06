@@ -1,16 +1,16 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.WsFederation.Stores;
+using Aguacongas.Open.IdentityServer.WsFederation.Stores;
+using Microsoft.IdentityModel.Protocols.WsFederation;
 using Open.IdentityServer;
 using Open.IdentityServer.Stores;
-using Microsoft.IdentityModel.Protocols.WsFederation;
 using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.WsFederation.Validation;
+namespace Aguacongas.Open.IdentityServer.WsFederation.Validation;
 
 /// <summary>
 /// 
@@ -40,7 +40,7 @@ public class SignInValidator(IClientStore clients, IRelyingPartyStore relyingPar
         };
 
         // check client
-        var client = await _clients.FindEnabledClientByIdAsync(message.Wtrealm, cancellationToken);
+        var client = await _clients.FindEnabledClientByIdAsync(message.Wtrealm);
 
         if (client == null)
         {

@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using Open.IdentityServer.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Xunit;
 using ISConfiguration = Open.IdentityServer.Configuration;
 
-namespace Aguacongas.IdentityServer.EntityFramework.Store.Test;
+namespace Aguacongas.Open.IdentityServer.EntityFramework.Store.Test;
 
 public class CorsPolicyServiceTest
 {

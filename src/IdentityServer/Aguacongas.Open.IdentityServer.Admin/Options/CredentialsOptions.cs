@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Microsoft.IdentityModel.Tokens;
 
-namespace Aguacongas.IdentityServer.Admin.Options
+namespace Aguacongas.Open.IdentityServer.Admin.Options
 {
     /// <summary>
     /// Options for credentials

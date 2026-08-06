@@ -27,7 +27,7 @@ using System.Security.Cryptography;
 using System.Threading;
 
 // namespace change from original Microsoft.AspNetCore.DataProtection.KeyManagement
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     internal sealed class KeyRingProvider<TC, TE> : ICacheableKeyRingProvider<TC, TE> // implementation of IKeyRingProvider declaration removed
         where TC : SigningAlgorithmConfiguration

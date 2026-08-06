@@ -1,4 +1,4 @@
-﻿# Aguacongas.IdentityServer.KeysRotation
+﻿# Aguacongas.Open.IdentityServer.KeysRotation
 
 > This package depends on [Open.IdentityServer](https://www.nuget.org/packages/Open.IdentityServer). You'll need to acquire a license for a commercial use.
 
@@ -129,7 +129,7 @@ services.AddIdentityServer()
 The generic parameter, `TContext`, must inherit from `DbContext` and implement `IKeyRotationContext`:
 
 ```cs
-using Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore;
+using Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApp1

@@ -1,5 +1,5 @@
-﻿using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+﻿using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Open.IdentityServer.Stores;
 using Moq;
 using System;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xunit;
 using static Open.IdentityServer.IdentityServerConstants;
 
-namespace Aguacongas.IdentityServer.Open.Test.Store
+namespace Aguacongas.Open.IdentityServer.Open.Test.Store
 {
     public class PersistedGrantStoreTest
     {

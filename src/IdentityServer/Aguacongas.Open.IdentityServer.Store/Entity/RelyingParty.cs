@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 
-namespace Aguacongas.IdentityServer.Store.Entity
+namespace Aguacongas.Open.IdentityServer.Store.Entity
 {
     /// <summary>
     /// 

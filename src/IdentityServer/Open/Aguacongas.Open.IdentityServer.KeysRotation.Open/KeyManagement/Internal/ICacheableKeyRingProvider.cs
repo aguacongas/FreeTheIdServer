@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 
 // namespace change from original Microsoft.AspNetCore.DataProtection.KeyManagement.Internal
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     public interface ICacheableKeyRingProvider<TC, TE> : ICacheableKeyRingProvider
         where TC : SigningAlgorithmConfiguration

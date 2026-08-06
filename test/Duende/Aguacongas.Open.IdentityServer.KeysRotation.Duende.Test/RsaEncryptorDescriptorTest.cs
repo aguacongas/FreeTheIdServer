@@ -8,7 +8,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test;
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test;
 
 public class RsaEncryptorDescriptorTest
 {

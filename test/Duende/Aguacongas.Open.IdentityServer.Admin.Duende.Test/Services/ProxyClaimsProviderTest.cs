@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin.Services;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Stores;
 using Microsoft.AspNetCore.Identity;
@@ -16,7 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Test.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Test.Services;
 
 public class ProxyClaimsProviderTest
 {
@@ -155,7 +155,7 @@ public class ProxyClaimsProviderTest
 
     class ClaimsProvider : IProvideClaims
     {
-        public Task<IEnumerable<Claim>> ProvideClaims(ClaimsPrincipal subject, IConnectedApplication application, string caller, Resource resource)
+        public Task<IEnumerable<Claim>> ProvideClaims(ClaimsPrincipal subject, Client application, string caller, Resource resource)
         {
             return Task.FromResult(new Claim[] { new("test", "test") } as IEnumerable<Claim>);
         }

@@ -20,7 +20,7 @@ using System.Linq;
 using System.Security.Cryptography;
 
 // namespace change from original Microsoft.AspNetCore.DataProtection.KeyManagement
-namespace Aguacongas.IdentityServer.KeysRotation
+namespace Aguacongas.Open.IdentityServer.KeysRotation
 {
     /// <summary>
     /// Implements policy for resolving the default key from a candidate keyring.

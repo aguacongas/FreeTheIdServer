@@ -3,7 +3,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Aguacongas.IdentityServer.Admin.Http.Store
+namespace Aguacongas.Open.IdentityServer.Admin.Http.Store
 {
     /// <summary>
     /// 

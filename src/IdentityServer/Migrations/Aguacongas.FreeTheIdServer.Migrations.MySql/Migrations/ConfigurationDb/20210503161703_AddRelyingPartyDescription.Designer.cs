@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using System;
-using Aguacongas.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -20,7 +20,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.5");
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiApiScope", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiApiScope", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -48,7 +48,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiApiScope");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiClaim", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -76,7 +76,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiClaims");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiLocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiLocalizedResource", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -108,7 +108,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiLocalizedResources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiProperty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiProperty", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -140,7 +140,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiProperty");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiScope", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiScope", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -177,7 +177,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiScopes");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiScopeClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiScopeClaim", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -205,7 +205,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiScopeClaims");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiScopeLocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiScopeLocalizedResource", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -237,7 +237,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiScopeLocalizedResources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiScopeProperty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiScopeProperty", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -269,7 +269,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiScopeProperty");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiSecret", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiSecret", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -307,7 +307,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ApiSecrets");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.Client", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.Client", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -459,7 +459,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientClaim", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -489,7 +489,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ClientClaims");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientGrantType", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientGrantType", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -517,7 +517,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ClientGrantTypes");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientIdpRestriction", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientIdpRestriction", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -545,7 +545,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ClientIdpRestriction");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientLocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientLocalizedResource", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -577,7 +577,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ClientLocalizedResources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientProperty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientProperty", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -609,7 +609,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ClientProperties");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientScope", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientScope", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -637,7 +637,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ClientScopes");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientSecret", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientSecret", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -675,7 +675,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ClientSecrets");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientUri", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientUri", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -710,7 +710,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ClientUris");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.Culture", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.Culture", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -733,7 +733,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                         });
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ExternalClaimTransformation", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ExternalClaimTransformation", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -767,7 +767,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("ExternalClaimTransformations");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ExternalProvider", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ExternalProvider", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)")
@@ -799,7 +799,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("Providers");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.IdentityClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.IdentityClaim", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -826,7 +826,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("IdentityClaims");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.IdentityLocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.IdentityLocalizedResource", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -858,7 +858,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("IdentityLocalizedResources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.IdentityProperty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.IdentityProperty", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -890,7 +890,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("IdentityProperties");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.IdentityResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.IdentityResource", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -929,7 +929,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("Identities");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.LocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.LocalizedResource", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -964,7 +964,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("LocalizedResources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ProtectResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ProtectResource", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -995,7 +995,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("Apis");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.RelyingParty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.RelyingParty", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -1032,7 +1032,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("RelyingParties");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.RelyingPartyClaimMapping", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.RelyingPartyClaimMapping", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
@@ -1061,15 +1061,15 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.ToTable("RelyingPartyClaimMappings");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiApiScope", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiApiScope", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ProtectResource", "Api")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ProtectResource", "Api")
                         .WithMany("ApiScopes")
                         .HasForeignKey("ApiId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ApiScope", "ApiScope")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ApiScope", "ApiScope")
                         .WithMany("Apis")
                         .HasForeignKey("ApiScopeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1080,9 +1080,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("ApiScope");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiClaim", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ProtectResource", "Api")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ProtectResource", "Api")
                         .WithMany("ApiClaims")
                         .HasForeignKey("ApiId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1091,9 +1091,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Api");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiLocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiLocalizedResource", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ProtectResource", "Api")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ProtectResource", "Api")
                         .WithMany("Resources")
                         .HasForeignKey("ApiId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1102,9 +1102,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Api");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiProperty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiProperty", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ProtectResource", "Api")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ProtectResource", "Api")
                         .WithMany("Properties")
                         .HasForeignKey("ApiId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1113,9 +1113,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Api");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiScopeClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiScopeClaim", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ApiScope", "ApiScope")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ApiScope", "ApiScope")
                         .WithMany("ApiScopeClaims")
                         .HasForeignKey("ApiScopeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1124,9 +1124,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("ApiScope");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiScopeLocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiScopeLocalizedResource", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ApiScope", "ApiScope")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ApiScope", "ApiScope")
                         .WithMany("Resources")
                         .HasForeignKey("ApiScopeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1135,9 +1135,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("ApiScope");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiScopeProperty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiScopeProperty", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ApiScope", "ApiScope")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ApiScope", "ApiScope")
                         .WithMany("Properties")
                         .HasForeignKey("ApiScopeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1146,9 +1146,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("ApiScope");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiSecret", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiSecret", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ProtectResource", "Api")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ProtectResource", "Api")
                         .WithMany("Secrets")
                         .HasForeignKey("ApiId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1157,18 +1157,18 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Api");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.Client", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.Client", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.RelyingParty", "RelyingParty")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.RelyingParty", "RelyingParty")
                         .WithMany("Clients")
                         .HasForeignKey("RelyingPartyId");
 
                     b.Navigation("RelyingParty");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientClaim", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Client", "Client")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Client", "Client")
                         .WithMany("ClientClaims")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1177,9 +1177,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientGrantType", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientGrantType", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Client", "Client")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Client", "Client")
                         .WithMany("AllowedGrantTypes")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1188,9 +1188,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientIdpRestriction", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientIdpRestriction", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Client", "Client")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Client", "Client")
                         .WithMany("IdentityProviderRestrictions")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1199,9 +1199,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientLocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientLocalizedResource", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Client", "Client")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Client", "Client")
                         .WithMany("Resources")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1210,9 +1210,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientProperty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientProperty", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Client", "Client")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Client", "Client")
                         .WithMany("Properties")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1221,9 +1221,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientScope", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientScope", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Client", "Client")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Client", "Client")
                         .WithMany("AllowedScopes")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1232,9 +1232,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientSecret", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientSecret", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Client", "Client")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Client", "Client")
                         .WithMany("ClientSecrets")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1243,9 +1243,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ClientUri", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ClientUri", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Client", "Client")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Client", "Client")
                         .WithMany("RedirectUris")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1254,18 +1254,18 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ExternalClaimTransformation", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ExternalClaimTransformation", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.ExternalProvider", null)
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.ExternalProvider", null)
                         .WithMany("ClaimTransformations")
                         .HasForeignKey("Scheme")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.IdentityClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.IdentityClaim", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.IdentityResource", "Identity")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.IdentityResource", "Identity")
                         .WithMany("IdentityClaims")
                         .HasForeignKey("IdentityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1274,9 +1274,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Identity");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.IdentityLocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.IdentityLocalizedResource", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.IdentityResource", "Identity")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.IdentityResource", "Identity")
                         .WithMany("Resources")
                         .HasForeignKey("IdentityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1285,9 +1285,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Identity");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.IdentityProperty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.IdentityProperty", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.IdentityResource", "Identity")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.IdentityResource", "Identity")
                         .WithMany("Properties")
                         .HasForeignKey("IdentityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1296,9 +1296,9 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Identity");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.LocalizedResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.LocalizedResource", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Culture", "Culture")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Culture", "Culture")
                         .WithMany("Resources")
                         .HasForeignKey("CultureId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1307,16 +1307,16 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Culture");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.RelyingPartyClaimMapping", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.RelyingPartyClaimMapping", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.RelyingParty", "RelyingParty")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.RelyingParty", "RelyingParty")
                         .WithMany("ClaimMappings")
                         .HasForeignKey("RelyingPartyId");
 
                     b.Navigation("RelyingParty");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ApiScope", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ApiScope", b =>
                 {
                     b.Navigation("Apis");
 
@@ -1327,7 +1327,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Resources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.Client", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.Client", b =>
                 {
                     b.Navigation("AllowedGrantTypes");
 
@@ -1346,17 +1346,17 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Resources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.Culture", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.Culture", b =>
                 {
                     b.Navigation("Resources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ExternalProvider", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ExternalProvider", b =>
                 {
                     b.Navigation("ClaimTransformations");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.IdentityResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.IdentityResource", b =>
                 {
                     b.Navigation("IdentityClaims");
 
@@ -1365,7 +1365,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Resources");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.ProtectResource", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.ProtectResource", b =>
                 {
                     b.Navigation("ApiClaims");
 
@@ -1378,7 +1378,7 @@ namespace Aguacongas.FreeTheIdServer.MySql.Migrations.ConfigurationDb
                     b.Navigation("Secrets");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.RelyingParty", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.RelyingParty", b =>
                 {
                     b.Navigation("ClaimMappings");
 

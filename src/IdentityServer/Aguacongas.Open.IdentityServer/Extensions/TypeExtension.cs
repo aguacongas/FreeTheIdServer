@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Aguacongas.IdentityServer.Extensions
+namespace Aguacongas.Open.IdentityServer.Extensions
 {
     public static class TypeExtension
     {

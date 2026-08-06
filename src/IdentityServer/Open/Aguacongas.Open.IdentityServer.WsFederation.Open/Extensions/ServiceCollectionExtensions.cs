@@ -1,9 +1,9 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.WsFederation;
-using Aguacongas.IdentityServer.WsFederation.Metadata;
-using Aguacongas.IdentityServer.WsFederation.Stores;
-using Aguacongas.IdentityServer.WsFederation.Validation;
+using Aguacongas.Open.IdentityServer.WsFederation;
+using Aguacongas.Open.IdentityServer.WsFederation.Metadata;
+using Aguacongas.Open.IdentityServer.WsFederation.Stores;
+using Aguacongas.Open.IdentityServer.WsFederation.Validation;
 using Open.IdentityServer.Validation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;

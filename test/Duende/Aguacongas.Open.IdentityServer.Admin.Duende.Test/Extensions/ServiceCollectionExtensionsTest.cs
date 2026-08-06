@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Abstractions;
 using Open.IdentityServer.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Test.Extensions;
+namespace Aguacongas.Open.IdentityServer.Admin.Test.Extensions;
 
 public class ServiceCollectionExtensionsTest
 {
@@ -52,7 +52,7 @@ public class ServiceCollectionExtensionsTest
 
     class ClaimsProvider : IProvideClaims
     {
-        public Task<IEnumerable<Claim>> ProvideClaims(ClaimsPrincipal subject, IConnectedApplication application, string caller, Resource resource)
+        public Task<IEnumerable<Claim>> ProvideClaims(ClaimsPrincipal subject, Client application, string caller, Resource resource)
         {
             throw new NotImplementedException();
         }

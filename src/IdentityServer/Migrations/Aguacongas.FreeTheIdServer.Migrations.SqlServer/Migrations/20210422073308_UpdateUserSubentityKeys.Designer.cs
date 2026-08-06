@@ -22,7 +22,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.Role", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.Role", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -48,7 +48,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.RoleClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.RoleClaim", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -72,7 +72,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.User", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -137,7 +137,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserClaim", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -168,7 +168,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserLogin", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserLogin", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -198,7 +198,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserRole", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -221,7 +221,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserToken", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserToken", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -249,9 +249,9 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.RoleClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.RoleClaim", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Role", "Role")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Role", "Role")
                         .WithMany("RoleClaims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -260,9 +260,9 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserClaim", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserClaim", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.User", "User")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.User", "User")
                         .WithMany("UserClaims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -271,9 +271,9 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserLogin", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserLogin", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.User", "User")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.User", "User")
                         .WithMany("UserLogins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -282,15 +282,15 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserRole", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserRole", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.Role", "Role")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.User", "User")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -301,9 +301,9 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.UserToken", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserToken", b =>
                 {
-                    b.HasOne("Aguacongas.IdentityServer.Store.Entity.User", "User")
+                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.User", "User")
                         .WithMany("UserTokens")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -312,12 +312,12 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.Role", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.Role", b =>
                 {
                     b.Navigation("RoleClaims");
                 });
 
-            modelBuilder.Entity("Aguacongas.IdentityServer.Store.Entity.User", b =>
+            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.User", b =>
                 {
                     b.Navigation("UserClaims");
 

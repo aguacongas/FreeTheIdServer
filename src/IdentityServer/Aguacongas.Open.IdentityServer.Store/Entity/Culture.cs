@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Aguacongas.IdentityServer.Store.Entity
+namespace Aguacongas.Open.IdentityServer.Store.Entity
 {
     /// <summary>
     /// Defines a culture

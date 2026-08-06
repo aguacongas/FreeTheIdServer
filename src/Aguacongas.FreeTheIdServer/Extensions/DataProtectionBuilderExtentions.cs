@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Configuration;
-using Aguacongas.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
 using Aguacongas.FreeTheIdServer.Models;
 using Azure.Identity;
 using Microsoft.AspNetCore.DataProtection;

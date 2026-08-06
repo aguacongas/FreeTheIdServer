@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Aguacongas.IdentityServer.KeysRotation.XmlEncryption
+namespace Aguacongas.Open.IdentityServer.KeysRotation.XmlEncryption
 {
     /// <summary>
     /// Specifies settings for how to decrypt XML keys.

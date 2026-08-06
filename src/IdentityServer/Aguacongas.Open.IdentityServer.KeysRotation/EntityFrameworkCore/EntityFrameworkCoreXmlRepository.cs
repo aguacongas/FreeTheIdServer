@@ -17,7 +17,7 @@ using System.Linq;
 using System.Xml.Linq;
 
 // namespace change from original Microsoft.AspNetCore.DataProtection.EntityFrameworkCore
-namespace Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore
+namespace Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore
 {
     /// <summary>
     /// An <see cref="IXmlRepository"/> backed by an EntityFrameworkCore datastore.

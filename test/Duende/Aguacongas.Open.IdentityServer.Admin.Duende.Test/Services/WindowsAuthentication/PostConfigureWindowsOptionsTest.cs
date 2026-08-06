@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Admin.Services.WindowsAuthentication;
+﻿using Aguacongas.Open.IdentityServer.Admin.Services.WindowsAuthentication;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Open.Test.Services.WindowsAuthentication
+namespace Aguacongas.Open.IdentityServer.Admin.Open.Test.Services.WindowsAuthentication
 {
     public class PostConfigureWindowsOptionsTest
     {

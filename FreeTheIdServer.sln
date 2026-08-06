@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
 VisualStudioVersion = 18.3.11304.161
@@ -65,17 +64,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes", "Kubernetes", 
 	ProjectSection(SolutionItems) = preProject
 		sample\Kubernetes\admin-appsettings.Private.json = sample\Kubernetes\admin-appsettings.Private.json
 		sample\Kubernetes\admin-appsettings.Public.json = sample\Kubernetes\admin-appsettings.Public.json
-		sample\Kubernetes\Network-policies.yaml = sample\Kubernetes\Network-policies.yaml
-		sample\Kubernetes\README.md = sample\Kubernetes\README.md
-		sample\Kubernetes\Redis-deployment.yaml = sample\Kubernetes\Redis-deployment.yaml
-		sample\Kubernetes\Redis-service.yaml = sample\Kubernetes\Redis-service.yaml
-		sample\Kubernetes\Seq-deployment.yaml = sample\Kubernetes\Seq-deployment.yaml
-		sample\Kubernetes\Seq-service.yaml = sample\Kubernetes\Seq-service.yaml
-		sample\Kubernetes\Seq-volume.yaml = sample\Kubernetes\Seq-volume.yaml
-		sample\Kubernetes\SqlServer-deployment.yaml = sample\Kubernetes\SqlServer-deployment.yaml
-		sample\Kubernetes\SqlServer-secret.yaml = sample\Kubernetes\SqlServer-secret.yaml
-		sample\Kubernetes\SqlServer-service.yaml = sample\Kubernetes\SqlServer-service.yaml
-		sample\Kubernetes\SqlServer-volume.yaml = sample\Kubernetes\SqlServer-volume.yaml
 		sample\Kubernetes\FreeTheIdServer-certificates-volume.yaml = sample\Kubernetes\FreeTheIdServer-certificates-volume.yaml
 		sample\Kubernetes\FreeTheIdServer-config-volume.yaml = sample\Kubernetes\FreeTheIdServer-config-volume.yaml
 		sample\Kubernetes\FreeTheIdServer-private-configmap.yaml = sample\Kubernetes\FreeTheIdServer-private-configmap.yaml
@@ -89,6 +77,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes", "Kubernetes", 
 		sample\Kubernetes\FreeTheIdServer-public-keys-volume.yaml = sample\Kubernetes\FreeTheIdServer-public-keys-volume.yaml
 		sample\Kubernetes\FreeTheIdServer-public-secrets.yaml = sample\Kubernetes\FreeTheIdServer-public-secrets.yaml
 		sample\Kubernetes\FreeTheIdServer-public-service.yaml = sample\Kubernetes\FreeTheIdServer-public-service.yaml
+		sample\Kubernetes\Network-policies.yaml = sample\Kubernetes\Network-policies.yaml
+		sample\Kubernetes\README.md = sample\Kubernetes\README.md
+		sample\Kubernetes\Redis-deployment.yaml = sample\Kubernetes\Redis-deployment.yaml
+		sample\Kubernetes\Redis-service.yaml = sample\Kubernetes\Redis-service.yaml
+		sample\Kubernetes\Seq-deployment.yaml = sample\Kubernetes\Seq-deployment.yaml
+		sample\Kubernetes\Seq-service.yaml = sample\Kubernetes\Seq-service.yaml
+		sample\Kubernetes\Seq-volume.yaml = sample\Kubernetes\Seq-volume.yaml
+		sample\Kubernetes\SqlServer-deployment.yaml = sample\Kubernetes\SqlServer-deployment.yaml
+		sample\Kubernetes\SqlServer-secret.yaml = sample\Kubernetes\SqlServer-secret.yaml
+		sample\Kubernetes\SqlServer-service.yaml = sample\Kubernetes\SqlServer-service.yaml
+		sample\Kubernetes\SqlServer-volume.yaml = sample\Kubernetes\SqlServer-volume.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", "{65CF4376-522A-4042-89A7-328686BEBA44}"
@@ -251,6 +250,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher", "src\Identity\Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher\Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher.csproj", "{C04EAFE6-0E01-4792-A113-B98AE76466D1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasherTest", "test\Identity\Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasherTest\Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasherTest.csproj", "{18F49B30-17EC-4365-9F34-4D963D23FFE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aguacongas.Open.IdentityServer.Open", "src\IdentityServer\Open\Aguacongas.Open.IdentityServer.Open\Aguacongas.Open.IdentityServer.Open.csproj", "{D133104F-6872-68F5-1975-5A80DD8C76E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aguacongas.Open.IdentityServer.KeysRotation.Open", "src\IdentityServer\Open\Aguacongas.Open.IdentityServer.KeysRotation.Open\Aguacongas.Open.IdentityServer.KeysRotation.Open.csproj", "{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aguacongas.Open.IdentityServer.WsFederation", "src\IdentityServer\Aguacongas.Open.IdentityServer.WsFederation\Aguacongas.Open.IdentityServer.WsFederation.csproj", "{C2A57C0A-19A1-7278-3E8B-40E711F7980F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aguacongas.Open.IdentityServer.RavenDb.Store", "src\IdentityServer\Aguacongas.Open.IdentityServer.RavenDb.Store\Aguacongas.Open.IdentityServer.RavenDb.Store.csproj", "{C7B603BC-9F86-9FFC-3493-A214F1C65B26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1378,6 +1385,54 @@ Global
 		{18F49B30-17EC-4365-9F34-4D963D23FFE1}.Release|x64.Build.0 = Release|Any CPU
 		{18F49B30-17EC-4365-9F34-4D963D23FFE1}.Release|x86.ActiveCfg = Release|Any CPU
 		{18F49B30-17EC-4365-9F34-4D963D23FFE1}.Release|x86.Build.0 = Release|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Debug|x64.Build.0 = Debug|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Debug|x86.Build.0 = Debug|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Release|x64.ActiveCfg = Release|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Release|x64.Build.0 = Release|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Release|x86.ActiveCfg = Release|Any CPU
+		{D133104F-6872-68F5-1975-5A80DD8C76E2}.Release|x86.Build.0 = Release|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Debug|x64.Build.0 = Debug|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Debug|x86.Build.0 = Debug|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Release|x64.ActiveCfg = Release|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Release|x64.Build.0 = Release|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Release|x86.ActiveCfg = Release|Any CPU
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F}.Release|x86.Build.0 = Release|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Debug|x64.Build.0 = Debug|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Debug|x86.Build.0 = Debug|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Release|x64.ActiveCfg = Release|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Release|x64.Build.0 = Release|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Release|x86.ActiveCfg = Release|Any CPU
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F}.Release|x86.Build.0 = Release|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Debug|x64.Build.0 = Debug|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Debug|x86.Build.0 = Debug|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Release|x64.ActiveCfg = Release|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Release|x64.Build.0 = Release|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Release|x86.ActiveCfg = Release|Any CPU
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1486,12 +1541,12 @@ Global
 		{34F746F3-152C-426F-B91F-02DE10F15518} = {5CDF0690-B16C-4A75-80C2-F1EDC7C26514}
 		{C04EAFE6-0E01-4792-A113-B98AE76466D1} = {1FC87EDC-78E7-465E-9721-D7B481D64ED7}
 		{18F49B30-17EC-4365-9F34-4D963D23FFE1} = {5CDF0690-B16C-4A75-80C2-F1EDC7C26514}
+		{D133104F-6872-68F5-1975-5A80DD8C76E2} = {C6E07186-85C0-4243-BE03-66BEA518B81C}
+		{E6A738E4-BA8D-6209-82BA-1DD7B59FD91F} = {C6E07186-85C0-4243-BE03-66BEA518B81C}
+		{C2A57C0A-19A1-7278-3E8B-40E711F7980F} = {DF368D6C-D11F-49F9-BF41-090AE1D10C6D}
+		{C7B603BC-9F86-9FFC-3493-A214F1C65B26} = {DF368D6C-D11F-49F9-BF41-090AE1D10C6D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5283BE0B-F6F2-4458-B12F-64C78CFF8CBA}
 	EndGlobalSection
 EndGlobal
-
-
-
-

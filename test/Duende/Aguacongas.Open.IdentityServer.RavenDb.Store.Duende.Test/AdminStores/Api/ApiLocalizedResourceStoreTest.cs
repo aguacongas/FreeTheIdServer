@@ -1,13 +1,13 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.RavenDb.Store.Api;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.Api;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.Extensions.Logging;
 using Raven.Client.Documents.Session;
 using System.Collections.Generic;
 
-namespace Aguacongas.IdentityServer.RavenDb.Store.Test.AdminStores.Api
+namespace Aguacongas.Open.IdentityServer.RavenDb.Store.Test.AdminStores.Api
 {
     public class ApiLocalizedResourceStoreTest : ApiSubEntityStoreTestBase<ApiLocalizedResource>
     {

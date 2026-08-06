@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Aguacongas.IdentityServer.Admin.Models;
+using Aguacongas.Open.IdentityServer.Admin.Models;
 using Newtonsoft.Json.Linq;
 using Open.IdentityServer.Models;
 using System.Reflection;
 
-namespace Aguacongas.IdentityServer.Admin.Services
+namespace Aguacongas.Open.IdentityServer.Admin.Services
 {
     /// <summary>
     /// 

@@ -1,16 +1,17 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.WsFederation.Validation;
-using Open.IdentityServer.Extensions;
-using Open.IdentityServer.Models;
-using Open.IdentityServer.Services;
-using Open.IdentityServer.Stores;
+using Aguacongas.Open.IdentityServer.WsFederation.Validation;
 using IdentityModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Protocols.WsFederation;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Tokens.Saml;
 using Microsoft.IdentityModel.Tokens.Saml2;
+using Open.IdentityServer.Extensions;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Services;
+using Open.IdentityServer.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ using ClaimProperties = Microsoft.IdentityModel.Tokens.Saml.ClaimProperties;
 using ISValidation = Open.IdentityServer.Validation;
 using IsWsFederationConstant = Open.IdentityServer.WsFederation.WsFederationConstants;
 
-namespace Aguacongas.IdentityServer.WsFederation;
+namespace Aguacongas.Open.IdentityServer.WsFederation;
 
 /// <summary>
 /// 
@@ -30,19 +31,18 @@ namespace Aguacongas.IdentityServer.WsFederation;
 /// <remarks>
 /// Initializes a new instance of the <see cref="SignInResponseGenerator"/> class.
 /// </remarks>
-/// <param name="issuerNameService">The <see cref="IIssuerNameService"/>.</param>
+/// <param name="contextAccessor">The context accessor.</param>
 /// <param name="profile">The profile.</param>
 /// <param name="keys">The keys.</param>
 /// <param name="resources">The resources.</param>
 /// <param name="logger">The logger.</param>
 public class SignInResponseGenerator(
-    IIssuerNameService issuerNameService,
+    IHttpContextAccessor contextAccessor,
     IProfileService profile,
     ISigningCredentialStore keys,
     IResourceStore resources,
     ILogger<SignInResponseGenerator> logger) : ISignInResponseGenerator
 {
-    private readonly IIssuerNameService _issuerNameService = issuerNameService ?? throw new ArgumentNullException(nameof(issuerNameService));
     private readonly IProfileService _profile = profile ?? throw new ArgumentNullException(nameof(profile));
     private readonly ISigningCredentialStore _keys = keys ?? throw new ArgumentNullException(nameof(keys));
     private readonly IResourceStore _resources = resources ?? throw new ArgumentNullException(nameof(resources));
@@ -77,7 +77,7 @@ public class SignInResponseGenerator(
     {
         var requestedClaimTypes = new List<string>();
 
-        var identityResources = await _resources.FindEnabledIdentityResourcesByScopeAsync(result.Client.AllowedScopes, cancellationToken).ConfigureAwait(false);
+        var identityResources = await _resources.FindEnabledIdentityResourcesByScopeAsync(result.Client.AllowedScopes).ConfigureAwait(false);
         foreach (var resource in identityResources)
         {
             foreach (var claim in resource.UserClaims)
@@ -91,7 +91,7 @@ public class SignInResponseGenerator(
         {
             Subject = result.User,
             RequestedClaimTypes = requestedClaimTypes,
-            Application = client,
+            Client = client,
             Caller = "WS-Federation",
             RequestedResources = new ISValidation.ResourceValidationResult
             {
@@ -102,7 +102,7 @@ public class SignInResponseGenerator(
             }
         };
 
-        await _profile.GetProfileDataAsync(ctx, cancellationToken).ConfigureAwait(false);
+        await _profile.GetProfileDataAsync(ctx).ConfigureAwait(false);
 
         ctx.IssuedClaims.AddRange(client.Claims.Select(c => new Claim(c.Type, c.Value, c.ValueType)));
         // map outbound claims
@@ -169,7 +169,7 @@ public class SignInResponseGenerator(
 
     private async Task<SecurityToken> CreateSecurityTokenAsync(SignInValidationResult result, ClaimsIdentity outgoingSubject, CancellationToken cancellationToken)
     {
-        var credentials = await _keys.GetSigningCredentialsAsync(cancellationToken).ConfigureAwait(false);
+        var credentials = await _keys.GetSigningCredentialsAsync().ConfigureAwait(false);
         var x509Key = new X509SecurityKey(credentials.Key.GetX509Certificate(_keys));
 
         var relyingParty = result.RelyingParty;
@@ -181,7 +181,7 @@ public class SignInResponseGenerator(
             Expires = DateTime.UtcNow.AddSeconds(result.Client.IdentityTokenLifetime),
             SigningCredentials = new SigningCredentials(x509Key, relyingParty.SignatureAlgorithm, relyingParty.DigestAlgorithm),
             Subject = outgoingSubject,
-            Issuer = await _issuerNameService.GetCurrentAsync(cancellationToken).ConfigureAwait(false),
+            Issuer = contextAccessor.HttpContext.GetIdentityServerIssuerUri(),
         };
 
         if (result.RelyingParty.EncryptionCertificate != null)

@@ -1,13 +1,13 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Net;
 
-namespace Aguacongas.IdentityServer.Admin.Filters
+namespace Aguacongas.Open.IdentityServer.Admin.Filters
 {
     /// <summary>
     /// 
@@ -26,7 +26,7 @@ namespace Aguacongas.IdentityServer.Admin.Filters
             if (context.Exception != null ||
                 context.Canceled ||
                 !controlerType.FullName
-                    .StartsWith("Aguacongas.IdentityServer.Admin",
+                    .StartsWith("Aguacongas.Open.IdentityServer.Admin",
                     StringComparison.Ordinal))
             {
                 return;
@@ -75,7 +75,7 @@ namespace Aguacongas.IdentityServer.Admin.Filters
         {
             var controlerType = context.Controller.GetType();
             if (!controlerType.FullName
-                    .StartsWith("Aguacongas.IdentityServer.Admin",
+                    .StartsWith("Aguacongas.Open.IdentityServer.Admin",
                     StringComparison.Ordinal))
             {
                 // not my business

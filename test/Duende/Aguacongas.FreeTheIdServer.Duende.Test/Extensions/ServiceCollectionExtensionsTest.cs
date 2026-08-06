@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Services;
+﻿using Aguacongas.Open.IdentityServer.Services;
 using Open.IdentityServer.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

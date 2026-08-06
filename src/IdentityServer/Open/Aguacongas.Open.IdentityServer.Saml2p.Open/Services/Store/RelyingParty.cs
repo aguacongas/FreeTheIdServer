@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using static Microsoft.IdentityModel.Tokens.Saml2.Saml2Constants;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
 
 /// <summary>
 /// Relying party

@@ -1,18 +1,17 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Configuration;
-using Aguacongas.IdentityServer.Admin.Open.Services;
-using Aguacongas.IdentityServer.Admin.Options;
-using Aguacongas.IdentityServer.Admin.Services;
-using Open.IdentityServer.Configuration;
-using Open.IdentityServer.Models;
-using Open.IdentityServer.Services.KeyManagement;
-using Open.IdentityServer.Stores;
-using Open.IdentityServer.Validation;
+using Aguacongas.Open.IdentityServer.Admin.Configuration;
+using Aguacongas.Open.IdentityServer.Admin.Open.Services;
+using Aguacongas.Open.IdentityServer.Admin.Options;
+using Aguacongas.Open.IdentityServer.Admin.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Open.IdentityServer.Configuration;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Stores;
+using Open.IdentityServer.Validation;
 using System;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -57,8 +56,6 @@ namespace Microsoft.Extensions.DependencyInjection
                     }
                 });
             });
-
-            builder.Services.AddTransient<IAutomaticKeyManagerKeyStore, AutomaticKeyManagerKeyStore>();
 
             return builder;
         }

@@ -8,7 +8,7 @@
 // DbSet generic type change from original DataProtectionKey
 using Microsoft.EntityFrameworkCore;
 
-namespace Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore
+namespace Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore
 {
     /// <summary>
     /// Interface used to store instances of <see cref="KeyRotationKey"/> in a <see cref="DbContext"/>

@@ -1,13 +1,13 @@
 // Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Http.Store.Test
+namespace Aguacongas.Open.IdentityServer.Admin.Http.Store.Test
 {
     public class KeyStoreTest
     {

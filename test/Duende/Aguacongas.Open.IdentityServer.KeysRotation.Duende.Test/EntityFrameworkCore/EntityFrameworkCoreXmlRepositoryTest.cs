@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.EntityFramework.Store;
-using Aguacongas.IdentityServer.KeysRotation.EntityFrameworkCore;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.KeysRotation.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -9,7 +9,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test
 {
     public class EntityFrameworkCoreXmlRepositoryTest
     {

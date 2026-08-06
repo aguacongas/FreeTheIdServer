@@ -1,6 +1,6 @@
 ﻿using ITfoxtec.Identity.Saml2;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
 
 /// <summary>
 /// Saml2P configuration service interface

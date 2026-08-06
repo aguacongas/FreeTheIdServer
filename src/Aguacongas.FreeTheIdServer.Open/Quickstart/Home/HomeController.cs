@@ -1,8 +1,8 @@
 // Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Open.IdentityServer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Open.IdentityServer.Services;
 
 namespace Aguacongas.FreeTheIdServer.UI;
 
@@ -19,7 +19,7 @@ public class HomeController(IIdentityServerInteractionService interaction, IWebH
         var vm = new ErrorViewModel();
 
         // retrieve error details from identityserver
-        var message = await interaction.GetErrorContextAsync(errorId, HttpContext.RequestAborted);
+        var message = await interaction.GetErrorContextAsync(errorId);
         if (message != null)
         {
             vm.Error = message;

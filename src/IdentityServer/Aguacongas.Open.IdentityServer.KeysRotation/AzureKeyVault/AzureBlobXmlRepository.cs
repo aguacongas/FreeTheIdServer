@@ -23,7 +23,7 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.AspNetCore.DataProtection.Repositories;
 
-namespace Aguacongas.IdentityServer.KeysRotation.AzureKeyVault
+namespace Aguacongas.Open.IdentityServer.KeysRotation.AzureKeyVault
 {
     /// <summary>
     /// An <see cref="IXmlRepository"/> which is backed by Azure Blob Storage.

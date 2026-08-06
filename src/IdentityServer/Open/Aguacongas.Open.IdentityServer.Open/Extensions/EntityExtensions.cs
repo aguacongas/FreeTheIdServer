@@ -5,7 +5,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 
-namespace Aguacongas.IdentityServer.Store;
+namespace Aguacongas.Open.IdentityServer.Store;
 
 public static class EntityExtensions
 {
@@ -109,7 +109,7 @@ public static class EntityExtensions
             RequireRequestObject = client.RequireRequestObject,
             RequireDPoP = client.RequireDPoP,
             DPoPClockSkew = client.DPoPClockSkew,
-            DPoPValidationMode = (DPoPTokenExpirationValidationMode)client.DPoPValidationMode,
+            DPoPValidationMode = client.DPoPValidationMode,
             PushedAuthorizationLifetime = client.PushedAuthorizationLifetime,
             RequirePushedAuthorization = client.RequirePushedAuthorization,
         };

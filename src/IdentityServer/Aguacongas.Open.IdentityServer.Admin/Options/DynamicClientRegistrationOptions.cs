@@ -2,7 +2,7 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using System.Collections.Generic;
 
-namespace Aguacongas.IdentityServer.Admin.Options
+namespace Aguacongas.Open.IdentityServer.Admin.Options
 {
     /// <summary>
     /// Defines dynamic client registration options.

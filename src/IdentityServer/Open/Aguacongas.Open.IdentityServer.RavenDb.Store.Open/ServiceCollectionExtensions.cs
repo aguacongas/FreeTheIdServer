@@ -1,18 +1,18 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.RavenDb.Store;
-using Aguacongas.IdentityServer.RavenDb.Store.AdminStores.RelyingParty;
-using Aguacongas.IdentityServer.RavenDb.Store.AdminStores.Role;
-using Aguacongas.IdentityServer.RavenDb.Store.AdminStores.User;
-using Aguacongas.IdentityServer.RavenDb.Store.Api;
-using Aguacongas.IdentityServer.RavenDb.Store.ApiScope;
-using Aguacongas.IdentityServer.RavenDb.Store.Client;
-using Aguacongas.IdentityServer.RavenDb.Store.Identity;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.RavenDb.Store;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.AdminStores.RelyingParty;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.AdminStores.Role;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.AdminStores.User;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.Api;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.ApiScope;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.Client;
+using Aguacongas.Open.IdentityServer.RavenDb.Store.Identity;
+using Aguacongas.Open.IdentityServer.Store;
 using Raven.Client.Documents;
 using Raven.Client.Documents.Session;
 using System;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -71,7 +71,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddTransient<IdentityPropertyStore>()
                 .AddTransient<AdminStore<Entity.IdentityResource>>()
                 .AddTransient<LocalizedResourceStore>()
-                .AddTransient<AdminStore<Entity.BackChannelAuthenticationRequest>>()
                 .AddTransient<AdminStore<Entity.ProtectResource>>()
                 .AddTransient<AdminStore<Entity.Key>>()
                 .AddTransient<AdminStore<Entity.ReferenceToken>>()
@@ -89,7 +88,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddTransient<AdminStore<Entity.RelyingParty>>()
                 .AddTransient<RelyingPartyClaimMappingStore>()
                 .AddTransient<AdminStore<Entity.Saml2PArtifact>>()
-                .AddTransient<AdminStore<Entity.PushedAuthorizationRequest>>()
                 .AddTransient<IAdminStore<Entity.ApiApiScope>, CacheAdminStore<ApiApiScopeStore, Entity.ApiApiScope>>()
                 .AddTransient<IAdminStore<Entity.ApiClaim>, CacheAdminStore<ApiClaimStore, Entity.ApiClaim>>()
                 .AddTransient<IAdminStore<Entity.ApiLocalizedResource>, CacheAdminStore<ApiLocalizedResourceStore, Entity.ApiLocalizedResource>>()
@@ -120,7 +118,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddTransient<IAdminStore<Entity.LocalizedResource>, CacheAdminStore<LocalizedResourceStore, Entity.LocalizedResource>>()
                 .AddTransient<IAdminStore<Entity.ProtectResource>, CacheAdminStore<AdminStore<Entity.ProtectResource>, Entity.ProtectResource>>()
                 .AddTransient<IAdminStore<Entity.Key>, CacheAdminStore<AdminStore<Entity.Key>, Entity.Key>>()
-                .AddTransient<IAdminStore<Entity.BackChannelAuthenticationRequest>, CacheAdminStore<AdminStore<Entity.BackChannelAuthenticationRequest>, Entity.BackChannelAuthenticationRequest>>()
                 .AddTransient<IAdminStore<Entity.ReferenceToken>, CacheAdminStore<AdminStore<Entity.ReferenceToken>, Entity.ReferenceToken>>()
                 .AddTransient<IAdminStore<Entity.RefreshToken>, CacheAdminStore<AdminStore<Entity.RefreshToken>, Entity.RefreshToken>>()
                 .AddTransient<IAdminStore<Entity.OneTimeToken>, CacheAdminStore<AdminStore<Entity.OneTimeToken>, Entity.OneTimeToken>>()
@@ -136,7 +133,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddTransient<IAdminStore<Entity.RelyingParty>, CacheAdminStore<AdminStore<Entity.RelyingParty>, Entity.RelyingParty>>()
                 .AddTransient<IAdminStore<Entity.RelyingPartyClaimMapping>, CacheAdminStore<RelyingPartyClaimMappingStore, Entity.RelyingPartyClaimMapping>>()
                 .AddTransient<IAdminStore<Entity.Saml2PArtifact>, CacheAdminStore<AdminStore<Entity.Saml2PArtifact>, Entity.Saml2PArtifact>>()
-                .AddTransient<IAdminStore<Entity.PushedAuthorizationRequest>, CacheAdminStore<AdminStore<Entity.PushedAuthorizationRequest>, Entity.PushedAuthorizationRequest>>()
                 .AddTransient<CacheAdminStore<AdminStore<Entity.User>, Entity.User>>()
                 .AddTransient<CacheAdminStore<AdminStore<Entity.Role>, Entity.Role>>()
                 .AddTransient<CacheAdminStore<AdminStore<Entity.ExternalProvider>, Entity.ExternalProvider>>()

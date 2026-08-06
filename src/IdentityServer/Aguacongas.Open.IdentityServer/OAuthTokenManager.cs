@@ -8,7 +8,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer
+namespace Aguacongas.Open.IdentityServer
 {
     public class OAuthTokenManager: OAuthTokenManager<IdentityServerOptions>
     {

@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.KeysRotation;
+﻿using Aguacongas.Open.IdentityServer.KeysRotation;
 using Open.IdentityServer.Stores;
 using System;
 using System.Security.Cryptography;

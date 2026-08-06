@@ -1,20 +1,19 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Services;
 using Open.IdentityServer.Stores.Serialization;
-using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Threading;
 using System.Threading.Tasks;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.Admin.Services;
+namespace Aguacongas.Open.IdentityServer.Admin.Services;
 
 /// <summary>
 /// <see cref="IPersistedGrantService"/> implementation
@@ -67,14 +66,14 @@ public class PersistedGrantService(IAdminStore<Entity.AuthorizationCode> authori
     /// <param name="subjectId">The subject identifier.</param>
     /// <param name="ct"></param>
     /// <returns></returns>
-    public async Task<IReadOnlyCollection<Grant>> GetAllGrantsAsync(string subjectId, CancellationToken ct)
+    public async Task<IEnumerable<Grant>> GetAllGrantsAsync(string subjectId)
     {
         var request = new PageRequest
         {
             Filter = $"{nameof(Entity.IGrant.UserId)} eq '{subjectId}'"
         };
 
-        var consentList = (await _userConsentStore.GetAsync(request, ct).ConfigureAwait(false)).Items
+        var consentList = (await _userConsentStore.GetAsync(request).ConfigureAwait(false)).Items
             .Select(c => TryDeserialize<Consent>(c, c => new Grant
             {
                 ClientId = c.ClientId,
@@ -84,7 +83,7 @@ public class PersistedGrantService(IAdminStore<Entity.AuthorizationCode> authori
                 SubjectId = subjectId
             }));
 
-        var codeList = (await _authorizationCodeStore.GetAsync(request, ct).ConfigureAwait(false)).Items
+        var codeList = (await _authorizationCodeStore.GetAsync(request).ConfigureAwait(false)).Items
             .Select(c => TryDeserialize<AuthorizationCode>(c, c => new Grant
             {
                 ClientId = c.ClientId,
@@ -95,7 +94,7 @@ public class PersistedGrantService(IAdminStore<Entity.AuthorizationCode> authori
                 SubjectId = subjectId
             }));
 
-        var refreshTokenList = (await _refreshTokenStore.GetAsync(request, ct).ConfigureAwait(false)).Items
+        var refreshTokenList = (await _refreshTokenStore.GetAsync(request).ConfigureAwait(false)).Items
            .Select(t => TryDeserialize<RefreshToken>(t, t => new Grant
            {
                ClientId = t.ClientId,
@@ -106,7 +105,7 @@ public class PersistedGrantService(IAdminStore<Entity.AuthorizationCode> authori
                SubjectId = subjectId
            }));
 
-        var referenceTokenList = (await _referenceTokenStore.GetAsync(request, ct).ConfigureAwait(false)).Items
+        var referenceTokenList = (await _referenceTokenStore.GetAsync(request).ConfigureAwait(false)).Items
            .Select(t => TryDeserialize<Token>(t, t => new Grant
            {
                ClientId = t.ClientId,
@@ -133,7 +132,7 @@ public class PersistedGrantService(IAdminStore<Entity.AuthorizationCode> authori
     /// <param name="clientId">The client identifier.</param>
     /// <param name="sessionId">The sesion id (optional).</param>
     /// <returns></returns>
-    public async Task RemoveAllGrantsAsync(string subjectId, CancellationToken ct, string clientId = null, string sessionId = null)
+    public async Task RemoveAllGrantsAsync(string subjectId, string clientId = null, string sessionId = null)
     {
         var filter = $"{nameof(Entity.IGrant.UserId)} eq '{subjectId}'";
         if (clientId != null)
@@ -148,26 +147,26 @@ public class PersistedGrantService(IAdminStore<Entity.AuthorizationCode> authori
         {
             Filter = filter
         };
-        var consentListResponse = await _userConsentStore.GetAsync(request, ct).ConfigureAwait(false);
-        var codeListResponse = await _authorizationCodeStore.GetAsync(request, ct).ConfigureAwait(false);
-        var refreshTokenListResponse = await _refreshTokenStore.GetAsync(request, ct).ConfigureAwait(false);
-        var referenceTokenListResponse = await _referenceTokenStore.GetAsync(request, ct).ConfigureAwait(false);
+        var consentListResponse = await _userConsentStore.GetAsync(request).ConfigureAwait(false);
+        var codeListResponse = await _authorizationCodeStore.GetAsync(request).ConfigureAwait(false);
+        var refreshTokenListResponse = await _refreshTokenStore.GetAsync(request).ConfigureAwait(false);
+        var referenceTokenListResponse = await _referenceTokenStore.GetAsync(request).ConfigureAwait(false);
 
         foreach (var consent in consentListResponse.Items)
         {
-            await _userConsentStore.DeleteAsync(consent.Id, ct).ConfigureAwait(false);
+            await _userConsentStore.DeleteAsync(consent.Id).ConfigureAwait(false);
         }
         foreach (var code in codeListResponse.Items)
         {
-            await _authorizationCodeStore.DeleteAsync(code.Id, ct).ConfigureAwait(false);
+            await _authorizationCodeStore.DeleteAsync(code.Id).ConfigureAwait(false);
         }
         foreach (var token in refreshTokenListResponse.Items)
         {
-            await _refreshTokenStore.DeleteAsync(token.Id, ct).ConfigureAwait(false);
+            await _refreshTokenStore.DeleteAsync(token.Id).ConfigureAwait(false);
         }
         foreach (var token in referenceTokenListResponse.Items)
         {
-            await _referenceTokenStore.DeleteAsync(token.Id, ct).ConfigureAwait(false);
+            await _referenceTokenStore.DeleteAsync(token.Id).ConfigureAwait(false);
         }
     }
 

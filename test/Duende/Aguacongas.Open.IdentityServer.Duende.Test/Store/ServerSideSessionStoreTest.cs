@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Store;
+﻿using Aguacongas.Open.IdentityServer.Store;
 using Open.IdentityServer.Models;
 using Open.IdentityServer.Stores;
 using Moq;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
-namespace Aguacongas.IdentityServer.Open.Test.Store;
+namespace Aguacongas.Open.IdentityServer.Open.Test.Store;
 
 public class ServerSideSessionStoreTest
 {

@@ -1,8 +1,8 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
-using Aguacongas.IdentityServer.Extensions;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Extensions;
 using OData2Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -16,7 +16,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aguacongas.IdentityServer.MongoDb.Store
+namespace Aguacongas.Open.IdentityServer.MongoDb.Store
 {
     public class AdminStore<TEntity> : IAdminStore<TEntity>
         where TEntity : class, IEntityId, new()

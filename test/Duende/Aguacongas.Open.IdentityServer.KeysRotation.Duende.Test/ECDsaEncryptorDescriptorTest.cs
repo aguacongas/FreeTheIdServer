@@ -1,6 +1,6 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.KeysRotation.Extensions;
+using Aguacongas.Open.IdentityServer.KeysRotation.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Xunit;
 using static Open.IdentityServer.IdentityServerConstants;
 
-namespace Aguacongas.IdentityServer.KeysRotation.Test;
+namespace Aguacongas.Open.IdentityServer.KeysRotation.Test;
 
 public class ECDsaEncryptorDescriptorTest
 {

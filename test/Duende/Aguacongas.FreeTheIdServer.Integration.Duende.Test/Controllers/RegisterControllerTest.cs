@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Models;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Admin.Models;
+using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.IntegrationTest;
 using Aguacongas.FreeTheIdServer.IntegrationTest.BlazorApp;
 using Aguacongas.FreeTheIdServer.UI;

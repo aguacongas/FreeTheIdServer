@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using System;
 
-namespace Aguacongas.IdentityServer.Admin
+namespace Aguacongas.Open.IdentityServer.Admin
 {
     /// <summary>
     /// Generic API controller name convention

@@ -1,4 +1,4 @@
-﻿using Aguacongas.IdentityServer.Admin.Services.WindowsAuthentication;
+﻿using Aguacongas.Open.IdentityServer.Admin.Services.WindowsAuthentication;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.Extensions.DependencyInjection.Extensions;

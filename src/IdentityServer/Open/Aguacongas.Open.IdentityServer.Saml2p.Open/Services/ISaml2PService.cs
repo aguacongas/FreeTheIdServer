@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services;
 
 /// <summary>
 /// Saml2P service interface

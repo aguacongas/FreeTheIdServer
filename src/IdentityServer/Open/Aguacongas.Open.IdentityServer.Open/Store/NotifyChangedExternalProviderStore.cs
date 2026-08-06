@@ -1,14 +1,14 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Aguacongas.AspNetCore.Authentication;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Aguacongas.FreeTheIdServer.Authentication;
 
-namespace Aguacongas.IdentityServer.Store
+namespace Aguacongas.Open.IdentityServer.Store
 {
     public class NotifyChangedExternalProviderStore<TStore> : IAdminStore<ExternalProvider> where TStore : IAdminStore<ExternalProvider>
     {

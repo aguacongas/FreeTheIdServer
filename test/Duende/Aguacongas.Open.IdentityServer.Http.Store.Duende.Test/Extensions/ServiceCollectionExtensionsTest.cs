@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Open.IdentityServer.Services;
 using Open.IdentityServer.Validation;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +12,7 @@ using System.Net.Http;
 using Xunit;
 using ISConfiguration = Open.IdentityServer.Configuration;
 
-namespace Aguacongas.IdentityServer.Http.Store.Test.Extensions
+namespace Aguacongas.Open.IdentityServer.Http.Store.Test.Extensions
 {
     public class ServiceCollectionExtensionsTest
     {

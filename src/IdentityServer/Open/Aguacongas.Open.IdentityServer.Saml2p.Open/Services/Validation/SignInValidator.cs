@@ -1,37 +1,27 @@
-﻿using Aguacongas.IdentityServer.Saml2p.Open.Services.Configuration;
-using Aguacongas.IdentityServer.Saml2p.Open.Services.Store;
-using Open.IdentityServer;
-using Open.IdentityServer.Stores;
+﻿using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Configuration;
+using Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Store;
 using ITfoxtec.Identity.Saml2;
 using ITfoxtec.Identity.Saml2.MvcCore;
 using Microsoft.AspNetCore.Http;
+using Open.IdentityServer;
+using Open.IdentityServer.Stores;
 using System.Security.Claims;
 
-namespace Aguacongas.IdentityServer.Saml2p.Open.Services.Validation;
+namespace Aguacongas.Open.IdentityServer.Saml2p.Open.Services.Validation;
 
 /// <summary>
 /// Signing requests validator
 /// </summary>
-public class SignInValidator : ISignInValidator
+/// <remarks>
+/// Initialize a new instance of <see cref="SignInValidator"/>
+/// </remarks>
+/// <param name="clientStore"></param>
+/// <param name="relyingPartyStore"></param>
+/// <param name="configurationService"></param>
+public class SignInValidator(IClientStore clientStore,
+    IRelyingPartyStore relyingPartyStore,
+    ISaml2ConfigurationService configurationService) : ISignInValidator
 {
-    private readonly IClientStore _clientStore;
-    private readonly IRelyingPartyStore _relyingPartyStore;
-    private readonly ISaml2ConfigurationService _configurationService;
-
-    /// <summary>
-    /// Initialize a new instance of <see cref="SignInValidator"/>
-    /// </summary>
-    /// <param name="clientStore"></param>
-    /// <param name="relyingPartyStore"></param>
-    /// <param name="configurationService"></param>
-    public SignInValidator(IClientStore clientStore,
-        IRelyingPartyStore relyingPartyStore,
-        ISaml2ConfigurationService configurationService)
-    {
-        _clientStore = clientStore;
-        _relyingPartyStore = relyingPartyStore;
-        _configurationService = configurationService;
-    }
 
     /// <summary>
     /// Validates artifact request
@@ -42,14 +32,14 @@ public class SignInValidator : ISignInValidator
     {
         var soapEnvelope = new Saml2SoapEnvelope();
         var httpRequest = await request.ToGenericHttpRequestAsync(readBodyAsString: true).ConfigureAwait(false);
-        var settings = await _configurationService.GetConfigurationAsync().ConfigureAwait(false);
+        var settings = await configurationService.GetConfigurationAsync().ConfigureAwait(false);
         var saml2ArtifactResolve = new Saml2ArtifactResolve(settings);
 
         var samlRequest = soapEnvelope.ReadSamlRequest(httpRequest, saml2ArtifactResolve);
         var issuer = samlRequest.Issuer;
 
         // check client
-        var client = await _clientStore.FindEnabledClientByIdAsync(issuer, default);
+        var client = await clientStore.FindEnabledClientByIdAsync(issuer);
 
         if (client == null)
         {
@@ -68,7 +58,7 @@ public class SignInValidator : ISignInValidator
             };
         }
 
-        var rp = await _relyingPartyStore.FindRelyingPartyAsync(issuer).ConfigureAwait(false);
+        var rp = await relyingPartyStore.FindRelyingPartyAsync(issuer).ConfigureAwait(false);
         if (rp == null)
         {
             return new SignInValidationResult<Saml2SoapEnvelope>
@@ -97,7 +87,7 @@ public class SignInValidator : ISignInValidator
     public async Task<SignInValidationResult<Saml2RedirectBinding>> ValidateLoginAsync(HttpRequest request, ClaimsPrincipal user)
     {
         var genericRequest = await request.ToGenericHttpRequestAsync().ConfigureAwait(false);
-        var settings = await _configurationService.GetConfigurationAsync().ConfigureAwait(false);
+        var settings = await configurationService.GetConfigurationAsync().ConfigureAwait(false);
         var saml2AuthnRequest = new Saml2AuthnRequest(settings);
         var requestBinding = new Saml2RedirectBinding();
 
@@ -117,7 +107,7 @@ public class SignInValidator : ISignInValidator
         var issuer = saml2AuthnRequest.Issuer;
 
         // check client
-        var client = await _clientStore.FindEnabledClientByIdAsync(issuer, default);
+        var client = await clientStore.FindEnabledClientByIdAsync(issuer);
 
         if (client == null)
         {
@@ -136,7 +126,7 @@ public class SignInValidator : ISignInValidator
             };
         }
 
-        var rp = await _relyingPartyStore.FindRelyingPartyAsync(issuer).ConfigureAwait(false);
+        var rp = await relyingPartyStore.FindRelyingPartyAsync(issuer).ConfigureAwait(false);
         if (rp == null)
         {
             return new SignInValidationResult<Saml2RedirectBinding>
@@ -166,7 +156,7 @@ public class SignInValidator : ISignInValidator
     public async Task<SignInValidationResult<Saml2PostBinding>> ValidateLogoutAsync(HttpRequest request)
     {
         var genericRequest = await request.ToGenericHttpRequestAsync().ConfigureAwait(false);
-        var settings = await _configurationService.GetConfigurationAsync().ConfigureAwait(false);
+        var settings = await configurationService.GetConfigurationAsync().ConfigureAwait(false);
         var saml2LogoutRequest = new Saml2LogoutRequest(settings);
         var requestBinding = new Saml2PostBinding();
 
@@ -175,7 +165,7 @@ public class SignInValidator : ISignInValidator
         var issuer = samlRequest.Issuer;
 
         // check client
-        var client = await _clientStore.FindEnabledClientByIdAsync(issuer, default);
+        var client = await clientStore.FindEnabledClientByIdAsync(issuer);
 
         if (client == null)
         {
@@ -194,7 +184,7 @@ public class SignInValidator : ISignInValidator
             };
         }
 
-        var rp = await _relyingPartyStore.FindRelyingPartyAsync(issuer).ConfigureAwait(false);
+        var rp = await relyingPartyStore.FindRelyingPartyAsync(issuer).ConfigureAwait(false);
         if (rp == null)
         {
             return new SignInValidationResult<Saml2PostBinding>

@@ -1,7 +1,7 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Admin.Http.Store;
-using Aguacongas.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Admin.Http.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.BlazorApp.Infrastructure.Services;
 using Aguacongas.FreeTheIdServer.BlazorApp.Models;
 using Aguacongas.FreeTheIdServer.BlazorApp.Services;
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DynamicConfiguration = Aguacongas.DynamicConfiguration.Razor.Services;
-using Entity = Aguacongas.IdentityServer.Store.Entity;
+using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
 
 namespace Microsoft.AspNetCore.Components.WebAssembly.Hosting

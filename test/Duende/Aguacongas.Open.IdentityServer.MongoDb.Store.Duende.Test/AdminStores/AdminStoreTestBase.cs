@@ -1,10 +1,10 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.IdentityServer.Abstractions;
-using Aguacongas.IdentityServer.Store;
-using Aguacongas.IdentityServer.Store.Entity;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Store;
+using Aguacongas.Open.IdentityServer.Store.Entity;
 using Aguacongas.FreeTheIdServer.Models;
-using Aguacongas.IdentityServer.Extensions;
+using Aguacongas.Open.IdentityServer.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 using Xunit;
 using ISConfiguration = Open.IdentityServer.Configuration;
 
-namespace Aguacongas.IdentityServer.MongoDb.Store.Test.AdminStores
+namespace Aguacongas.Open.IdentityServer.MongoDb.Store.Test.AdminStores
 {
     public abstract class AdminStoreTestBase<TEntity> : IDisposable
         where TEntity: class, IEntityId, new()

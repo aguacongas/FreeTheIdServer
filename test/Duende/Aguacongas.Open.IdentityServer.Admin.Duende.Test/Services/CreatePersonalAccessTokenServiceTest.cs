@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Aguacongas.IdentityServer.Admin.Services.Test;
+namespace Aguacongas.Open.IdentityServer.Admin.Services.Test;
 
 public class CreatePersonalAccessTokenServiceTest
 {
