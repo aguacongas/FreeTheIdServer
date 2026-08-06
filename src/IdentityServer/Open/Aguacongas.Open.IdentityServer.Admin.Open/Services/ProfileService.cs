@@ -56,7 +56,6 @@ public class ProfileService<TUser>(UserManager<TUser> userManager,
     /// This method is called whenever claims about the user are requested (e.g. during token creation or via the userinfo endpoint)
     /// </summary>
     /// <param name="context">The context.</param>
-    /// <param name="ct"></param>
     public override async Task GetProfileDataAsync(ProfileDataRequestContext context)
     {
         var user = await FindUserAsync(context.Subject.GetSubjectId()).ConfigureAwait(false);

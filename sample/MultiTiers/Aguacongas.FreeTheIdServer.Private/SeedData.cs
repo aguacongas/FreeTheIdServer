@@ -1,14 +1,14 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Aguacongas.Open.IdentityServer.EntityFramework.Store;
-using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.Data;
 using Aguacongas.FreeTheIdServer.Models;
-using IdentityModel;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
+using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Open.IdentityServer;
+using Open.IdentityServer.Models;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -77,7 +77,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedApiProperties(IAdminStore<Entity.ApiProperty> apiPropertyStore, Open.IdentityServer.Models.ApiResource resource)
+        private static void SeedApiProperties(IAdminStore<Entity.ApiProperty> apiPropertyStore, ApiResource resource)
         {
             foreach (var property in resource.Properties)
             {
@@ -91,7 +91,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedApiApiScopes(IAdminStore<Entity.ApiApiScope> apiApiScopeStore, Open.IdentityServer.Models.ApiResource resource)
+        private static void SeedApiApiScopes(IAdminStore<Entity.ApiApiScope> apiApiScopeStore, ApiResource resource)
         {
             foreach (var apiScope in resource.Scopes)
             {
@@ -104,7 +104,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedApiSecrets(IAdminStore<Entity.ApiSecret> apiSecretStore, Open.IdentityServer.Models.ApiResource resource)
+        private static void SeedApiSecrets(IAdminStore<Entity.ApiSecret> apiSecretStore, ApiResource resource)
         {
             foreach (var secret in resource.ApiSecrets)
             {
@@ -120,7 +120,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedApiClaims(IAdminStore<Entity.ApiClaim> apiClaimStore, Open.IdentityServer.Models.ApiResource resource)
+        private static void SeedApiClaims(IAdminStore<Entity.ApiClaim> apiClaimStore, ApiResource resource)
         {
             foreach (var claim in resource.UserClaims)
             {
@@ -163,7 +163,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedApiScopeProperties(IAdminStore<Entity.ApiScopeProperty> apiScopePropertyStore, Open.IdentityServer.Models.ApiScope resource)
+        private static void SeedApiScopeProperties(IAdminStore<Entity.ApiScopeProperty> apiScopePropertyStore, ApiScope resource)
         {
             foreach (var property in resource.Properties)
             {
@@ -177,7 +177,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedApiScopeClaims(IAdminStore<Entity.ApiScopeClaim> apiScopeClaimStore, Open.IdentityServer.Models.ApiScope resource)
+        private static void SeedApiScopeClaims(IAdminStore<Entity.ApiScopeClaim> apiScopeClaimStore, ApiScope resource)
         {
             foreach (var claim in resource.UserClaims)
             {
@@ -219,7 +219,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedIdentityProperties(IAdminStore<Entity.IdentityProperty> identityPropertyStore, Open.IdentityServer.Models.IdentityResource resource)
+        private static void SeedIdentityProperties(IAdminStore<Entity.IdentityProperty> identityPropertyStore, IdentityResource resource)
         {
             foreach (var property in resource.Properties)
             {
@@ -233,7 +233,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedIdentityClaims(IAdminStore<Entity.IdentityClaim> identityClaimStore, Open.IdentityServer.Models.IdentityResource resource)
+        private static void SeedIdentityClaims(IAdminStore<Entity.IdentityClaim> identityClaimStore, IdentityResource resource)
         {
             foreach (var claim in resource.UserClaims)
             {
@@ -316,7 +316,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedClientUris(IAdminStore<Entity.ClientUri> clientUriStore, Open.IdentityServer.Models.Client client)
+        private static void SeedClientUris(IAdminStore<Entity.ClientUri> clientUriStore, Client client)
         {
             var uris = client.RedirectUris.Select(o => new Entity.ClientUri
             {
@@ -374,7 +374,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedClientProperties(IAdminStore<Entity.ClientProperty> clientPropertyStore, Open.IdentityServer.Models.Client client)
+        private static void SeedClientProperties(IAdminStore<Entity.ClientProperty> clientPropertyStore, Client client)
         {
             foreach (var property in client.Properties)
             {
@@ -388,7 +388,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedClientRestrictions(IAdminStore<Entity.ClientIdpRestriction> clientIdpRestrictionStore, Open.IdentityServer.Models.Client client)
+        private static void SeedClientRestrictions(IAdminStore<Entity.ClientIdpRestriction> clientIdpRestrictionStore, Client client)
         {
             foreach (var restriction in client.IdentityProviderRestrictions)
             {
@@ -401,7 +401,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedClientSecrets(IAdminStore<Entity.ClientSecret> clientSecretStore, Open.IdentityServer.Models.Client client)
+        private static void SeedClientSecrets(IAdminStore<Entity.ClientSecret> clientSecretStore, Client client)
         {
             foreach (var secret in client.ClientSecrets)
             {
@@ -417,7 +417,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedClientClaims(IAdminStore<Entity.ClientClaim> clientClaimStore, Open.IdentityServer.Models.Client client)
+        private static void SeedClientClaims(IAdminStore<Entity.ClientClaim> clientClaimStore, Client client)
         {
             foreach (var claim in client.Claims)
             {
@@ -431,7 +431,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedClientScopes(IAdminStore<Entity.ClientScope> clientScopeStore, Open.IdentityServer.Models.Client client)
+        private static void SeedClientScopes(IAdminStore<Entity.ClientScope> clientScopeStore, Client client)
         {
             foreach (var clientScope in client.AllowedScopes)
             {
@@ -444,7 +444,7 @@ namespace Aguacongas.FreeTheIdServer
             }
         }
 
-        private static void SeedClientGrantType(IAdminStore<Entity.ClientGrantType> clientGrantTypeStore, Open.IdentityServer.Models.Client client)
+        private static void SeedClientGrantType(IAdminStore<Entity.ClientGrantType> clientGrantTypeStore, Client client)
         {
             foreach (var grantType in client.AllowedGrantTypes)
             {
@@ -491,13 +491,13 @@ namespace Aguacongas.FreeTheIdServer
                     .GetAwaiter().GetResult();
 
                 ExcuteAndCheckResult(() => userMgr.AddClaimsAsync(alice, new Claim[]{
-                        new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Alice"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", Open.IdentityServer.IdentityServerConstants.ClaimValueTypes.Json)
+                        new Claim(IdentityModel.JwtClaimTypes.Name, "Alice Smith"),
+                        new Claim(IdentityModel.JwtClaimTypes.GivenName, "Alice"),
+                        new Claim(IdentityModel.JwtClaimTypes.FamilyName, "Smith"),
+                        new Claim(IdentityModel.JwtClaimTypes.Email, "AliceSmith@email.com"),
+                        new Claim(IdentityModel.JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        new Claim(IdentityModel.JwtClaimTypes.WebSite, "http://alice.com"),
+                        new Claim(IdentityModel.JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServerConstants.ClaimValueTypes.Json)
                     })).GetAwaiter().GetResult();
 
                 ExcuteAndCheckResult(() => userMgr.AddToRolesAsync(alice, roles))
@@ -521,13 +521,13 @@ namespace Aguacongas.FreeTheIdServer
                     .GetAwaiter().GetResult();
 
                 ExcuteAndCheckResult(() => userMgr.AddClaimsAsync(bob, new Claim[]{
-                        new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Bob"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", Open.IdentityServer.IdentityServerConstants.ClaimValueTypes.Json),
+                        new Claim(IdentityModel.JwtClaimTypes.Name, "Bob Smith"),
+                        new Claim(IdentityModel.JwtClaimTypes.GivenName, "Bob"),
+                        new Claim(IdentityModel.JwtClaimTypes.FamilyName, "Smith"),
+                        new Claim(IdentityModel.JwtClaimTypes.Email, "BobSmith@email.com"),
+                        new Claim(IdentityModel.JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                        new Claim(IdentityModel.JwtClaimTypes.WebSite, "http://bob.com"),
+                        new Claim(IdentityModel.JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServerConstants.ClaimValueTypes.Json),
                         new Claim("location", "somewhere")
                     })).GetAwaiter().GetResult();
                 ExcuteAndCheckResult(() => userMgr.AddToRoleAsync(bob, "Is4-Reader"))

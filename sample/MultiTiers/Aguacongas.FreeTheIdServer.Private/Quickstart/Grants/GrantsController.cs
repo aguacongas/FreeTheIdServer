@@ -1,11 +1,11 @@
 // Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Open.IdentityServer.Events;
 using Open.IdentityServer.Extensions;
 using Open.IdentityServer.Services;
 using Open.IdentityServer.Stores;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -59,7 +59,7 @@ namespace IdentityServerHost.Quickstart.UI
 
         private async Task<GrantsViewModel> BuildViewModelAsync()
         {
-            var grants = await _interaction.GetAllUserGrantsAsync(HttpContext.RequestAborted);
+            var grants = await _interaction.GetAllUserGrantsAsync();
 
             var list = new List<GrantViewModel>();
             foreach (var grant in grants)

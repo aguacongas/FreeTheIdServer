@@ -19,7 +19,7 @@ public class WebServiceClaimsProvider(HttpClient httpClient) : IProvideClaims
 
     public async Task<IEnumerable<Claim>> ProvideClaims(ClaimsPrincipal subject, Client application, string caller, Resource resource)
     {
-        var response = await _httpClient.GetAsync($"/claims?subject={subject.Identity.Name}&client={application.DisplayName}").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync($"/claims?subject={subject.Identity.Name}&client={application.ClientName}").ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
         var content = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         var entities = await JsonSerializer.DeserializeAsync<IEnumerable<SerializedClaim>>(content).ConfigureAwait(false);

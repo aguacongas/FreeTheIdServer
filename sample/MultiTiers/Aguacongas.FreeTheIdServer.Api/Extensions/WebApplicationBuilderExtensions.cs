@@ -1,21 +1,12 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.AspNetCore.Authentication;
-using Aguacongas.Open.IdentityServer.Abstractions;
-using Aguacongas.Open.IdentityServer.Admin.Models;
-using Aguacongas.Open.IdentityServer.Admin.Services;
-using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.FreeTheIdServer.Api;
 using Aguacongas.FreeTheIdServer.Authentication;
-using Aguacongas.FreeTheIdServer.Data;
 using Aguacongas.FreeTheIdServer.Models;
-using Open.IdentityServer;
-using Open.IdentityServer.Configuration;
-using Open.IdentityServer.Events;
-using Open.IdentityServer.Services;
-using Open.IdentityServer.Services.KeyManagement;
-using Open.IdentityServer.Stores;
-using Open.IdentityServer.Validation;
+using Aguacongas.Open.IdentityServer.Abstractions;
+using Aguacongas.Open.IdentityServer.Admin.Services;
+using Aguacongas.Open.IdentityServer.Store;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -25,6 +16,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Open.IdentityServer.Configuration;
+using Open.IdentityServer.Services;
+using Open.IdentityServer.Validation;
 using System.Linq;
 using System.Net.Http;
 

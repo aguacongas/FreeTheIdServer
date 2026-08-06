@@ -1,14 +1,14 @@
 ﻿// Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.FreeTheIdServer.Authentication;
+using Aguacongas.FreeTheIdServer.Data;
+using Aguacongas.FreeTheIdServer.Models;
 using Aguacongas.Open.IdentityServer;
 using Aguacongas.Open.IdentityServer.Abstractions;
 using Aguacongas.Open.IdentityServer.Admin.Options;
 using Aguacongas.Open.IdentityServer.Admin.Services;
-using Aguacongas.FreeTheIdServer.Authentication;
-using Aguacongas.FreeTheIdServer.Data;
-using Aguacongas.FreeTheIdServer.Models;
-using Open.AspNetCore.Authentication.OAuth2Introspection;
-using Open.AspNetCore.Authentication.OAuth2Introspection.Infrastructure;
+using Duende.AspNetCore.Authentication.OAuth2Introspection;
+using Duende.AspNetCore.Authentication.OAuth2Introspection.Infrastructure;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;

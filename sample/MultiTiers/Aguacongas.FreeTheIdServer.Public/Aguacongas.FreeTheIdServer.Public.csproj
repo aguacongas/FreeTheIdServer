@@ -17,11 +17,7 @@
     <CodeAnalysisRuleSet>Aguacongas.FreeTheIdServer.Public.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Aguacongas.Open.IdentityServer.Admin.Open" Version="11.0.0" />
-    <PackageReference Include="Aguacongas.FreeTheIdServer.Authentication" Version="11.0.0" />
-    <PackageReference Include="Aguacongas.FreeTheIdServer.Identity" Version="11.0.0" />
-    <PackageReference Include="Aguacongas.Open.IdentityServer.Http.Store" Version="11.0.0" />
-    <PackageReference Include="Open.AspNetCore.Authentication.OAuth2Introspection" Version="7.0.1" />
+    <PackageReference Include="Duende.AspNetCore.Authentication.OAuth2Introspection" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.10" />
@@ -41,6 +37,10 @@
     <PackageReference Include="Serilog.Sinks.Seq" Version="9.1.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Aguacongas.FreeTheIdServer.Authentication\Aguacongas.FreeTheIdServer.Authentication.csproj" />
     <ProjectReference Include="..\..\..\src\Aguacongas.FreeTheIdServer.BlazorApp\Aguacongas.FreeTheIdServer.BlazorApp.csproj" />
+    <ProjectReference Include="..\..\..\src\Aguacongas.FreeTheIdServer.Identity\Aguacongas.FreeTheIdServer.Identity.csproj" />
+    <ProjectReference Include="..\..\..\src\IdentityServer\Aguacongas.Open.IdentityServer.Http.Store\Aguacongas.Open.IdentityServer.Http.Store.csproj" />
+    <ProjectReference Include="..\..\..\src\IdentityServer\Open\Aguacongas.Open.IdentityServer.Admin.Open\Aguacongas.Open.IdentityServer.Admin.Open.csproj" />
   </ItemGroup>
 </Project>

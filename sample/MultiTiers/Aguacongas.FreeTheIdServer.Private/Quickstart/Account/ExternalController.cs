@@ -1,17 +1,16 @@
 // Project: Aguafrommars/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.FreeTheIdServer.Models;
-using Open.IdentityServer;
-using Open.IdentityServer.Events;
-using Open.IdentityServer.Services;
-using Open.IdentityServer.Stores;
-using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Open.IdentityServer;
+using Open.IdentityServer.Events;
+using Open.IdentityServer.Services;
+using Open.IdentityServer.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,7 +117,7 @@ namespace IdentityServerHost.Quickstart.UI
             // it doesn't expose an API to issue additional claims from the login workflow
             var principal = await _signInManager.CreateUserPrincipalAsync(user);
             additionalLocalClaims.AddRange(principal.Claims);
-            var name = principal.FindFirst(JwtClaimTypes.Name)?.Value ?? user.Id;
+            var name = principal.FindFirst(IdentityModel.JwtClaimTypes.Name)?.Value ?? user.Id;
 
             var isuser = new IdentityServerUser(user.Id)
             {
@@ -160,7 +159,7 @@ namespace IdentityServerHost.Quickstart.UI
             // try to determine the unique id of the external user (issued by the provider)
             // the most common claim type for that are the sub claim and the NameIdentifier
             // depending on the external provider, some other claim type might be used
-            var userIdClaim = externalUser.FindFirst(JwtClaimTypes.Subject) ??
+            var userIdClaim = externalUser.FindFirst(IdentityModel.JwtClaimTypes.Subject) ??
                               externalUser.FindFirst(ClaimTypes.NameIdentifier) ??
                               throw new Exception("Unknown userid");
 
@@ -183,38 +182,38 @@ namespace IdentityServerHost.Quickstart.UI
             var filtered = new List<Claim>();
 
             // user's display name
-            var name = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Name)?.Value ??
+            var name = claims.FirstOrDefault(x => x.Type == IdentityModel.JwtClaimTypes.Name)?.Value ??
                 claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
             if (name != null)
             {
-                filtered.Add(new Claim(JwtClaimTypes.Name, name));
+                filtered.Add(new Claim(IdentityModel.JwtClaimTypes.Name, name));
             }
             else
             {
-                var first = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.GivenName)?.Value ??
+                var first = claims.FirstOrDefault(x => x.Type == IdentityModel.JwtClaimTypes.GivenName)?.Value ??
                     claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value;
-                var last = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.FamilyName)?.Value ??
+                var last = claims.FirstOrDefault(x => x.Type == IdentityModel.JwtClaimTypes.FamilyName)?.Value ??
                     claims.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value;
                 if (first != null && last != null)
                 {
-                    filtered.Add(new Claim(JwtClaimTypes.Name, first + " " + last));
+                    filtered.Add(new Claim(IdentityModel.JwtClaimTypes.Name, first + " " + last));
                 }
                 else if (first != null)
                 {
-                    filtered.Add(new Claim(JwtClaimTypes.Name, first));
+                    filtered.Add(new Claim(IdentityModel.JwtClaimTypes.Name, first));
                 }
                 else if (last != null)
                 {
-                    filtered.Add(new Claim(JwtClaimTypes.Name, last));
+                    filtered.Add(new Claim(IdentityModel.JwtClaimTypes.Name, last));
                 }
             }
 
             // email
-            var email = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Email)?.Value ??
+            var email = claims.FirstOrDefault(x => x.Type == IdentityModel.JwtClaimTypes.Email)?.Value ??
                claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             if (email != null)
             {
-                filtered.Add(new Claim(JwtClaimTypes.Email, email));
+                filtered.Add(new Claim(IdentityModel.JwtClaimTypes.Email, email));
             }
 
             var user = new ApplicationUser
@@ -242,10 +241,10 @@ namespace IdentityServerHost.Quickstart.UI
         {
             // if the external system sent a session id claim, copy it over
             // so we can use it for single sign-out
-            var sid = externalResult.Principal.Claims.FirstOrDefault(x => x.Type == JwtClaimTypes.SessionId);
+            var sid = externalResult.Principal.Claims.FirstOrDefault(x => x.Type == IdentityModel.JwtClaimTypes.SessionId);
             if (sid != null)
             {
-                localClaims.Add(new Claim(JwtClaimTypes.SessionId, sid.Value));
+                localClaims.Add(new Claim(IdentityModel.JwtClaimTypes.SessionId, sid.Value));
             }
 
             // if the external provider issued an id_token, we'll keep it for signout

@@ -64,7 +64,6 @@ public class PersistedGrantService(IAdminStore<Entity.AuthorizationCode> authori
     /// Gets all grants for a given subject ID.
     /// </summary>
     /// <param name="subjectId">The subject identifier.</param>
-    /// <param name="ct"></param>
     /// <returns></returns>
     public async Task<IEnumerable<Grant>> GetAllGrantsAsync(string subjectId)
     {
@@ -128,7 +127,6 @@ public class PersistedGrantService(IAdminStore<Entity.AuthorizationCode> authori
     /// Removes all grants for a given subject id and client id combination.
     /// </summary>
     /// <param name="subjectId">The subject identifier.</param>
-    /// <param name="ct"></param>
     /// <param name="clientId">The client identifier.</param>
     /// <param name="sessionId">The sesion id (optional).</param>
     /// <returns></returns>
