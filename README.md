@@ -1,6 +1,6 @@
 # FreeTheIdServer
 
-**FreeTheIdServer** is a clone of [TheIdServer](https://github.com/aguacongas/TheIdServer) but using [Open.IdentityServer](https://github.com/RockSolidKnowledge/Open.IdentityServer) instead of *Duende IdentityServer* so it's free.
+**FreeTheIdServer** is a clone of [TheIdServer](https://github.com/aguacongas/TheIdServer) but that uses [Open.IdentityServer](https://github.com/RockSolidKnowledge/Open.IdentityServer) instead of *Duende IdentityServer*, making it completely free to use.
 
 [OpenID/Connect](https://openid.net/connect/), [OAuth2](https://oauth.net/2/), [WS-Federation](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) and [SAML 2.0](http://docs.oasis-open.org/security/saml/v2.0/sstc-saml-approved-errata-2.0.html) server based on [Open.IdentityServer](https://github.com/RockSolidKnowledge/Open.IdentityServer) and [ITfoxtec Identity SAML 2.0](https://www.itfoxtec.com/IdentitySaml2).
 
