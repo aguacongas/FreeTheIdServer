@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Xunit;
+using OpenConfiguration = Open.IdentityServer.Configuration;
 
 namespace Aguacongas.Open.IdentityServer.Admin.Services.Test;
 
@@ -96,15 +97,12 @@ public class CreatePersonalAccessTokenServiceTest
     [Fact]
     public async Task CreatePersonalAccessTokenAsync_should_create_reference_token_with_expected_claims()
     {
-        var sut = CreateSut(out var issuerNameServiceMock, out var tokenServiceMock, out var clientStoreMock, out var resourceStoreMock);
+        var sut = CreateSut(out var _, out var tokenServiceMock, out var clientStoreMock, out var resourceStoreMock);
 
         clientStoreMock.Setup(s => s.FindClientByIdAsync(ClientId))
             .ReturnsAsync(new Client { ClientId = ClientId, AllowedScopes = new HashSet<string> { "scope1" } });
         resourceStoreMock.Setup(s => s.FindApiScopesByNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync([new ApiScope { Name = "api1" }]);
-        var httpContextMock = new Mock<HttpContext>();
-        issuerNameServiceMock.Setup(s => s.HttpContext)
-            .Returns(httpContextMock.Object);
 
         Token capturedToken = null;
         tokenServiceMock.Setup(s => s.CreateSecurityTokenAsync(It.IsAny<Token>()))
@@ -143,15 +141,12 @@ public class CreatePersonalAccessTokenServiceTest
     [Fact]
     public async Task CreatePersonalAccessTokenAsync_should_create_jwt_token_when_isRefenceToken_is_false()
     {
-        var sut = CreateSut(out var issuerNameServiceMock, out var tokenServiceMock, out var clientStoreMock, out var resourceStoreMock);
+        var sut = CreateSut(out var _, out var tokenServiceMock, out var clientStoreMock, out var resourceStoreMock);
 
         clientStoreMock.Setup(s => s.FindClientByIdAsync(ClientId))
             .ReturnsAsync(new Client { ClientId = ClientId, AllowedScopes = new HashSet<string>() });
         resourceStoreMock.Setup(s => s.FindApiScopesByNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync([new ApiScope { Name = "api1" }]);
-        var httpContextMock = new Mock<HttpContext>();
-        issuerNameServiceMock.Setup(s => s.HttpContext)
-            .Returns(httpContextMock.Object);
 
         Token capturedToken = null;
         tokenServiceMock.Setup(s => s.CreateSecurityTokenAsync(It.IsAny<Token>()))
@@ -168,15 +163,12 @@ public class CreatePersonalAccessTokenServiceTest
     [Fact]
     public async Task CreatePersonalAccessTokenAsync_should_exclude_name_clientid_and_subject_from_requested_claim_types()
     {
-        var sut = CreateSut(out var issuerNameServiceMock, out var tokenServiceMock, out var clientStoreMock, out var resourceStoreMock);
+        var sut = CreateSut(out var _, out var tokenServiceMock, out var clientStoreMock, out var resourceStoreMock);
 
         clientStoreMock.Setup(s => s.FindClientByIdAsync(ClientId))
             .ReturnsAsync(new Client { ClientId = ClientId, AllowedScopes = new HashSet<string>() });
         resourceStoreMock.Setup(s => s.FindApiScopesByNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync([new ApiScope { Name = "api1" }]);
-        var httpContextMock = new Mock<HttpContext>();
-        issuerNameServiceMock.Setup(s => s.HttpContext)
-            .Returns(httpContextMock.Object);
 
         Token capturedToken = null;
         tokenServiceMock.Setup(s => s.CreateSecurityTokenAsync(It.IsAny<Token>()))
@@ -201,7 +193,20 @@ public class CreatePersonalAccessTokenServiceTest
         out Mock<IClientStore> clientStoreMock,
         out Mock<IResourceStore> resourceStoreMock)
     {
+        var options = new OpenConfiguration.IdentityServerOptions
+        {
+            IssuerUri = "https://issuer.example.com"
+        };
+        var serviceProviderMock = new Mock<IServiceProvider>();
+        serviceProviderMock.Setup(m => m.GetService(typeof(OpenConfiguration.IdentityServerOptions)))
+            .Returns(options);
+        var httpContextMock = new Mock<HttpContext>();
+        httpContextMock.Setup(m => m.RequestServices)
+            .Returns(serviceProviderMock.Object);
         httpContextAccessorMock = new Mock<IHttpContextAccessor>();
+        httpContextAccessorMock.Setup(s => s.HttpContext)
+            .Returns(httpContextMock.Object);
+
         tokenServiceMock = new Mock<ITokenService>();
         clientStoreMock = new Mock<IClientStore>();
         resourceStoreMock = new Mock<IResourceStore>();
