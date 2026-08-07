@@ -37,7 +37,7 @@ jobs:
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
           fallback: 1.0.0
-      - name: Build and push FreeTheIdServer Open
+      - name: Build and push FreeTheIdServer
         id: docker_build_FreeTheIdServer_Open
         uses: docker/build-push-action@v3        
         env: 
@@ -46,7 +46,7 @@ jobs:
           build-args: GITHIB_FEED_TOKEN=${{ secrets.GITHIB_FEED_TOKEN }} FILE_VERSION=${{ steps.previoustag.outputs.tag }}.0 SOURCE_VERSION=${{ github.sha }}
           push: true
           file: src/Aguacongas.FreeTheIdServer.Open/Dockerfile
-          tags: aguacongas/FreeTheIdServer.Open:${{ steps.previoustag.outputs.tag }}
+          tags: aguacongas/freetheidserver:${{ steps.previoustag.outputs.tag }}
   app:
     runs-on: ubuntu-latest
     steps:
@@ -77,4 +77,4 @@ jobs:
           build-args: GITHIB_FEED_TOKEN=${{ secrets.GITHIB_FEED_TOKEN }} FILE_VERSION=${{ steps.previoustag.outputs.tag }}.0 SOURCE_VERSION=${{ github.sha }}
           push: true
           file: src/Aguacongas.FreeTheIdServer.BlazorApp/Dockerfile
-          tags: aguacongas/FreeTheIdServerapp:${{ steps.previoustag.outputs.tag }}
+          tags: aguacongas/freetheidserverapp:${{ steps.previoustag.outputs.tag }}
