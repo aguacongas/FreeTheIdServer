@@ -14,7 +14,7 @@ In this phase, we create the service by connecting directly to the public reposi
 1.  Log in to the **Render Dashboard**.
 2.  Click **New +** and select **Blueprint**.
 3.  **Connect the Repository:**
-    * Look for the option to connect a **Public Git Repository** or paste the repository URL directly: `https://github.com/Aguafrommars/FreeTheIdServer`
+    * Look for the option to connect a **Public Git Repository** or paste the repository URL directly: `https://github.com/aguacongas/FreeTheIdServer`
     * Click **Continue**.
 4.  **Service Name:** Give your service a name (e.g., `FreeTheIdServer-prod`).
 5.  **Branch:** Ensure the `master` branch (or the branch containing `render.yaml`) is selected.

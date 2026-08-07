@@ -6,7 +6,7 @@
     <Authors>Olivier Lefebvre</Authors>
 		<Description>Add Saml2P controller to your Open.IdentityServer server.</Description>
 		<Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
-		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/IdentityServer/Open/Aguacongas.Open.IdentityServer.Saml2p.Open</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/aguacongas/FreeTheIdServer/tree/master/src/IdentityServer/Open/Aguacongas.Open.IdentityServer.Saml2p.Open</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>FreeTheIdServer;Open.IdentityServer;saml2p</PackageTags>

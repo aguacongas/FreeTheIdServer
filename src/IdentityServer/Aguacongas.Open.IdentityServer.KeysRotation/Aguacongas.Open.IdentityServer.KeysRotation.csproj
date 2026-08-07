@@ -5,7 +5,7 @@
         <Authors>Olivier Lefebvre</Authors>
         <Description>FreeTheIdServer signing keys rotation.</Description>
         <Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
-        <PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer.KeysRotation</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/aguacongas/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer.KeysRotation</PackageProjectUrl>
         <RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>FreeTheIdServer;signing keys rotation</PackageTags>

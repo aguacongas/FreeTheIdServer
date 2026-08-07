@@ -12,7 +12,7 @@ This image uses an [nginx](http://nginx.org/) server to host the application.
 ### From Github Release
 
 The application is embedded in the [server's Github release](SERVER.md#from-github-release).  
-You can choose to install the standalone application by selecting *Aguacongas.FreeTheIdServer.BlazorApp{version}.zip* in the [list of releases](https://github.com/Aguafrommars/FreeTheIdServer/releases).   
+You can choose to install the standalone application by selecting *Aguacongas.FreeTheIdServer.BlazorApp{version}.zip* in the [list of releases](https://github.com/aguacongas/FreeTheIdServer/releases).   
 Unzip in the destination of your choice, and use the server of your choice.
 
 Read [Host and deploy ASP.NET Core Blazor WebAssembly](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/webassembly?view=aspnetcore-3.1) for more information.
@@ -140,7 +140,7 @@ This endpoint should return an HTML fragment.
 
 ```html
 <p>
-    This application manage your <a href="https://github.com/Aguafrommars/FreeTheIdServer#readme/">FreeTheIdServer</a>.
+    This application manage your <a href="https://github.com/aguacongas/FreeTheIdServer#readme/">FreeTheIdServer</a>.
 </p>
 <p>
     Visit the <a href="https://github.com/aguacongas/FreeTheIdServer#readme">github site</a> for doc, source code and issue tracking.

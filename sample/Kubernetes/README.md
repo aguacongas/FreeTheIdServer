@@ -328,17 +328,17 @@ kubectl apply -f FreeTheIdServer-public-ingres.yaml
 
 4. Test the deployment
 
-* Configure your host to route *FreeTheIdServer.aguafrommars.com* to your localhost.
+* Configure your host to route *FreeTheIdServer.aguacongas.com* to your localhost.
 
 ```
-127.0.0.1 FreeTheIdServer.aguafrommars.com
+127.0.0.1 FreeTheIdServer.aguacongas.com
 ```
 
 * Add the login and logout URLs to the client *FreeTheIdServeradmin* using the private farm.
 
 ![k8s-client-urls](../../doc/assets/k8s-client-urls.png)
 
-In a browser, navigate to https://FreeTheIdServer.aguafrommars.com.  
+In a browser, navigate to https://FreeTheIdServer.aguacongas.com.  
 You should be able to log with *alice* or *bob* (password: Pass123$).    
 
 ### Security

@@ -8,7 +8,7 @@ projects:
     - type: web
       name: FreeTheIdServer
       runtime: docker
-      repo: https://github.com/Aguafrommars/FreeTheIdServer
+      repo: https://github.com/aguacongas/FreeTheIdServer
       branch: master
       plan: free
       envVars:

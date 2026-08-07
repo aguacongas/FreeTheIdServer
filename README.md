@@ -1,6 +1,6 @@
 # FreeTheIdServer
 
-**FreeTheIdServer** is a clone of [TheIdServer](https://github.com/Aguafrommars/TheIdServer) but using [Open.IdentityServer](https://github.com/RockSolidKnowledge/Open.IdentityServer) instead of *Duende IdentityServer* so it's free.
+**FreeTheIdServer** is a clone of [TheIdServer](https://github.com/aguacongas/TheIdServer) but using [Open.IdentityServer](https://github.com/RockSolidKnowledge/Open.IdentityServer) instead of *Duende IdentityServer* so it's free.
 
 [OpenID/Connect](https://openid.net/connect/), [OAuth2](https://oauth.net/2/), [WS-Federation](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) and [SAML 2.0](http://docs.oasis-open.org/security/saml/v2.0/sstc-saml-approved-errata-2.0.html) server based on [Open.IdentityServer](https://github.com/RockSolidKnowledge/Open.IdentityServer) and [ITfoxtec Identity SAML 2.0](https://www.itfoxtec.com/IdentitySaml2).
 
@@ -14,7 +14,7 @@
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=aguacongas_FreeTheIdServer)](https://sonarcloud.io/dashboard?id=aguacongas_FreeTheIdServer)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/hutfs4sy38fy9ca7?svg=true)](https://ci.appveyor.com/project/aguacongas/FreeTheIdServer) [![Docker](https://github.com/Aguafrommars/FreeTheIdServer/actions/workflows/docker.yml/badge.svg)](https://github.com/Aguafrommars/FreeTheIdServer/actions/workflows/docker.yml) [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/aguafrommars)](https://artifacthub.io/packages/search?repo=aguafrommars)
+[![Build status](https://ci.appveyor.com/api/projects/status/hutfs4sy38fy9ca7?svg=true)](https://ci.appveyor.com/project/aguacongas/FreeTheIdServer) [![Docker](https://github.com/aguacongas/FreeTheIdServer/actions/workflows/docker.yml/badge.svg)](https://github.com/aguacongas/FreeTheIdServer/actions/workflows/docker.yml) [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/aguacongas)](https://artifacthub.io/packages/search?repo=aguacongas)
 [![libs.tech recommends](https://libs.tech/project/206938663/badge.svg)](https://libs.tech/project/206938663/FreeTheIdServer)
 
 ## ⚠️ Azure Key Vault Update
@@ -30,7 +30,7 @@ See [Data Protection](doc/DATA_PROTECTION.md#azure-key-vault) and [Keys Rotation
 
 ### Documentation
 
-Thanks [@ldeluigi](https://github.com/ldeluigi) and its [markdown-docs GitHub action](https://github.com/ldeluigi/markdown-docs). All markdown files are deployed in html [here](https://aguafrommars.github.io/FreeTheIdServer/).
+Thanks [@ldeluigi](https://github.com/ldeluigi) and its [markdown-docs GitHub action](https://github.com/ldeluigi/markdown-docs). All markdown files are deployed in html [here](https://aguacongas.github.io/FreeTheIdServer/).
 
 ### Try it now at [https://FreeTheIdServer-Open.herokuapp.com/](https://FreeTheIdServer-Open.herokuapp.com/)
 
@@ -47,48 +47,48 @@ Or if you're feeling really generous, we support sponsorships.
 
 Choose your favorite:
 
-* [issuehunts](https://issuehunt.io/r/Aguafrommars/FreeTheIdServer/issues/170)
+* [issuehunts](https://issuehunt.io/r/aguacongas/FreeTheIdServer/issues/170)
 * [github sponsor](https://github.com/sponsors/aguacongas),
 * [liberapay](https://liberapay.com/aguacongas)
 
 ## Main features
 
 ### Admin app
-![home](https://raw.githubusercontent.com/Aguafrommars/FreeTheIdServer/master/doc/assets/home.png)
+![home](https://raw.githubusercontent.com/aguacongas/FreeTheIdServer/master/doc/assets/home.png)
 
-* [Users management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/USER.md)
-* [Roles management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/ROLE.md)
-* [Clients management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/CLIENT.md)
-* [Apis management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/API.md)
-* [Api Scopes management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SCOPE.md)
-* [Identities management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/IDENTITY.md)
-* [Relying parties management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/RELYING-PARTY.md)
-* [External providers management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/PROVIDER.md)
-* [Localizable](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/LOCALIZATION.md)
-* [Export/import configuration](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/EXPORT_IMPORT.md)
-* [Keys management](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/KEYS.md)
-* [Server settings](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SETTINGS.md)
+* [Users management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/USER.md)
+* [Roles management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/ROLE.md)
+* [Clients management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/CLIENT.md)
+* [Apis management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/API.md)
+* [Api Scopes management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SCOPE.md)
+* [Identities management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/IDENTITY.md)
+* [Relying parties management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/RELYING-PARTY.md)
+* [External providers management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/PROVIDER.md)
+* [Localizable](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/LOCALIZATION.md)
+* [Export/import configuration](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/EXPORT_IMPORT.md)
+* [Keys management](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/KEYS.md)
+* [Server settings](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SETTINGS.md)
 
 ### Server
 
 * [OpenID/Connect](https://openid.net/connect/), [OAuth2](https://oauth.net/2/), [WS-Federation](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) and [Saml2P](http://docs.oasis-open.org/security/saml/v2.0/sstc-saml-approved-errata-2.0.html) server
-* [Large choice of database](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/doc/SERVER.md#using-entity-framework-core)
-* [Dynamic external provider configuration](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SERVER.md#configure-the-provider-hub)
-* [Public / Private installation](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SERVER.md#using-the-api)
-* [Docker support](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SERVER.md#from-docker)
-* [Claims providers](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/CLAIMS_PROVIDER.md)
-* [External claims mapping](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/EXTERNAL_CLAIMS_MAPPING.md)
-* [Localizable](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/LOCALIZATION.md)
+* [Large choice of database](https://github.com/aguacongas/FreeTheIdServer/blob/master/doc/SERVER.md#using-entity-framework-core)
+* [Dynamic external provider configuration](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#configure-the-provider-hub)
+* [Public / Private installation](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#using-the-api)
+* [Docker support](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#from-docker)
+* [Claims providers](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/CLAIMS_PROVIDER.md)
+* [External claims mapping](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/EXTERNAL_CLAIMS_MAPPING.md)
+* [Localizable](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/LOCALIZATION.md)
 * [OpenID Connect Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)
-* [Auto remove expired tokens](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SERVER.md#configure-token-cleaner)
-* [Keys rotation](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/KEYS_ROTATION.md)
-* [Create Personal Access Token](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/PAT.md)
-* [Duende CIBA integration](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/CIBA.md)
+* [Auto remove expired tokens](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#configure-token-cleaner)
+* [Keys rotation](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/KEYS_ROTATION.md)
+* [Create Personal Access Token](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/PAT.md)
+* [Duende CIBA integration](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/CIBA.md)
 * [Token exchange](https://datatracker.ietf.org/doc/html/rfc8693)([RFC 8693](https://datatracker.ietf.org/doc/html/rfc8693))
-* [Health checks](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SERVER.md#health-checks)
-* [OpenTelemety](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/OPEN_TELEMETRY.md)
-* [Server side session](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SERVER_SIDE_SESSIONS.md)
-* [Passwor hashing configuration](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/doc/SERVER.md#configure-password-hashers-options)
+* [Health checks](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#health-checks)
+* [OpenTelemety](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/OPEN_TELEMETRY.md)
+* [Server side session](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER_SIDE_SESSIONS.md)
+* [Passwor hashing configuration](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#configure-password-hashers-options)
   
   
 ## Setup
@@ -110,7 +110,7 @@ docker build -t aguacongas/FreeTheIdServerapp:dev -f "./src/Aguacongas.FreeTheId
 
 We warmly welcome contributions. You can contribute by opening an issue, suggest new a feature, or submit a pull request.
 
-Read [How to contribute](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/CONTRIBUTING.md) and [Contributor Covenant Code of Conduct](https://github.com/Aguafrommars/FreeTheIdServer/tree/master/CODE_OF_CONDUCT.md) for more information.
+Read [How to contribute](https://github.com/aguacongas/FreeTheIdServer/tree/master/CONTRIBUTING.md) and [Contributor Covenant Code of Conduct](https://github.com/aguacongas/FreeTheIdServer/tree/master/CODE_OF_CONDUCT.md) for more information.
 
 ## OIDC Certification test result
 
@@ -120,6 +120,6 @@ https://www.certification.openid.net/plan-detail.html?plan=ZKco5LJhicIlT&public=
 Choose your favorite:
 
 * [github sponsor](https://github.com/sponsors/aguacongas/sponsorships?sponsor=aguacongas&tier_id=151490)
-* [issuehunts](https://issuehunt.io/r/Aguafrommars/FreeTheIdServer/issues/170)
+* [issuehunts](https://issuehunt.io/r/aguacongas/FreeTheIdServer/issues/170)
 * [liberapay](https://liberapay.com/aguacongas)
 

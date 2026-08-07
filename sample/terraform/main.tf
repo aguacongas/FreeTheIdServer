@@ -1,7 +1,7 @@
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"
-    organization = "aguafrommars"
+    organization = "aguacongas"
 
     workspaces {
       name = "FreeTheIdServer"
@@ -368,7 +368,7 @@ resource "kubernetes_config_map" "mysql_scondary_config" {
 
 # install FreeTheIdServer cluster with MySql cluster, Redis cluster and Seq server
 module "FreeTheIdServer" {
-  source = "Aguafrommars/FreeTheIdServer/helm"
+  source = "aguacongas/FreeTheIdServer/helm"
 
   host = local.host
   tls_issuer_name = local.tls_issuer_name

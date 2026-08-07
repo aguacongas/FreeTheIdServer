@@ -5,7 +5,7 @@
     <Authors>Olivier Lefebvre</Authors>
     <Description>Expose OData controllers to manage FreeTheIdServer.</Description>
     <Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
-    <PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer.Admin</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/aguacongas/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer.Admin</PackageProjectUrl>
     <RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>FreeTheIdServer;administration</PackageTags>

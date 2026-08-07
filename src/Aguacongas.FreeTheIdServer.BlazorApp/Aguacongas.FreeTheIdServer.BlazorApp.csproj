@@ -6,9 +6,9 @@
     <Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <IsPackable>true</IsPackable>
-    <PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer.BlazorApp</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/aguacongas/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer.BlazorApp</PackageProjectUrl>
     <PackageIcon>package-icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/Aguafrommars/FreeTheIdServer</RepositoryUrl>
+    <RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>FreeTheIdServer;identityserver4;Open-identityserver;oidc;oauth;identity,authentication;security</PackageTags>
     <Description>FreeTheIdServer administration application.</Description>

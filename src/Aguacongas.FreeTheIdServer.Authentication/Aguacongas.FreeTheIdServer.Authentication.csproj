@@ -5,8 +5,8 @@
         <Authors>Olivier Lefebvre</Authors>
         <Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>		
-        <PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer.Authentication</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/Aguafrommars/FreeTheIdServer</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/aguacongas/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer.Authentication</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>FreeTheIdServer;aspnetcore;authentication;security</PackageTags>
         <Description>Aguacongas.AspNetCore.Authentication store implementation for FreeTheIdServer API.</Description>

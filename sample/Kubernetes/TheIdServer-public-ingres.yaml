@@ -5,7 +5,7 @@ metadata:
   namespace: FreeTheIdServer
 spec:
   rules:
-  - host: FreeTheIdServer.aguafrommars.com
+  - host: FreeTheIdServer.aguacongas.com
     http:
       paths:
       - backend:

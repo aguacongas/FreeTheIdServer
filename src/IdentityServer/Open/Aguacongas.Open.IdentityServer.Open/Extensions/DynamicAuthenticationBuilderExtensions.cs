@@ -1,4 +1,4 @@
-﻿// Project: Aguafrommars/FreeTheIdServer
+﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.AspNetCore.Authentication;
 using Aguacongas.Open.IdentityServer.Abstractions;

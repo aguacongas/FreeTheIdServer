@@ -5,7 +5,7 @@
 		<Authors>Olivier Lefebvre</Authors>
 		<Description>Add WS-Federation controller to your Open.IdentityServer server.</Description>
 		<Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
-		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer.WsFederation</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/aguacongas/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer.WsFederation</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>FreeTheIdServer;Open.IdentityServer;ws-federation</PackageTags>

@@ -1,4 +1,4 @@
-﻿// Project: Aguafrommars/FreeTheIdServer
+﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 //
 // Pour que ce fichier fonctionne, ajoutez "partial" à la déclaration existante

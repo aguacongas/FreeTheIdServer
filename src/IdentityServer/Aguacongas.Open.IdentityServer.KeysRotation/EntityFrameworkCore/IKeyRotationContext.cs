@@ -1,4 +1,4 @@
-﻿// Project: Aguafrommars/FreeTheIdServer
+﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 
 // This file is a copy of https://github.com/dotnet/aspnetcore/blob/v3.1.8/src/DataProtection/EntityFrameworkCore/src/IDataProtectionKeyContext.cs

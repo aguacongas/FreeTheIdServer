@@ -118,7 +118,7 @@ mvcBuilder.AddIdentityServerSaml2P(configurationManager.GetSection(nameof(Saml2P
     "ContactPersons": [
       {
         "ContactKind": "Technical",
-        "Company": "Aguafrommars",
+        "Company": "aguacongas",
         "GivenName": "Olivier Lefebvre",
         "SurName": "Aguacongas",
         "EmailAddress": "aguacongas@gmail.com"

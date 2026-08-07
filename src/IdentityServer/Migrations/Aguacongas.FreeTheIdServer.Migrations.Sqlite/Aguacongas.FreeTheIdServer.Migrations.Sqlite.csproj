@@ -5,9 +5,9 @@
 		<RootNamespace>Aguacongas.FreeTheIdServer.Sqlite</RootNamespace>
 		<Authors>Olivier Lefebvre</Authors>
 		<Copyright>Copyright (c) 2020 @Olivier Lefebvre</Copyright>
-		<PackageLicense>https://raw.githubusercontent.com/Aguafrommars/FreeTheIdServer/master/LICENSE</PackageLicense>
-		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/Aguafrommars/FreeTheIdServer</RepositoryUrl>
+		<PackageLicense>https://raw.githubusercontent.com/aguacongas/FreeTheIdServer/master/LICENSE</PackageLicense>
+		<PackageProjectUrl>https://github.com/aguacongas/FreeTheIdServer/tree/master/src/Aguacongas.FreeTheIdServer</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>FreeTheIdServer;sqlite</PackageTags>
 		<Description>Contains db contexts migrations code for Sqlite.</Description>		

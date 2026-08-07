@@ -1,4 +1,4 @@
-﻿// Project: Aguafrommars/FreeTheIdServer
+﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.UI.Services;

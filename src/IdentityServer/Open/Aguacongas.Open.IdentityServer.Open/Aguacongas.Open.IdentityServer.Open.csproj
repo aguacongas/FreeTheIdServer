@@ -6,8 +6,8 @@
 		<Description>FreeTheIdServer base classes for Open.IdentityServer.</Description>
 		<Copyright>Copyright (c) 2026 @Olivier Lefebvre</Copyright>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/Aguafrommars/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/Aguafrommars/FreeTheIdServer</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/aguacongas/FreeTheIdServer/tree/master/src/IdentityServer/Aguacongas.Open.IdentityServer</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/aguacongas/FreeTheIdServer</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>FreeTheIdServer;duede.identityserver</PackageTags>
 		<Description>FreeTheIdServer IndentityServer4 abstraction and extensions.</Description>

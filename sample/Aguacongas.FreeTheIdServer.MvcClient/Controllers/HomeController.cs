@@ -1,4 +1,4 @@
-﻿// Project: Aguafrommars/FreeTheIdServer
+﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.FreeTheIdServer.MvcClient.Models;
 using Microsoft.AspNetCore.Authentication;

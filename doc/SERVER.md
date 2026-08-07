@@ -10,7 +10,7 @@ Read [Configuration in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/cor
 
 ### From Terraform
 
-The [Terraform](https://terraform.io) [Helm](https://helm.sh) module [FreeTheIdServer](https://registry.terraform.io/modules/Aguafrommars/FreeTheIdServer/helm/latest) make the deployement of FreeTheIdServer easy.  
+The [Terraform](https://terraform.io) [Helm](https://helm.sh) module [FreeTheIdServer](https://registry.terraform.io/modules/aguacongas/FreeTheIdServer/helm/latest) make the deployement of FreeTheIdServer easy.  
 To deploy the Open version choose the [aguacongas/FreeTheIdServer.Open image](https://hub.docker.com/r/aguacongas/FreeTheIdServer.Open).
 
 ``` hcl
@@ -21,7 +21,7 @@ provider "helm" {
 }
 
 module "FreeTheIdServer" {
-  source = "Aguafrommars/FreeTheIdServer/helm"
+  source = "aguacongas/FreeTheIdServer/helm"
 
   host = "FreeTheIdServer.com"
   tls_issuer_name = "letsencrypt"
@@ -37,20 +37,20 @@ module "FreeTheIdServer" {
 
 ### From Helm
 
-The [FreeTheIdServer](https://hub.helm.sh/packages/helm/aguafrommars/FreeTheIdServer) [Helm](https://helm.sh) chart is available in [hub.helm.sh](https://hub.helm.sh).
+The [FreeTheIdServer](https://hub.helm.sh/packages/helm/aguacongas/FreeTheIdServer) [Helm](https://helm.sh) chart is available in [hub.helm.sh](https://hub.helm.sh).
 
 #### Install
 
 ``` bash
-helm repo add aguafrommars https://aguafrommars.github.io/helm
-helm install aguafrommars FreeTheIdServer --set FreeTheIdServer.mysql.db.password=my-P@ssword --set image.repository=aguacongas/FreeTheIdServer.Open
+helm repo add aguacongas https://aguacongas.github.io/helm
+helm install aguacongas FreeTheIdServer --set FreeTheIdServer.mysql.db.password=my-P@ssword --set image.repository=aguacongas/FreeTheIdServer.Open
 ```
 
 > By default the helm char install the IS4 version, to install the Open version your need to set `image.repository=aguacongas/FreeTheIdServer.Open`.
 
 #### Upgrade
 
-Follow upgrades intstructions in the [chart readme](https://github.com/Aguafrommars/helm/blob/main/charts/FreeTheIdServer/README.md#upgrade).
+Follow upgrades intstructions in the [chart readme](https://github.com/aguacongas/helm/blob/main/charts/FreeTheIdServer/README.md#upgrade).
 
 ### From Docker
 
@@ -77,7 +77,7 @@ A full deployment guide is available for hosting FreeTheIdServer on the Render p
 
 ### From dotnet new template
 
-The template [FreeTheIdServer.Open.Template](https://github.com/Aguafrommars/Templates) can be use to setup a FreeTheIdServer solution.
+The template [FreeTheIdServer.Open.Template](https://github.com/aguacongas/Templates) can be use to setup a FreeTheIdServer solution.
 
 #### Install
 
@@ -112,7 +112,7 @@ If you need more customization, you can use published NuGet packages.
 
 ### From Github Release
 
-Choose your release in the [list of releases](https://github.com/Aguafrommars/FreeTheIdServer/releases) and download the server zip.   
+Choose your release in the [list of releases](https://github.com/aguacongas/FreeTheIdServer/releases) and download the server zip.   
 Unzip in the destination of your choice. Unzip in the destination of your choice. As with any ASP.NET Core web site, it can run in IIS or as a stand-alone server using your chosen platform.
 
 Read [Host and deploy ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/) for more information.
@@ -193,8 +193,8 @@ So you can set any [`Microsoft.AspNetCore.Identity.PasswordHasherOptions`](https
 
 You can hash password using Argon2id if the [upgrade password hasher](#upgrade-password-hasher) is configured to use `Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher.Argon2PasswordHasher`.
 
-The section **Argon2PasswordHasherOptions** is bound to the class [`Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher.Argon2PasswordHasherOptions`](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher/Argon2PasswordHasherOptions.cs).  
-So you can set any [`Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher.Argon2PasswordHasherOptions`](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher/Argon2PasswordHasherOptions.cs) properties you want from configuration.
+The section **Argon2PasswordHasherOptions** is bound to the class [`Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher.Argon2PasswordHasherOptions`](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher/Argon2PasswordHasherOptions.cs).  
+So you can set any [`Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher.Argon2PasswordHasherOptions`](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher/Argon2PasswordHasherOptions.cs) properties you want from configuration.
 
 ```json
 "Argon2PasswordHasherOptions": {
@@ -207,8 +207,8 @@ So you can set any [`Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher.Ar
 
 You can hash password using scrypt if the [upgrade password hasher](#upgrade-password-hasher) is configured to use `Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher.ScryptPasswordHasher`.
 
-The section **ScryptPasswordHasherOptions** is bound to the class [`Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher.ScryptPasswordHasherOptions`](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher/Argon2PasswordHasherOptions.cs).  
-So you can set any [`Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher.ScryptPasswordHasherOptions`](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher/Argon2PasswordHasherOptions.cs) properties you want from configuration.
+The section **ScryptPasswordHasherOptions** is bound to the class [`Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher.ScryptPasswordHasherOptions`](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher/Argon2PasswordHasherOptions.cs).  
+So you can set any [`Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher.ScryptPasswordHasherOptions`](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.Argon2PasswordHasher/Argon2PasswordHasherOptions.cs) properties you want from configuration.
 
 ```json
 "ScryptPasswordHasherOptions": {
@@ -222,8 +222,8 @@ So you can set any [`Aguacongas.FreeTheIdServer.Identity.ScryptPasswordHasher.Sc
 
 You can hash password using bcrypt if the [upgrade password hasher](#upgrade-password-hasher) is configured to use `Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher.BcryptPasswordHasher`.
 
-The section **BcryptPasswordHasherOptions** is bound to the class [`Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher.BcryptPasswordHasherOptions`](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher/BcryptPasswordHasherOptions.cs).  
-So you can set any [`Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher.BcryptPasswordHasherOptions`](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher/BcryptPasswordHasherOptions.cs) properties you want from configuration.
+The section **BcryptPasswordHasherOptions** is bound to the class [`Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher.BcryptPasswordHasherOptions`](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher/BcryptPasswordHasherOptions.cs).  
+So you can set any [`Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher.BcryptPasswordHasherOptions`](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.BcryptPasswordHasher/BcryptPasswordHasherOptions.cs) properties you want from configuration.
 
 ```json
 "BcryptPasswordHasherOptions": {
@@ -237,10 +237,10 @@ Upgrade password hasher is used to manage hash migration between old password ha
 In previous version of FreeTheIdServer password was hashed with PBKDF2 by default ASP.Net Core Identity password hasher with its default configuration.  
 Now you can choose between Argon2id, scrypt, bcrypt and PBKDF2 by settings the hasher to use.
 
-Read [Password Hasher to rehash password to a new algorithm for ASP.NET Core Identity.](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher/README.md#password-hasher-to-rehash-password-to-a-new-algorithm-for-aspnet-core-identity) for more information.
+Read [Password Hasher to rehash password to a new algorithm for ASP.NET Core Identity.](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher/README.md#password-hasher-to-rehash-password-to-a-new-algorithm-for-aspnet-core-identity) for more information.
 
-The section **UpgradePasswordHasherOptions** is bound to the class [`Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher.UpgradePasswordHasherOptions`](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher/UpgradePasswordHasherOptions.cs).  
-So you can set any [`Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher.UpgradePasswordHasherOptions`](https://github.com/Aguafrommars/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher/UpgradePasswordHasherOptions.cs) properties you want from configuration.
+The section **UpgradePasswordHasherOptions** is bound to the class [`Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher.UpgradePasswordHasherOptions`](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher/UpgradePasswordHasherOptions.cs).  
+So you can set any [`Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher.UpgradePasswordHasherOptions`](https://github.com/aguacongas/FreeTheIdServer/blob/master/src/Identity/Aguacongas.FreeTheIdServer.Identity.UpgradePasswordHasher/UpgradePasswordHasherOptions.cs) properties you want from configuration.
 
 ```json
 "UpgradePasswordHasherOptions": {
@@ -461,7 +461,7 @@ Defines how to authenticate the public server on private server API.
 Defines the [SignalR client](https://docs.microsoft.com/en-us/aspnet/core/signalr/dotnet-client&tabs=visual-studio) configuration.  
 This client is used to update the external provider configuration of a running instance. When an external provider configuration changes, the API sends a SignalR notification to inform other running instances.  
 
-For more information, read [Load balancing scenario](https://github.com/Aguafrommars/DymamicAuthProviders/wiki/Load-balancing-scenario).
+For more information, read [Load balancing scenario](https://github.com/aguacongas/DymamicAuthProviders/wiki/Load-balancing-scenario).
 
 The SignalR hub accepts requests at */providerhub* and supports the [MessagePack](https://msgpack.org/index.html) protocol.
 
@@ -875,8 +875,8 @@ Some reverses proxies don't' forward headers. You can force HTTP requests scheme
 
 ## Configure the provider hub
 
-The [Aguacongas.AspNetCore.Authentication library](https://github.com/Aguafrommars/DymamicAuthProviders) dynamically configures external providers.  
-In a [load-balanced](https://github.com/Aguafrommars/DymamicAuthProviders/wiki/Load-balancing-scenario) configuration, the provider hub informs other running instances that an external provider configuration changes.  
+The [Aguacongas.AspNetCore.Authentication library](https://github.com/aguacongas/DymamicAuthProviders) dynamically configures external providers.  
+In a [load-balanced](https://github.com/aguacongas/DymamicAuthProviders/wiki/Load-balancing-scenario) configuration, the provider hub informs other running instances that an external provider configuration changes.  
 The **SignalR** section defines the configuration for both the SignalR hub and the client.
 
 ```json
@@ -1038,7 +1038,7 @@ Read [Open CIBA INTEGRATION/Notification service](CIBA.md#Notification-service)
 
 ## Use the client to override the default configuration
 
-The server and the blazor app integrate [Aguafrommars/DynamicConfiguration](https://github.com/Aguafrommars/DynamicConfiguration). Most of the configuration can be ovveriden using the blazor app.
+The server and the blazor app integrate [aguacongas/DynamicConfiguration](https://github.com/aguacongas/DynamicConfiguration). Most of the configuration can be ovveriden using the blazor app.
 
 Use **DynamicConfigurationOptions** to define the dynamic configuration provider.
 
@@ -1090,11 +1090,11 @@ The endpoit return a json reponse depending on the store kind used and redis dep
 ## Additional resources
 
 * [Host and deploy ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/)
-* [DymamicAuthProviders](https://github.com/Aguafrommars/DymamicAuthProviders)
+* [DymamicAuthProviders](https://github.com/aguacongas/DymamicAuthProviders)
 * [Set up a Redis backplane for ASP.NET Core SignalR scale-out](https://docs.microsoft.com/en-us/aspnet/core/signalr/redis-backplane)
 * [Microsoft.AspNetCore.SignalR.StackExchangeRedis.RedisOptions](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.signalr.stackexchangeredis.redisoptions?view=aspnetcore-3.0)
 * [Serilog.Settings.Configuration](https://github.com/serilog/serilog-settings-configuration/blob/dev/README.md)
 * [Hosting ASP.NET Core images with Docker over HTTPS](https://docs.microsoft.com/en-us/aspnet/core/security/docker-https)
 * [OpenID Connect Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)
-* [Aguafrommars/DynamicConfiguration](https://github.com/Aguafrommars/DynamicConfiguration)
+* [aguacongas/DynamicConfiguration](https://github.com/aguacongas/DynamicConfiguration)
 * [OpenTelemetry](https://opentelemetry.io/)
