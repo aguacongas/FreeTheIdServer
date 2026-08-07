@@ -32,7 +32,6 @@ namespace Aguacongas.Open.IdentityServer.EntityFramework.Store
 
         public virtual DbSet<KeyRotationKey> KeyRotationKeys { get; set; }
 
-        public virtual DbSet<UserSession> UserSessions { get; set; }
 
         public virtual DbSet<Saml2PArtifact> Saml2pArtifact { get; set; }
 

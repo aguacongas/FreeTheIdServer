@@ -323,41 +323,6 @@ namespace Aguacongas.FreeTheIdServer.PostgreSQL.Migrations.OperationalDb
                     b.ToTable("UserConstents");
                 });
 
-            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserSession", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("DisplayName")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("Expires")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("Renewed")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Scheme")
-                        .HasColumnType("text");
-
-                    b.Property<string>("SessionId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Ticket")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserSessions");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.DataProtectionKey", b =>
                 {
                     b.Property<int>("Id")

@@ -327,17 +327,6 @@ namespace Aguacongas.FreeTheIdServer.Oracle.Migrations.OperationalDb
 
                 b.ToTable("DataProtectionKeys");
             });
-
-            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserSession", b =>
-                {
-                    b.HasOne("Aguacongas.Open.IdentityServer.Store.Entity.User", "User")
-                        .WithMany("UserSessions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
 #pragma warning restore 612, 618
         }
     }

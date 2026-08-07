@@ -335,41 +335,6 @@ namespace Aguacongas.FreeTheIdServer.Oracle.Migrations.OperationalDb
                     b.ToTable("UserConstents");
                 });
 
-            modelBuilder.Entity("Aguacongas.Open.IdentityServer.Store.Entity.UserSession", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar2(450)");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp");
-
-                    b.Property<string>("DisplayName")
-                        .HasColumnType("nclob");
-
-                    b.Property<DateTime?>("Expires")
-                        .HasColumnType("timestamp");
-
-                    b.Property<DateTime>("Renewed")
-                        .HasColumnType("timestamp");
-
-                    b.Property<string>("Scheme")
-                        .HasColumnType("nclob");
-
-                    b.Property<string>("SessionId")
-                        .HasColumnType("nclob");
-
-                    b.Property<string>("Ticket")
-                        .HasColumnType("nclob");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nclob");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserSessions");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.DataProtectionKey", b =>
                 {
                     b.Property<int>("Id")
