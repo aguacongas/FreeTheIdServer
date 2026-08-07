@@ -35,7 +35,7 @@ public class ECDsaEncryptorDescriptorTest
         var provider = services.BuildServiceProvider();
         var keyProvider = provider.GetRequiredService<IKeyRingStore<ECDsaEncryptorConfiguration, ECDsaEncryptor>>();
 
-        var cred = await keyProvider.GetSigningCredentialsAsync(default);
+        var cred = await keyProvider.GetSigningCredentialsAsync();
 
         var sut = new ECDsaEncryptorDescriptor(new ECDsaEncryptorConfiguration(), cred.Key as ECDsaSecurityKey);
 

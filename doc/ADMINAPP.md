@@ -163,10 +163,6 @@ This endpoint should return an HTML fragment.
 
 To hide the settings menu, unset **menuOptions:showSettings**.
 
-### Hide CIBA grant type
-
-If CIBA is not enabled you can hide the CIBA grant type by unsetting cibaEnabled options.
-
 ### Hide coordinate lifetime with user session checkbox
 
 If server side sessions are not enable you can hide the coordinate lifetime with user session checkbox in client tokens section by unsetting serverSideSessionEnabled options.

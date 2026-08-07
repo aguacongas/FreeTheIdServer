@@ -21,12 +21,4 @@ Copyright (c) 2026 @Olivier Lefebvre
     <li class="nav-item"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" asp-page="./TwoFactorAuthentication">@Localizer["Two-factor authentication"]</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" asp-page="./PersonalData">@Localizer["Personal data"]</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.GrantsNavClass(ViewContext)" asp-page="./Grants">@Localizer["Grants"]</a></li>
-    @if (!Url.Page("./Ciba").StartsWith("/?page"))
-    {
-        <li class="nav-item"><a class="nav-link @ManageNavPages.CibaNavClass(ViewContext)" asp-page="./Ciba">@Localizer["Backchannel Login Requests"]</a></li>
-    }
-    @if (Configuration.GetValue<bool>("IdentityServerOptions:EnableServerSideSession") && !Url.Page("./Sessions").StartsWith("/?page"))
-    {
-        <li class="nav-item"><a class="nav-link @ManageNavPages.SessionsNavClass(ViewContext)" asp-page="./Sessions">@Localizer["Sessions"]</a></li>
-    }
 </ul>

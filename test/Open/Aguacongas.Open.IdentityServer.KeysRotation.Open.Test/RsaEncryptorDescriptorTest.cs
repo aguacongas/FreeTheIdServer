@@ -1,8 +1,8 @@
 ﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
-using Open.IdentityServer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Open.IdentityServer;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -34,7 +34,7 @@ public class RsaEncryptorDescriptorTest
         var provider = builder.Services.BuildServiceProvider();
         var keyProvider = provider.GetRequiredService<IKeyRingStore<RsaEncryptorConfiguration, RsaEncryptor>>();
 
-        var cred = await keyProvider.GetSigningCredentialsAsync(default);
+        var cred = await keyProvider.GetSigningCredentialsAsync();
 
         var sut = new RsaEncryptorDescriptor(new RsaEncryptorConfiguration(), cred.Key as RsaSecurityKey);
 

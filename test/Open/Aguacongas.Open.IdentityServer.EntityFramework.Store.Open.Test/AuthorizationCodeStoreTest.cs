@@ -50,8 +50,8 @@ public class AuthorizationCodeStoreTest
             });
             await context.SaveChangesAsync();
 
-            Assert.NotNull(await sut.GetAuthorizationCodeAsync(id, default));
-            Assert.Null(await sut.GetAuthorizationCodeAsync(GenerateId(), default));
+            Assert.NotNull(await sut.GetAuthorizationCodeAsync(id));
+            Assert.Null(await sut.GetAuthorizationCodeAsync(GenerateId()));
         }
 
     }
@@ -72,8 +72,8 @@ public class AuthorizationCodeStoreTest
             });
             await context.SaveChangesAsync();
 
-            await sut.RemoveAuthorizationCodeAsync(id, default);
-            await sut.RemoveAuthorizationCodeAsync(id, default);
+            await sut.RemoveAuthorizationCodeAsync(id);
+            await sut.RemoveAuthorizationCodeAsync(id);
 
             Assert.Null(await context.DeviceCodes.FirstOrDefaultAsync(d => d.Id == id));
         }
@@ -89,7 +89,7 @@ public class AuthorizationCodeStoreTest
             ClientId = GenerateId(),
             Subject = new ClaimsPrincipal(new ClaimsIdentity([new Claim(JwtClaimTypes.Subject, "test")]))
         };
-        await sut.StoreAuthorizationCodeAsync(authorizationCode, default);
+        await sut.StoreAuthorizationCodeAsync(authorizationCode);
 
         using (scope)
         {

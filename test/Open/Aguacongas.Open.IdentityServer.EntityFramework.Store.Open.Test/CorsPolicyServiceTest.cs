@@ -1,10 +1,10 @@
 ﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.Open.IdentityServer.Store;
-using Open.IdentityServer.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Open.IdentityServer.Services;
 using System;
 using System.Threading.Tasks;
 using Xunit;
@@ -34,6 +34,6 @@ public class CorsPolicyServiceTest
 
         var sut = provider.GetRequiredService<ICorsPolicyService>();
 
-        Assert.False(await sut.IsOriginAllowedAsync("http://test", default));
+        Assert.False(await sut.IsOriginAllowedAsync("http://test"));
     }
 }

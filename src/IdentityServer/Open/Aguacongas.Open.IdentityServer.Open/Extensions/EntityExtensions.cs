@@ -103,15 +103,7 @@ public static class EntityExtensions
             UserCodeType = client.UserCodeType,
             UserSsoLifetime = client.UserSsoLifetime,
             AllowedIdentityTokenSigningAlgorithms = [.. client.AllowedIdentityTokenSigningAlgorithms.Select(a => a.Algorithm)],
-            CibaLifetime = client.CibaLifetime,
-            CoordinateLifetimeWithUserSession = client.CoordinateLifetimeWithUserSession,
-            PollingInterval = client.PollingInterval,
             RequireRequestObject = client.RequireRequestObject,
-            RequireDPoP = client.RequireDPoP,
-            DPoPClockSkew = client.DPoPClockSkew,
-            DPoPValidationMode = client.DPoPValidationMode,
-            PushedAuthorizationLifetime = client.PushedAuthorizationLifetime,
-            RequirePushedAuthorization = client.RequirePushedAuthorization,
         };
     }
 

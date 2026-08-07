@@ -1992,14 +1992,6 @@
     "value": "Demandes de connexion backchannel"
   },
   {
-    "key": "ciba requests",
-    "value": "demandes ciba"
-  },
-  {
-    "key": "ciba lifetime",
-    "value": "durée de vie ciba"
-  },
-  {
     "key": "polling interval",
     "value": "intervalle d'interrogation"
   },

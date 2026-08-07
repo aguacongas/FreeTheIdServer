@@ -1992,14 +1992,6 @@
 		"value": "后通道登录请求"
 	},
 	{
-		"key": "ciba requests",
-		"value": "CIBA请求"
-	},
-	{
-		"key": "ciba lifetime",
-		"value": "CIBA生命周期"
-	},
-	{
 		"key": "polling interval",
 		"value": "轮询间隔"
 	},

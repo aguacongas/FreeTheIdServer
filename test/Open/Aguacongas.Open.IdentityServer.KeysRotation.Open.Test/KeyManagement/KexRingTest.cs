@@ -15,7 +15,7 @@ public class KexRingTest
     {
         var sut = new KeyRing<RsaEncryptorConfiguration, RsaEncryptor>(new Mock<IKey>().Object, [new Mock<IKey>().Object], new RsaEncryptorConfiguration());
 
-        await Assert.ThrowsAsync<InvalidOperationException>(() => sut.GetSigningCredentialsAsync(default));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => sut.GetSigningCredentialsAsync());
     }
 
     [Fact]

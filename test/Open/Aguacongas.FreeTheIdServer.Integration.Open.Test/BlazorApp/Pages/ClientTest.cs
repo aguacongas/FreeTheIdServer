@@ -1,9 +1,9 @@
 ﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
+using Aguacongas.FreeTheIdServer.Integration.Open.Test;
 using Aguacongas.Open.IdentityServer.EntityFramework.Store;
 using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.Open.IdentityServer.Store.Entity;
-using Aguacongas.FreeTheIdServer.Integration.Open.Test;
 using AngleSharp.Dom;
 using Bunit;
 using Bunit.Extensions.WaitForHelpers;
@@ -409,22 +409,6 @@ namespace Aguacongas.FreeTheIdServer.IntegrationTest.BlazorApp.Pages
             // resource owner password client should not have consent section
             Assert.Throws<WaitForFailedException>(() => WaitForNode(component, "#consent"));
         }
-
-        [Fact]
-        public async Task Ciba_client_should_have_ciba_lifetime()
-        {
-            var clientId = await CreateClient("urn:openid:params:grant-type:ciba");
-
-            var component = CreateComponent("Alice Smith",
-                SharedConstants.WRITERPOLICY,
-                clientId);
-
-            WaitForNode(component, "#ciba-lifetime");
-
-            // ciba client should have polling interval input field
-            Assert.NotNull(component.Find("#polling-interval"));
-        }
-
 
         [Fact]
         public async Task Custom_client_should_not_have_consent()

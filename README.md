@@ -83,11 +83,9 @@ Choose your favorite:
 * [Auto remove expired tokens](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#configure-token-cleaner)
 * [Keys rotation](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/KEYS_ROTATION.md)
 * [Create Personal Access Token](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/PAT.md)
-* [Duende CIBA integration](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/CIBA.md)
 * [Token exchange](https://datatracker.ietf.org/doc/html/rfc8693)([RFC 8693](https://datatracker.ietf.org/doc/html/rfc8693))
 * [Health checks](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#health-checks)
 * [OpenTelemety](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/OPEN_TELEMETRY.md)
-* [Server side session](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER_SIDE_SESSIONS.md)
 * [Passwor hashing configuration](https://github.com/aguacongas/FreeTheIdServer/tree/master/doc/SERVER.md#configure-password-hashers-options)
   
   

@@ -17,7 +17,7 @@ namespace Aguacongas.FreeTheIdServer
 {
     public static class SeedData
     {
-        private static readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
+        private static readonly JsonSerializerOptions _jsonSerializerOptions = new()
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
@@ -55,19 +55,16 @@ namespace Aguacongas.FreeTheIdServer
                 SharedConstants.WRITERPOLICY,
                 SharedConstants.READERPOLICY
             };
-            foreach (var role in roles)
+            foreach (var role in roles.Where(role => roleMgr.FindByNameAsync(role).GetAwaiter().GetResult() == null))
             {
-                if (roleMgr.FindByNameAsync(role).GetAwaiter().GetResult() == null)
+                ExcuteAndCheckResult(() => roleMgr.CreateAsync(new IdentityRole
                 {
-                    ExcuteAndCheckResult(() => roleMgr.CreateAsync(new IdentityRole
-                    {
-                        Name = role
-                    })).GetAwaiter().GetResult();
-                }
+                    Name = role
+                })).GetAwaiter().GetResult();
             }
 
             var userMgr = provider.GetRequiredService<UserManager<ApplicationUser>>();
-            var userList = configuration.GetSection("InitialData:Users").Get<IEnumerable<ApplicationUser>>() ?? Array.Empty<ApplicationUser>();
+            var userList = configuration.GetSection("InitialData:Users").Get<IEnumerable<ApplicationUser>>() ?? [];
             int index = 0;
             foreach (var user in userList)
             {
@@ -135,7 +132,7 @@ namespace Aguacongas.FreeTheIdServer
                 culture = new Entity.Culture
                 {
                     Id = cultureName,
-                    Resources = new List<Entity.LocalizedResource>()
+                    Resources = []
                 };
                 try
                 {
@@ -153,20 +150,16 @@ namespace Aguacongas.FreeTheIdServer
 
             var exsitings = culture.Resources.ToList();
             var resources = JsonSerializer.Deserialize<IEnumerable<Entity.LocalizedResource>>(File.ReadAllText(file), _jsonSerializerOptions);
-
-            foreach (var resource in resources!)
+            foreach (var resource in resources!.Where(resource => !exsitings.Any(r => r.Key == resource.Key)))
             {
-                if (!exsitings.Any(r => r.Key == resource.Key))
+                resource.CultureId = culture.Id;
+                try
                 {
-                    resource.CultureId = culture.Id;
-                    try
-                    {
-                        localizedResouceStore.CreateAsync(resource).GetAwaiter().GetResult();
-                    }
-                    catch (ArgumentException)
-                    {
-                        // key already exists
-                    }
+                    localizedResouceStore.CreateAsync(resource).GetAwaiter().GetResult();
+                }
+                catch (ArgumentException)
+                {
+                    // key already exists
                 }
             }
         }
@@ -528,13 +521,7 @@ namespace Aguacongas.FreeTheIdServer
                         UpdateAccessTokenClaimsOnRefresh = client.UpdateAccessTokenClaimsOnRefresh,
                         UserCodeType = client.UserCodeType,
                         UserSsoLifetime = client.UserSsoLifetime,
-                        CibaLifetime = client.CibaLifetime,
-                        CoordinateLifetimeWithUserSession = client.CoordinateLifetimeWithUserSession,
-                        PollingInterval = client.PollingInterval,
-                        RequireRequestObject = client.RequireRequestObject,
-                        RequireDPoP = client.RequireDPoP,
-                        PushedAuthorizationLifetime = client.PushedAuthorizationLifetime,
-                        RequirePushedAuthorization = client.RequirePushedAuthorization
+                        RequireRequestObject = client.RequireRequestObject
                     }).GetAwaiter().GetResult();
                 }
                 catch (ArgumentException)

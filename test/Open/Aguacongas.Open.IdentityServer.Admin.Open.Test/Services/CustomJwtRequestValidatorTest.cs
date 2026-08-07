@@ -1,16 +1,15 @@
 ﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.Open.IdentityServer.Admin.Services;
-using Open.IdentityServer;
-using Open.IdentityServer.Models;
-using Open.IdentityServer.Services;
-using Open.IdentityServer.Validation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Moq;
+using Open.IdentityServer;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Services;
 using System;
 using System.Threading.Tasks;
 using Xunit;
@@ -24,22 +23,30 @@ public class CustomJwtRequestValidatorTest
     public async Task ValidateJwtAsync_should_validate_and_return_token()
     {
         var tokenValidationOptionsMock = new Mock<IOptions<TokenValidationParameters>>();
-        var issuerNameServiceMock = new Mock<IIssuerNameService>();
+        var httpContextMock = new Mock<HttpContext>();
+        var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
+        httpContextAccessorMock.SetupGet(m => m.HttpContext).Returns(httpContextMock.Object);
         var options = new ISConfiguration.IdentityServerOptions
         {
             IssuerUri = "http://test"
         };
         var loggerMock = new Mock<ILogger<CustomJwtRequestValidator>>();
-
-        Assert.Throws<ArgumentNullException>(() => new CustomJwtRequestValidator(tokenValidationOptionsMock.Object, options, issuerNameServiceMock.Object, loggerMock.Object));
+        var telemetryServiceMock = new Mock<ITelemetryService>();
+        Assert.Throws<ArgumentNullException>(() => new CustomJwtRequestValidator(tokenValidationOptionsMock.Object,
+            options,
+            httpContextAccessorMock.Object,
+            telemetryServiceMock.Object,
+            loggerMock.Object));
         var tokenValidationParameters = new TokenValidationParameters();
         tokenValidationOptionsMock.SetupGet(m => m.Value).Returns(tokenValidationParameters);
-        var httpContextMock = new Mock<HttpContext>();
 
         var provider = new ServiceCollection().AddTransient(p => options).BuildServiceProvider();
         httpContextMock.SetupGet(m => m.RequestServices).Returns(provider);
 
-        var sut = new CustomJwtRequestValidator(tokenValidationOptionsMock.Object, options, issuerNameServiceMock.Object, loggerMock.Object);
+        var sut = new CustomJwtRequestValidator(tokenValidationOptionsMock.Object,
+            options, httpContextAccessorMock.Object,
+            telemetryServiceMock.Object,
+            loggerMock.Object);
         var client = new Client
         {
             ClientId = Guid.NewGuid().ToString(),
@@ -55,11 +62,7 @@ public class CustomJwtRequestValidatorTest
 
         var jwtString = "eyJhbGciOiJub25lIn0.eyJzY29wZSI6Im9wZW5pZCIsInJlc3BvbnNlX3R5cGUiOiJjb2RlIiwicmVkaXJlY3RfdXJpIjoiaHR0cHM6XC9cL3d3dy5jZXJ0aWZpY2F0aW9uLm9wZW5pZC5uZXRcL3Rlc3RcL2FcL3RoZWlkc2VydmVyXC9jYWxsYmFjayIsInN0YXRlIjoiRXBTcFc3clVmciIsIm5vbmNlIjoiaU5Ia3gyT3ltOSIsImNsaWVudF9pZCI6ImVjZjk1Y2Q3LWI4NDQtNGNkZS05OWE4LTc2N2EyNDNmOTZjYiJ9.";
 
-        var result = await sut.ValidateAsync(new JwtRequestValidationContext
-        {
-            Client = client,
-            JwtTokenString = jwtString,
-        }, default);
+        var result = await sut.ValidateAsync(client, jwtString);
 
         Assert.True(result.IsError);
 
@@ -71,21 +74,13 @@ public class CustomJwtRequestValidatorTest
             = tokenValidationParameters.RequireExpirationTime
             = false;
 
-        result = await sut.ValidateAsync(new JwtRequestValidationContext
-        {
-            Client = client,
-            JwtTokenString = jwtString,
-        }, default);
+        result = await sut.ValidateAsync(client, jwtString);
 
         Assert.False(result.IsError);
 
         options.StrictJarValidation = true;
 
-        result = await sut.ValidateAsync(new JwtRequestValidationContext
-        {
-            Client = client,
-            JwtTokenString = jwtString,
-        }, default);
+        result = await sut.ValidateAsync(client, jwtString);
 
         Assert.True(result.IsError);
     }

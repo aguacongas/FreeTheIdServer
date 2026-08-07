@@ -1,8 +1,8 @@
 ﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.Open.IdentityServer.Admin.Services;
-using Open.IdentityServer.Models;
 using Newtonsoft.Json;
+using Open.IdentityServer.Models;
 using System.Collections.Generic;
 
 namespace Aguacongas.Open.IdentityServer.Admin.Models
@@ -166,11 +166,6 @@ namespace Aguacongas.Open.IdentityServer.Admin.Models
         [JsonProperty("client_secret_expires_at")]
         public int? ClientSecretExpireAt { get; set; }
 
-        /// <summary>
-        /// Specifies whether pushed authorization requests are required for this client.
-        /// </summary>
-        [JsonProperty("require_pushed_authorization_requests")]
-        public bool RequirePushedAuthorizationRequests { get; set; }
     }
 
     /// <summary>

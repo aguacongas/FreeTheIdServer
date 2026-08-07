@@ -1,11 +1,11 @@
 ﻿// Project: aguacongas/FreeTheIdServer
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.DynamicConfiguration.Razor.Services;
-using Aguacongas.Open.IdentityServer.EntityFramework.Store;
 using Aguacongas.FreeTheIdServer.BlazorApp.Infrastructure.Services;
 using Aguacongas.FreeTheIdServer.BlazorApp.Models;
 using Aguacongas.FreeTheIdServer.Models;
 using Aguacongas.FreeTheIdServer.UI;
+using Aguacongas.Open.IdentityServer.EntityFramework.Store;
 using Bunit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -50,8 +50,8 @@ namespace Aguacongas.FreeTheIdServer.IntegrationTest.BlazorApp
 
             var authContext = testContext.AddAuthorization();
             authContext.SetAuthorized(userName);
-            authContext.SetClaims(claims.ToArray());
-            authContext.SetPolicies(claims.Where(c => c.Type == "role").Select(c => c.Value).ToArray());
+            authContext.SetClaims([.. claims]);
+            authContext.SetPolicies([.. claims.Where(c => c.Type == "role").Select(c => c.Value)]);
 
             var localizerMock = new Mock<ISharedStringLocalizerAsync>();
             localizerMock.Setup(m => m[It.IsAny<string>()]).Returns((string key) => new LocalizedString(key, key));
@@ -61,7 +61,7 @@ namespace Aguacongas.FreeTheIdServer.IntegrationTest.BlazorApp
             var httpClient = CreateClient();
             var appConfiguration = TestUtils.CreateApplicationConfiguration(httpClient);
 
-            services.ConfigureServices(appConfiguration, appConfiguration.Get<Settings>());           
+            services.ConfigureServices(appConfiguration, appConfiguration.Get<Settings>());
 
             Services.GetRequiredService<TestUserService>()
                 .SetTestUser(true, claims.Select(c => new Claim(c.Type, c.Value)));
@@ -134,7 +134,7 @@ namespace Aguacongas.FreeTheIdServer.IntegrationTest.BlazorApp
                         {
                             context.User = testService.User;
                         }
-                        
+
                         return next();
                     });
 
@@ -142,7 +142,7 @@ namespace Aguacongas.FreeTheIdServer.IntegrationTest.BlazorApp
                     var dbContext = scope.ServiceProvider.GetService<ConfigurationDbContext>();
                     if (dbContext != null && !dbContext.Providers.Any(p => p.Id == "Google"))
                     {
-                        dbContext.Providers.Add(new IdentityServer.Store.Entity.ExternalProvider
+                        dbContext.Providers.Add(new Aguacongas.Open.IdentityServer.Store.Entity.ExternalProvider
                         {
                             Id = "Google",
                             DisplayName = "Google",

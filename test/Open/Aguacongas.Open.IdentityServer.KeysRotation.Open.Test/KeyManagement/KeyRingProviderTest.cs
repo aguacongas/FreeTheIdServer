@@ -63,7 +63,7 @@ public class KeyRingProviderTest
         var provider = builder.Services.BuildServiceProvider();
         var sut = provider.GetRequiredService<IKeyRingStore<RsaEncryptorConfiguration, RsaEncryptor>>();
 
-        var keys = await sut.GetValidationKeysAsync(default);
+        var keys = await sut.GetValidationKeysAsync();
         Assert.NotNull(keys);
         Assert.NotEmpty(keys);
 
@@ -71,7 +71,7 @@ public class KeyRingProviderTest
         var cacheableKeyRingProvider = provider.GetRequiredService<ICacheableKeyRingProvider<RsaEncryptorConfiguration, RsaEncryptor>>();
         cacheableKeyRingProvider.KeyManager.RevokeKey(defaultKeyId, "test");
         sut = provider.GetRequiredService<IKeyRingStore<RsaEncryptorConfiguration, RsaEncryptor>>();
-        var newKeys = await sut.GetValidationKeysAsync(default);
+        var newKeys = await sut.GetValidationKeysAsync();
 
         Assert.DoesNotContain(keys, k => newKeys.Any(nk => nk.Key.KeyId == k.Key.KeyId));
     }
@@ -96,11 +96,11 @@ public class KeyRingProviderTest
         var provider = builder.Services.BuildServiceProvider();
         var sut = provider.GetRequiredService<IKeyRingStore<RsaEncryptorConfiguration, RsaEncryptor>>();
 
-        var cred = await sut.GetSigningCredentialsAsync(default);
+        var cred = await sut.GetSigningCredentialsAsync();
         Assert.NotNull(cred);
 
         sut = provider.GetRequiredService<IKeyRingStore<RsaEncryptorConfiguration, RsaEncryptor>>();
-        var newCred = await sut.GetSigningCredentialsAsync(default);
+        var newCred = await sut.GetSigningCredentialsAsync();
 
         Assert.Equal(cred.Key.KeyId, newCred.Key.KeyId);
     }
@@ -728,11 +728,11 @@ public class KeyRingProviderTest
         };
     }
 
-    private static ICacheableKeyRingProvider<RsaEncryptorConfiguration, RsaEncryptor> CreateKeyRingProvider(IKeyManager keyManager, IDefaultKeyResolver defaultKeyResolver, KeyRotationOptions keyManagementOptions = null)
+    private static KeyRingProvider<RsaEncryptorConfiguration, RsaEncryptor> CreateKeyRingProvider(IKeyManager keyManager, IDefaultKeyResolver defaultKeyResolver, KeyRotationOptions keyManagementOptions = null)
     {
         var mockEncryptorFactory = new Mock<IAuthenticatedEncryptorFactory>();
         mockEncryptorFactory.Setup(m => m.CreateEncryptorInstance(It.IsAny<IKey>())).Returns(new Mock<IAuthenticatedEncryptor>().Object);
-        keyManagementOptions = keyManagementOptions ?? new KeyRotationOptions();
+        keyManagementOptions ??= new KeyRotationOptions();
         keyManagementOptions.AuthenticatedEncryptorFactories.Add(mockEncryptorFactory.Object);
 
         return new KeyRingProvider<RsaEncryptorConfiguration, RsaEncryptor>(

@@ -2,14 +2,14 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.Open.IdentityServer.Abstractions;
 using Aguacongas.Open.IdentityServer.Admin.Services;
-using Open.IdentityServer.Models;
-using Open.IdentityServer.Validation;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Validation;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -66,7 +66,7 @@ public class ProfileServiceTest
             provider.GetService<IEnumerable<IProvideClaims>>(),
             provider.GetRequiredService<ILogger<ProfileService<IdentityUser>>>());
 
-        await sut.GetProfileDataAsync(context, default);
+        await sut.GetProfileDataAsync(context);
 
         Assert.Contains(context.IssuedClaims, c => c.Type == "test");
     }
@@ -118,7 +118,7 @@ public class ProfileServiceTest
             provider.GetService<IEnumerable<IProvideClaims>>(),
             provider.GetRequiredService<ILogger<ProfileService<IdentityUser>>>());
 
-        await sut.GetProfileDataAsync(context, default);
+        await sut.GetProfileDataAsync(context);
 
         Assert.Contains(context.IssuedClaims, c => c.Type == "test");
     }
@@ -170,7 +170,7 @@ public class ProfileServiceTest
             provider.GetService<IEnumerable<IProvideClaims>>(),
             provider.GetRequiredService<ILogger<ProfileService<IdentityUser>>>());
 
-        await sut.GetProfileDataAsync(context, default);
+        await sut.GetProfileDataAsync(context);
 
         Assert.Contains(context.IssuedClaims, c => c.Type == "test");
     }
@@ -227,7 +227,7 @@ public class ProfileServiceTest
             provider.GetService<IEnumerable<IProvideClaims>>(),
             provider.GetRequiredService<ILogger<ProfileService<IdentityUser>>>());
 
-        await sut.GetProfileDataAsync(context, default);
+        await sut.GetProfileDataAsync(context);
 
         Assert.Contains(context.IssuedClaims, c => c.Type == JwtClaimTypes.Actor);
     }

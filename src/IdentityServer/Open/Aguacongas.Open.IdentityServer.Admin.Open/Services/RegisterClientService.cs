@@ -273,11 +273,7 @@ namespace Aguacongas.Open.IdentityServer.Admin.Services
                 UserSsoLifetime = _defaultValues.UserSsoLifetime,
                 PolicyUri = registration.TosUris?.FirstOrDefault(u => u.Culture == null)?.Value ?? registration.TosUris?.FirstOrDefault()?.Value,
                 TosUri = registration.TosUris?.FirstOrDefault(u => u.Culture == null)?.Value ?? registration.TosUris?.FirstOrDefault()?.Value,
-                CibaLifetime = _defaultValues.CibaLifetime,
-                PollingInterval = _defaultValues.PollingInterval,
-                CoordinateLifetimeWithUserSession = _defaultValues.CoordinateLifetimeWithUserSession,
                 RegistrationToken = Guid.NewGuid(),
-                RequirePushedAuthorization = registration.RequirePushedAuthorizationRequests
             };
 
             await _clientStore.CreateAsync(client).ConfigureAwait(false);
@@ -394,8 +390,7 @@ namespace Aguacongas.Open.IdentityServer.Admin.Services
                 {
                     Culture = r.CultureId,
                     Value = r.Value
-                }).Union(new[] { new LocalizableProperty { Value = client.TosUri } }),
-                RequirePushedAuthorizationRequests = client.RequirePushedAuthorization
+                }).Union(new[] { new LocalizableProperty { Value = client.TosUri } })
             };
         }
 

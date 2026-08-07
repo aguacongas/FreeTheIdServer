@@ -24,7 +24,7 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
         {
             // Arrange
             var mockWrapResult = CreateMockWrapResult("key", [0x0F, 0x0E, 0x0D, 0x0C, 0x0B, 0x0A, 0x09, 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01, 0x00]);
-            
+
             var mock = new Mock<IKeyVaultWrappingClient>();
             mock.Setup(client => client.WrapKeyAsync(
                     "key",
@@ -46,15 +46,15 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
             Assert.NotNull(result);
             Assert.NotNull(value);
             Assert.Equal(typeof(AzureKeyVaultXmlDecryptor), result.DecryptorType);
-            
+
             // Verify structure
-            Assert.Equal("VfLYL2prdymawfucH3Goso0zkPbQ4/GKqUsj2TRtLzsBPz7p7cL1SQaY6I29xSlsPQf6IjxHSz4sDJ427GvlLQ==", 
+            Assert.Equal("VfLYL2prdymawfucH3Goso0zkPbQ4/GKqUsj2TRtLzsBPz7p7cL1SQaY6I29xSlsPQf6IjxHSz4sDJ427GvlLQ==",
                 encryptedElement.Element("value").Value);
-            Assert.Equal("AAECAwQFBgcICQoLDA0ODw==", 
+            Assert.Equal("AAECAwQFBgcICQoLDA0ODw==",
                 encryptedElement.Element("iv").Value);
-            Assert.Equal("Dw4NDAsKCQgHBgUEAwIBAA==", 
+            Assert.Equal("Dw4NDAsKCQgHBgUEAwIBAA==",
                 encryptedElement.Element("key").Value);
-            Assert.Equal("key", 
+            Assert.Equal("key",
                 encryptedElement.Element("kid").Value);
         }
 
@@ -63,7 +63,7 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
         {
             // Arrange
             var mockUnwrapResult = CreateMockUnwrapResult("KeyId", [0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F]);
-            
+
             var mock = new Mock<IKeyVaultWrappingClient>();
             mock.Setup(client => client.UnwrapKeyAsync(
                     "KeyId",
@@ -110,14 +110,14 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
             // Arrange
             KeyWrapAlgorithm capturedAlgorithm = default;
             var mockWrapResult = CreateMockWrapResult("test-key", new byte[16]);
-            
+
             var mock = new Mock<IKeyVaultWrappingClient>();
             mock.Setup(client => client.WrapKeyAsync(
                     It.IsAny<string>(),
                     It.IsAny<KeyWrapAlgorithm>(),
                     It.IsAny<byte[]>(),
                     It.IsAny<CancellationToken>()))
-                .Callback<string, KeyWrapAlgorithm, byte[], CancellationToken>((keyId, algorithm, data) =>
+                .Callback<string, KeyWrapAlgorithm, byte[], CancellationToken>((keyId, algorithm, data, cancellationToken) =>
                 {
                     capturedAlgorithm = algorithm;
                 })
@@ -137,7 +137,7 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
         {
             // Arrange
             var mockWrapResult = CreateMockWrapResult("test-key", new byte[16]);
-            
+
             var mock = new Mock<IKeyVaultWrappingClient>();
             mock.Setup(client => client.WrapKeyAsync(
                     It.IsAny<string>(),
@@ -153,14 +153,14 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
 
             // Assert
             var encryptedElement = result.EncryptedElement;
-            
+
             Assert.NotNull(encryptedElement.Element("kid"));
             Assert.NotNull(encryptedElement.Element("key"));
             Assert.NotNull(encryptedElement.Element("iv"));
             Assert.NotNull(encryptedElement.Element("value"));
-            
+
             // Verify the comment is present
-            Assert.Contains(encryptedElement.Nodes().OfType<XComment>(), 
+            Assert.Contains(encryptedElement.Nodes().OfType<XComment>(),
                 c => c.Value.Contains("Azure KeyVault"));
         }
 
@@ -171,7 +171,7 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
             var type = typeof(WrapResult);
             var constructor = type.GetConstructors(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .FirstOrDefault();
-            
+
             if (constructor != null)
             {
                 // Try to invoke constructor with parameters
@@ -184,14 +184,14 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
                     // If that fails, try with different parameter order
                 }
             }
-            
+
             // Fallback: create instance and set properties using reflection
             var instance = (WrapResult)RuntimeHelpers.GetUninitializedObject(type);
-            
+
             type.GetProperty("KeyId")?.SetValue(instance, keyId);
             type.GetProperty("EncryptedKey")?.SetValue(instance, encryptedKey);
             type.GetProperty("Algorithm")?.SetValue(instance, KeyWrapAlgorithm.RsaOaep);
-            
+
             return instance;
         }
 
@@ -201,7 +201,7 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
             var type = typeof(UnwrapResult);
             var constructor = type.GetConstructors(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .FirstOrDefault();
-            
+
             if (constructor != null)
             {
                 // Try to invoke constructor with parameters
@@ -214,14 +214,14 @@ namespace Aguacongas.Open.IdentityServer.KeysRotation.Test.AzureKeyVault
                     // If that fails, try with different parameter order
                 }
             }
-            
+
             // Fallback: create instance and set properties using reflection
             var instance = (UnwrapResult)RuntimeHelpers.GetUninitializedObject(type);
-            
+
             type.GetProperty("KeyId")?.SetValue(instance, keyId);
             type.GetProperty("Key")?.SetValue(instance, key);
             type.GetProperty("Algorithm")?.SetValue(instance, KeyWrapAlgorithm.RsaOaep);
-            
+
             return instance;
         }
 

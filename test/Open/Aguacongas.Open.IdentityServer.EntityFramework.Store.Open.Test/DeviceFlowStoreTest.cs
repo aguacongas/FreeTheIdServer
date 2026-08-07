@@ -50,8 +50,8 @@ public class DeviceFlowStoreTest
             });
             await context.SaveChangesAsync();
 
-            Assert.NotNull(await sut.FindByDeviceCodeAsync(code, default));
-            Assert.Null(await sut.FindByDeviceCodeAsync(GenerateId(), default));
+            Assert.NotNull(await sut.FindByDeviceCodeAsync(code));
+            Assert.Null(await sut.FindByDeviceCodeAsync(GenerateId()));
         }
     }
 
@@ -72,8 +72,8 @@ public class DeviceFlowStoreTest
             });
             await context.SaveChangesAsync();
 
-            Assert.NotNull(await sut.FindByUserCodeAsync(code, default));
-            Assert.Null(await sut.FindByUserCodeAsync(GenerateId(), default));
+            Assert.NotNull(await sut.FindByUserCodeAsync(code));
+            Assert.Null(await sut.FindByUserCodeAsync(GenerateId()));
         }
     }
 
@@ -94,8 +94,8 @@ public class DeviceFlowStoreTest
             });
             await context.SaveChangesAsync();
 
-            await sut.RemoveByDeviceCodeAsync(code, default);
-            await sut.RemoveByDeviceCodeAsync(code, default);
+            await sut.RemoveByDeviceCodeAsync(code);
+            await sut.RemoveByDeviceCodeAsync(code);
 
             Assert.Null(await context.DeviceCodes.FirstOrDefaultAsync(d => d.Code == code));
         }
@@ -112,7 +112,7 @@ public class DeviceFlowStoreTest
         {
             ClientId = GenerateId(),
         };
-        await sut.StoreDeviceAuthorizationAsync(code, userCode, deviceCode, default);
+        await sut.StoreDeviceAuthorizationAsync(code, userCode, deviceCode);
 
         using (scope)
         {
@@ -138,10 +138,10 @@ public class DeviceFlowStoreTest
             });
             await context.SaveChangesAsync();
 
-            await sut.UpdateByUserCodeAsync(code, new ISModels.DeviceCode(), default);
+            await sut.UpdateByUserCodeAsync(code, new ISModels.DeviceCode());
 
             await Assert.ThrowsAsync<InvalidOperationException>(() =>
-                sut.UpdateByUserCodeAsync(GenerateId(), new ISModels.DeviceCode(), default));
+                sut.UpdateByUserCodeAsync(GenerateId(), new ISModels.DeviceCode()));
         }
     }
 

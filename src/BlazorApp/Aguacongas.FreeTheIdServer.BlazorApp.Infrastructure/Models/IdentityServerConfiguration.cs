@@ -114,16 +114,11 @@
         /// <summary>
         /// Gets or sets the device flow options.
         /// </summary>
-        public DeviceFlowOptions DeviceFlow { get; set; } = new DeviceFlowOptions();       
+        public DeviceFlowOptions DeviceFlow { get; set; } = new DeviceFlowOptions();
         /// <summary>
         /// Gets or sets the logging options
         /// </summary>
         public IdentityServerLoggingOptions Logging { get; set; } = new IdentityServerLoggingOptions();
-
-        /// <summary>
-        /// Gets or sets the CIBA options.
-        /// </summary>
-        public CibaOptions Ciba { get; set; } = new CibaOptions();
 
         /// <summary>
         /// Gets or sets the mutual TLS options.

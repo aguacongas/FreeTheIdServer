@@ -4,7 +4,6 @@ using Aguacongas.FreeTheIdServer.BlazorApp.Models;
 using Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client.Extentions;
 using Aguacongas.FreeTheIdServer.BlazorApp.Services;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Entity = Aguacongas.Open.IdentityServer.Store.Entity;
 
@@ -18,18 +17,6 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client
 
         private bool _filtered;
         private bool _isWebClient;
-
-        private string DPoPClockSkew
-        {
-            get => Model.DPoPClockSkew.ToString();
-            set
-            {
-                if (TimeSpan.TryParse(value, out TimeSpan result))
-                {
-                    Model.DPoPClockSkew = result;
-                }
-            }
-        }
 
         protected override string Expand => $"{nameof(Entity.Client.IdentityProviderRestrictions)},{nameof(Entity.Client.ClientClaims)},{nameof(Entity.Client.ClientSecrets)},{nameof(Entity.Client.AllowedGrantTypes)},{nameof(Entity.Client.RedirectUris)},{nameof(Entity.Client.AllowedScopes)},{nameof(Entity.Client.Properties)},{nameof(Entity.Client.Resources)},{nameof(Entity.Client.AllowedIdentityTokenSigningAlgorithms)}";
 
@@ -60,23 +47,21 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client
                 ProtocolType = "oidc",
                 Enabled = true,
                 EnableLocalLogin = true,
-                AllowedGrantTypes = new List<Entity.ClientGrantType>(),
-                AllowedIdentityTokenSigningAlgorithms = new List<Entity.ClientAllowedIdentityTokenSigningAlgorithm>(),
-                AllowedScopes = new List<Entity.ClientScope>(),
-                ClientClaims = new List<Entity.ClientClaim>(),
-                ClientSecrets = new List<Entity.ClientSecret>(),
-                IdentityProviderRestrictions = new List<Entity.ClientIdpRestriction>(),
-                RedirectUris = new List<Entity.ClientUri>(),
-                Properties = new List<Entity.ClientProperty>(),
-                Resources = new List<Entity.ClientLocalizedResource>(),
+                AllowedGrantTypes = [],
+                AllowedIdentityTokenSigningAlgorithms = [],
+                AllowedScopes = [],
+                ClientClaims = [],
+                ClientSecrets = [],
+                IdentityProviderRestrictions = [],
+                RedirectUris = [],
+                Properties = [],
+                Resources = [],
                 AbsoluteRefreshTokenLifetime = 86400,
                 AccessTokenLifetime = 900,
                 IdentityTokenLifetime = 300,
                 AuthorizationCodeLifetime = 300,
                 DeviceCodeLifetime = 300,
                 SlidingRefreshTokenLifetime = 18000,
-                CibaLifetime = 300,
-                PollingInterval = 5,
                 RefreshTokenUsage = (int)RefreshTokenUsage.OneTimeOnly
             });
         }
@@ -190,34 +175,6 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client
         private void SetProtcolType(string protocolType)
         {
             Model.ProtocolType = protocolType;
-            StateHasChanged();
-        }
-
-        private void TogleDPoPValidationIatMode()
-        {
-            if ((Model.DPoPValidationMode & 1) == 1)
-            {
-                Model.DPoPValidationMode &= ~1;
-            }
-            else
-            {
-                Model.DPoPValidationMode |= 1;
-            }
-            HandleModificationState.EntityUpdated(Model);
-            StateHasChanged();
-        }
-
-        private void TogleDPoPValidationNonceMode()
-        {
-            if ((Model.DPoPValidationMode & 2) == 2)
-            {
-                Model.DPoPValidationMode &= ~2;
-            }
-            else
-            {
-                Model.DPoPValidationMode |= 2;
-            }
-            HandleModificationState.EntityUpdated(Model);
             StateHasChanged();
         }
     }

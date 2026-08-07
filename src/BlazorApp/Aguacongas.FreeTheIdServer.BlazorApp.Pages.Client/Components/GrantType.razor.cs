@@ -38,11 +38,6 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client.Components
                     (kv.Value.Contains(term) || kv.Key.Contains(term)))
                 .Select(kv => kv.Key);
 
-            if (!Options.Value.CibaEnabled)
-            {
-                result = result.Where(r => r != "urn:openid:params:grant-type:ciba");
-            }
-
             return Task.FromResult(result);
         }
 
@@ -59,7 +54,7 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.Client.Components
 
         private static string GetGrantTypeName(string key)
         => GrantTypes.GetGrantTypeName(key);
-        
+
 
         protected override void SetValue(string inputValue)
         {

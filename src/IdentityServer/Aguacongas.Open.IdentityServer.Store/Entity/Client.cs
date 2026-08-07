@@ -362,42 +362,9 @@ namespace Aguacongas.Open.IdentityServer.Store.Entity
         public string RelyingPartyId { get; set; }
 
         /// <summary>
-        /// Gets or sets the backchannel authentication request lifetime in seconds.
-        /// </summary>
-        public int? CibaLifetime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the backchannel polling interval in seconds.
-        /// </summary>
-        public int? PollingInterval { get; set; }
-
-        /// <summary>
-        /// When enabled, the client's token lifetimes (e.g. refresh tokens) will be tied to the user's session lifetime.
-        /// This means when the user logs out, any revokable tokens will be removed.
-        /// If using server-side sessions, expired sessions will also remove any revokable tokens, and backchannel logout will be triggered.
-        /// This client's setting overrides the global CoordinateTokensWithUserSession configuration setting.
-        /// </summary>
-        public bool? CoordinateLifetimeWithUserSession { get; set; }
-
-        /// <summary>
         /// Specifies whether the client must use a request object on authorize requests (defaults to <c>false</c>.)
         /// </summary>
         public bool RequireRequestObject { get; set; }
-
-        /// <summary>
-        /// Specifies whether the client must use Demonstrating Proof-of-Possession.
-        /// </summary>
-        public bool RequireDPoP { get; set; }
-
-        /// <summary>
-        /// Specifies whether pushed authorization requests are required for this client.
-        /// </summary>
-        public bool RequirePushedAuthorization { get; set; }
-
-        /// <summary>
-        /// Lifetime of pushed authorization requests for this client.
-        /// </summary>
-        public int? PushedAuthorizationLifetime { get; set; }
 
         /// <summary>
         /// Gets or sets the relying.
@@ -491,16 +458,6 @@ namespace Aguacongas.Open.IdentityServer.Store.Entity
         /// The modified at.
         /// </value>
         public DateTime? ModifiedAt { get; set; }
-
-        /// <summary>
-        /// Clock skew used in validating the client’s DPoP proof token ‘iat’ claim value. Defaults to 5 minutes.
-        /// </summary>
-        public TimeSpan DPoPClockSkew { get; set; }
-
-        /// <summary>
-        /// Setting to control validation for the DPoP proof token expiration
-        /// </summary>
-        public int DPoPValidationMode { get; set; }
 
         /// <summary>
         /// Clones this instance.

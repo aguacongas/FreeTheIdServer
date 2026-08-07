@@ -2,12 +2,12 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.Open.IdentityServer.Admin.Services;
 using Aguacongas.Open.IdentityServer.Store;
-using Open.IdentityServer.Models;
-using Open.IdentityServer.Stores.Serialization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Moq;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Stores.Serialization;
 using System;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -24,13 +24,13 @@ public class PersistedGrantServiceTest
     {
         var sut = CreateSut(out Mock<IDataProtector> _);
 
-        await sut.RemoveAllGrantsAsync("test", default, "test", "test");
+        await sut.RemoveAllGrantsAsync("test", "test", "test");
 
-        await sut.RemoveAllGrantsAsync("test", default, "test");
+        await sut.RemoveAllGrantsAsync("test", "test");
 
-        await sut.RemoveAllGrantsAsync("test", default);
+        await sut.RemoveAllGrantsAsync("test");
 
-        var grants = await sut.GetAllGrantsAsync("test", default);
+        var grants = await sut.GetAllGrantsAsync("test");
 
         Assert.NotEmpty(grants);
     }
@@ -41,7 +41,7 @@ public class PersistedGrantServiceTest
         var sut = CreateSut(out Mock<IDataProtector> mock);
 
         mock.Setup(m => m.Unprotect(It.IsAny<byte[]>())).Throws(new CryptographicException());
-        var grants = await sut.GetAllGrantsAsync("test", default);
+        var grants = await sut.GetAllGrantsAsync("test");
 
         Assert.NotEmpty(grants);
     }
@@ -58,10 +58,7 @@ public class PersistedGrantServiceTest
         dataProtectorMock.Setup(m => m.Unprotect(It.IsAny<byte[]>())).Returns<byte[]>(b => b);
         dataProtectorProviderMock.Setup(m => m.CreateProtector(It.IsAny<string>())).Returns(dataProtectorMock.Object);
 
-        var serializer = new PersistentGrantSerializer(new PersistentGrantOptions
-        {
-            DataProtectData = true
-        }, dataProtectorProviderMock.Object);
+        var serializer = new PersistentGrantSerializer();
         var localizerMock = new Mock<IStringLocalizer<PersistedGrantService>>();
         var loggerMock = new Mock<ILogger<PersistedGrantService>>();
 
@@ -79,7 +76,7 @@ public class PersistedGrantServiceTest
             new Entity.AuthorizationCode
             {
                 Data = serializer.Serialize(new AuthorizationCode{
-                    RequestedScopes = Array.Empty<string>()
+                    RequestedScopes = []
                 })
             }
             ]
@@ -89,12 +86,12 @@ public class PersistedGrantServiceTest
             Items = [ new Entity.UserConsent
             {
                 Data = serializer.Serialize(new Consent{
-                    Scopes = Array.Empty<string>()
+                    Scopes = []
                 })
             } ]
         });
         var refreshToken = new RefreshToken();
-        refreshToken.SetAccessToken(new Token
+        refreshToken.AccessTokens.Add("empty", new Token
         {
             Claims = Array.Empty<Claim>()
         });

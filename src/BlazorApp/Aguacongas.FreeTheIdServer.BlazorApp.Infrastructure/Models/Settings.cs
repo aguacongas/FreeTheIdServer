@@ -11,14 +11,10 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Models
         public string ApiBaseUrl { get; set; }
 
         public string AdministratorEmail { get; set; }
-        public string WelcomeContenUrl { get;  set; }
+        public string WelcomeContenUrl { get; set; }
         public bool Prerendered { get; set; }
 
         public string HostElementIdentifier { get; set; } = "app";
-
-        public bool ServerSideSessionEnabled { get; set; }
-
-        public bool CibaEnabled { get; set; }
     }
 
     public class LoggingOptions

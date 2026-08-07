@@ -3,7 +3,6 @@
 using Aguacongas.Open.IdentityServer.Admin.Services;
 using Aguacongas.Open.IdentityServer.Store;
 using Aguacongas.Open.IdentityServer.Store.Entity;
-using Open.IdentityServer.Stores;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -26,7 +25,7 @@ namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
             oneTimeTokenStoreMock.Setup(m => m.GetAsync(It.IsAny<PageRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new PageResponse<OneTimeToken>
                 {
-                    Items = Array.Empty<OneTimeToken>()
+                    Items = []
                 });
 
             var refreshTokenStoreMock = new Mock<IAdminStore<RefreshToken>>();
@@ -34,7 +33,7 @@ namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
             refreshTokenStoreMock.Setup(m => m.GetAsync(It.IsAny<PageRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new PageResponse<RefreshToken>
                 {
-                    Items = Array.Empty<RefreshToken>()
+                    Items = []
                 });
 
 
@@ -43,10 +42,10 @@ namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
             referenceTokenStoreMock.Setup(m => m.GetAsync(It.IsAny<PageRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new PageResponse<ReferenceToken>
                 {
-                    Items = new[]
-                    {
+                    Items =
+                    [
                         new ReferenceToken()
-                    }
+                    ]
                 });
 
             referenceTokenStoreMock.Setup(m => m.DeleteAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
@@ -58,40 +57,25 @@ namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
             deviceCodeStoreMock.Setup(m => m.GetAsync(It.IsAny<PageRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new PageResponse<DeviceCode>
                 {
-                    Items = new[]
-                    {
+                    Items =
+                    [
                         new DeviceCode()
-                    }
+                    ]
                 });
 
             deviceCodeStoreMock.Setup(m => m.DeleteAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .Callback(() => resetEvent.Set())
                 .Returns(Task.CompletedTask);
 
-            var backChannelAuthenticationRequestStoreMock = new Mock<IAdminStore<BackChannelAuthenticationRequest>>();
-
-            backChannelAuthenticationRequestStoreMock.Setup(m => m.GetAsync(It.IsAny<PageRequest>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new PageResponse<BackChannelAuthenticationRequest>
-                {
-                    Items = new[]
-                    {
-                        new BackChannelAuthenticationRequest()
-                    }
-                });
-
-            backChannelAuthenticationRequestStoreMock.Setup(m => m.DeleteAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Callback(() => resetEvent.Set())
-            .Returns(Task.CompletedTask);
-
             var authorizationCodeStoreMock = new Mock<IAdminStore<AuthorizationCode>>();
 
             authorizationCodeStoreMock.Setup(m => m.GetAsync(It.IsAny<PageRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new PageResponse<AuthorizationCode>
                 {
-                    Items = new[]
-                    {
+                    Items =
+                    [
                         new AuthorizationCode()
-                    }
+                    ]
                 });
 
             authorizationCodeStoreMock.Setup(m => m.DeleteAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
@@ -103,10 +87,10 @@ namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
             saml2PArtifactStoreMock.Setup(m => m.GetAsync(It.IsAny<PageRequest>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new PageResponse<Saml2PArtifact>
                 {
-                    Items = new[]
-                    {
+                    Items =
+                    [
                         new Saml2PArtifact()
-                    }
+                    ]
                 });
 
             saml2PArtifactStoreMock.Setup(m => m.DeleteAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
@@ -118,7 +102,6 @@ namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
                 .AddTransient(p => referenceTokenStoreMock.Object)
                 .AddTransient(p => refreshTokenStoreMock.Object)
                 .AddTransient(p => deviceCodeStoreMock.Object)
-                .AddTransient(p => backChannelAuthenticationRequestStoreMock.Object)
                 .AddTransient(p => authorizationCodeStoreMock.Object)
                 .AddTransient(p => saml2PArtifactStoreMock.Object)
                 .BuildServiceProvider();
@@ -153,7 +136,6 @@ namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
 
             var refreshTokenStoreMock = new Mock<IAdminStore<RefreshToken>>();
             var referenceTokenStoreMock = new Mock<IAdminStore<ReferenceToken>>();
-            var backChannelAuthenticationRequestStoreMock = new Mock<IAdminStore<BackChannelAuthenticationRequest>>();
             var deviceCodeStoreMock = new Mock<IAdminStore<DeviceCode>>();
             var authorizationStoreMock = new Mock<IAdminStore<AuthorizationCode>>();
             var saml2PArtifactStoreMock = new Mock<IAdminStore<Saml2PArtifact>>();
@@ -161,9 +143,8 @@ namespace Aguacongas.Open.IdentityServer.Admin.Test.Services
                 .AddTransient(p => oneTimeTokenStoreMock.Object)
                 .AddTransient(p => referenceTokenStoreMock.Object)
                 .AddTransient(p => refreshTokenStoreMock.Object)
-                .AddTransient(p => backChannelAuthenticationRequestStoreMock.Object)
                 .AddTransient(p => deviceCodeStoreMock.Object)
-                .AddTransient(p =>  authorizationStoreMock.Object)
+                .AddTransient(p => authorizationStoreMock.Object)
                 .AddTransient(p => saml2PArtifactStoreMock.Object)
                 .BuildServiceProvider();
 

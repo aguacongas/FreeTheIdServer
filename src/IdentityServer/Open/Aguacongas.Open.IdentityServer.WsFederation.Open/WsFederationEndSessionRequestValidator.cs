@@ -5,7 +5,6 @@ using Open.IdentityServer.WsFederation;
 using System;
 using System.Collections.Specialized;
 using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Aguacongas.Open.IdentityServer.WsFederation;
@@ -28,7 +27,6 @@ public class WsFederationEndSessionRequestValidator(EndSessionRequestValidator p
     /// </summary>
     /// <param name="parameters"></param>
     /// <param name="subject"></param>
-    /// <param name="ct"></param>
     /// <returns></returns>
     public async Task<EndSessionValidationResult> ValidateAsync(NameValueCollection parameters, ClaimsPrincipal subject)
     {
@@ -45,7 +43,6 @@ public class WsFederationEndSessionRequestValidator(EndSessionRequestValidator p
     /// Validates requests from logout page iframe to trigger single signout.
     /// </summary>
     /// <param name="parameters"></param>
-    /// <param name="ct"></param>
     /// <returns></returns>
     public Task<EndSessionCallbackValidationResult> ValidateCallbackAsync(NameValueCollection parameters)
     => _parent.ValidateCallbackAsync(parameters);

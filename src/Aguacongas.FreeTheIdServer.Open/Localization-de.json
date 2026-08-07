@@ -1992,14 +1992,6 @@
 	"value": "Backchannel-Anmeldeanforderungen"
   },
   {
-	"key": "ciba requests",
-	"value": "ciba-Anfragen"
-  },
-  {
-	"key": "ciba lifetime",
-	"value": "ciba-Lebensdauer"
-  },
-  {
 	"key": "polling interval",
 	"value": "Abfrageintervall"
   },

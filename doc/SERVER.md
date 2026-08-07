@@ -1032,10 +1032,6 @@ Tokens returned by request_uri parameter are validated using the rules defined i
 
 Read [Aguacongas.IdentityServer.WsFederation.Open](../IdentityServer/Open/Aguacongas.Open.IdentityServer.WsFederation.Open/README.md)
 
-## Configure CIBA notification service
-
-Read [Open CIBA INTEGRATION/Notification service](CIBA.md#Notification-service)
-
 ## Use the client to override the default configuration
 
 The server and the blazor app integrate [aguacongas/DynamicConfiguration](https://github.com/aguacongas/DynamicConfiguration). Most of the configuration can be ovveriden using the blazor app.

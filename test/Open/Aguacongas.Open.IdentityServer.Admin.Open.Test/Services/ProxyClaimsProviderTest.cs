@@ -2,17 +2,16 @@
 // Copyright (c) 2026 @Olivier Lefebvre
 using Aguacongas.Open.IdentityServer.Abstractions;
 using Aguacongas.Open.IdentityServer.Admin.Services;
-using Open.IdentityServer.Models;
-using Open.IdentityServer.Stores;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using Open.IdentityServer.Models;
+using Open.IdentityServer.Stores;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -24,11 +23,11 @@ public class ProxyClaimsProviderTest
     public async Task GetAsync_should_resolve_provider_type_from_di()
     {
         var clientStoreMock = new Mock<IClientStore>();
-        clientStoreMock.Setup(m => m.FindClientByIdAsync("test", It.IsAny<CancellationToken>())).ReturnsAsync(new Client());
+        clientStoreMock.Setup(m => m.FindClientByIdAsync("test")).ReturnsAsync(new Client());
         var resourceStoreMock = new Mock<IResourceStore>();
-        resourceStoreMock.Setup(m => m.FindApiResourcesByNameAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
+        resourceStoreMock.Setup(m => m.FindApiResourcesByNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync([new ApiResource()]);
-        resourceStoreMock.Setup(m => m.FindIdentityResourcesByScopeNameAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
+        resourceStoreMock.Setup(m => m.FindIdentityResourcesByScopeNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync([]);
 
         var services = new ServiceCollection()
@@ -65,9 +64,9 @@ public class ProxyClaimsProviderTest
     public async Task GetAsync_should_load_assemby_from_path()
     {
         var clientStoreMock = new Mock<IClientStore>();
-        clientStoreMock.Setup(m => m.FindClientByIdAsync("test", It.IsAny<CancellationToken>())).ReturnsAsync(new Client());
+        clientStoreMock.Setup(m => m.FindClientByIdAsync("test")).ReturnsAsync(new Client());
         var resourceStoreMock = new Mock<IResourceStore>();
-        resourceStoreMock.Setup(m => m.FindApiResourcesByNameAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
+        resourceStoreMock.Setup(m => m.FindApiResourcesByNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync([new ApiResource
                     {
                         Properties = new Dictionary<string, string>
@@ -75,7 +74,7 @@ public class ProxyClaimsProviderTest
                             [ProfileServiceProperties.ClaimProviderAssemblyPathKey] = $"{typeof(ClaimsProvider).Assembly.GetName().Name}.dll"
                         }
                     }]);
-        resourceStoreMock.Setup(m => m.FindIdentityResourcesByScopeNameAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
+        resourceStoreMock.Setup(m => m.FindIdentityResourcesByScopeNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync([]);
 
         var services = new ServiceCollection()
@@ -112,11 +111,11 @@ public class ProxyClaimsProviderTest
     public async Task GetAsync_should_get_claims_from_identity_resources()
     {
         var clientStoreMock = new Mock<IClientStore>();
-        clientStoreMock.Setup(m => m.FindClientByIdAsync("test", It.IsAny<CancellationToken>())).ReturnsAsync(new Client());
+        clientStoreMock.Setup(m => m.FindClientByIdAsync("test")).ReturnsAsync(new Client());
         var resourceStoreMock = new Mock<IResourceStore>();
-        resourceStoreMock.Setup(m => m.FindApiResourcesByNameAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
+        resourceStoreMock.Setup(m => m.FindApiResourcesByNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync([]);
-        resourceStoreMock.Setup(m => m.FindIdentityResourcesByScopeNameAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
+        resourceStoreMock.Setup(m => m.FindIdentityResourcesByScopeNameAsync(It.IsAny<IEnumerable<string>>()))
             .ReturnsAsync(
                 [
                     new IdentityResource()
