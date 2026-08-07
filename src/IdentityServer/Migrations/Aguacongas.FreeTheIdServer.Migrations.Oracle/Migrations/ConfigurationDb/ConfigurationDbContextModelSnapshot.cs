@@ -370,12 +370,6 @@ namespace Aguacongas.FreeTheIdServer.Oracle.Migrations.ConfigurationDb
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp");
 
-                    b.Property<TimeSpan>("DPoPClockSkew")
-                        .HasColumnType("INTERVAL DAY(2) TO SECOND(6)");
-
-                    b.Property<int>("DPoPValidationMode")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar2(1000)");
@@ -448,13 +442,7 @@ namespace Aguacongas.FreeTheIdServer.Oracle.Migrations.ConfigurationDb
                     b.Property<bool>("RequireConsent")
                         .HasColumnType("bool");
 
-                    b.Property<bool>("RequireDPoP")
-                        .HasColumnType("bool");
-
                     b.Property<bool>("RequirePkce")
-                        .HasColumnType("bool");
-
-                    b.Property<bool>("RequirePushedAuthorization")
                         .HasColumnType("bool");
 
                     b.Property<bool>("RequireRequestObject")

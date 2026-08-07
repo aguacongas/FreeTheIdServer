@@ -375,12 +375,6 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations.ConfigurationDb
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan>("DPoPClockSkew")
-                        .HasColumnType("time");
-
-                    b.Property<int>("DPoPValidationMode")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
@@ -453,13 +447,7 @@ namespace Aguacongas.FreeTheIdServer.SqlServer.Migrations.ConfigurationDb
                     b.Property<bool>("RequireConsent")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("RequireDPoP")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("RequirePkce")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("RequirePushedAuthorization")
                         .HasColumnType("bit");
 
                     b.Property<bool>("RequireRequestObject")

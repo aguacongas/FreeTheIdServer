@@ -375,12 +375,6 @@ namespace Aguacongas.FreeTheIdServer.PostgreSQL.Migrations.ConfigurationDb
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<TimeSpan>("DPoPClockSkew")
-                        .HasColumnType("interval");
-
-                    b.Property<int>("DPoPValidationMode")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
@@ -453,13 +447,7 @@ namespace Aguacongas.FreeTheIdServer.PostgreSQL.Migrations.ConfigurationDb
                     b.Property<bool>("RequireConsent")
                         .HasColumnType("boolean");
 
-                    b.Property<bool>("RequireDPoP")
-                        .HasColumnType("boolean");
-
                     b.Property<bool>("RequirePkce")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("RequirePushedAuthorization")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("RequireRequestObject")

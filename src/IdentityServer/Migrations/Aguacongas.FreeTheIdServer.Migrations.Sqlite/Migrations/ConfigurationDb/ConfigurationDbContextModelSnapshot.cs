@@ -370,12 +370,6 @@ namespace Aguacongas.FreeTheIdServer.Sqlite.Migrations.ConfigurationDb
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan>("DPoPClockSkew")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("DPoPValidationMode")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("TEXT");
@@ -448,13 +442,7 @@ namespace Aguacongas.FreeTheIdServer.Sqlite.Migrations.ConfigurationDb
                     b.Property<bool>("RequireConsent")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("RequireDPoP")
-                        .HasColumnType("INTEGER");
-
                     b.Property<bool>("RequirePkce")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("RequirePushedAuthorization")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("RequireRequestObject")
