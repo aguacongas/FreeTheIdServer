@@ -9,7 +9,6 @@ using Open.IdentityServer.Stores;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -109,7 +108,7 @@ public class CreatePersonalAccessTokenServiceTest
 
         Token capturedToken = null;
         tokenServiceMock.Setup(s => s.CreateSecurityTokenAsync(It.IsAny<Token>()))
-            .Callback<Token, CancellationToken>((t, _) => capturedToken = t)
+            .Callback<Token>((t) => capturedToken = t)
             .ReturnsAsync("the-token-value");
 
         var context = CreateHttpContext(additionalClaims:
@@ -156,7 +155,7 @@ public class CreatePersonalAccessTokenServiceTest
 
         Token capturedToken = null;
         tokenServiceMock.Setup(s => s.CreateSecurityTokenAsync(It.IsAny<Token>()))
-            .Callback<Token, CancellationToken>((t, _) => capturedToken = t)
+            .Callback<Token>((t) => capturedToken = t)
             .ReturnsAsync("jwt-value");
 
         var context = CreateHttpContext();
@@ -181,7 +180,7 @@ public class CreatePersonalAccessTokenServiceTest
 
         Token capturedToken = null;
         tokenServiceMock.Setup(s => s.CreateSecurityTokenAsync(It.IsAny<Token>()))
-            .Callback<Token, CancellationToken>((t, _) => capturedToken = t)
+            .Callback<Token>((t) => capturedToken = t)
             .ReturnsAsync("token");
 
         var context = CreateHttpContext();
