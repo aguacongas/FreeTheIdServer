@@ -26,7 +26,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3 
         with:
-          username: FreeTheIdServerowner
+          username: aguacongasowner
           password: ${{ secrets.DOCKER_HUB_PAT }}
       - name: 'Checkout'
         uses: actions/checkout@v3
@@ -57,7 +57,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: FreeTheIdServerowner
+          username: aguacongasowner
           password: ${{ secrets.DOCKER_HUB_PAT }}
       - name: 'Checkout'
         uses: actions/checkout@v3
