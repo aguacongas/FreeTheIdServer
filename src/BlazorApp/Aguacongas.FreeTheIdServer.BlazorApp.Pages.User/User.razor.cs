@@ -29,8 +29,7 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.User
                 Roles = new List<EntityNS.Role>(),
                 Tokens = new List<EntityNS.UserToken>(),
                 ReferenceTokens = new List<EntityNS.ReferenceToken>(),
-                RefreshTokens = new List<EntityNS.RefreshToken>(),
-                Sessions = new List<EntityNS.UserSession>()
+                RefreshTokens = new List<EntityNS.RefreshToken>()
             });
         }
 
@@ -71,15 +70,11 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.User
             var refreshTokenStore = GetStore<EntityNS.RefreshToken>();
             var getRefreshTokenResponse = await refreshTokenStore.GetAsync(pageRequest);
 
-            var sessionStore = GetStore<EntityNS.UserSession>();
-            var sessionstResponse = await sessionStore.GetAsync(pageRequest);
-
             model.Logins = getLoginsResponse.Items.ToList();
             model.Consents = getUserConsentsResponse.Items.ToList();
             model.Tokens = getUserTokensResponse.Items.ToList();
             model.ReferenceTokens = getReferenceTokenResponse.Items.ToList();
             model.RefreshTokens = getRefreshTokenResponse.Items.ToList();
-            model.Sessions = sessionstResponse.Items.ToList();
 
             var userRoles = model.UserRoles;
             if (userRoles.Any())

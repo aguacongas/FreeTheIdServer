@@ -20,8 +20,6 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Models
         public ICollection<Entity.ReferenceToken> ReferenceTokens { get; set; }
         public ICollection<Entity.RefreshToken> RefreshTokens { get; set; }
 
-        public ICollection<Entity.UserSession> Sessions { get; set; }
-
         public new User Clone()
         {
             return MemberwiseClone() as User;
