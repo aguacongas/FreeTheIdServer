@@ -32,12 +32,12 @@ See [Data Protection](doc/DATA_PROTECTION.md#azure-key-vault) and [Keys Rotation
 
 Thanks [@ldeluigi](https://github.com/ldeluigi) and its [markdown-docs GitHub action](https://github.com/ldeluigi/markdown-docs). All markdown files are deployed in html [here](https://aguacongas.github.io/FreeTheIdServer/).
 
-### Try it now at [https://FreeTheIdServer-Open.herokuapp.com/](https://FreeTheIdServer-Open.herokuapp.com/)
+### Try it now at [https://freetheidserver.onrender.com/](https://freetheidserver.onrender.com/)
 
 **login**: alice  
 **pwd**: Pass123$
 
-An in-memory database version is available on [Heroku](https://www.heroku.com/).
+An in-memory database version is available on [Render](https://render.com/).
 
 ### Give a Star! :star:
 

@@ -60,7 +60,6 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Models
         /// <summary>
         /// When enabled, all clients' token lifetimes (e.g. refresh tokens) will be tied to the user’s session lifetime. 
         /// This means when the user logs out, any revokable tokens will be removed. 
-        /// If using server-side sessions, expired sessions will also remove any revokable tokens, and backchannel logout will be triggered.
         /// An individual client can override this setting with its own CoordinateLifetimeWithUserSession configuration setting.
         /// </summary>
         public bool CoordinateClientLifetimesWithUserSession { get; set; }

@@ -332,10 +332,6 @@ To retrieve the client certificate from the request header confiure the `MutualT
 }
 ```
 
-### Configure Server-side sessions
-
-Read [Server-side sessions](SERVER_SIDE_SESSIONS.md)
-
 ## Configure stores
 
 ### Using Entity Framework Core
