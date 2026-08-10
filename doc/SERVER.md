@@ -1,4 +1,4 @@
-# FreeTheIdServer Open Web Server
+# FreeTheIdServer Web Server
 
 > FreeTheIdServer use [Open.IdentityServer](https://github.com/RockSolidKnowledge/Open.IdentityServer), for a commercial use you need to [acquire a license](https://github.com/RockSolidKnowledge/Open.IdentityServer#pricing).  
 
@@ -10,7 +10,7 @@ Read [Configuration in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/cor
 
 ### From Terraform
 
-You can reuser the [Terraform](https://terraform.io) [Helm](https://helm.sh) module [theidserver](https://registry.terraform.io/modules/Aguafrommars/theidserver/helm/latest) to deploy FreeTheIdServer easy.  
+You can reuse the [Terraform](https://terraform.io) [Helm](https://helm.sh) module [theidserver](https://registry.terraform.io/modules/Aguafrommars/theidserver/helm/latest) to deploy FreeTheIdServer easy.  
 To deploy the FreeTheIdServer version choose the [aguacongas/freetheidserver image](https://hub.docker.com/r/aguacongas/freetheidserver).
 
 
