@@ -245,8 +245,8 @@ kubectl apply -f FreeTheIdServer-private-configmap.yaml
 kubectl apply -f FreeTheIdServer-private-deployment.yaml
 ```
 
-> The deployment use the next version of *aguacongas/FreeTheIdServer* image, choose a [release image version](https://hub.docker.com/r/aguacongas/FreeTheIdServer/tags) before applying this file  
-> `- image: aguacongas/FreeTheIdServer:next # update with the version you want to use`
+> The deployment use the next version of *aguacongas/freetheidserver* image, choose a [release image version](https://hub.docker.com/r/aguacongas/freetheidserver/tags) before applying this file  
+> `- image: aguacongas/freetheidserver:next # update with the version you want to use`
 
 * Create the network service
 
@@ -311,8 +311,8 @@ kubectl apply -f FreeTheIdServer-public-keys-volume.yaml
 kubectl apply -f FreeTheIdServer-public-deployment.yaml
 ```
 
-> The deployment use the next version of *aguacongas/FreeTheIdServer* image, choose a [release image version](https://hub.docker.com/r/aguacongas/FreeTheIdServer/tags) before applying this file  
-> `- image: aguacongas/FreeTheIdServer:next # update with the version you want to use`
+> The deployment use the next version of *aguacongas/freetheidserver* image, choose a [release image version](https://hub.docker.com/r/aguacongas/freetheidserver/tags) before applying this file  
+> `- image: aguacongas/freetheidserver:next # update with the version you want to use`
 
 * Create the network service
 
