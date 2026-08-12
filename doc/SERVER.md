@@ -1,4 +1,4 @@
-# FreeTheIdServer Open Web Server
+# FreeTheIdServer Web Server
 
 > FreeTheIdServer use [Open.IdentityServer](https://github.com/RockSolidKnowledge/Open.IdentityServer), for a commercial use you need to [acquire a license](https://github.com/RockSolidKnowledge/Open.IdentityServer#pricing).  
 
@@ -10,8 +10,9 @@ Read [Configuration in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/cor
 
 ### From Terraform
 
-The [Terraform](https://terraform.io) [Helm](https://helm.sh) module [FreeTheIdServer](https://registry.terraform.io/modules/aguacongas/FreeTheIdServer/helm/latest) make the deployement of FreeTheIdServer easy.  
-To deploy the Open version choose the [aguacongas/FreeTheIdServer.Open image](https://hub.docker.com/r/aguacongas/FreeTheIdServer.Open).
+You can reuse the [Terraform](https://terraform.io) [Helm](https://helm.sh) module [theidserver](https://registry.terraform.io/modules/Aguafrommars/theidserver/helm/latest) to deploy FreeTheIdServer easy.  
+To deploy the FreeTheIdServer version choose the [aguacongas/freetheidserver image](https://hub.docker.com/r/aguacongas/freetheidserver).
+
 
 ``` hcl
 provider "helm" {
@@ -20,15 +21,15 @@ provider "helm" {
   }
 }
 
-module "FreeTheIdServer" {
-  source = "aguacongas/FreeTheIdServer/helm"
+module "theidserver" {
+  source = "Aguafrommars/theidserver/helm"
 
   host = "FreeTheIdServer.com"
   tls_issuer_name = "letsencrypt"
   tls_issuer_kind = "ClusterIssuer"
 
   image = {
-    repository = "aguacongas/FreeTheIdServer.Open"
+    repository = "aguacongas/freetheidserver"
     pullPolicy = "Always"
     tag = "next"
   }
@@ -37,24 +38,24 @@ module "FreeTheIdServer" {
 
 ### From Helm
 
-The [FreeTheIdServer](https://hub.helm.sh/packages/helm/aguacongas/FreeTheIdServer) [Helm](https://helm.sh) chart is available in [hub.helm.sh](https://hub.helm.sh).
+The [theidserver](https://hub.helm.sh/packages/helm/aguafrommars/theidserver) [Helm](https://helm.sh) chart is available in [hub.helm.sh](https://hub.helm.sh).
 
 #### Install
 
 ``` bash
 helm repo add aguacongas https://aguacongas.github.io/helm
-helm install aguacongas FreeTheIdServer --set FreeTheIdServer.mysql.db.password=my-P@ssword --set image.repository=aguacongas/FreeTheIdServer.Open
+helm install aguacongas FreeTheIdServer --set theidserver.mysql.db.password=my-P@ssword --set image.repository=aguacongas/freetheidserver
 ```
 
-> By default the helm char install the IS4 version, to install the Open version your need to set `image.repository=aguacongas/FreeTheIdServer.Open`.
+> By default the helm char install the Duende version, to install the FreeTheIdServer your need to set `image.repository=aguacongas/freetheidserver`.
 
 #### Upgrade
 
-Follow upgrades intstructions in the [chart readme](https://github.com/aguacongas/helm/blob/main/charts/FreeTheIdServer/README.md#upgrade).
+Follow upgrades intstructions in the [chart readme](https://github.com/aguacongas/helm/blob/main/charts/TheIdServer/README.md#upgrade).
 
 ### From Docker
 
-A [server's Linux image](https://hub.docker.com/r/aguacongas/FreeTheIdServer.Open) is available on Docker Hub.
+A [server's Linux image](https://hub.docker.com/r/aguacongas/freetheidserver) is available on Docker Hub.
 
 [*sample/MultiTiers/Aguacongas.FreeTheIdServer.Private/Dockerfile.Open-private*](../../sample/MultiTiers/Aguacongas.FreeTheIdServer.Private/Dockerfile.Open-private) demonstrates how to create an image from the [server image](https://hub.docker.com/r/aguacongas/FreeTheIdServer) to run a private Linux server container.
 
@@ -72,7 +73,7 @@ A full deployment guide is available for hosting FreeTheIdServer on the Render p
 
 [/sample/Kubernetes/README.md](/sample/Kubernetes/README.md) contains a sample to set up a solution with Kubernetes.
 
-> The sample use the IS4 version but you just need to use `aguacongas/FreeTheIdServer.Open` as docker image in the deployement file.
+> The sample use the Duende version but you just need to use `aguacongas/freetheidserver` as docker image in the deployement file.
 
 
 ### From dotnet new template
