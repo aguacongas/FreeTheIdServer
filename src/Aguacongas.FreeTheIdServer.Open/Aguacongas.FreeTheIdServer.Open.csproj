@@ -24,6 +24,7 @@
 	<ItemGroup>
 		<Content Remove="Localization-fr.json" />
 		<Content Remove="Localization-de.json" />
+		<Content Remove="Localization-hi.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -32,6 +33,9 @@
 		</None>
 		<None Include="Localization-de.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="Localization-hi.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 
