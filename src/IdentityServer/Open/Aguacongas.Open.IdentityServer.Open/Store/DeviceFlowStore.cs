@@ -30,7 +30,7 @@ namespace Aguacongas.Open.IdentityServer.Store
 
             var response = await _store.GetAsync(new PageRequest
             {
-                Filter = $"{nameof(DeviceCode.Code)} eq '{deviceCode}'",
+                Filter = $"{nameof(DeviceCode.Code)} eq {ODataFilter.Literal(deviceCode)}",
                 Select = nameof(DeviceCode.Data)
             }).ConfigureAwait(false);
 
@@ -48,7 +48,7 @@ namespace Aguacongas.Open.IdentityServer.Store
 
             var response = await _store.GetAsync(new PageRequest
             {
-                Filter = $"{nameof(DeviceCode.UserCode)} eq '{userCode}'",
+                Filter = $"{nameof(DeviceCode.UserCode)} eq {ODataFilter.Literal(userCode)}",
                 Select = nameof(DeviceCode.Data)
             }).ConfigureAwait(false);
 
@@ -66,7 +66,7 @@ namespace Aguacongas.Open.IdentityServer.Store
 
             var response = await _store.GetAsync(new PageRequest
             {
-                Filter = $"{nameof(DeviceCode.Code)} eq '{deviceCode}'",
+                Filter = $"{nameof(DeviceCode.Code)} eq {ODataFilter.Literal(deviceCode)}",
                 Select = nameof(DeviceCode.Id)
             }).ConfigureAwait(false);
 
@@ -103,7 +103,7 @@ namespace Aguacongas.Open.IdentityServer.Store
 
             var response = await _store.GetAsync(new PageRequest
             {
-                Filter = $"{nameof(DeviceCode.UserCode)} eq '{userCode}'"
+                Filter = $"{nameof(DeviceCode.UserCode)} eq {ODataFilter.Literal(userCode)}"
             }).ConfigureAwait(false);
 
             if (response.Items.Any())
