@@ -50,7 +50,7 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.User
         {
             var pageRequest = new PageRequest
             {
-                Filter = $"{nameof(EntityNS.UserClaim.UserId)} eq '{Id}'"
+                Filter = $"{nameof(EntityNS.UserClaim.UserId)} eq {ODataFilter.Literal(Id)}"
             };
 
             var model = await base.GetModelAsync();
@@ -82,7 +82,7 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.User
                 var roleStore = GetStore<EntityNS.Role>();
                 var rolesResponse = await roleStore.GetAsync(new PageRequest
                 {
-                    Filter = string.Join(" or ", userRoles.Select(r => $"{nameof(EntityNS.Role.Id)} eq '{r.RoleId}'"))
+                    Filter = string.Join(" or ", userRoles.Select(r => $"{nameof(EntityNS.Role.Id)} eq {ODataFilter.Literal(r.RoleId)}"))
                 }).ConfigureAwait(false);
                 model.Roles = rolesResponse.Items.ToList();
             }
@@ -103,7 +103,7 @@ namespace Aguacongas.FreeTheIdServer.BlazorApp.Pages.User
                 {
                     Select = "Id",
                     Take = 1,
-                    Filter = $"{nameof(role.Name)} eq '{role.Name}'"
+                    Filter = $"{nameof(role.Name)} eq {ODataFilter.Literal(role.Name)}"
                 }).ConfigureAwait(false);
 
                 var roles = roleResponse.Items;
