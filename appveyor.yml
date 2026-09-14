@@ -10,7 +10,7 @@ branches:
 image: 
 - Visual Studio 2022
 environment:
-  GITHUB_TOKEN:
+  GH_TOKEN:
     secure: vGq6b5Ms3N1+cCkQUWgVt1FN8CKB94fWK/DS33M16du/chd68QLwjPBje6AB/KpI
   donetsdk: 10.0.400
   JAVA_HOME: C:\Program Files\Java\jdk19
