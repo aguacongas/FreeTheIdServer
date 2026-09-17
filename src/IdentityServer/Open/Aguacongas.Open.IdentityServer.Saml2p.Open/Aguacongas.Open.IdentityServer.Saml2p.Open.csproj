@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="Open.IdentityServer" Version="2.0.0" />
-    <PackageReference Include="ITfoxtec.Identity.Saml2.MvcCore" Version="4.20.1" />
+    <PackageReference Include="ITfoxtec.Identity.Saml2.MvcCore" Version="4.21.0" />
   </ItemGroup>
 
   <ItemGroup>
