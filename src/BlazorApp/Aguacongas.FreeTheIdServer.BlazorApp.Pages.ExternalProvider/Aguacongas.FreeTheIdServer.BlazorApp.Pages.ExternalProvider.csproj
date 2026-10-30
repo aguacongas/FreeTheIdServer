@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.14" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,4 +36,3 @@
 	</ItemGroup>
 
 </Project>
-
